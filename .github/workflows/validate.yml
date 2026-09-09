@@ -1,0 +1,37 @@
+name: Validate website
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate required static-site files
+        run: |
+          set -euo pipefail
+          test "$(cat CNAME)" = "cv.bytegeist.dev"
+          test -s index.html
+          test -s de/index.html
+          test -s styles.css
+          test -s script.js
+      - name: Check HTML and asset references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('.')
+          for page in [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html']:
+              text = page.read_text()
+              for ref in re.findall(r'''(?:href|src)=["'](/[^"'#?]+)''', text):
+                  target = root / ref.lstrip('/')
+                  if not target.exists():
+                      raise SystemExit(f'{page}: missing asset {ref}')
+          print('static pages and local absolute assets validated')
+          PY
