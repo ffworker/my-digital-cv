@@ -1,4 +1,4 @@
-# mywebsite
+# my-digital-cv
 
 Public technical portfolio for Dennis Kappel.
 
