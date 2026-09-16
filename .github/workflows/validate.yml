@@ -2,8 +2,24 @@ name: Validate CV and notify k3s deployment
 
 on:
   pull_request:
+    paths:
+      - 'index.html'
+      - 'skills.html'
+      - 'de/**'
+      - 'assets/**'
+      - 'styles.css'
+      - 'script.js'
+      - '.github/workflows/validate.yml'
   push:
     branches: [main]
+    paths:
+      - 'index.html'
+      - 'skills.html'
+      - 'de/**'
+      - 'assets/**'
+      - 'styles.css'
+      - 'script.js'
+      - '.github/workflows/validate.yml'
   workflow_dispatch:
 
 permissions:
