@@ -1,27 +1,33 @@
-name: Validate and deploy website
+name: Validate CV and notify k3s deployment
 
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cv-source-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - name: Validate required static-site files
         run: |
           set -euo pipefail
-          test "$(cat CNAME)" = "cv.bytegeist.dev"
           test -s index.html
           test -s de/index.html
           test -s skills.html
           test -s de/skills.html
           test -s styles.css
           test -s script.js
+          test -s assets/favicon.svg
       - name: Check HTML and local asset references
         run: |
           python - <<'PY'
@@ -41,26 +47,37 @@ jobs:
           print('required pages and local asset references validated')
           PY
 
-  deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  notify-infra:
+    if: github.event_name != 'pull_request'
     needs: validate
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: github-pages
-      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - name: Deploy validated commit to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Require infra-configs dispatch token
+        env:
+          TOKEN: ${{ secrets.INFRA_CONFIGS_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo 'Missing INFRA_CONFIGS_DISPATCH_TOKEN.' >&2
+            echo 'Create a fine-grained token scoped only to ffworker/infra-configs with Contents: write, then add it as this repository secret.' >&2
+            exit 1
+          fi
+      - name: Notify infra-configs of validated source revision
+        env:
+          GH_TOKEN: ${{ secrets.INFRA_CONFIGS_DISPATCH_TOKEN }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          payload=$(jq -cn \
+            --arg sha "$SOURCE_SHA" \
+            --arg repo "$GITHUB_REPOSITORY" \
+            '{event_type:"cv-source-updated",client_payload:{source_sha:$sha,source_repo:$repo}}')
+
+          curl --fail-with-body --silent --show-error \
+            -X POST \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            https://api.github.com/repos/ffworker/infra-configs/dispatches \
+            -d "$payload"
+
+          echo "Dispatched validated CV source $SOURCE_SHA to ffworker/infra-configs"
