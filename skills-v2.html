@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dennis Kappel | Self-assessed skills preview</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f5f6f2; color:#111714; font-family:Inter,system-ui,sans-serif; line-height:1.5; }
+    a { color:inherit; }
+    .shell { width:min(1180px,calc(100% - 36px)); margin:0 auto; }
+    header { padding:24px 0; display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid #ccd4cf; }
+    header a { text-decoration:none; }
+    .eyebrow,.tag,.level { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; text-transform:uppercase; letter-spacing:.07em; font-size:12px; font-weight:800; }
+    .eyebrow,.level { color:#16785a; }
+    main { padding:64px 0; }
+    h1 { margin:12px 0 18px; font-size:clamp(42px,6vw,72px); line-height:.95; letter-spacing:-.04em; }
+    .intro { max-width:780px; font-size:20px; color:#56605b; }
+    .note { margin:32px 0 48px; border-left:3px solid #16785a; padding:18px 20px; background:#fff; max-width:900px; }
+    .scale { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:42px; }
+    .scale article { border:1px solid #ccd4cf; background:#fff; padding:18px; }
+    .scale h2 { margin:6px 0 8px; font-size:20px; }
+    .scale p { margin:0; color:#59635e; font-size:14px; }
+    .matrix { border-top:1px solid #bdc8c2; }
+    .row { display:grid; grid-template-columns:1.05fr .8fr .8fr .9fr 1.2fr; gap:16px; padding:18px 0; border-bottom:1px solid #d4dbd7; align-items:start; }
+    .head { font-family:ui-monospace,monospace; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#69736e; padding-top:12px; padding-bottom:12px; }
+    .skill strong { display:block; font-size:18px; margin-bottom:4px; }
+    .skill span,.cell { color:#5c6661; font-size:14px; }
+    .draft { display:inline-block; padding:6px 8px; border:1px dashed #9ba9a2; color:#69736e; font-family:ui-monospace,monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+    .evidence { color:#0e684d; font-weight:750; text-decoration-thickness:1px; text-underline-offset:3px; }
+    .section-title { margin:56px 0 18px; font-size:32px; }
+    .footer-note { margin-top:44px; color:#69736e; font-size:14px; }
+    @media(max-width:880px){ .scale{grid-template-columns:1fr}.head{display:none}.row{grid-template-columns:1fr}.row>div{padding-bottom:4px}.cell::before{display:block;font-family:ui-monospace,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#88938d;margin-bottom:3px}.manual::before{content:'Manual confidence'}.assist::before{content:'Assistance use'}.prod::before{content:'Production posture'}.evid::before{content:'Evidence'} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header><strong>Dennis Kappel · Skills review</strong><a href="preview-v2.html">← Portfolio v2 preview</a></header>
+    <main>
+      <div class="eyebrow">Self-assessed · deliberately explicit</div>
+      <h1>What I can do myself, where I use help, and how cautious I am in production.</h1>
+      <p class="intro">A skill list is only useful if it says something about depth. This page separates manual confidence from tool assistance and production confidence instead of pretending every technology on a CV is equally strong.</p>
+
+      <div class="note"><strong>Important:</strong> AI/search/docs assistance is not presented as competence by itself. If I rely on assistance for a task, I still need to understand the change well enough to verify it. Anything I cannot confidently reason about goes through a lab or sandbox before I would use it on a real system.</div>
+
+      <div class="scale">
+        <article><div class="level">Manual confidence</div><h2>How far can I get without generated instructions?</h2><p>Examples: independent, comfortable with docs, basic familiarity, or learning.</p></article>
+        <article><div class="level">Assistance use</div><h2>What do I normally lean on?</h2><p>Examples: memory, documentation/reference, search, or AI-assisted drafting/troubleshooting.</p></article>
+        <article><div class="level">Production posture</div><h2>How would I use it on a real system?</h2><p>Examples: independent change, peer/change review, or sandbox-first before touching production.</p></article>
+      </div>
+
+      <h2 class="section-title">Infrastructure & operations</h2>
+      <div class="matrix">
+        <div class="row head"><div>Skill area</div><div>Manual confidence</div><div>Assistance use</div><div>Production posture</div><div>Evidence</div></div>
+        <div class="row"><div class="skill"><strong>Linux & systemd</strong><span>Hosts, services, users, permissions, logs, package management.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Networking</strong><span>Routing, NAT, DNS, firewalling, private/public access paths.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Lab topology ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Docker & Compose</strong><span>Service deployment, logs, health checks, mounts, networking, recovery.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid">Private operational work; intentionally not all configs are public.</div></div>
+        <div class="row"><div class="skill"><strong>Kubernetes</strong><span>kubectl, manifests, services, ingress, rollouts, troubleshooting, kubeadm/k3s learning.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA Lab ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Proxmox VE</strong><span>VM lifecycle, templates, networking, lab topology and disposable environments.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Terraform / OpenTofu</strong><span>Infrastructure definitions, variables, lifecycle, validation and teardown boundaries.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">IaC source ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Ansible</strong><span>Roles, inventories, bootstrap/configuration and repeatable node preparation.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Ansible source ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Storage & sharing</strong><span>NFS, SMB, mounts, ACLs, NAS workflows, migrations and recovery thinking.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid">Operational configs stay private where appropriate.</div></div>
+        <div class="row"><div class="skill"><strong>Monitoring</strong><span>Prometheus, Grafana, exporters, probes and evidence-led triage.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Documentation evidence ↗</a></div></div>
+      </div>
+
+      <h2 class="section-title">Delivery & tooling</h2>
+      <div class="matrix">
+        <div class="row head"><div>Skill area</div><div>Manual confidence</div><div>Assistance use</div><div>Production posture</div><div>Evidence</div></div>
+        <div class="row"><div class="skill"><strong>Git & GitHub Actions</strong><span>Repository structure, diffs, CI validation and controlled deployment flows.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Bytegeist Docs ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Bash / scripting</strong><span>Small operational helpers, validation scripts and automation glue.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Public examples ↗</a></div></div>
+        <div class="row"><div class="skill"><strong>Documentation & recovery</strong><span>Known-good state, handover notes, ADR-style decisions, recovery-first runbooks.</span></div><div class="cell manual"><span class="draft">self-rate</span></div><div class="cell assist"><span class="draft">self-rate</span></div><div class="cell prod"><span class="draft">self-rate</span></div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Docs pipeline ↗</a></div></div>
+      </div>
+
+      <p class="footer-note">Portfolio v2 review draft. The structure is intentional; the self-ratings are not filled in until Dennis explicitly chooses them.</p>
+    </main>
+  </div>
+</body>
+</html>
