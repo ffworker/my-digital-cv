@@ -4,143 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/favicon.svg" />
-  <title>Dennis Kappel | Detaillierte Skills</title>
-  <meta name="description" content="Eine kompakte optionale Skill-Matrix für Dennis Kappel: IT-Betrieb, private Infrastruktur, Kubernetes, Netzwerk, Monitoring, lokale LLMs, Automatisierung und Dokumentation." />
+  <title>Dennis Kappel | Technische Selbsteinschätzung</title>
+  <meta name="description" content="Technische Selbsteinschätzung von Dennis Kappel: was er selbst kann, wo er Dokumentation oder KI nutzt und wie vorsichtig er bei produktiven Änderungen vorgeht." />
   <meta name="robots" content="index, follow" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    * { margin: 0; }
-    :root {
-      --green: #16825d;
-      --ink: #101418;
-      --muted: #59636c;
-      --paper: #f4f6f1;
-      --paper-2: #e7ece4;
-      --dark: #0c1210;
-      --dark-2: #141c19;
-      --dark-text: #eef5ef;
-      --dark-muted: #aab7b3;
-      --line: rgba(16, 20, 24, 0.16);
-      --dark-line: rgba(226, 232, 240, 0.16);
-      --ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, monospace;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--paper); color: var(--ink); font-family: var(--ui); line-height: 1.5; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; }
-    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 18px clamp(18px, 4vw, 56px); border-bottom: 1px solid var(--line); }
-    .brand, .nav, .eyebrow, .skill-label, .style-pill, .project-meta { font-family: var(--mono); }
-    .brand { font-weight: 900; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
-    .nav { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; }
-    .nav a { text-decoration: none; }
-    main { padding: clamp(26px, 4vw, 56px) clamp(18px, 5vw, 82px); }
-    .hero { max-width: 760px; margin-bottom: clamp(26px, 4vw, 44px); }
-    .eyebrow { color: var(--green); font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { max-width: 720px; margin-top: 10px; font-size: clamp(32px, 4.2vw, 54px); line-height: .98; letter-spacing: -.016em; text-wrap: balance; }
-    .hero p { max-width: 680px; margin-top: 14px; color: var(--muted); font-size: clamp(15px, 1.2vw, 18px); }
-    .skill-layout { display: grid; gap: 24px; }
-    .skill-band { border-top: 1px solid var(--line); padding: clamp(24px, 4vw, 46px) 0 0; animation: professionalIn .65s ease-out both; }
-    .skill-band.is-private { margin-inline: calc(clamp(18px, 5vw, 82px) * -1); padding: clamp(34px, 5vw, 64px) clamp(18px, 5vw, 82px); border-top: 0; background: var(--dark); color: var(--dark-text); animation-name: privateIn; animation-delay: .08s; }
-    .band-heading { max-width: 860px; margin-bottom: 22px; }
-    .band-heading h2 { margin-top: 10px; font-size: clamp(28px, 3.6vw, 50px); line-height: 1; letter-spacing: -.012em; }
-    .band-heading p { max-width: 760px; margin-top: 12px; color: var(--muted); }
-    .is-private .band-heading p { color: var(--dark-muted); }
-    .skill-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
-    .skill-column { border: 1px solid var(--line); background: rgba(255,255,255,.36); padding: clamp(18px, 2.4vw, 28px); }
-    .is-private .skill-column { border-color: var(--dark-line); background: var(--dark-2); }
-    .skill-column h3 { font-size: clamp(24px, 2.7vw, 34px); line-height: 1; letter-spacing: -.01em; }
-    .skill-column > p { margin-top: 10px; color: var(--muted); }
-    .is-private .skill-column > p { color: var(--dark-muted); }
-    .skill-matrix { display: grid; gap: 0; margin-top: 20px; border-top: 1px solid var(--line); }
-    .is-private .skill-matrix { border-top-color: var(--dark-line); }
-    .skill-row { display: grid; grid-template-columns: minmax(120px, .42fr) minmax(0, 1fr); gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
-    .is-private .skill-row { border-bottom-color: var(--dark-line); }
-    .skill-label { color: var(--green); font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-    .is-private .skill-label { color: #bff6d2; }
-    .skill-text { color: var(--ink); }
-    .is-private .skill-text { color: var(--dark-text); }
-    .skill-note { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
-    .is-private .skill-note { color: var(--dark-muted); }
-    .project-section { border-top: 1px solid var(--line); padding-top: clamp(24px, 4vw, 46px); }
-    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
-    .project-card { border: 1px solid var(--line); background: rgba(255,255,255,.38); padding: 18px; }
-    .project-card h3 { font-size: 20px; }
-    .project-card p { margin-top: 8px; color: var(--muted); }
-    .project-card a { font-weight: 800; }
-    .project-meta { margin-top: 12px; color: var(--green); font-size: 12px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
-    .working-style { border-top: 1px solid var(--line); padding-top: clamp(24px, 4vw, 46px); }
-    .style-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-    .style-pill { border: 1px solid var(--line); background: rgba(255,255,255,.38); padding: 10px 12px; color: var(--ink); font-size: 13px; font-weight: 800; }
-    footer { padding: 24px clamp(18px, 5vw, 82px); border-top: 1px solid var(--line); color: var(--muted); }
-    @keyframes professionalIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes privateIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
-    @media (max-width: 920px) { .topbar { align-items: flex-start; flex-direction: column; } .skill-columns, .project-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 620px) { .skill-row { grid-template-columns: 1fr; gap: 4px; } }
-
+    *{box-sizing:border-box} body{margin:0;background:#f5f6f2;color:#111714;font-family:Inter,system-ui,sans-serif;line-height:1.5} a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:0 auto} header{padding:24px 0;display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #ccd4cf;flex-wrap:wrap} header a{text-decoration:none}.eyebrow,.score{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.07em;font-size:12px;font-weight:800}.eyebrow,.score{color:#16785a} main{padding:60px 0} h1{margin:12px 0 18px;font-size:clamp(42px,6vw,72px);line-height:.95;letter-spacing:-.04em;max-width:900px}.intro{max-width:860px;font-size:20px;color:#56605b}.note{margin:30px 0 46px;border-left:3px solid #16785a;padding:18px 20px;background:#fff;max-width:930px}.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:44px}.legend article{border:1px solid #ccd4cf;background:#fff;padding:18px}.legend h2{font-size:19px;margin:6px 0 8px}.legend p{margin:0;color:#59635e;font-size:14px}.section-title{margin:52px 0 16px;font-size:32px}.matrix{border-top:1px solid #bdc8c2}.row{display:grid;grid-template-columns:1.05fr .62fr .95fr .95fr 1.15fr;gap:16px;padding:18px 0;border-bottom:1px solid #d4dbd7;align-items:start}.head{font-family:ui-monospace,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#69736e;padding-top:12px;padding-bottom:12px}.skill strong{display:block;font-size:18px;margin-bottom:4px}.skill span,.cell{color:#5c6661;font-size:14px}.score{font-size:14px}.evidence{color:#0e684d;font-weight:750;text-decoration-thickness:1px;text-underline-offset:3px}.footer-note{margin-top:40px;color:#69736e;font-size:14px}@media(max-width:900px){.legend{grid-template-columns:1fr}.head{display:none}.row{grid-template-columns:1fr}.cell::before{display:block;font-family:ui-monospace,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#88938d;margin-bottom:3px}.rating::before{content:'Selbsteinschätzung'}.assist::before{content:'Arbeitsweise'}.prod::before{content:'Produktivsysteme'}.evid::before{content:'Nachweis'}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="/de/index.html">Dennis Kappel</a>
-    <nav class="nav" aria-label="Hauptnavigation"><a href="/de/index.html">CV</a><a href="/skills.html">English</a><a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a><a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a><a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a></nav>
-  </header>
-  <main>
-    <section class="hero"><span class="eyebrow">Optionale Detailseite</span><h1>Detaillierte Skills & Systeme</h1><p>Kompakte Notizen zu Systemen, Tools und operativen Mustern, die ich tatsächlich verwende.</p></section>
-    <div class="skill-layout">
-      <section class="skill-band is-professional"><div class="band-heading"><span class="eyebrow">Professionelle IT</span><h2>Professionelle IT</h2><p>Helle Seite: Arbeitsplatzsysteme, Administration, nutzernahe Operations und stabile Business-Services.</p></div><div class="skill-columns">
-        <section class="skill-column">
-          <h3>Workplace-Plattformen</h3>
-          <p>Produkte und Umgebungen, die ich in echten operativen Kontexten unterstütze.</p>
-          <div class="skill-matrix">
-            <div class="skill-row"><div class="skill-label">VDI / EUC</div><div class="skill-text">Omnissa Horizon · UAG · Connection Server · Golden Images · Snapshots<span class="skill-note">VDI-Umgebung gemeinsam mit einem Kollegen aufgebaut und betreut.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Microsoft-Stack</div><div class="skill-text">Microsoft 365 Administration · Exchange/Mail-Support · Windows Client/Server Troubleshooting<span class="skill-note">Tägliche Administration und Support rund um Nutzer, Dienste und Incidents.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Operations</div><div class="skill-text">User-/Account-Support · Servicekontinuität · Change-Koordination · Backup-/Restore-Bewusstsein<span class="skill-note">Praktische Business-IT, bei der Stabilität wichtiger ist als glänzendes Tooling.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Dokumentation</div><div class="skill-text">Übergabenotizen · Entscheidungen · Betriebskontext · bekannte Prüfpfade<span class="skill-note">Festhalten, was geändert wurde und warum, damit der nächste Vorfall einfacher wird.</span></div></div>
-          </div>
-        </section>
-        <section class="skill-column">
-          <h3>Operatives Troubleshooting</h3>
-          <p>Wie ich an kaputte oder unklare Systeme herangehe, ohne daraus eine Befehlsliste zu machen.</p>
-          <div class="skill-matrix">
-            <div class="skill-row"><div class="skill-label">Diagnose</div><div class="skill-text">Logs · Eventmeldungen · Servicezustände · Fehlermuster · Health Checks<span class="skill-note">Evidenz vor Vermutung.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Connectivity</div><div class="skill-text">DNS-Grundlagen · Routing-Checks · Ports · HTTP-Status · Erreichbarkeitstests<span class="skill-note">Vom Nutzersymptom bis zur Service-Abhängigkeit dem Pfad folgen.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Services</div><div class="skill-text">Prozessverständnis · Servicezustand · fehlgeschlagene Dienste · Restart-Auswirkung<span class="skill-note">Schauen, was läuft, was kaputt ist und was ein Fix unterbrechen könnte.</span></div></div>
-            <div class="skill-row"><div class="skill-label">User / Rechte</div><div class="skill-text">User-Management · Gruppen · ACL · Datei-Ownership · Rechte-Fixes<span class="skill-note">Praktische Access-Fixes, ohne jedes Rechteproblem künstlich groß zu machen.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Validierung</div><div class="skill-text">Vorher/Nachher-Checks · Rollout-Status · Smoke Tests · Rollback-Bewusstsein<span class="skill-note">Kleine Änderungen, danach Ergebnis prüfen.</span></div></div>
-          </div>
-        </section>
-      </div></section>
-      <section class="skill-band is-private"><div class="band-heading"><span class="eyebrow">Privates Infrastruktur-Lab</span><h2>Privates Infrastruktur-Lab</h2><p>Dunkle Seite: Self-hosted Systeme, Automatisierung, Monitoring, lokale LLM-Experimente und Infrastrukturlernen durch echten Betrieb.</p></div><div class="skill-columns">
-        <section class="skill-column">
-          <h3>Self-hosted Systeme</h3>
-          <p>Infrastruktur, die ich privat betreibe und pflege.</p>
-          <div class="skill-matrix">
-            <div class="skill-row"><div class="skill-label">Hosts</div><div class="skill-text">Linux-Server · VPS-Systeme · Raspberry Pi · SSH · systemd · Firewall-Grundlagen · User-Management<span class="skill-note">Kleine echte Flotte, auf der Dienste laufen.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Container</div><div class="skill-text">Docker · Compose · Logs · Inspection · Health Checks · Konfigurations-Diffs<span class="skill-note">Services betreiben und reparieren, ohne sich hinter Dashboards zu verstecken.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Kubernetes</div><div class="skill-text">k3s · Kubernetes · kubectl · Kustomize · Manifeste · Ingress · Services · Rollouts<span class="skill-note">Praktische Clusterarbeit von Deployment bis Live-Validierung.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Edge & Zugriff</div><div class="skill-text">Cloudflare Tunnel · NetBird · DNS · Public/Private Routing · HTTP-Probes<span class="skill-note">Nur öffentlich machen, was öffentlich sein soll; Administration privat halten.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Storage</div><div class="skill-text">NAS · Samba · NFS · WebDAV · Mounts · Filesystem-Auslastung · ACL · Share-Migration<span class="skill-note">Genug Storage-Arbeit, um zu wissen: Cutovers brauchen Geduld.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Monitoring</div><div class="skill-text">Prometheus · Grafana · node-exporter · Blackbox Checks · Dashboard-Triage<span class="skill-note">Observer-Monitoring mit Fokus auf echte Probleme.</span></div></div>
-          </div>
-        </section>
-        <section class="skill-column">
-          <h3>Lab-Automation, lokale LLMs & Recovery</h3>
-          <p>Tools und Gewohnheiten, die das Lab wiederholbar statt zufällig machen.</p>
-          <div class="skill-matrix">
-            <div class="skill-row"><div class="skill-label">Automation</div><div class="skill-text">Ansible-Rollen · Inventories · konservative Bootstrap-Tasks · wiederholbares Host-Setup<span class="skill-note">Wiederverwendbares Setup ohne destruktive Annahmen.</span></div></div>
-            <div class="skill-row"><div class="skill-label">GitOps-ish</div><div class="skill-text">Git-basierte Configs · Diffs · Commits · Deployment-Notizen · Public-Edge-Sync<span class="skill-note">Kein reines GitOps-Theater, sondern nachvollziehbare Infrastrukturänderungen.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Recovery</div><div class="skill-text">Backups · restic · rsync · Restore-Denken · Rollback-Pfade · Migrationspläne<span class="skill-note">Davon ausgehen, dass etwas schiefgeht, und den langweiligen Ausweg vorbereiten.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Lokale LLMs</div><div class="skill-text">llama.cpp · kleine/angepasste Modelle · lokale Inferenz · Command-Helper · Privacy-first Experimente<span class="skill-note">Praktische Erfahrung mit lokalen Modellen, nicht nur mit gehosteten Chat-Tools.</span></div></div>
-            <div class="skill-row"><div class="skill-label">Lernen</div><div class="skill-text">Kubernetes/CKA-Pfad · Cluster-Observability · Storage-Migration · Netzwerk<span class="skill-note">Lernen an Systemen, die trotzdem funktionieren müssen.</span></div></div>
-          </div>
-        </section>
-      </div></section>
-      <section class="project-section"><div class="band-heading"><span class="eyebrow">Ausgewählte öffentliche Projekte</span><h2>Ausgewählte öffentliche Projekte</h2><p>Konkrete Repositories, die zeigen, wie ich Infrastruktur aufbaue, automatisiere, validiere und troubleshoot.</p></div><div class="project-grid"><article class="project-card"><h3><a href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></h3><p>Disposable-Infrastruktur-Lab mit Terraform/OpenTofu, Ansible, Cloud-Init, Proxmox VE und Kubernetes. Dokumentiert Ownership-Grenzen, sicheren Teardown, Validierung und recovery-orientierte Infrastrukturentscheidungen.</p><div class="project-meta">Proxmox · OpenTofu · Ansible · Cloud-Init · Kubernetes</div></article><article class="project-card"><h3><a href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA Lab ↗</a></h3><p>Praktisches Kubernetes-Break/Fix-Trainingssystem mit disposable Proxmox-Infrastruktur, Live-API-Validierung, missionsbasiertem Troubleshooting und Automation auf Basis beobachteten Clusterzustands.</p><div class="project-meta">Kubernetes · Terraform · Ansible · Troubleshooting</div></article></div></section>
-      <section class="working-style"><div class="band-heading"><span class="eyebrow">Arbeitsweise</span><h2>Arbeitsweise</h2><p>Evidenz zuerst · echte Tools statt Buzzwords · kleine reversible Änderungen · Services langweilig halten · Entscheidungen dokumentieren · live validieren · KI-Hilfe menschlich prüfen</p></div><div class="style-strip"><span class="style-pill">Evidenz zuerst</span><span class="style-pill">echte Tools statt Buzzwords</span><span class="style-pill">kleine reversible Änderungen</span><span class="style-pill">Services langweilig halten</span><span class="style-pill">Entscheidungen dokumentieren</span><span class="style-pill">live validieren</span><span class="style-pill">KI-Hilfe menschlich prüfen</span></div></section>
-    </div>
-  </main>
-  <footer>Optionale textbasierte Detailseite.</footer>
+<div class="shell">
+<header><strong>Dennis Kappel · technische Tiefe</strong><nav><a href="/de/index.html">← CV</a> · <a href="/skills.html">English</a> · <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
+<main>
+<div class="eyebrow">Selbsteingeschätzt · absichtlich ehrlich</div>
+<h1>Was ich kann, wo ich noch Hilfe brauche und was ich mir produktiv zutraue.</h1>
+<p class="intro">Eine lange Tool-Liste ist schnell geschrieben. Aussagekräftiger ist: wie ich mich selbst einschätze, wie unabhängig ich damit arbeite und wie vorsichtig ich wäre, bevor ich ein Produktivsystem anfasse.</p>
+<div class="note"><strong>Wie ich KI nutze:</strong> meistens als Beschleuniger, zweite Meinung oder um Denkfehler zu finden. Wo ich stark davon abhängig bin, steht es hier. Wenn ich eine Änderung nicht gut genug erklären kann, um sie selbst zu prüfen, gehört sie zuerst ins Lab.</div>
+<div class="legend">
+<article><div class="eyebrow">Selbsteinschätzung</div><h2>Meine eigene 0–10 Skala</h2><p>Kein Zertifikatswert. Es geht darum, wie sicher ich reale Probleme ohne Handholding lösen kann.</p></article>
+<article><div class="eyebrow">Arbeitsweise</div><h2>Kopf, Doku, Suche oder KI</h2><p>Generierter Output zählt für mich nicht als Können. Entscheidend ist, wie viel ich verstehe, bevor ich eine Änderung akzeptiere.</p></article>
+<article><div class="eyebrow">Produktivsysteme</div><h2>Wie vorsichtig ich wäre</h2><p>Je nach Thema: selbstständig, Review zuerst, Sandbox zuerst oder nur Lab.</p></article>
+</div>
+<h2 class="section-title">Infrastruktur & Betrieb</h2>
+<div class="matrix">
+<div class="row head"><div>Bereich</div><div>Wertung</div><div>Arbeitsweise</div><div>Produktiv</div><div>Nachweis</div></div>
+<div class="row"><div class="skill"><strong>Linux & Shell</strong><span>Dienste, Nutzer, Rechte, Logs, Pakete, systemd, Troubleshooting.</span></div><div class="cell rating"><span class="score">9/10</span></div><div class="cell assist">Im Alltag selbstständig; Doku für seltene Flags oder lange nicht genutzte Tools.</div><div class="cell prod">Bei bekannten Änderungen selbstständig, immer mit Vorher/Nachher-Check.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Networking</strong><span>Routing, NAT, DNS, Firewalling, private Zugriffe, VPN-Pfade.</span></div><div class="cell rating"><span class="score">8/10</span></div><div class="cell assist">Für meine realen Netze sehr sicher; Doku/KI vor allem bei Edge Cases und Designfragen.</div><div class="cell prod">Bekannte Topologien selbstständig; komplexe VLAN-/Switching-Themen lieber mit Review.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Lab-Topologie ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Docker / Compose</strong><span>Compose-Files, Logs, Mounts, Networking, Health Checks, Recovery.</span></div><div class="cell rating"><span class="score">9/10</span></div><div class="cell assist">Compose-Dateien kann ich selbst schreiben und ändern; Doku/Suche nach Bedarf.</div><div class="cell prod">Normale Service-Änderungen selbstständig.</div><div class="cell evid">Operative Konfigurationen sind teilweise bewusst privat.</div></div>
+<div class="row"><div class="skill"><strong>Kubernetes / k3s</strong><span>Täglich laufender Cluster, kubectl, Manifeste, Services, Ingress, Troubleshooting.</span></div><div class="cell rating"><span class="score">3/10</span></div><div class="cell assist">Etwa zwei Monate praktische Nutzung; Setup und größere Änderungen aktuell noch stark KI-gestützt.</div><div class="cell prod">Erst Lab/Sandbox. Ich prüfe am echten Cluster statt generierte Schritte blind zu übernehmen.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA Lab ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Proxmox VE</strong><span>VM-Lifecycle, Templates, Networking, Lab-Systeme und Virtualisierungskonzepte.</span></div><div class="cell rating"><span class="score">7/10</span></div><div class="cell assist">Gutes Virtualisierungsverständnis; Proxmox kann ich ohne KI bedienen, Produkttiefe baue ich weiter aus.</div><div class="cell prod">Normale VM-/Lab-Arbeit selbstständig; komplexe Storage-/Netzwerkänderungen mit Review.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Terraform / OpenTofu</strong><span>Aktuell für Infrastructure Definitions im Lab.</span></div><div class="cell rating"><span class="score">0/10</span></div><div class="cell assist">Heute KI-abhängig. Ich kann generierte Konfiguration lesen, ausführen und validieren, behaupte aber noch kein eigenständiges Authoring.</div><div class="cell prod">Nur Lab / Sandbox zuerst.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">IaC Source ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Ansible</strong><span>Inventories, Rollen, Bootstrap-/Konfigurationskonzepte.</span></div><div class="cell rating"><span class="score">1/10</span></div><div class="cell assist">Grundidee verstanden, Umsetzung aktuell überwiegend durch KI und danach von mir geprüft.</div><div class="cell prod">Sandbox zuerst; keine blinden Produktiv-Runs.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Ansible Source ↗</a></div></div>
+<div class="row"><div class="skill"><strong>SMB / NAS</strong><span>Shares, Rechte, Migrationen und praktischer Storage-Betrieb.</span></div><div class="cell rating"><span class="score">9/10</span></div><div class="cell assist">Weitgehend selbstständig; für normale Administration kaum KI nötig.</div><div class="cell prod">Selbstständig mit normaler Change-/Backup-Disziplin.</div><div class="cell evid">Private operative Infrastruktur.</div></div>
+<div class="row"><div class="skill"><strong>NFS</strong><span>Mounts, k3s-Storage-Pfade, Backups und Service-Integration.</span></div><div class="cell rating"><span class="score">6/10</span></div><div class="cell assist">Neuerer Bereich; mit dem, was ich betreibe, sicher, für unbekanntere Themen nutze ich Doku/Suche.</div><div class="cell prod">Außerhalb bekannter Muster lieber Review zuerst.</div><div class="cell evid">Aktiv in privater Infrastruktur genutzt.</div></div>
+<div class="row"><div class="skill"><strong>Prometheus / Grafana</strong><span>Grundsetup, Dashboards, Exporter, Probes und Troubleshooting.</span></div><div class="cell rating"><span class="score">4/10</span></div><div class="cell assist">Basics kann ich manuell aufsetzen; tieferes Tinkering aktuell oft mit KI.</div><div class="cell prod">Bei größeren Änderungen Review/Sandbox zuerst.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Doku-Nachweis ↗</a></div></div>
+<div class="row"><div class="skill"><strong>NetBird / VPN / private Netze</strong><span>Peers, Routen, Regeln und private Admin-Pfade.</span></div><div class="cell rating"><span class="score">9/10</span></div><div class="cell assist">Routing und Regeln selbstständig; KI vor allem zum Beschleunigen oder um Logiklücken zu finden.</div><div class="cell prod">Bei bekannten Deployments selbstständig.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Deployment-Doku ↗</a></div></div>
+</div>
+<h2 class="section-title">Delivery & Tooling</h2>
+<div class="matrix">
+<div class="row head"><div>Bereich</div><div>Wertung</div><div>Arbeitsweise</div><div>Produktiv</div><div>Nachweis</div></div>
+<div class="row"><div class="skill"><strong>Git / GitHub Actions</strong><span>Repos, Diffs, CI Checks, Branch-/PR-Flows und Deployments.</span></div><div class="cell rating"><span class="score">5–6/10</span></div><div class="cell assist">Normale Workflows sitzen; bei seltenerem Git-/Actions-Verhalten nutze ich Doku/Suche.</div><div class="cell prod">Workflow-/Deployment-Änderungen lieber mit Review.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/my-digital-cv/actions" target="_blank" rel="noopener noreferrer">Actions dieser Seite ↗</a></div></div>
+<div class="row"><div class="skill"><strong>Bash / Scripting</strong><span>Operational Helper, Pipelines, Diagnose und Glue Scripts.</span></div><div class="cell rating"><span class="score">9/10</span></div><div class="cell assist">Wie Linux: starke tägliche Nutzung; Doku für seltene Syntax oder lange nicht genutzte Flags.</div><div class="cell prod">Bei bekannten Scripts selbstständig; destruktive Dinge immer mit Review.</div><div class="cell evid"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Öffentliche Beispiele ↗</a></div></div>
+</div>
+<p class="footer-note">Die Bewertungen sind meine eigenen und keine generierten Scores. Sie sollen Stärken und Grenzen sichtbar machen, statt beides hinter einer langen Technologieliste zu verstecken.</p>
+</main>
+</div>
 </body>
 </html>
