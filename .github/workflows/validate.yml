@@ -1,16 +1,15 @@
-name: Validate website
+name: Validate and deploy website
 
 on:
   pull_request:
   push:
     branches: [main]
 
-permissions:
-  contents: read
-
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - name: Validate required static-site files
@@ -19,19 +18,49 @@ jobs:
           test "$(cat CNAME)" = "cv.bytegeist.dev"
           test -s index.html
           test -s de/index.html
+          test -s skills.html
+          test -s de/skills.html
           test -s styles.css
           test -s script.js
-      - name: Check HTML and asset references
+      - name: Check HTML and local asset references
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
+
           root = Path('.')
-          for page in [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html']:
+          pages = [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html']
+          for page in pages:
               text = page.read_text()
+              if '<html' not in text or '</html>' not in text:
+                  raise SystemExit(f'{page}: incomplete HTML document')
               for ref in re.findall(r'''(?:href|src)=["'](/[^"'#?]+)''', text):
                   target = root / ref.lstrip('/')
                   if not target.exists():
-                      raise SystemExit(f'{page}: missing asset {ref}')
-          print('static pages and local absolute assets validated')
+                      raise SystemExit(f'{page}: missing local asset {ref}')
+          print('required pages and local asset references validated')
           PY
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy validated commit to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
