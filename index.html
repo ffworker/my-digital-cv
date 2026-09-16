@@ -100,6 +100,24 @@
       font-size: 13px;
     }
     .nav a { text-decoration: none; }
+    .network-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 1px solid currentColor;
+      padding-left: 14px;
+    }
+    .network-label {
+      color: var(--green);
+      font: 900 10px/1 var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .network-group a {
+      text-decoration: underline;
+      text-decoration-color: rgba(22, 130, 93, 0.5);
+      text-underline-offset: 3px;
+    }
 
     .language-switch {
       display: inline-flex;
@@ -1122,9 +1140,12 @@
       <a href="#lab">Private lab</a>
       <a href="#contact">Contact</a>
       <a href="/skills.html">Skills detail</a>
-      <a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a>
-      <a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a>
-      <a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a>
+      <span class="network-group" aria-label="Other public sites">
+        <span class="network-label">Elsewhere</span>
+        <a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a>
+        <a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a>
+        <a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a>
+      </span>
       <span class="language-switch" aria-label="Language switch"><a href="/" aria-current="true">EN</a><span>/</span><a href="/de/index.html" lang="de">DE</a></span>
     </nav>
   </header>

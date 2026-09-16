@@ -97,6 +97,28 @@ a:focus-visible {
   text-decoration: none;
 }
 
+.network-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 1px solid var(--line);
+  padding-left: 14px;
+}
+
+.network-label {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.network-group a {
+  text-decoration: underline;
+  text-decoration-color: rgba(22, 130, 93, 0.45);
+  text-underline-offset: 3px;
+}
+
 .nav a[aria-current="page"],
 .nav a:hover {
   color: var(--ink);
