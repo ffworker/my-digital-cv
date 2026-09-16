@@ -50,6 +50,10 @@ flowchart LR
   engineering, and Kubernetes-focused work.
 - Practical ownership across Linux hosts, VPS systems, Raspberry Pi
   infrastructure, containers, networking, service exposure, and monitoring.
+- Public proof-of-work now includes the [CKA Lab](https://github.com/ffworker/cka-lab)
+  and [Proxmox Lab](https://github.com/ffworker/proxmox-lab), covering Kubernetes
+  troubleshooting, disposable infrastructure, Terraform/OpenTofu, Ansible,
+  Cloud-Init, and validation workflows.
 - Evidence-led troubleshooting: logs, metrics, Git diffs, rollout state, health
   checks, and live service behavior matter more than generated output.
 - AI is represented as a working method with clear verification boundaries, not
@@ -65,5 +69,6 @@ flowchart LR
   manually reviewed.
 - `sites/projects.html` and `sites/skills.html` are older Bootstrap-era pages.
   They remain as historical learning snapshots, not as the primary CV.
-- The strongest infrastructure evidence currently lives in the private
-  `ffworker/infra-configs` repository and the live Bytegeist environment.
+- `ffworker/infra-configs` remains private as the operational source of truth;
+  public engineering evidence is intentionally split into focused repositories
+  such as `cka-lab`, `proxmox-lab`, `travel-router`, and `bytegeist-docs`.
