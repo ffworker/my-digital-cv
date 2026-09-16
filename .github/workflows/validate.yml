@@ -1,4 +1,4 @@
-name: Validate CV and notify k3s deployment
+name: Validate CV and promote GitOps revision
 
 on:
   pull_request:
