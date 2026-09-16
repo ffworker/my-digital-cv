@@ -4,7 +4,7 @@ Source for **https://cv.bytegeist.dev**.
 
 This is the human-readable side of my portfolio: current professional IT work, the infrastructure I run and learn from privately, and links to public repositories where there is useful technical evidence behind a claim.
 
-[![Validate CV and notify k3s deployment](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml/badge.svg)](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml)
+[![Validate CV and promote GitOps revision](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml/badge.svg)](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml)
 
 ## Site structure
 
@@ -28,10 +28,24 @@ AI is useful in my workflow, but generated output is not treated as competence b
 
 `ffworker/infra-configs` remains private as the deployment source-of-truth.
 
-## Deployment
+## CI/CD and GitOps deployment
 
-This repository is the source-of-truth for the CV content.
+This repository owns the CV content. It does not deploy directly to Kubernetes.
 
-Pull requests validate only. A validated push to `main` sends the exact source commit SHA to `ffworker/infra-configs` using a `repository_dispatch` event. `infra-configs` pins that SHA in the Pi-cluster CV Deployment, applies the Kustomize app over the existing private NetBird/SSH deployment path, waits for the rollout and verifies the published revision through `cv.bytegeist.dev`.
+Pull requests validate only. A validated push to `main` sends the exact source commit SHA to `ffworker/infra-configs` using `repository_dispatch`.
 
-The public hostname continues to use the existing Cloudflare Tunnel on the Pi cluster. GitHub Pages and Cloudflare Pages are not part of the production path.
+`infra-configs` validates that exact revision, pins the SHA in the CV Kubernetes desired state, renders the Kustomize application and commits the promotion. GitHub Actions stops there.
+
+Argo CD runs inside the Pi k3s cluster, watches `infra-configs`, and reconciles the isolated CV application automatically. The public hostname continues to use the existing Cloudflare Tunnel:
+
+```text
+my-digital-cv
+  -> validation
+  -> infra-configs desired-state commit
+  -> Argo CD
+  -> Pi k3s
+  -> existing Cloudflare Tunnel
+  -> cv.bytegeist.dev
+```
+
+GitHub Pages and Cloudflare Pages are not part of the production path.
