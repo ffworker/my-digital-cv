@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dennis Kappel | Portfolio v2 preview</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f6f2; color: #111714; font-family: Inter, system-ui, sans-serif; line-height: 1.55; }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; padding:22px 0; font-size:14px; }
+    .topbar strong { letter-spacing:.06em; text-transform:uppercase; }
+    .topbar nav { display:flex; gap:16px; flex-wrap:wrap; }
+    .topbar a { text-decoration:none; }
+    .hero { display:grid; grid-template-columns:1.25fr .75fr; gap:54px; padding:80px 0 72px; border-top:1px solid #cfd7d2; }
+    .kicker, .eyebrow, .meta { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:800; color:#16785a; }
+    h1 { margin:14px 0 20px; font-size:clamp(48px,8vw,92px); line-height:.92; letter-spacing:-.045em; max-width:760px; }
+    .lede { max-width:720px; color:#49534e; font-size:clamp(19px,2vw,24px); }
+    .hero-note { align-self:end; border-left:2px solid #16785a; padding-left:20px; color:#49534e; }
+    .hero-note strong { display:block; color:#111714; margin-bottom:8px; }
+    section { padding:64px 0; border-top:1px solid #cfd7d2; }
+    .section-head { display:grid; grid-template-columns:.35fr .65fr; gap:28px; margin-bottom:30px; }
+    h2 { margin:0; font-size:clamp(30px,4vw,52px); line-height:1; letter-spacing:-.025em; }
+    .section-head p { margin:0; color:#59635e; max-width:720px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card { border:1px solid #cbd3ce; background:#fff; padding:24px; min-height:190px; display:flex; flex-direction:column; justify-content:space-between; }
+    .card h3 { margin:6px 0 10px; font-size:24px; }
+    .card p { margin:0; color:#59635e; }
+    .evidence { display:inline-flex; align-items:center; gap:8px; width:max-content; margin-top:24px; padding:10px 13px; border:1px solid #16785a; color:#0e684d; text-decoration:none; font-family:ui-monospace,monospace; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+    .evidence:hover { background:#16785a; color:white; }
+    .dark { margin-inline:calc((100vw - min(1120px, calc(100vw - 36px))) / -2); padding-inline:max(18px, calc((100vw - 1120px) / 2)); background:#0e1512; color:#edf4ef; border-top:0; }
+    .dark .section-head p, .dark .card p { color:#a9b6af; }
+    .dark .card { background:#151f1b; border-color:#314039; }
+    .dark .evidence { border-color:#80d0aa; color:#b8edcf; }
+    .principles { display:flex; flex-wrap:wrap; gap:10px; }
+    .pill { border:1px solid #cbd3ce; padding:10px 12px; font-family:ui-monospace,monospace; font-size:12px; background:white; }
+    footer { padding:36px 0 50px; border-top:1px solid #cfd7d2; color:#68716d; font-size:14px; }
+    @media (max-width:760px) { .hero,.section-head,.grid { grid-template-columns:1fr; } .hero { padding-top:48px; } h1 { font-size:56px; } .hero-note { align-self:auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <strong>Dennis Kappel</strong>
+      <nav><a href="#work">Work</a><a href="#lab">Infrastructure</a><a href="#projects">Projects</a><a href="skills-v2.html">Self-assessed skills ↗</a></nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="kicker">System Administrator · Infrastructure · DevOps path</div>
+          <h1>I like systems I can understand when they break.</h1>
+          <p class="lede">I work with Linux, infrastructure, networking and Kubernetes by running real systems, changing them carefully, troubleshooting them when they fail, and documenting how to recover them.</p>
+        </div>
+        <aside class="hero-note">
+          <strong>What I am moving toward</strong>
+          DevOps, platform engineering and Kubernetes-focused infrastructure roles where operations knowledge and automation meet.
+        </aside>
+      </section>
+
+      <section id="work">
+        <div class="section-head">
+          <div class="eyebrow">Professional work</div>
+          <div><h2>Operations first.</h2><p>I come from day-to-day IT operations: workplace systems, users, services, incidents and infrastructure that has to stay usable while changes are happening.</p></div>
+        </div>
+        <div class="grid">
+          <article class="card"><div><div class="meta">Workplace platforms</div><h3>VDI & Microsoft environments</h3><p>Omnissa Horizon, UAG, Connection Server, Microsoft 365, Exchange/mail support and Windows client/server troubleshooting.</p></div></article>
+          <article class="card"><div><div class="meta">Troubleshooting</div><h3>Follow evidence, not guesses</h3><p>Logs, service state, connectivity, permissions, rollout state and before/after checks. Small changes first; verify the result before moving on.</p></div></article>
+        </div>
+      </section>
+
+      <section id="lab" class="dark">
+        <div class="section-head">
+          <div class="eyebrow">Hands-on infrastructure</div>
+          <div><h2>The lab is where theory has to survive contact with reality.</h2><p>I run Linux hosts, Proxmox, Kubernetes, Raspberry Pis, storage, monitoring and private networking. The useful part is not that they exist; it is that I rebuild, automate and recover them.</p></div>
+        </div>
+        <div class="grid">
+          <article class="card"><div><div class="meta">Virtualization & IaC</div><h3>Proxmox Lab</h3><p>Disposable infrastructure built with Terraform/OpenTofu, Ansible and Cloud-Init, with validation, teardown boundaries and recovery documentation.</p></div><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Repository evidence ↗</a></article>
+          <article class="card"><div><div class="meta">Kubernetes</div><h3>CKA Lab</h3><p>Break/fix Kubernetes training against real cluster state, with repeatable infrastructure and validation instead of tutorial-only exercises.</p></div><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">Repository evidence ↗</a></article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-head">
+          <div class="eyebrow">Public proof</div>
+          <div><h2>Cross-references should be obvious.</h2><p>Each claim should lead somewhere concrete: code, infrastructure definitions, validation workflows or documentation.</p></div>
+        </div>
+        <div class="grid">
+          <article class="card"><div><div class="meta">Documentation engineering</div><h3>Bytegeist Docs</h3><p>Aggregated documentation with strict validation and delivery workflows, while keeping private operational sources private.</p></div><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Open repository ↗</a></article>
+          <article class="card"><div><div class="meta">Portfolio delivery</div><h3>Digital CV</h3><p>The site itself is a small delivery project: bilingual content, validation, GitHub Pages and explicit links back to engineering evidence.</p></div><a class="evidence" href="https://github.com/ffworker/my-digital-cv" target="_blank" rel="noopener noreferrer">Open repository ↗</a></article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <div class="eyebrow">Working style</div>
+          <div><h2>Keep the claims boring and verifiable.</h2><p>I prefer documented decisions, reversible changes, known recovery paths and tests that tell me whether a change actually worked.</p></div>
+        </div>
+        <div class="principles"><span class="pill">evidence first</span><span class="pill">small reversible changes</span><span class="pill">document recovery</span><span class="pill">validate live</span><span class="pill">automation with boundaries</span></div>
+      </section>
+    </main>
+
+    <footer>Portfolio v2 review draft · not the production landing page.</footer>
+  </div>
+</body>
+</html>
