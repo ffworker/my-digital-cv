@@ -12,6 +12,15 @@
   <link rel="alternate" hreflang="de" href="https://cv.bytegeist.dev/de/index.html" />
   <link rel="alternate" hreflang="x-default" href="https://cv.bytegeist.dev/" />
   <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Dennis Kappel | Systemadministrator" />
+  <meta property="og:description" content="IT-Betrieb, Omnissa Horizon/VDI, Microsoft 365, Windows-Infrastruktur und ein praxisnahes privates Infrastruktur-Lab." />
+  <meta property="og:url" content="https://cv.bytegeist.dev/de/index.html" />
+  <meta property="og:image" content="https://cv.bytegeist.dev/assets/social-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="de_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
   <script>
     (() => {
       document.documentElement.classList.add("cv-js");
@@ -30,7 +39,8 @@
     *, *::before, *::after { box-sizing: border-box; }
     * { margin: 0; }
     :root {
-      --green: #16825d;
+      --green: #127654;
+      --green-on-dark: #22a676;
       --green-soft: #dcebe3;
       --ink: #101418;
       --muted: #59636c;
@@ -45,6 +55,11 @@
       --ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, monospace;
       --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+    .lab,
+    .detail-stage[data-active="lab"],
+    .lab-status-strip {
+      --green: var(--green-on-dark);
     }
     html { scroll-behavior: smooth; }
     body {
@@ -222,6 +237,8 @@
       line-height: 0.92;
       letter-spacing: -0.015em;
       text-wrap: balance;
+      overflow-wrap: anywhere;
+      hyphens: auto;
     }
     .lab h1 { color: #f7fff9; }
     .summary {
@@ -536,8 +553,8 @@
       font-weight: 800;
     }
     .tech.omnissa { color: #cc092f; }
-    .tech.vmware { color: #5aaa46; }
-    .tech.veeam { color: #00b336; }
+    .tech.vmware { color: #3f7d35; }
+    .tech.veeam { color: #007f28; }
     .tech.microsoft,
     .tech.exchange,
     .tech.windows { color: #0078d4; }
@@ -795,7 +812,8 @@
       border-color: var(--green);
     }
     .terminal-command-line:focus-visible {
-      outline: 0;
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
     }
     .terminal-result {
       display: grid;
@@ -1027,7 +1045,9 @@
         filter: none;
         color: var(--ink);
       }
-      .nav a:not(:last-child) { display: none; }
+      .nav > a:not(.mobile-essential),
+      .nav .network-group { display: none; }
+      .nav a.mobile-essential { display: inline; }
       .split-hero {
         grid-template-columns: 1fr;
       }
@@ -1140,7 +1160,7 @@
       <a href="#professional">Beruflich</a>
       <a href="#lab">Privates Lab</a>
       <a href="#contact">Kontakt</a>
-      <a href="/de/skills.html">Skills detail</a>
+      <a class="mobile-essential" href="/de/skills.html">Skillprofil</a>
       <span class="network-group" aria-label="Andere öffentliche Seiten">
         <span class="network-label">Weitere Seiten</span>
         <a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a>
@@ -1196,7 +1216,7 @@
         <div class="detail-rail-bottom">
           <div class="selector" role="tablist" aria-label="Profildetail-Auswahl">
             <button type="button" role="tab" id="tab-professional" aria-label="Zum beruflichen Kontext wechseln" aria-controls="panel-professional" aria-selected="true" data-tab="professional">Beruflich</button>
-            <button type="button" role="tab" id="tab-lab" aria-label="Zum privaten Lab-Kontext wechseln" aria-controls="panel-lab" aria-selected="false" data-tab="lab">Privates Lab</button>
+            <button type="button" role="tab" id="tab-lab" aria-label="Privates Lab – Kontext anzeigen" aria-controls="panel-lab" aria-selected="false" data-tab="lab">Privates Lab</button>
           </div>
         </div>
       </aside>
@@ -1318,7 +1338,7 @@
                   <h3>ki-unterstützt / menschlich-validiert</h3>
                 </div>
                 <div>
-                  <p>KI beschleunigt Entwürfe und Umsetzung. Ich liefere Kontext, prüfe Änderungen und validiere sie gegen die Live-Systeme.</p>
+                  <p>KI beschleunigt Entwürfe und Umsetzung. Ich liefere Kontext, prüfe Änderungen und validiere sie gegen die laufenden Lab-Systeme.</p>
                 </div>
               </section>
               <section class="context-row cluster-peek" data-cluster-peek>
@@ -1421,7 +1441,7 @@
           kicker: "Details zum privaten Lab",
           title: "Ein funktionierendes Lab für Linux, k3s, Netzwerk- und Automatisierungspraxis.",
           quote: "Drei Raspberry Pis und ein NetBird-Tunnel: technisch ein Cluster, spirituell ein Hilferuf.",
-          cite: "k3s, Tag X"
+          cite: "k3s, aktives Lab"
         }
       };
 
@@ -1518,15 +1538,15 @@
         }
 
         const schedule = [
-          ["cv-build-step-header", 80],
-          ["cv-build-step-line", 360],
-          ["cv-build-step-backgrounds", 620],
-          ["cv-build-step-labels", 960],
-          ["cv-build-step-headings", 1240],
-          ["cv-build-step-facts", 1560],
-          ["cv-build-step-detail", 1980],
-          ["cv-build-step-health", 2320],
-          ["cv-build-step-agent", 2660]
+          ["cv-build-step-header", 40],
+          ["cv-build-step-line", 160],
+          ["cv-build-step-backgrounds", 280],
+          ["cv-build-step-labels", 420],
+          ["cv-build-step-headings", 560],
+          ["cv-build-step-facts", 720],
+          ["cv-build-step-detail", 900],
+          ["cv-build-step-health", 1080],
+          ["cv-build-step-agent", 1250]
         ];
 
         schedule.forEach(([step, delay]) => {
@@ -1538,7 +1558,7 @@
             }
           }, delay));
         });
-        buildTimers.push(window.setTimeout(finishBuild, 3050));
+        buildTimers.push(window.setTimeout(finishBuild, 1500));
 
         ["pointerdown", "wheel", "keydown", "touchstart"].forEach((eventName) => {
           window.addEventListener(eventName, finishBuild, { once: true, passive: true, capture: true });
