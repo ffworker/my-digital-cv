@@ -496,7 +496,6 @@
       background: #fbfcfa;
       padding: clamp(16px, 2vw, 22px);
       transition:
-        opacity 360ms var(--ease),
         transform 420ms var(--ease),
         max-height 480ms var(--ease),
         min-height 480ms var(--ease),
@@ -557,7 +556,7 @@
     .tech.veeam { color: #007f28; }
     .tech.microsoft,
     .tech.exchange,
-    .tech.windows { color: #0078d4; }
+    .tech.windows { color: #0067b8; }
     .tech.linux { color: #d7a82f; }
     .tech.docker { color: #2496ed; }
     .tech.kubernetes { color: #326ce5; }
@@ -587,8 +586,8 @@
       padding-bottom: clamp(16px, 2vw, 22px);
     }
     @keyframes detailIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { transform: translateY(12px); }
+      to { transform: translateY(0); }
     }
     .detail-grid {
       display: grid;
