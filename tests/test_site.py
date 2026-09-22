@@ -95,6 +95,15 @@ class SiteContractTests(unittest.TestCase):
         german = (ROOT / "de/skills.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(english.count("Limited hands-on, AI-guided"), 2)
         self.assertGreaterEqual(german.count("Begrenzte Praxis, KI-geführt"), 2)
+    def test_animated_content_keeps_accessible_contrast(self):
+        for relative in ("index.html", "de/index.html"):
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertNotIn(
+                "transition:\n        opacity 360ms var(--ease),\n        transform 420ms var(--ease),",
+                page,
+            )
+            self.assertIn("@keyframes detailIn {\n      from { transform: translateY(12px); }", page)
+            self.assertIn(".tech.windows { color: #0067b8; }", page)
 
 
 if __name__ == "__main__":
