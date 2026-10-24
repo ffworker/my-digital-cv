@@ -1192,12 +1192,12 @@
       <article class="side lab" id="lab" data-side="lab" tabindex="0" aria-label="Details zum privaten Lab anzeigen" aria-controls="profile-detail">
         <span class="label">Privat / Praxisnah</span>
         <h1>Privates Infrastruktur-Lab</h1>
-        <span class="summary">Linux · Talos Kubernetes · Netzwerke · Automatisierung</span>
+        <span class="summary">Linux · Kubernetes auf Talos Linux · Netzwerke · Automatisierung</span>
         <span class="fact-list">
           <span class="fact"><span>Linux / Docker</span><span>Services, die ich betreibe und analysiere</span></span>
-          <span class="fact"><span>Kubernetes / Talos Linux</span><span>wichtiger Lern- und Praxisbereich</span></span>
+          <span class="fact"><span>Kubernetes / Talos Linux</span><span>drei Control-Plane-/etcd-Nodes</span></span>
           <span class="fact"><span>Netzwerk / NetBird</span><span>privater Servicezugriff und Routing</span></span>
-          <span class="fact"><span>Monitoring / Automatisierung</span><span>Grafana, Prometheus, Git und Runbooks</span></span>
+          <span class="fact"><span>Konfiguration / Recovery</span><span>Kustomize, SOPS/age und Restore-Prüfungen</span></span>
         </span>
       </article>
     </section>
@@ -1298,10 +1298,10 @@
                   <h3><span class="tech linux">linux</span> / <span class="tech docker">docker</span> / pi-und-vps-services</h3>
                 </div>
                 <div>
-                  <p>Im privaten Lab werden Linux, Docker, Raspberry Pis, Storage, Backups und Service-Exposition zu echten Systemen — nicht nur zu abstrakten Lernthemen.</p>
+                  <p>Ich betreibe private Dienste auf Proxmox, Raspberry Pis und VPS-Systemen. Dabei arbeite ich an konkreten Problemen mit Storage, Netzwerken und Wiederherstellung.</p>
                   <ul class="context-list">
                     <li>Services auf Raspberry-Pi- und VPS-Systemen betrieben</li>
-                    <li>Storage, Backups und Service-Exposition an echten Diensten geübt</li>
+                    <li>Servicezugriff und Storage-Änderungen an laufenden Systemen geprüft</li>
                   </ul>
                 </div>
               </section>
@@ -1311,23 +1311,37 @@
                   <h3><span class="tech kubernetes">kubernetes</span> / Talos Linux / workload-migration</h3>
                 </div>
                 <div>
-                  <p>Mein Kubernetes-Cluster auf Talos Linux ist für drei Control-Plane-/etcd-Nodes ausgelegt (CP03 derzeit im Aufbau). Manifeste, Ingress, Storage, Rollouts und Logs prüfe ich an realen Services.</p>
+                  <p>Ich betreibe einen Kubernetes-Cluster auf Talos Linux mit drei Control-Plane-/etcd-Nodes: einer AMD64-Proxmox-VM und zwei ARM64-Raspberry-Pis. Ausgewählte Dienste habe ich von K3s migriert. Änderungen prüfe ich über Node-Zustand, Events, Rollouts und Anwendungstests.</p>
                   <ul class="context-list">
-                    <li>ausgewählte Services von Containern nach Kubernetes migriert</li>
-                    <li>Clusterzugriff, Logs, Events und Rollouts zur Validierung genutzt</li>
+                    <li>öffentliche Websites, Glance und Teddycloud von K3s auf Talos migriert</li>
+                    <li>zustandslose Replikas laufen auf beiden Workload-Nodes; der dritte Node bleibt für Control Plane und etcd reserviert</li>
                   </ul>
                 </div>
               </section>
               <section class="context-row">
                 <div>
                   <span class="detail-meta">kontrollschleife</span>
-                  <h3><span class="tech netbird">netbird</span> / monitoring / git-gestützte-notizen</h3>
+                  <h3><span class="tech netbird">netbird</span> / kustomize / sops</h3>
                 </div>
                 <div>
-                  <p>Privater Zugriff, sichere aggregierte Überwachung, Git-gestützte Konfiguration und KI-unterstützte Dokumentation machen aus Experimenten etwas, das ich später wieder prüfen, verifizieren und verbessern kann.</p>
+                  <p>Anwendungsmanifeste liegen in Git, Deployment-Varianten verwalte ich mit Kustomize. Sensible Konfiguration verschlüssele ich mit SOPS und age. Zum Abschluss vergleiche ich Soll- und Live-Zustand und prüfe den Dienst über seinen tatsächlichen Zugriffsweg.</p>
                   <ul class="context-list">
                     <li>privater Zugriff über <span class="tech netbird">NetBird</span>, statt Admin-Pfade öffentlich freizugeben</li>
-                    <li><span class="tech grafana">Grafana</span>, <span class="tech prometheus">Prometheus</span> und Git-gestützte Notizen als Verifikationswerkzeuge genutzt</li>
+                    <li>Grafana und Prometheus gehören zur bisherigen Lab-Praxis; Monitoring wurde nicht nach Talos migriert und bleibt für einen manuellen Neuaufbau vorgesehen</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="context-row">
+                <div>
+                  <span class="detail-meta">recovery-praxis</span>
+                  <h3>datenmigration / restore-prüfungen / verfügbarkeit</h3>
+                </div>
+                <div>
+                  <p>Anwendungsdaten habe ich aus dem alten K3s-Storage wiederhergestellt und anschließend Dateihashes verglichen. Den kontrollierten Neustart des dritten Control-Plane-Nodes habe ich zusammen mit der Erreichbarkeit der Dienste geprüft.</p>
+                  <ul class="context-list">
+                    <li>drei etcd-Voter; kontrollierter Neustart mit begleitenden Erreichbarkeitsprüfungen</li>
+                    <li>Teddycloud nutzt weiterhin ein lokales Volume auf einem Node: Cluster-Quorum macht seine Daten nicht hochverfügbar</li>
+                    <li>regelmäßige Anwendungsdaten-Backups und umfassendere Ausfalltests bleiben separate Arbeit</li>
                   </ul>
                 </div>
               </section>
@@ -1346,7 +1360,7 @@
                   <h3>kurzer blick in meinen homelab-cluster</h3>
                 </div>
                 <div>
-                  <p>das Terminal ist animiert und nutzt 5-Minuten-gecachte Daten zur Live-Anzeige (max. Alter 5 Minuten)</p>
+                  <p>Optionale, bereinigte Telemetrie, sofern verfügbar und höchstens fünf Minuten alt. Ein nicht verfügbares Abbild ist keine Diagnose eines Cluster-Ausfalls.</p>
                 </div>
                 <div class="lab-status-strip is-unavailable" id="cluster-peek-output" aria-label="Bytegeist-Lab-Status" data-lab-status-strip>
                   <div class="terminal-titlebar" aria-hidden="true">
@@ -1357,7 +1371,7 @@
                   </div>
                   <div class="status-output" data-status-output>
                     <button class="terminal-command-line" type="button" aria-expanded="false" aria-controls="cluster-terminal-result" data-cluster-peek-trigger>
-                      <span class="terminal-command" data-terminal-command data-command-text="kubectl get pods,nodes -A --context=Cluster01"></span>
+                      <span class="terminal-command" data-terminal-command data-command-text="kubectl get pods,nodes -A"></span>
                       <span class="cluster-bash-copy">'bash' mich</span>
                     </button>
                     <div class="terminal-result" id="cluster-terminal-result" data-terminal-result hidden>

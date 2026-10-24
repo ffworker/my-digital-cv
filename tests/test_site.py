@@ -5,6 +5,28 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class SiteContractTests(unittest.TestCase):
+    def test_home_describes_completed_talos_migration(self):
+        for relative, node_phrase in (
+            ("index.html", "three control-plane/etcd nodes"),
+            ("de/index.html", "drei Control-Plane-/etcd-Nodes"),
+        ):
+            with self.subTest(page=relative):
+                page = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertNotRegex(page, r"CP03[^<]*(?:in progress|im Aufbau)")
+                for marker in (node_phrase, "AMD64", "ARM64", "Kustomize", "SOPS", "age", "Teddycloud"):
+                    self.assertIn(marker, page)
+
+    def test_skills_describe_current_talos_practice_without_pending_cp03(self):
+        for relative, node_phrase in (
+            ("skills.html", "three control-plane/etcd nodes"),
+            ("de/skills.html", "drei Control-Plane-/etcd-Nodes"),
+        ):
+            with self.subTest(page=relative):
+                page = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertNotRegex(page, r"CP03[^<]*(?:in progress|im Aufbau)")
+                for marker in (node_phrase, "AMD64", "ARM64", "Kustomize", "SOPS"):
+                    self.assertIn(marker, page)
+
     def test_german_home_heading_can_wrap_on_narrow_screens(self):
         page = (ROOT / "de" / "index.html").read_text(encoding="utf-8")
         self.assertIn("overflow-wrap: anywhere", page)

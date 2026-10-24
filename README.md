@@ -26,26 +26,31 @@ AI is useful in my workflow, but generated output is not treated as competence b
 - [Bytegeist Docs](https://github.com/ffworker/bytegeist-docs)
 - [GitHub profile](https://github.com/ffworker)
 
-`ffworker/infra-configs` remains private as the deployment source-of-truth.
+General infrastructure configuration remains private in `ffworker/infra-configs`. The current Talos deployment source is the separate private `ffworker/homelab-talos` repository.
 
-## CI/CD and GitOps deployment
+## Validation and current deployment
 
 This repository owns the CV content. It does not deploy directly to Kubernetes.
 
-Pull requests validate only. A validated push to `main` sends the exact source commit SHA to `ffworker/infra-configs` using `repository_dispatch`.
+The CV now runs on Kubernetes with Talos Linux. The deployment source is the private `ffworker/homelab-talos` repository; the CV deployment pins an exact source commit for git-sync. Nginx serves that checkout through the existing Cloudflare Tunnel. The former Pi k3s/Argo CD route is historical, not the current deployment path.
 
-`infra-configs` validates that exact revision, pins the SHA in the CV Kubernetes desired state, renders the Kustomize application and commits the promotion. GitHub Actions stops there.
-
-Argo CD runs inside the Pi k3s cluster, watches `infra-configs`, and reconciles the isolated CV application automatically. The public hostname continues to use the existing Cloudflare Tunnel:
+The source workflow still validates pull requests and relevant pushes to `main`. Its legacy `notify-infra` dispatch job is explicitly disabled. A source push therefore does not promote the new CV to the Talos deployment automatically. A content update needs separate approval, source validation and an explicit revision update in the deployment source, followed by rollout and browser verification.
 
 ```text
-my-digital-cv
-  -> validation
-  -> infra-configs desired-state commit
-  -> Argo CD
-  -> Pi k3s
+my-digital-cv exact source commit
+  -> explicit revision pin in homelab-talos
+  -> Talos Kubernetes / git-sync / nginx
   -> existing Cloudflare Tunnel
   -> cv.bytegeist.dev
 ```
 
-GitHub Pages and Cloudflare Pages are not part of the production path.
+GitHub Pages and Cloudflare Pages are not part of the production path. Do not re-enable the legacy dispatch as part of a content-only edit.
+
+## Local verification
+
+```bash
+python -m unittest discover -s tests -v
+python -m http.server 8765 --bind 127.0.0.1
+```
+
+Preview `/`, `/de/index.html`, `/skills.html` and `/de/skills.html`. The optional cluster peek requests `/lab-health.json`; the static preview has no telemetry backend and must show an unavailable state rather than invented live results.
