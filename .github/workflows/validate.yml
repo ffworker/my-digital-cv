@@ -65,8 +65,10 @@ jobs:
           print('required pages and local asset references validated')
           PY
 
+  # Legacy k3s dispatch is suspended until the Talos GitOps pipeline is ready.
+  # Keep source validation enabled; avoid updating the retired cluster target.
   notify-infra:
-    if: github.event_name != 'pull_request'
+    if: ${{ false }}
     needs: validate
     runs-on: ubuntu-latest
     steps:
