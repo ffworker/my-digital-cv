@@ -1191,10 +1191,10 @@
       <article class="side lab" id="lab" data-side="lab" tabindex="0" aria-label="Show private lab detail" aria-controls="profile-detail">
         <span class="label">Private / Hands-on</span>
         <h1>Private Infrastructure Lab</h1>
-        <span class="summary">Linux · k3s · networking · automation</span>
+        <span class="summary">Linux · Talos Kubernetes · networking · automation</span>
         <span class="fact-list">
           <span class="fact"><span>Linux / Docker</span><span>services I run and troubleshoot</span></span>
-          <span class="fact"><span>Kubernetes / k3s</span><span>important learning and practice area</span></span>
+          <span class="fact"><span>Kubernetes / Talos Linux</span><span>important learning and practice area</span></span>
           <span class="fact"><span>Networking / NetBird</span><span>private service access and routing</span></span>
           <span class="fact"><span>Monitoring / automation</span><span>Grafana, Prometheus, Git and runbooks</span></span>
         </span>
@@ -1307,12 +1307,12 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">practice area</span>
-                  <h3><span class="tech kubernetes">kubernetes</span> / k3s / workload-migration</h3>
+                  <h3><span class="tech kubernetes">kubernetes</span> / Talos Linux / workload-migration</h3>
                 </div>
                 <div>
-                  <p>Kubernetes is an active practical learning area: manifests, ingress, storage, rollouts, logs and failure states are tested against services I actually run.</p>
+                  <p>My Kubernetes cluster runs Talos Linux and is designed for three control-plane/etcd nodes (CP03 currently in progress). I test manifests, ingress, storage, rollouts and logs against real services.</p>
                   <ul class="context-list">
-                    <li>selected services moved from containers into k3s</li>
+                    <li>selected services migrated from containers into Kubernetes</li>
                     <li>cluster access, logs, events and rollouts used for validation</li>
                   </ul>
                 </div>
@@ -1437,9 +1437,9 @@
         },
         lab: {
           kicker: "Private lab detail",
-          title: "A working lab for Linux, k3s, networking and automation practice.",
-          quote: "Three Raspberry Pis and a NetBird tunnel: technically a cluster, spiritually a cry for help.",
-          cite: "k3s, active lab"
+          title: "A working lab for Linux, Kubernetes on Talos, networking and automation practice.",
+          quote: "A Proxmox VM, Raspberry Pis and a NetBird tunnel: technically a cluster, spiritually a cry for help.",
+          cite: "Talos Linux, active lab"
         }
       };
 
@@ -1745,7 +1745,7 @@
         const age = rows.find((row) => row?.age)?.age;
         const dayText = dayTextFromAge(age);
         if (!dayText) return;
-        copy.lab.cite = `k3s, ${dayText}`;
+        copy.lab.cite = `Talos Linux, ${dayText}`;
         if (activeSide === "lab") setRailQuote("lab");
       }
 
