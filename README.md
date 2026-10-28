@@ -19,6 +19,25 @@ The skills page separates what I can do myself, where I use documentation/search
 
 AI is useful in my workflow, but generated output is not treated as competence by itself. If I cannot explain and verify a change, it belongs in a lab or sandbox first.
 
+## Updating the bilingual skills matrix
+
+The authoritative content lives in `data/skills.json`. The EN/DE pages are
+checked-in, generated HTML so the runtime stays static and requires **no**
+JavaScript or build step. Edit the relevant translated content there, keeping
+both locales' skill IDs in the same order, then run:
+
+```bash
+python scripts/render_skills.py
+python scripts/render_skills.py --check
+python -m unittest discover -s tests -v
+```
+
+`templates/skills*.html` defines the shared page/table markup, and
+`skills.css` provides the matrix styling. A numeric score, an approximate
+range, and **not rated / AI-guided** are deliberately different states; do
+not fabricate a score for early-stage skills. The legacy `/sites/skills.html`
+links to the current canonical `/skills.html`.
+
 ## Public technical evidence
 
 - [CKA Lab](https://github.com/ffworker/cka-lab)
