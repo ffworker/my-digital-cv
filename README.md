@@ -4,7 +4,7 @@ Source for **https://cv.bytegeist.dev**.
 
 This is the human-readable side of my portfolio: current professional IT work, the infrastructure I run and learn from privately, and links to public repositories where there is useful technical evidence behind a claim.
 
-[![Validate CV and promote GitOps revision](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml/badge.svg)](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml)
+[![Validate CV source](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml/badge.svg)](https://github.com/ffworker/my-digital-cv/actions/workflows/validate.yml)
 
 ## Site structure
 
@@ -34,7 +34,10 @@ This repository owns the CV content. It does not deploy directly to Kubernetes.
 
 The CV now runs on Kubernetes with Talos Linux. The deployment source is the private `ffworker/homelab-talos` repository; the CV deployment pins an exact source commit for git-sync. Nginx serves that checkout through the existing Cloudflare Tunnel. The former Pi k3s/Argo CD route is historical, not the current deployment path.
 
-The source workflow still validates pull requests and relevant pushes to `main`. Its legacy `notify-infra` dispatch job is explicitly disabled. A source push therefore does not promote the new CV to the Talos deployment automatically. A content update needs separate approval, source validation and an explicit revision update in the deployment source, followed by rollout and browser verification.
+The source workflow validates pull requests and relevant pushes to `main`. It
+does not promote deployments. A content update needs separate approval, source
+validation and an explicit revision update in the `homelab-talos` deployment
+source, followed by rollout and browser verification.
 
 ```text
 my-digital-cv exact source commit
@@ -44,7 +47,8 @@ my-digital-cv exact source commit
   -> cv.bytegeist.dev
 ```
 
-GitHub Pages and Cloudflare Pages are not part of the production path. Do not re-enable the legacy dispatch as part of a content-only edit.
+GitHub Pages and Cloudflare Pages are not part of the production path. No
+automatic CV-to-cluster promotion is implemented in this repository.
 
 ## Local verification
 

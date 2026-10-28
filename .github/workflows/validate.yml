@@ -1,4 +1,4 @@
-name: Validate CV and promote GitOps revision
+name: Validate CV source
 
 on:
   pull_request:
@@ -64,40 +64,3 @@ jobs:
                       raise SystemExit(f'{page}: missing local asset {ref}')
           print('required pages and local asset references validated')
           PY
-
-  # Legacy k3s dispatch is suspended until the Talos GitOps pipeline is ready.
-  # Keep source validation enabled; avoid updating the retired cluster target.
-  notify-infra:
-    if: ${{ false }}
-    needs: validate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Require infra-configs dispatch token
-        env:
-          TOKEN: ${{ secrets.INFRA_CONFIGS_DISPATCH_TOKEN }}
-        run: |
-          if [ -z "$TOKEN" ]; then
-            echo 'Missing INFRA_CONFIGS_DISPATCH_TOKEN.' >&2
-            echo 'Create a fine-grained token scoped only to ffworker/infra-configs with Contents: write, then add it as this repository secret.' >&2
-            exit 1
-          fi
-      - name: Notify infra-configs of validated source revision
-        env:
-          GH_TOKEN: ${{ secrets.INFRA_CONFIGS_DISPATCH_TOKEN }}
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          payload=$(jq -cn \
-            --arg sha "$SOURCE_SHA" \
-            --arg repo "$GITHUB_REPOSITORY" \
-            '{event_type:"cv-source-updated",client_payload:{source_sha:$sha,source_repo:$repo}}')
-
-          curl --fail-with-body --silent --show-error \
-            -X POST \
-            -H 'Accept: application/vnd.github+json' \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H 'X-GitHub-Api-Version: 2022-11-28' \
-            https://api.github.com/repos/ffworker/infra-configs/dispatches \
-            -d "$payload"
-
-          echo "Dispatched validated CV source $SOURCE_SHA to ffworker/infra-configs"
