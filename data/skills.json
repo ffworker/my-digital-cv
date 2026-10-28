@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "locales": {
+    "en": {
+      "lang": "en",
+      "page_title": "Dennis Kappel | Self-assessed technical skills",
+      "description": "Dennis Kappel's self-assessed technical skills: visible ratings, working independence, AI/docs reliance, production posture, and public evidence.",
+      "og_title": "Dennis Kappel | Technical skills",
+      "og_description": "An intentionally honest technical self-assessment covering independence, AI and documentation use, production posture and public evidence.",
+      "header": "<strong>Dennis Kappel · technical depth</strong><nav aria-label=\"Skills navigation\"><a href=\"/\">← CV</a> · <a href=\"/de/skills.html\">Deutsch</a> · <a href=\"https://github.com/ffworker\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub ↗</a><span class=\"network-group\" aria-label=\"Other public sites\"><span class=\"network-label\">Elsewhere</span><a href=\"https://bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Bytegeist</a><a href=\"https://tools.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Tools</a><a href=\"https://demos.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Demos</a></span></nav>",
+      "eyebrow": "Self-assessed · intentionally honest",
+      "headline": "What I know, where I still need help, and what I would trust myself to change.",
+      "intro": "The numbers are my own assessment. More important is the context beside them: how independently I work, where I use documentation or AI, and how cautious I would be before touching a production system.",
+      "note": "<strong>How I use AI:</strong> mostly as a speed multiplier, second opinion, or a way to find reasoning gaps faster. Where I depend on it heavily, I say so. If I cannot explain and verify a change, it belongs in the lab first.",
+      "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class=\"eyebrow\">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class=\"eyebrow\">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article>",
+      "sections": [
+        {
+          "id": "infrastructure",
+          "title": "Infrastructure & operations",
+          "columns": [
+            "Skill",
+            "Self-rating",
+            "How I work",
+            "Production posture",
+            "Evidence"
+          ],
+          "items": [
+            {
+              "skill": "<strong>Linux & shell</strong><span>Services, users, permissions, logs, packages, systemd, troubleshooting.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
+              "assist": "Independent day to day; documentation for uncommon flags or tools I have not used in a while.",
+              "production": "Independent for familiar changes; verify before and after.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "rating_kind": "score",
+              "id": "linux-and-shell"
+            },
+            {
+              "skill": "<strong>Networking</strong><span>Routing, NAT, DNS, firewalling, private access and VPN paths.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">strong</span></div>",
+              "assist": "Very comfortable with the networks I actually run; docs/AI mainly for edge cases and design checks.",
+              "production": "Independent on familiar topologies; review-first for more complex VLAN/switching designs.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Lab topology ↗</a>",
+              "rating_kind": "score",
+              "id": "networking"
+            },
+            {
+              "skill": "<strong>Docker / Compose</strong><span>Compose files, logs, mounts, networking, health checks and recovery.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
+              "assist": "I can write, edit and reason about Compose files myself; docs/search when useful.",
+              "production": "Independent for normal service changes.",
+              "evidence": "Operational configs are partly private by design.",
+              "rating_kind": "score",
+              "id": "docker-compose"
+            },
+            {
+              "skill": "<strong>Kubernetes / Talos Linux</strong><span>Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">learning in practice</span></div>",
+              "assist": "Active lab practice with Kustomize, SOPS/age, service migration and data-restore checks. Setup and many changes remain heavily AI-assisted; I check the result on the running systems.",
+              "production": "Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab\" target=\"_blank\" rel=\"noopener noreferrer\">CKA practice ↗</a><br>Talos operational configuration and migration evidence remain private.",
+              "rating_kind": "score",
+              "id": "kubernetes-talos-linux"
+            },
+            {
+              "skill": "<strong>Proxmox VE</strong><span>VM lifecycle, templates, networking, lab systems and virtualization concepts.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">confident</span></div>",
+              "assist": "Strong virtualization understanding; I can operate Proxmox without AI while product-specific depth is still growing.",
+              "production": "Independent for normal VM/lab work; review complex storage/network changes.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "rating_kind": "score",
+              "id": "proxmox-ve"
+            },
+            {
+              "skill": "<strong>Terraform / OpenTofu</strong><span>Used for infrastructure definitions in my lab.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
+              "assist": "I work with it while AI currently guides most authoring. I inspect the configuration and plan, run it, and validate the result rather than treating generated code as independent skill.",
+              "production": "Lab only / sandbox-first.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">IaC source ↗</a>",
+              "rating_kind": "unrated",
+              "id": "terraform-opentofu"
+            },
+            {
+              "skill": "<strong>Ansible</strong><span>Inventories, roles, bootstrap and configuration concepts used in lab work.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
+              "assist": "I have worked with and use Ansible, but AI still guides most implementation. I review what it produces and validate the run instead of claiming independent authoring.",
+              "production": "Sandbox-first; no blind production runs.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Ansible source ↗</a>",
+              "rating_kind": "unrated",
+              "id": "ansible"
+            },
+            {
+              "skill": "<strong>SMB / NAS</strong><span>Shares, permissions, migrations and practical storage administration.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
+              "assist": "Mostly independent; little AI needed for normal administration.",
+              "production": "Independent with normal change/backup discipline.",
+              "evidence": "Private operational infrastructure.",
+              "rating_kind": "score",
+              "id": "smb-nas"
+            },
+            {
+              "skill": "<strong>NFS</strong><span>Mounts, Kubernetes storage paths, backups and service integration.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">6/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■</span><span class=\"off\">□□□□</span></span><span class=\"rating-label\">working knowledge</span></div>",
+              "assist": "Newer area; comfortable with what I run, while unfamiliar behavior still sends me to docs/search.",
+              "production": "Review-first outside known patterns.",
+              "evidence": "Used actively in private infrastructure.",
+              "rating_kind": "score",
+              "id": "nfs"
+            },
+            {
+              "skill": "<strong>Prometheus / Grafana</strong><span>Basic setup, dashboards, exporters, probes and troubleshooting.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">basic practical use</span></div>",
+              "assist": "I can set up the basics manually; for deeper tuning I am still learning and experimenting with AI assistance.",
+              "production": "Review-first / sandbox-first for larger changes.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Docs evidence ↗</a>",
+              "rating_kind": "score",
+              "id": "prometheus-grafana"
+            },
+            {
+              "skill": "<strong>NetBird / VPN / private networking</strong><span>Peers, routes, access rules and private administration paths.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
+              "assist": "I can build routing and rules myself; AI mainly accelerates reasoning or catches logic holes.",
+              "production": "Independent for familiar deployments.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Deployment docs ↗</a>",
+              "rating_kind": "score",
+              "id": "netbird-vpn-private-networking"
+            }
+          ]
+        },
+        {
+          "id": "delivery",
+          "title": "Delivery & tooling",
+          "columns": [
+            "Skill",
+            "Self-rating",
+            "How I work",
+            "Production posture",
+            "Evidence"
+          ],
+          "items": [
+            {
+              "skill": "<strong>Git / GitHub Actions</strong><span>Repos, diffs, CI checks, branch/PR flow and deployment workflows.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">comfortable basics</span></div>",
+              "assist": "Comfortable with normal workflows; docs/search for less common Git and Actions behavior.",
+              "production": "Review-first for workflow/deployment changes.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions\" target=\"_blank\" rel=\"noopener noreferrer\">This site's Actions ↗</a>",
+              "rating_kind": "range",
+              "id": "git-github-actions"
+            },
+            {
+              "skill": "<strong>Bash / scripting</strong><span>Operational helpers, pipelines, diagnostics and glue scripts.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
+              "assist": "Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.",
+              "production": "Independent for familiar scripts; always review anything destructive.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Public examples ↗</a>",
+              "rating_kind": "score",
+              "id": "bash-scripting"
+            }
+          ]
+        }
+      ],
+      "footer": "These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list."
+    },
+    "de": {
+      "lang": "de",
+      "page_title": "Dennis Kappel | Technische Selbsteinschätzung",
+      "description": "Technische Selbsteinschätzung von Dennis Kappel: sichtbare Ratings, Eigenständigkeit, KI-/Doku-Nutzung, Umgang mit Produktivsystemen und öffentliche Nachweise.",
+      "og_title": "Dennis Kappel | Technische Skills",
+      "og_description": "Eine bewusst ehrliche technische Selbsteinschätzung mit Eigenständigkeit, KI- und Doku-Nutzung, Produktionsreife und öffentlichen Nachweisen.",
+      "header": "<strong>Dennis Kappel · technische Tiefe</strong><nav aria-label=\"Skills-Navigation\"><a href=\"/de/index.html\">← CV</a> · <a href=\"/skills.html\">English</a> · <a href=\"https://github.com/ffworker\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub ↗</a><span class=\"network-group\" aria-label=\"Andere öffentliche Seiten\"><span class=\"network-label\">Weitere Seiten</span><a href=\"https://bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Bytegeist</a><a href=\"https://tools.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Tools</a><a href=\"https://demos.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Demos</a></span></nav>",
+      "eyebrow": "Selbsteingeschätzt · absichtlich ehrlich",
+      "headline": "Was ich kann, wo ich noch Hilfe brauche und was ich mir produktiv zutraue.",
+      "intro": "Die Zahlen sind meine eigene Einschätzung. Wichtiger ist der Kontext daneben: wie selbstständig ich arbeite, wo ich Doku oder KI nutze und wie vorsichtig ich wäre, bevor ich ein Produktivsystem anfasse.",
+      "note": "<strong>Wie ich KI nutze:</strong> meistens als Beschleuniger, zweite Meinung oder um Denkfehler schneller zu finden. Wo ich stark davon abhängig bin, steht es auch so da. Wenn ich eine Änderung nicht erklären und prüfen kann, gehört sie zuerst ins Lab.",
+      "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Sichtbare 0–10-Selbsteinschätzung</h2><p>Kein Zertifikatsscore. Ein Bereich zeigt Unsicherheit; Skills mit wenig Praxis und starker KI-Führung bleiben bewusst ohne Zahlenwert.</p></article><article><div class=\"eyebrow\">Eigenständigkeit</div><h2>Worauf ich wirklich zurückgreife</h2><p>Gedächtnis, Doku, Suche oder KI. Generierter Output zählt erst, wenn ich ihn verstehe und geprüft habe.</p></article><article><div class=\"eyebrow\">Produktiv</div><h2>Wie vorsichtig ich wäre</h2><p>Selbstständig, Review zuerst, Sandbox zuerst oder nur Lab – je nach Technologie.</p></article>",
+      "sections": [
+        {
+          "id": "infrastructure",
+          "title": "Infrastruktur & Betrieb",
+          "columns": [
+            "Skill",
+            "Selbsteinschätzung",
+            "Arbeitsweise",
+            "Produktivsysteme",
+            "Nachweis"
+          ],
+          "items": [
+            {
+              "skill": "<strong>Linux & Shell</strong><span>Services, Nutzer, Rechte, Logs, Pakete, systemd, Troubleshooting.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
+              "assist": "Im Alltag selbstständig; Doku für seltene Flags oder lange nicht benutzte Tools.",
+              "production": "Bei vertrauten Änderungen selbstständig; Vorher-/Nachher-Checks.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "rating_kind": "score",
+              "id": "linux-and-shell"
+            },
+            {
+              "skill": "<strong>Networking</strong><span>Routing, NAT, DNS, Firewalling, privater Zugriff, VPN-Pfade.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">stark</span></div>",
+              "assist": "Für meine realen Netze sehr sicher; Doku/KI vor allem für Edge Cases und Designchecks.",
+              "production": "Bei bekannten Topologien selbstständig; komplexere VLAN-/Switching-Themen lieber mit Review.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Lab-Topologie ↗</a>",
+              "rating_kind": "score",
+              "id": "networking"
+            },
+            {
+              "skill": "<strong>Docker / Compose</strong><span>Compose-Dateien, Logs, Mounts, Networking, Healthchecks, Recovery.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
+              "assist": "Compose-Dateien kann ich selbst schreiben, ändern und nachvollziehen; Doku/Suche bei Bedarf.",
+              "production": "Normale Service-Änderungen selbstständig.",
+              "evidence": "Operative Konfigurationen sind teilweise bewusst privat.",
+              "rating_kind": "score",
+              "id": "docker-compose"
+            },
+            {
+              "skill": "<strong>Kubernetes / Talos Linux</strong><span>Privater Cluster mit drei Control-Plane-/etcd-Nodes auf Talos Linux, AMD64-/ARM64-Workloads, K3s-Migration, kubectl, Ingress, Storage und Rollout-Prüfungen.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktisch am lernen</span></div>",
+              "assist": "Praktische Arbeit mit Kustomize, SOPS/age, Dienstmigration und Restore-Prüfungen. Setup und viele Änderungen bleiben stark KI-unterstützt; das Ergebnis prüfe ich an den laufenden Systemen.",
+              "production": "Erst Lab/Sandbox. Drei etcd-Voter und ein kontrollierter Node-Neustart sind geprüft; Anwendungs-HA, regelmäßige Daten-Backups und umfassende Ausfalltests sind damit nicht zugesichert.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab\" target=\"_blank\" rel=\"noopener noreferrer\">CKA-Übungen ↗</a><br>Operative Talos-Konfiguration und Migrationsnachweise bleiben privat.",
+              "rating_kind": "score",
+              "id": "kubernetes-talos-linux"
+            },
+            {
+              "skill": "<strong>Proxmox VE</strong><span>VM-Lifecycle, Templates, Networking, Labsysteme und Virtualisierungskonzepte.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">sicher</span></div>",
+              "assist": "Gutes Virtualisierungsverständnis; Proxmox kann ich ohne KI bedienen, produktspezifische Tiefe wächst noch.",
+              "production": "Normale VM-/Lab-Arbeit selbstständig; komplexe Storage-/Netzwerkänderungen mit Review.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "rating_kind": "score",
+              "id": "proxmox-ve"
+            },
+            {
+              "skill": "<strong>Terraform / OpenTofu</strong><span>Für Infrastrukturdefinitionen in meinem Lab genutzt.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
+              "assist": "Ich arbeite damit, während KI aktuell den Großteil des Authorings führt. Ich prüfe Konfiguration und Plan, führe sie aus und validiere das Ergebnis, statt generierten Code als eigenständige Kompetenz auszugeben.",
+              "production": "Nur Lab / Sandbox zuerst.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">IaC Source ↗</a>",
+              "rating_kind": "unrated",
+              "id": "terraform-opentofu"
+            },
+            {
+              "skill": "<strong>Ansible</strong><span>Inventories, Rollen, Bootstrap- und Konfigurationskonzepte aus der Lab-Praxis.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
+              "assist": "Ich habe mit Ansible gearbeitet und nutze es, aber KI führt weiterhin den Großteil der Umsetzung. Ich prüfe den Output und validiere den Lauf, statt eigenständiges Authoring zu behaupten.",
+              "production": "Sandbox zuerst; keine blinden Runs auf Produktivsystemen.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Ansible Source ↗</a>",
+              "rating_kind": "unrated",
+              "id": "ansible"
+            },
+            {
+              "skill": "<strong>SMB / NAS</strong><span>Shares, Rechte, Migrationen, praktische Storage-Administration.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
+              "assist": "Meist selbstständig; für normale Administration kaum KI nötig.",
+              "production": "Mit normaler Change-/Backup-Disziplin selbstständig.",
+              "evidence": "Private operative Infrastruktur.",
+              "rating_kind": "score",
+              "id": "smb-nas"
+            },
+            {
+              "skill": "<strong>NFS</strong><span>Mounts, Kubernetes-Storagepfade, Backups und Service-Integration.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">6/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■</span><span class=\"off\">□□□□</span></span><span class=\"rating-label\">solide Praxis</span></div>",
+              "assist": "Neuerer Bereich; mit dem, was ich betreibe, sicher, für unbekanntes Verhalten weiterhin Doku/Suche.",
+              "production": "Außerhalb bekannter Muster lieber Review zuerst.",
+              "evidence": "Aktiv in privater Infrastruktur genutzt.",
+              "rating_kind": "score",
+              "id": "nfs"
+            },
+            {
+              "skill": "<strong>Prometheus / Grafana</strong><span>Grundsetup, Dashboards, Exporter, Probes und Troubleshooting.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktische Grundlagen</span></div>",
+              "assist": "Grundlagen kann ich selbst aufsetzen; für tieferes Tuning lerne und experimentiere ich noch mit KI-Unterstützung.",
+              "production": "Größere Änderungen mit Review / Sandbox zuerst.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Docs-Nachweis ↗</a>",
+              "rating_kind": "score",
+              "id": "prometheus-grafana"
+            },
+            {
+              "skill": "<strong>NetBird / VPN / private Netze</strong><span>Peers, Routes, Access Rules und private Admin-Pfade.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
+              "assist": "Routing und Regeln kann ich selbst aufsetzen; KI nutze ich hauptsächlich zum Beschleunigen oder für Logikchecks.",
+              "production": "Bei vertrauten Deployments selbstständig.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Deployment-Doku ↗</a>",
+              "rating_kind": "score",
+              "id": "netbird-vpn-private-networking"
+            }
+          ]
+        },
+        {
+          "id": "delivery",
+          "title": "Delivery & Tooling",
+          "columns": [
+            "Skill",
+            "Selbsteinschätzung",
+            "Arbeitsweise",
+            "Produktivsysteme",
+            "Nachweis"
+          ],
+          "items": [
+            {
+              "skill": "<strong>Git / GitHub Actions</strong><span>Repos, Diffs, CI-Checks, Branch-/PR-Flow und Deployment-Workflows.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">solide Grundlagen</span></div>",
+              "assist": "Mit normalen Workflows sicher; Doku/Suche für seltenere Git- und Actions-Themen.",
+              "production": "Bei Workflow-/Deployment-Änderungen Review zuerst.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions\" target=\"_blank\" rel=\"noopener noreferrer\">Actions dieser Seite ↗</a>",
+              "rating_kind": "range",
+              "id": "git-github-actions"
+            },
+            {
+              "skill": "<strong>Bash / Scripting</strong><span>Operative Helfer, Pipelines, Diagnose und Glue Scripts.</span>",
+              "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
+              "assist": "Ähnlich wie Linux: starke Alltagspraxis; Doku für seltene Flags/Syntax, die länger nicht genutzt wurde.",
+              "production": "Bei bekannten Scripts selbstständig; destruktive Dinge immer prüfen.",
+              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Öffentliche Beispiele ↗</a>",
+              "rating_kind": "score",
+              "id": "bash-scripting"
+            }
+          ]
+        }
+      ],
+      "footer": "Diese Ratings sind meine eigenen Einschätzungen, keine generierten Scores. Sie sollen Stärken und Grenzen sichtbar machen, statt beides hinter einer langen Tool-Liste zu verstecken."
+    }
+  }
+}
