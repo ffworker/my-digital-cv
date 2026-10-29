@@ -8,9 +8,9 @@
       "og_title": "Dennis Kappel | Technical skills",
       "og_description": "An intentionally honest technical self-assessment covering independence, AI and documentation use, production posture and public evidence.",
       "header": "<strong>Dennis Kappel · technical depth</strong><nav aria-label=\"Skills navigation\"><a href=\"/\">← CV</a> · <a href=\"/de/skills.html\">Deutsch</a> · <a href=\"https://github.com/ffworker\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub ↗</a><span class=\"network-group\" aria-label=\"Other public sites\"><span class=\"network-label\">Elsewhere</span><a href=\"https://bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Bytegeist</a><a href=\"https://tools.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Tools</a><a href=\"https://demos.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Demos</a></span></nav>",
-      "eyebrow": "Self-assessed · intentionally honest",
-      "headline": "What I know, where I still need help, and what I would trust myself to change.",
-      "intro": "The numbers are my own assessment. More important is the context beside them: how independently I work, where I use documentation or AI, and how cautious I would be before touching a production system.",
+      "eyebrow": "self-assessed / infrastructure / operations",
+      "headline": "Technical skills. No hype.",
+      "intro": "A quick view of my working strengths, current limits and where I use AI. Select any skill to inspect how I work, what I would trust in production and the evidence behind it.",
       "note": "<strong>How I use AI:</strong> mostly as a speed multiplier, second opinion, or a way to find reasoning gaps faster. Where I depend on it heavily, I say so. If I cannot explain and verify a change, it belongs in the lab first.",
       "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class=\"eyebrow\">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class=\"eyebrow\">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article>",
       "sections": [
@@ -158,7 +158,20 @@
           ]
         }
       ],
-      "footer": "These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list."
+      "footer": "These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list.",
+      "ui": {
+        "skip_label": "Skip to skills",
+        "index_label": "Skills index",
+        "total_label": "areas",
+        "scored_label": "rated",
+        "unrated_label": "not rated",
+        "index_hint": "Self-assessment, not certification • Open a card for detail",
+        "method_label": "How I rate skills & use AI",
+        "count_label": "entries",
+        "work_label": "How I work",
+        "prod_label": "Production",
+        "evidence_label": "Evidence"
+      }
     },
     "de": {
       "lang": "de",
@@ -167,9 +180,9 @@
       "og_title": "Dennis Kappel | Technische Skills",
       "og_description": "Eine bewusst ehrliche technische Selbsteinschätzung mit Eigenständigkeit, KI- und Doku-Nutzung, Produktionsreife und öffentlichen Nachweisen.",
       "header": "<strong>Dennis Kappel · technische Tiefe</strong><nav aria-label=\"Skills-Navigation\"><a href=\"/de/index.html\">← CV</a> · <a href=\"/skills.html\">English</a> · <a href=\"https://github.com/ffworker\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub ↗</a><span class=\"network-group\" aria-label=\"Andere öffentliche Seiten\"><span class=\"network-label\">Weitere Seiten</span><a href=\"https://bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Bytegeist</a><a href=\"https://tools.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Tools</a><a href=\"https://demos.bytegeist.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Demos</a></span></nav>",
-      "eyebrow": "Selbsteingeschätzt · absichtlich ehrlich",
-      "headline": "Was ich kann, wo ich noch Hilfe brauche und was ich mir produktiv zutraue.",
-      "intro": "Die Zahlen sind meine eigene Einschätzung. Wichtiger ist der Kontext daneben: wie selbstständig ich arbeite, wo ich Doku oder KI nutze und wie vorsichtig ich wäre, bevor ich ein Produktivsystem anfasse.",
+      "eyebrow": "selbsteinschätzung / infrastruktur / betrieb",
+      "headline": "Technische Skills. Ohne Show.",
+      "intro": "Ein schneller Überblick über meine Praxis, Grenzen und meinen KI-Einsatz. Skill öffnen: Arbeitsweise, produktive Verantwortung und echte Nachweise.",
       "note": "<strong>Wie ich KI nutze:</strong> meistens als Beschleuniger, zweite Meinung oder um Denkfehler schneller zu finden. Wo ich stark davon abhängig bin, steht es auch so da. Wenn ich eine Änderung nicht erklären und prüfen kann, gehört sie zuerst ins Lab.",
       "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Sichtbare 0–10-Selbsteinschätzung</h2><p>Kein Zertifikatsscore. Ein Bereich zeigt Unsicherheit; Skills mit wenig Praxis und starker KI-Führung bleiben bewusst ohne Zahlenwert.</p></article><article><div class=\"eyebrow\">Eigenständigkeit</div><h2>Worauf ich wirklich zurückgreife</h2><p>Gedächtnis, Doku, Suche oder KI. Generierter Output zählt erst, wenn ich ihn verstehe und geprüft habe.</p></article><article><div class=\"eyebrow\">Produktiv</div><h2>Wie vorsichtig ich wäre</h2><p>Selbstständig, Review zuerst, Sandbox zuerst oder nur Lab – je nach Technologie.</p></article>",
       "sections": [
@@ -317,7 +330,20 @@
           ]
         }
       ],
-      "footer": "Diese Ratings sind meine eigenen Einschätzungen, keine generierten Scores. Sie sollen Stärken und Grenzen sichtbar machen, statt beides hinter einer langen Tool-Liste zu verstecken."
+      "footer": "Diese Ratings sind meine eigenen Einschätzungen, keine generierten Scores. Sie sollen Stärken und Grenzen sichtbar machen, statt beides hinter einer langen Tool-Liste zu verstecken.",
+      "ui": {
+        "skip_label": "Zu den Skills springen",
+        "index_label": "Skills-Index",
+        "total_label": "Bereiche",
+        "scored_label": "bewertet",
+        "unrated_label": "ohne Wert",
+        "index_hint": "Selbsteinschätzung, kein Zertifikat • Karten öffnen für Details",
+        "method_label": "Wie ich Skills bewerte und KI nutze",
+        "count_label": "Einträge",
+        "work_label": "Arbeitsweise",
+        "prod_label": "Produktiv",
+        "evidence_label": "Nachweis"
+      }
     }
   }
 }
