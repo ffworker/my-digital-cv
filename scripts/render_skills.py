@@ -74,11 +74,15 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
     for group in locale["sections"]:
         rows = []
         for item in group["items"]:
+            domain = item["domain"]
+            if domain not in ui["domains"]:
+                raise ValueError(f"unknown skill domain: {domain}")
             title, description = short_skill(item)
             score, label, segments = rating_display(item)
             rows.append(fill(row, {
                 "SKILL_ID": item["id"],
                 "RATING_KIND": item["rating_kind"],
+                "DOMAIN": domain, "DOMAIN_LABEL": html.escape(ui["domains"][domain]),
                 "SKILL_TITLE": title, "SKILL_DESCRIPTION": description,
                 "SCORE": score, "RATING_LABEL": label, "SEGMENTS": segments,
                 "ASSIST": item["assist"], "PRODUCTION": item["production"],
@@ -106,6 +110,7 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
         "TOTAL_LABEL": ui["total_label"], "SCORED_LABEL": ui["scored_label"],
         "UNRATED_LABEL": ui["unrated_label"], "INDEX_HINT": ui["index_hint"],
         "METHOD_LABEL": ui["method_label"], "NOTE": locale["note"],
+        "CATEGORY_HINT": ui["category_hint"],
         "LEGEND": locale["legend"],
         "SECTIONS": "\n".join(rendered_sections), "FOOTER": locale["footer"],
     })
@@ -120,7 +125,12 @@ def main() -> int:
         lang: [(group["id"], [item["id"] for item in group["items"]]) for group in loc["sections"]]
         for lang, loc in data.items()
     }
-    if set(data) != {"en", "de"} or ids["en"] != ids["de"]:
+    domains = {
+        lang: [(item["id"], item["domain"]) for section in loc["sections"]
+               for item in section["items"]]
+        for lang, loc in data.items()
+    }
+    if set(data) != {"en", "de"} or ids["en"] != ids["de"] or domains["en"] != domains["de"]:
         raise ValueError("English and German skill IDs/order must match")
     templates = {
         name: (ROOT / f"templates/{name}").read_text(encoding="utf-8")
