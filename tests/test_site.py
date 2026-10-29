@@ -109,8 +109,9 @@ class SiteContractTests(unittest.TestCase):
 
     def test_skills_labels_pass_normal_text_contrast(self):
         stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
-        self.assertIn(".rating-label{font-size:11px;color:#5f6964", stylesheet)
-        self.assertNotIn("color:#77817c", stylesheet)
+        self.assertIn("--muted:#9daea4", stylesheet)
+        self.assertIn("--accent:#42d49a", stylesheet)
+        self.assertIn("a:focus-visible,summary:focus-visible", stylesheet)
 
     def test_german_lab_tab_accessible_name_contains_visible_label(self):
         page = (ROOT / "de/index.html").read_text(encoding="utf-8")
@@ -133,23 +134,43 @@ class SiteContractTests(unittest.TestCase):
 
 
 
-    def test_bilingual_skills_have_semantic_tables_and_visible_mobile_labels(self):
+    def test_bilingual_skills_use_compact_semantic_disclosures(self):
         for relative in ("skills.html", "de/skills.html"):
             with self.subTest(page=relative):
                 page = (ROOT / relative).read_text(encoding="utf-8")
-                self.assertEqual(page.count('<table class="matrix"'), 2)
-                self.assertEqual(page.count('<th scope="row" class="skill">'), 13)
-                self.assertEqual(page.count('<th scope="col">'), 10)
+                self.assertEqual(page.count('<details class="skill-card"'), 13)
+                self.assertEqual(page.count('<summary class="skill-summary">'), 13)
+                self.assertEqual(page.count('class="segment-bar" aria-hidden="true"'), 13)
+                self.assertEqual(page.count('<i class="segment '), 130)
                 self.assertEqual(page.count('data-rating-kind='), 13)
-                self.assertEqual(page.count('data-label='), 52)
-                self.assertNotIn('<div class="matrix">', page)
-                self.assertNotIn('<style>', page)
+                self.assertEqual(page.count('data-rating-kind="unrated"'), 2)
+                self.assertEqual(page.count('data-rating-kind="range"'), 1)
+                self.assertEqual(page.count('<section class="skill-group"'), 2)
+                self.assertIn('<details class="methodology">', page)
+                self.assertIn('<a class="skip-link" href="#skills-overview">', page)
                 self.assertIn('<link rel="stylesheet" href="/skills.css"', page)
+                self.assertNotIn('<style>', page)
+                self.assertNotIn('<script', page)
+                self.assertNotIn('<table class="matrix"', page)
         css = (ROOT / "skills.css").read_text(encoding="utf-8")
-        self.assertIn("content:attr(data-label)", css)
-        # The header remains available to assistive technology, not display:none.
-        self.assertIn(".matrix thead{position:absolute", css)
-        self.assertNotIn(".head{display:none}", css)
+        self.assertIn(".skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))", css)
+        self.assertIn(".skill-card[open]", css)
+        self.assertIn("@media(max-width:940px)", css)
+        self.assertIn("@media(prefers-reduced-motion:reduce)", css)
+
+    def test_skill_bar_levels_match_source_in_both_languages(self):
+        data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
+        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn("5–6/10", page)
+            self.assertIn("9/10", page)
+            self.assertIn("4/10", page)
+            # The two explicitly AI-guided skills have no fabricated numeric bar.
+            for section in data[lang]["sections"]:
+                for skill in section["items"]:
+                    if skill["rating_kind"] == "unrated":
+                        self.assertIn(f'id="skill-{skill["id"]}" data-rating-kind="unrated"', page)
+            self.assertEqual(page.count('class="segment possible"'), 1)
 
     def test_skills_have_one_ordered_bilingual_source(self):
         data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
