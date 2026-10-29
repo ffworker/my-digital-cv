@@ -32,11 +32,13 @@ python scripts/render_skills.py --check
 python -m unittest discover -s tests -v
 ```
 
-`templates/skills*.html` defines the shared page/table markup, and
-`skills.css` provides the matrix styling. A numeric score, an approximate
-range, and **not rated / AI-guided** are deliberately different states; do
-not fabricate a score for early-stage skills. The legacy `/sites/skills.html`
-links to the current canonical `/skills.html`.
+`templates/skills*.html` defines the shared native `<details>/<summary>`
+cards. `skills.css` provides the compact dark console styling inspired by the
+rest of the Bytegeist CV. The page requires no runtime JavaScript: the compact
+bars show numeric ratings; a range is visualized with one uncertain segment,
+and **not rated / AI-guided** has an unfilled dashed bar (no invented score).
+Click, tap or press Enter/Space on a card to inspect the existing full details.
+The legacy `/sites/skills.html` links to the canonical `/skills.html`.
 
 ## Public technical evidence
 
