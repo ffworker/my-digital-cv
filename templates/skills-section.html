@@ -1,9 +1,9 @@
-<h2 class="section-title" id="skills-{{SECTION_ID}}">{{SECTION_TITLE}}</h2>
-<table class="matrix" aria-labelledby="skills-{{SECTION_ID}}">
-  <thead>
-    <tr class="row head"><th scope="col">{{C0}}</th><th scope="col">{{C1}}</th><th scope="col">{{C2}}</th><th scope="col">{{C3}}</th><th scope="col">{{C4}}</th></tr>
-  </thead>
-  <tbody>
+<section class="skill-group" aria-labelledby="skills-{{SECTION_ID}}">
+  <div class="section-heading">
+    <h2 id="skills-{{SECTION_ID}}"><span class="folder-icon" aria-hidden="true">/</span> {{SECTION_TITLE}}</h2>
+    <span class="section-count">{{GROUP_COUNT}} {{COUNT_LABEL}}</span>
+  </div>
+  <div class="skill-grid">
 {{ROWS}}
-  </tbody>
-</table>
+  </div>
+</section>
