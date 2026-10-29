@@ -19,123 +19,428 @@
   <link rel="stylesheet" href="/skills.css" />
 </head>
 <body class="skills-page">
-<div class="shell">
-<header><strong>Dennis Kappel · technical depth</strong><nav aria-label="Skills navigation"><a href="/">← CV</a> · <a href="/de/skills.html">Deutsch</a> · <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub ↗</a><span class="network-group" aria-label="Other public sites"><span class="network-label">Elsewhere</span><a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a><a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a><a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a></span></nav></header>
-<main>
-<div class="eyebrow">Self-assessed · intentionally honest</div>
-<h1>What I know, where I still need help, and what I would trust myself to change.</h1>
-<p class="intro">The numbers are my own assessment. More important is the context beside them: how independently I work, where I use documentation or AI, and how cautious I would be before touching a production system.</p>
-<div class="note"><strong>How I use AI:</strong> mostly as a speed multiplier, second opinion, or a way to find reasoning gaps faster. Where I depend on it heavily, I say so. If I cannot explain and verify a change, it belongs in the lab first.</div>
-<div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div>
-
-<h2 class="section-title" id="skills-infrastructure">Infrastructure & operations</h2>
-<table class="matrix" aria-labelledby="skills-infrastructure">
-  <thead>
-    <tr class="row head"><th scope="col">Skill</th><th scope="col">Self-rating</th><th scope="col">How I work</th><th scope="col">Production posture</th><th scope="col">Evidence</th></tr>
-  </thead>
-  <tbody>
-    <tr class="row" data-skill="linux-and-shell">
-      <th scope="row" class="skill"><strong>Linux & shell</strong><span>Services, users, permissions, logs, packages, systemd, troubleshooting.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">9/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■■</span><span class="off">□</span></span><span class="rating-label">very strong</span></div></td>
-      <td class="cell assist" data-label="How I work">Independent day to day; documentation for uncommon flags or tools I have not used in a while.</td>
-      <td class="cell prod" data-label="Production posture">Independent for familiar changes; verify before and after.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="networking">
-      <th scope="row" class="skill"><strong>Networking</strong><span>Routing, NAT, DNS, firewalling, private access and VPN paths.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">8/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■</span><span class="off">□□</span></span><span class="rating-label">strong</span></div></td>
-      <td class="cell assist" data-label="How I work">Very comfortable with the networks I actually run; docs/AI mainly for edge cases and design checks.</td>
-      <td class="cell prod" data-label="Production posture">Independent on familiar topologies; review-first for more complex VLAN/switching designs.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Lab topology ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="docker-compose">
-      <th scope="row" class="skill"><strong>Docker / Compose</strong><span>Compose files, logs, mounts, networking, health checks and recovery.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">9/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■■</span><span class="off">□</span></span><span class="rating-label">very strong</span></div></td>
-      <td class="cell assist" data-label="How I work">I can write, edit and reason about Compose files myself; docs/search when useful.</td>
-      <td class="cell prod" data-label="Production posture">Independent for normal service changes.</td>
-      <td class="cell evid" data-label="Evidence">Operational configs are partly private by design.</td>
-    </tr>
-    <tr class="row" data-skill="kubernetes-talos-linux">
-      <th scope="row" class="skill"><strong>Kubernetes / Talos Linux</strong><span>Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">4/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■</span><span class="off">□□□□□□</span></span><span class="rating-label">learning in practice</span></div></td>
-      <td class="cell assist" data-label="How I work">Active lab practice with Kustomize, SOPS/age, service migration and data-restore checks. Setup and many changes remain heavily AI-assisted; I check the result on the running systems.</td>
-      <td class="cell prod" data-label="Production posture">Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA practice ↗</a><br>Talos operational configuration and migration evidence remain private.</td>
-    </tr>
-    <tr class="row" data-skill="proxmox-ve">
-      <th scope="row" class="skill"><strong>Proxmox VE</strong><span>VM lifecycle, templates, networking, lab systems and virtualization concepts.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">7/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■</span><span class="off">□□□</span></span><span class="rating-label">confident</span></div></td>
-      <td class="cell assist" data-label="How I work">Strong virtualization understanding; I can operate Proxmox without AI while product-specific depth is still growing.</td>
-      <td class="cell prod" data-label="Production posture">Independent for normal VM/lab work; review complex storage/network changes.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="terraform-opentofu">
-      <th scope="row" class="skill"><strong>Terraform / OpenTofu</strong><span>Used for infrastructure definitions in my lab.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="unrated"><div class="rating-card"><span class="score-number score-unrated">Not rated</span><span class="rating-label">Limited hands-on, AI-guided</span></div></td>
-      <td class="cell assist" data-label="How I work">I work with it while AI currently guides most authoring. I inspect the configuration and plan, run it, and validate the result rather than treating generated code as independent skill.</td>
-      <td class="cell prod" data-label="Production posture">Lab only / sandbox-first.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">IaC source ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="ansible">
-      <th scope="row" class="skill"><strong>Ansible</strong><span>Inventories, roles, bootstrap and configuration concepts used in lab work.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="unrated"><div class="rating-card"><span class="score-number score-unrated">Not rated</span><span class="rating-label">Limited hands-on, AI-guided</span></div></td>
-      <td class="cell assist" data-label="How I work">I have worked with and use Ansible, but AI still guides most implementation. I review what it produces and validate the run instead of claiming independent authoring.</td>
-      <td class="cell prod" data-label="Production posture">Sandbox-first; no blind production runs.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Ansible source ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="smb-nas">
-      <th scope="row" class="skill"><strong>SMB / NAS</strong><span>Shares, permissions, migrations and practical storage administration.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">9/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■■</span><span class="off">□</span></span><span class="rating-label">very strong</span></div></td>
-      <td class="cell assist" data-label="How I work">Mostly independent; little AI needed for normal administration.</td>
-      <td class="cell prod" data-label="Production posture">Independent with normal change/backup discipline.</td>
-      <td class="cell evid" data-label="Evidence">Private operational infrastructure.</td>
-    </tr>
-    <tr class="row" data-skill="nfs">
-      <th scope="row" class="skill"><strong>NFS</strong><span>Mounts, Kubernetes storage paths, backups and service integration.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">6/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■</span><span class="off">□□□□</span></span><span class="rating-label">working knowledge</span></div></td>
-      <td class="cell assist" data-label="How I work">Newer area; comfortable with what I run, while unfamiliar behavior still sends me to docs/search.</td>
-      <td class="cell prod" data-label="Production posture">Review-first outside known patterns.</td>
-      <td class="cell evid" data-label="Evidence">Used actively in private infrastructure.</td>
-    </tr>
-    <tr class="row" data-skill="prometheus-grafana">
-      <th scope="row" class="skill"><strong>Prometheus / Grafana</strong><span>Basic setup, dashboards, exporters, probes and troubleshooting.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">4/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■</span><span class="off">□□□□□□</span></span><span class="rating-label">basic practical use</span></div></td>
-      <td class="cell assist" data-label="How I work">I can set up the basics manually; for deeper tuning I am still learning and experimenting with AI assistance.</td>
-      <td class="cell prod" data-label="Production posture">Review-first / sandbox-first for larger changes.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Docs evidence ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="netbird-vpn-private-networking">
-      <th scope="row" class="skill"><strong>NetBird / VPN / private networking</strong><span>Peers, routes, access rules and private administration paths.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">9/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■■</span><span class="off">□</span></span><span class="rating-label">very strong</span></div></td>
-      <td class="cell assist" data-label="How I work">I can build routing and rules myself; AI mainly accelerates reasoning or catches logic holes.</td>
-      <td class="cell prod" data-label="Production posture">Independent for familiar deployments.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Deployment docs ↗</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 class="section-title" id="skills-delivery">Delivery & tooling</h2>
-<table class="matrix" aria-labelledby="skills-delivery">
-  <thead>
-    <tr class="row head"><th scope="col">Skill</th><th scope="col">Self-rating</th><th scope="col">How I work</th><th scope="col">Production posture</th><th scope="col">Evidence</th></tr>
-  </thead>
-  <tbody>
-    <tr class="row" data-skill="git-github-actions">
-      <th scope="row" class="skill"><strong>Git / GitHub Actions</strong><span>Repos, diffs, CI checks, branch/PR flow and deployment workflows.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="range"><div class="rating-card"><span class="score-number">5–6/10</span><span class="rating-label">comfortable basics</span></div></td>
-      <td class="cell assist" data-label="How I work">Comfortable with normal workflows; docs/search for less common Git and Actions behavior.</td>
-      <td class="cell prod" data-label="Production posture">Review-first for workflow/deployment changes.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/my-digital-cv/actions" target="_blank" rel="noopener noreferrer">This site's Actions ↗</a></td>
-    </tr>
-    <tr class="row" data-skill="bash-scripting">
-      <th scope="row" class="skill"><strong>Bash / scripting</strong><span>Operational helpers, pipelines, diagnostics and glue scripts.</span></th>
-      <td class="cell rating" data-label="Self-rating" data-rating-kind="score"><div class="rating-card"><span class="score-number">9/10</span><span class="meter" aria-hidden="true"><span class="on">■■■■■■■■■</span><span class="off">□</span></span><span class="rating-label">very strong</span></div></td>
-      <td class="cell assist" data-label="How I work">Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.</td>
-      <td class="cell prod" data-label="Production posture">Independent for familiar scripts; always review anything destructive.</td>
-      <td class="cell evid" data-label="Evidence"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Public examples ↗</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p class="footer-note">These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list.</p>
-</main></div></body></html>
+<a class="skip-link" href="#skills-overview">Skip to skills</a>
+<div class="interface">
+  <header class="topbar"><strong>Dennis Kappel · technical depth</strong><nav aria-label="Skills navigation"><a href="/">← CV</a> · <a href="/de/skills.html">Deutsch</a> · <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub ↗</a><span class="network-group" aria-label="Other public sites"><span class="network-label">Elsewhere</span><a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a><a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a><a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a></span></nav></header>
+  <main id="skills-overview">
+    <section class="masthead" aria-labelledby="skills-title">
+      <div class="terminal-path" aria-hidden="true"><span class="prompt-user">visitor@bytegeist</span><span class="prompt-colon">:</span><span class="prompt-path">~/cv</span><span class="prompt-dollar">$</span> cat skills.yaml</div>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">self-assessed / infrastructure / operations</p>
+          <h1 id="skills-title">Technical skills. No hype.</h1>
+          <p class="intro">A quick view of my working strengths, current limits and where I use AI. Select any skill to inspect how I work, what I would trust in production and the evidence behind it.</p>
+        </div>
+        <div class="index-panel" aria-label="Skills index">
+          <span class="panel-heading"><span class="panel-led" aria-hidden="true"></span> Skills index</span>
+          <div class="index-stats">
+            <div><strong>13</strong><span>areas</span></div>
+            <div><strong>11</strong><span>rated</span></div>
+            <div><strong>2</strong><span>not rated</span></div>
+          </div>
+          <p class="index-hint">Self-assessment, not certification • Open a card for detail</p>
+        </div>
+      </div>
+    </section>
+    <details class="methodology">
+      <summary><span class="method-icon" aria-hidden="true">i</span><span>How I rate skills & use AI</span><span class="method-toggle" aria-hidden="true">+</span></summary>
+      <div class="method-body"><div class="note"><strong>How I use AI:</strong> mostly as a speed multiplier, second opinion, or a way to find reasoning gaps faster. Where I depend on it heavily, I say so. If I cannot explain and verify a change, it belongs in the lab first.</div><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
+    </details>
+    <section class="skill-group" aria-labelledby="skills-infrastructure">
+  <div class="section-heading">
+    <h2 id="skills-infrastructure"><span class="folder-icon" aria-hidden="true">/</span> Infrastructure & operations</h2>
+    <span class="section-count">11 entries</span>
+  </div>
+  <div class="skill-grid">
+    <details class="skill-card" id="skill-linux-and-shell" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Linux &amp; shell</strong>
+          <span class="skill-peek">Services, users, permissions, logs, packages, systemd, troubleshooting.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">9/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Services, users, permissions, logs, packages, systemd, troubleshooting.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Independent day to day; documentation for uncommon flags or tools I have not used in a while.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent for familiar changes; verify before and after.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div>
+        </div>
+        <p class="rating-context">very strong</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-networking" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Networking</strong>
+          <span class="skill-peek">Routing, NAT, DNS, firewalling, private access and VPN paths.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">8/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Routing, NAT, DNS, firewalling, private access and VPN paths.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Very comfortable with the networks I actually run; docs/AI mainly for edge cases and design checks.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent on familiar topologies; review-first for more complex VLAN/switching designs.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Lab topology ↗</a></div>
+        </div>
+        <p class="rating-context">strong</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-docker-compose" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Docker / Compose</strong>
+          <span class="skill-peek">Compose files, logs, mounts, networking, health checks and recovery.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">9/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Compose files, logs, mounts, networking, health checks and recovery.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">I can write, edit and reason about Compose files myself; docs/search when useful.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent for normal service changes.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value">Operational configs are partly private by design.</div>
+        </div>
+        <p class="rating-context">very strong</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-kubernetes-talos-linux" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Kubernetes / Talos Linux</strong>
+          <span class="skill-peek">Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">4/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Active lab practice with Kustomize, SOPS/age, service migration and data-restore checks. Setup and many changes remain heavily AI-assisted; I check the result on the running systems.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA practice ↗</a><br>Talos operational configuration and migration evidence remain private.</div>
+        </div>
+        <p class="rating-context">learning in practice</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-proxmox-ve" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Proxmox VE</strong>
+          <span class="skill-peek">VM lifecycle, templates, networking, lab systems and virtualization concepts.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">7/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">VM lifecycle, templates, networking, lab systems and virtualization concepts.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Strong virtualization understanding; I can operate Proxmox without AI while product-specific depth is still growing.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent for normal VM/lab work; review complex storage/network changes.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div>
+        </div>
+        <p class="rating-context">confident</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-terraform-opentofu" data-rating-kind="unrated">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Terraform / OpenTofu</strong>
+          <span class="skill-peek">Used for infrastructure definitions in my lab.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">Not rated</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Used for infrastructure definitions in my lab.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">I work with it while AI currently guides most authoring. I inspect the configuration and plan, run it, and validate the result rather than treating generated code as independent skill.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Lab only / sandbox-first.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">IaC source ↗</a></div>
+        </div>
+        <p class="rating-context">Limited hands-on, AI-guided</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-ansible" data-rating-kind="unrated">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Ansible</strong>
+          <span class="skill-peek">Inventories, roles, bootstrap and configuration concepts used in lab work.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">Not rated</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Inventories, roles, bootstrap and configuration concepts used in lab work.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">I have worked with and use Ansible, but AI still guides most implementation. I review what it produces and validate the run instead of claiming independent authoring.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Sandbox-first; no blind production runs.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Ansible source ↗</a></div>
+        </div>
+        <p class="rating-context">Limited hands-on, AI-guided</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-smb-nas" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">SMB / NAS</strong>
+          <span class="skill-peek">Shares, permissions, migrations and practical storage administration.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">9/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Shares, permissions, migrations and practical storage administration.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Mostly independent; little AI needed for normal administration.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent with normal change/backup discipline.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value">Private operational infrastructure.</div>
+        </div>
+        <p class="rating-context">very strong</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-nfs" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">NFS</strong>
+          <span class="skill-peek">Mounts, Kubernetes storage paths, backups and service integration.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">6/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Mounts, Kubernetes storage paths, backups and service integration.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Newer area; comfortable with what I run, while unfamiliar behavior still sends me to docs/search.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Review-first outside known patterns.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value">Used actively in private infrastructure.</div>
+        </div>
+        <p class="rating-context">working knowledge</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-prometheus-grafana" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Prometheus / Grafana</strong>
+          <span class="skill-peek">Basic setup, dashboards, exporters, probes and troubleshooting.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">4/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Basic setup, dashboards, exporters, probes and troubleshooting.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">I can set up the basics manually; for deeper tuning I am still learning and experimenting with AI assistance.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Review-first / sandbox-first for larger changes.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Docs evidence ↗</a></div>
+        </div>
+        <p class="rating-context">basic practical use</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-netbird-vpn-private-networking" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">NetBird / VPN / private networking</strong>
+          <span class="skill-peek">Peers, routes, access rules and private administration paths.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">9/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Peers, routes, access rules and private administration paths.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">I can build routing and rules myself; AI mainly accelerates reasoning or catches logic holes.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent for familiar deployments.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Deployment docs ↗</a></div>
+        </div>
+        <p class="rating-context">very strong</p>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="skill-group" aria-labelledby="skills-delivery">
+  <div class="section-heading">
+    <h2 id="skills-delivery"><span class="folder-icon" aria-hidden="true">/</span> Delivery & tooling</h2>
+    <span class="section-count">2 entries</span>
+  </div>
+  <div class="skill-grid">
+    <details class="skill-card" id="skill-git-github-actions" data-rating-kind="range">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Git / GitHub Actions</strong>
+          <span class="skill-peek">Repos, diffs, CI checks, branch/PR flow and deployment workflows.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">5–6/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment possible"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Repos, diffs, CI checks, branch/PR flow and deployment workflows.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Comfortable with normal workflows; docs/search for less common Git and Actions behavior.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Review-first for workflow/deployment changes.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/my-digital-cv/actions" target="_blank" rel="noopener noreferrer">This site's Actions ↗</a></div>
+        </div>
+        <p class="rating-context">comfortable basics</p>
+      </div>
+    </details>
+    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="score">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">Bash / scripting</strong>
+          <span class="skill-peek">Operational helpers, pipelines, diagnostics and glue scripts.</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">9/10</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">Operational helpers, pipelines, diagnostics and glue scripts.</p>
+        <div class="detail-line">
+          <span class="detail-key">How I work</span>
+          <div class="detail-value">Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Production</span>
+          <div class="detail-value">Independent for familiar scripts; always review anything destructive.</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">Evidence</span>
+          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Public examples ↗</a></div>
+        </div>
+        <p class="rating-context">very strong</p>
+      </div>
+    </details>
+  </div>
+</section>
+    <footer class="footer-note"><span class="footer-prompt" aria-hidden="true">~/cv $</span> These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list.</footer>
+  </main>
+</div>
+</body>
+</html>
