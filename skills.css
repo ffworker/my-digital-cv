@@ -177,3 +177,33 @@ h1{margin:0;font-size:clamp(24px,3vw,37px);line-height:1.09;letter-spacing:-.032
   .skill-title{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Domain accents are navigational only: rating bars retain one consistent scale. */
+.skill-card[data-domain="linux"]{--domain-accent:#42d49a}
+.skill-card[data-domain="network"]{--domain-accent:#85bafb}
+.skill-card[data-domain="platform"]{--domain-accent:#b7a2f4}
+.skill-card[data-domain="automation"]{--domain-accent:#e8bd81}
+.skill-card[data-domain="storage"]{--domain-accent:#b0cba0}
+.skill-card[data-domain="monitoring"]{--domain-accent:#85c9cb}
+.skill-card[data-domain]{border-left:2px solid var(--domain-accent)}
+.skill-heading{display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px}
+.skill-domain{
+  display:inline-flex;align-items:center;gap:5px;
+  flex-shrink:0;padding:2px 6px;
+  border:1px solid #395247;border-radius:3px;
+  background:#0d1913;
+  color:var(--domain-accent,var(--accent));
+  font:650 9px/1.3 var(--mono);
+  letter-spacing:.02em;
+}
+.skill-domain::before{
+  content:"";width:5px;height:5px;flex:none;border-radius:1px;
+  background:var(--domain-accent,var(--accent));
+}
+.skill-card[open] .skill-domain{border-color:var(--domain-accent)}
+.category-note{margin:12px 0 0;color:var(--muted);font:11px/1.5 var(--mono)}
+.category-note::before{content:"// ";color:var(--accent)}
+@media(max-width:380px){
+  .skill-heading{gap:4px 6px}
+  .skill-domain{font-size:8px;padding:2px 4px}
+}
