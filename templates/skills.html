@@ -19,15 +19,36 @@
   <link rel="stylesheet" href="/skills.css" />
 </head>
 <body class="skills-page">
-<div class="shell">
-<header>{{HEADER}}</header>
-<main>
-<div class="eyebrow">{{EYEBROW}}</div>
-<h1>{{HEADLINE}}</h1>
-<p class="intro">{{INTRO}}</p>
-<div class="note">{{NOTE}}</div>
-<div class="legend">{{LEGEND}}</div>
-
-{{SECTIONS}}
-<p class="footer-note">{{FOOTER}}</p>
-</main></div></body></html>
+<a class="skip-link" href="#skills-overview">{{SKIP_LABEL}}</a>
+<div class="interface">
+  <header class="topbar">{{HEADER}}</header>
+  <main id="skills-overview">
+    <section class="masthead" aria-labelledby="skills-title">
+      <div class="terminal-path" aria-hidden="true"><span class="prompt-user">visitor@bytegeist</span><span class="prompt-colon">:</span><span class="prompt-path">~/cv</span><span class="prompt-dollar">$</span> cat skills.yaml</div>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">{{EYEBROW}}</p>
+          <h1 id="skills-title">{{HEADLINE}}</h1>
+          <p class="intro">{{INTRO}}</p>
+        </div>
+        <div class="index-panel" aria-label="{{INDEX_LABEL}}">
+          <span class="panel-heading"><span class="panel-led" aria-hidden="true"></span> {{INDEX_LABEL}}</span>
+          <div class="index-stats">
+            <div><strong>{{TOTAL_COUNT}}</strong><span>{{TOTAL_LABEL}}</span></div>
+            <div><strong>{{SCORED_COUNT}}</strong><span>{{SCORED_LABEL}}</span></div>
+            <div><strong>{{UNRATED_COUNT}}</strong><span>{{UNRATED_LABEL}}</span></div>
+          </div>
+          <p class="index-hint">{{INDEX_HINT}}</p>
+        </div>
+      </div>
+    </section>
+    <details class="methodology">
+      <summary><span class="method-icon" aria-hidden="true">i</span><span>{{METHOD_LABEL}}</span><span class="method-toggle" aria-hidden="true">+</span></summary>
+      <div class="method-body"><div class="note">{{NOTE}}</div><div class="legend">{{LEGEND}}</div></div>
+    </details>
+    {{SECTIONS}}
+    <footer class="footer-note"><span class="footer-prompt" aria-hidden="true">~/cv $</span> {{FOOTER}}</footer>
+  </main>
+</div>
+</body>
+</html>
