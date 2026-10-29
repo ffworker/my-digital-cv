@@ -172,6 +172,31 @@ class SiteContractTests(unittest.TestCase):
                         self.assertIn(f'id="skill-{skill["id"]}" data-rating-kind="unrated"', page)
             self.assertEqual(page.count('class="segment possible"'), 1)
 
+    def test_domain_accents_are_localized_and_not_rating_levels(self):
+        data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
+        expected = {"linux", "network", "platform", "automation", "storage", "monitoring"}
+        domains_by_lang = {}
+        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            domains = [(item["id"], item["domain"])
+                       for group in data[lang]["sections"] for item in group["items"]]
+            self.assertEqual(len(domains), 13)
+            self.assertEqual({domain for _, domain in domains}, expected)
+            self.assertEqual(page.count('class="skill-domain"'), 13)
+            self.assertIn('class="category-note"', page)
+            for id_, domain in domains:
+                self.assertIn(f'id="skill-{id_}"', page)
+                self.assertIn(f'data-domain="{domain}"', page)
+                self.assertIn(f'class="skill-domain">{data[lang]["ui"]["domains"][domain]}</span>', page)
+            domains_by_lang[lang] = domains
+        self.assertEqual(domains_by_lang["en"], domains_by_lang["de"])
+        css = (ROOT / "skills.css").read_text(encoding="utf-8")
+        for domain in expected:
+            self.assertIn(f'.skill-card[data-domain="{domain}"]', css)
+        # Colors distinguish category only; the proficiency segments keep their shared color.
+        self.assertIn(".segment.filled{background:#3bcc8e", css)
+        self.assertIn("border-left:2px solid var(--domain-accent)", css)
+
     def test_skills_have_one_ordered_bilingual_source(self):
         data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
         for lang in ("en", "de"):
