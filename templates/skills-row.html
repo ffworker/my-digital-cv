@@ -1,7 +1,29 @@
-    <tr class="row" data-skill="{{SKILL_ID}}">
-      <th scope="row" class="skill">{{SKILL}}</th>
-      <td class="cell rating" data-label="{{C1}}" data-rating-kind="{{RATING_KIND}}">{{RATING}}</td>
-      <td class="cell assist" data-label="{{C2}}">{{ASSIST}}</td>
-      <td class="cell prod" data-label="{{C3}}">{{PRODUCTION}}</td>
-      <td class="cell evid" data-label="{{C4}}">{{EVIDENCE}}</td>
-    </tr>
+    <details class="skill-card" id="skill-{{SKILL_ID}}" data-rating-kind="{{RATING_KIND}}">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <strong class="skill-title">{{SKILL_TITLE}}</strong>
+          <span class="skill-peek">{{SKILL_DESCRIPTION}}</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">{{SCORE}}</span>
+          <span class="segment-bar" aria-hidden="true">{{SEGMENTS}}</span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">{{SKILL_DESCRIPTION}}</p>
+        <div class="detail-line">
+          <span class="detail-key">{{WORK_LABEL}}</span>
+          <div class="detail-value">{{ASSIST}}</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">{{PROD_LABEL}}</span>
+          <div class="detail-value">{{PRODUCTION}}</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">{{EVIDENCE_LABEL}}</span>
+          <div class="detail-value">{{EVIDENCE}}</div>
+        </div>
+        <p class="rating-context">{{RATING_LABEL}}</p>
+      </div>
+    </details>
