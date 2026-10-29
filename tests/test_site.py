@@ -1,5 +1,8 @@
 from pathlib import Path
 import unittest
+import json
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -91,9 +94,11 @@ class SiteContractTests(unittest.TestCase):
             self.assertNotIn("window.setTimeout(finishBuild, 3050)", page)
 
     def test_primary_green_passes_normal_text_contrast(self):
-        for relative in ("index.html", "de/index.html", "skills.html", "de/skills.html"):
+        for relative in ("index.html", "de/index.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("#127654", page)
+        stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
+        self.assertIn("--green:#127654", stylesheet)
 
     def test_professional_brand_colors_pass_normal_text_contrast(self):
         for relative in ("index.html", "de/index.html"):
@@ -103,10 +108,10 @@ class SiteContractTests(unittest.TestCase):
             self.assertNotIn("footer {\n      --green: var(--green-on-dark);", page)
 
     def test_skills_labels_pass_normal_text_contrast(self):
-        for relative in ("skills.html", "de/skills.html"):
-            page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn(".rating-label{font-size:11px;color:#5f6964", page)
-            self.assertNotIn("color:#77817c", page)
+        stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
+        self.assertIn("--muted:#9daea4", stylesheet)
+        self.assertIn("--accent:#42d49a", stylesheet)
+        self.assertIn("a:focus-visible,summary:focus-visible", stylesheet)
 
     def test_german_lab_tab_accessible_name_contains_visible_label(self):
         page = (ROOT / "de/index.html").read_text(encoding="utf-8")
@@ -127,6 +132,97 @@ class SiteContractTests(unittest.TestCase):
             self.assertIn("@keyframes detailIn {\n      from { transform: translateY(12px); }", page)
             self.assertIn(".tech.windows { color: #0067b8; }", page)
 
+
+
+    def test_bilingual_skills_use_compact_semantic_disclosures(self):
+        for relative in ("skills.html", "de/skills.html"):
+            with self.subTest(page=relative):
+                page = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertEqual(page.count('<details class="skill-card"'), 13)
+                self.assertEqual(page.count('<summary class="skill-summary">'), 13)
+                self.assertEqual(page.count('class="segment-bar" aria-hidden="true"'), 13)
+                self.assertEqual(page.count('<i class="segment '), 130)
+                self.assertEqual(page.count('data-rating-kind='), 13)
+                self.assertEqual(page.count('data-rating-kind="unrated"'), 2)
+                self.assertEqual(page.count('data-rating-kind="range"'), 1)
+                self.assertEqual(page.count('<section class="skill-group"'), 2)
+                self.assertIn('<details class="methodology">', page)
+                self.assertIn('<a class="skip-link" href="#skills-overview">', page)
+                self.assertIn('<link rel="stylesheet" href="/skills.css"', page)
+                self.assertNotIn('<style>', page)
+                self.assertNotIn('<script', page)
+                self.assertNotIn('<table class="matrix"', page)
+        css = (ROOT / "skills.css").read_text(encoding="utf-8")
+        self.assertIn(".skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))", css)
+        self.assertIn(".skill-card[open]", css)
+        self.assertIn("@media(max-width:940px)", css)
+        self.assertIn("@media(prefers-reduced-motion:reduce)", css)
+
+    def test_skill_bar_levels_match_source_in_both_languages(self):
+        data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
+        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn("5–6/10", page)
+            self.assertIn("9/10", page)
+            self.assertIn("4/10", page)
+            # The two explicitly AI-guided skills have no fabricated numeric bar.
+            for section in data[lang]["sections"]:
+                for skill in section["items"]:
+                    if skill["rating_kind"] == "unrated":
+                        self.assertIn(f'id="skill-{skill["id"]}" data-rating-kind="unrated"', page)
+            self.assertEqual(page.count('class="segment possible"'), 1)
+
+    def test_domain_accents_are_localized_and_not_rating_levels(self):
+        data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
+        expected = {"linux", "network", "platform", "automation", "storage", "monitoring"}
+        domains_by_lang = {}
+        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            domains = [(item["id"], item["domain"])
+                       for group in data[lang]["sections"] for item in group["items"]]
+            self.assertEqual(len(domains), 13)
+            self.assertEqual({domain for _, domain in domains}, expected)
+            self.assertEqual(page.count('class="skill-domain"'), 13)
+            self.assertIn('class="category-note"', page)
+            for id_, domain in domains:
+                self.assertIn(f'id="skill-{id_}"', page)
+                self.assertIn(f'data-domain="{domain}"', page)
+                self.assertIn(f'class="skill-domain">{data[lang]["ui"]["domains"][domain]}</span>', page)
+            domains_by_lang[lang] = domains
+        self.assertEqual(domains_by_lang["en"], domains_by_lang["de"])
+        css = (ROOT / "skills.css").read_text(encoding="utf-8")
+        for domain in expected:
+            self.assertIn(f'.skill-card[data-domain="{domain}"]', css)
+        # Colors distinguish category only; the proficiency segments keep their shared color.
+        self.assertIn(".segment.filled{background:#3bcc8e", css)
+        self.assertIn("border-left:2px solid var(--domain-accent)", css)
+
+    def test_skills_have_one_ordered_bilingual_source(self):
+        data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
+        for lang in ("en", "de"):
+            self.assertEqual(sum(len(s["items"]) for s in data[lang]["sections"]), 13)
+        ids = lambda lang: [(s["id"], [i["id"] for i in s["items"]]) for s in data[lang]["sections"]]
+        self.assertEqual(ids("en"), ids("de"))
+        for lang in ("en", "de"):
+            ratings = [i["rating_kind"] for section in data[lang]["sections"] for i in section["items"]]
+            self.assertEqual(ratings.count("unrated"), 2)
+            self.assertEqual(ratings.count("range"), 1)
+            self.assertEqual(ratings.count("score"), 10)
+
+    def test_committed_skills_pages_are_generated_without_drift(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/render_skills.py"), "--check"],
+            cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_old_skills_page_is_non_competing_redirect(self):
+        legacy = (ROOT / "sites/skills.html").read_text(encoding="utf-8")
+        self.assertIn('content="0; url=/skills.html"', legacy)
+        self.assertIn('rel="canonical" href="https://cv.bytegeist.dev/skills.html"', legacy)
+        self.assertIn('name="robots" content="noindex, follow"', legacy)
+        projects = (ROOT / "sites/projects.html").read_text(encoding="utf-8")
+        self.assertIn('href="/skills.html"', projects)
 
 if __name__ == "__main__":
     unittest.main()

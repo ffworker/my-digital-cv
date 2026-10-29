@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <link rel="canonical" href="https://cv.bytegeist.dev/{{PAGE_PATH}}" />
+  <link rel="alternate" hreflang="en" href="https://cv.bytegeist.dev/skills.html" />
+  <link rel="alternate" hreflang="de" href="https://cv.bytegeist.dev/de/skills.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="{{OG_TITLE}}" />
+  <meta property="og:description" content="{{OG_DESCRIPTION}}" />
+  <meta property="og:url" content="https://cv.bytegeist.dev/{{PAGE_PATH}}" />
+  <meta property="og:image" content="https://cv.bytegeist.dev/assets/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/skills.css" />
+</head>
+<body class="skills-page">
+<a class="skip-link" href="#skills-overview">{{SKIP_LABEL}}</a>
+<div class="interface">
+  <header class="topbar">{{HEADER}}</header>
+  <main id="skills-overview">
+    <section class="masthead" aria-labelledby="skills-title">
+      <div class="terminal-path" aria-hidden="true"><span class="prompt-user">visitor@bytegeist</span><span class="prompt-colon">:</span><span class="prompt-path">~/cv</span><span class="prompt-dollar">$</span> cat skills.yaml</div>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">{{EYEBROW}}</p>
+          <h1 id="skills-title">{{HEADLINE}}</h1>
+          <p class="intro">{{INTRO}}</p>
+        </div>
+        <div class="index-panel" aria-label="{{INDEX_LABEL}}">
+          <span class="panel-heading"><span class="panel-led" aria-hidden="true"></span> {{INDEX_LABEL}}</span>
+          <div class="index-stats">
+            <div><strong>{{TOTAL_COUNT}}</strong><span>{{TOTAL_LABEL}}</span></div>
+            <div><strong>{{SCORED_COUNT}}</strong><span>{{SCORED_LABEL}}</span></div>
+            <div><strong>{{UNRATED_COUNT}}</strong><span>{{UNRATED_LABEL}}</span></div>
+          </div>
+          <p class="index-hint">{{INDEX_HINT}}</p>
+        </div>
+      </div>
+    </section>
+    <details class="methodology">
+      <summary><span class="method-icon" aria-hidden="true">i</span><span>{{METHOD_LABEL}}</span><span class="method-toggle" aria-hidden="true">+</span></summary>
+      <div class="method-body"><div class="note">{{NOTE}}</div><p class="category-note">{{CATEGORY_HINT}}</p><div class="legend">{{LEGEND}}</div></div>
+    </details>
+    {{SECTIONS}}
+    <footer class="footer-note"><span class="footer-prompt" aria-hidden="true">~/cv $</span> {{FOOTER}}</footer>
+  </main>
+</div>
+</body>
+</html>

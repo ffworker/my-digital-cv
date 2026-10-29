@@ -19,6 +19,31 @@ The skills page separates what I can do myself, where I use documentation/search
 
 AI is useful in my workflow, but generated output is not treated as competence by itself. If I cannot explain and verify a change, it belongs in a lab or sandbox first.
 
+## Updating the bilingual skills matrix
+
+The authoritative content lives in `data/skills.json`. The EN/DE pages are
+checked-in, generated HTML so the runtime stays static and requires **no**
+JavaScript or build step. Edit the relevant translated content there, keeping
+both locales' skill IDs in the same order, then run:
+
+```bash
+python scripts/render_skills.py
+python scripts/render_skills.py --check
+python -m unittest discover -s tests -v
+```
+
+`templates/skills*.html` defines the shared native `<details>/<summary>`
+cards. `skills.css` provides the compact dark console styling inspired by the
+rest of the Bytegeist CV. The page requires no runtime JavaScript: the compact
+bars show numeric ratings; a range is visualized with one uncertain segment,
+and **not rated / AI-guided** has an unfilled dashed bar (no invented score).
+Domain badges and subtle edge colors distinguish Linux, networking, platforms,
+automation, storage, and monitoring. These colors **do not** indicate proficiency:
+the same score-bar color and 0–10 scale are used everywhere. Domain identifiers
+are shared between EN/DE; localized labels live in `data/skills.json`.
+Click, tap or press Enter/Space on a card to inspect the existing full details.
+The legacy `/sites/skills.html` links to the canonical `/skills.html`.
+
 ## Public technical evidence
 
 - [CKA Lab](https://github.com/ffworker/cka-lab)

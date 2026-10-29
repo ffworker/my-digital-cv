@@ -1,0 +1,29 @@
+    <details class="skill-card" id="skill-{{SKILL_ID}}" data-rating-kind="{{RATING_KIND}}" data-domain="{{DOMAIN}}">
+      <summary class="skill-summary">
+        <span class="skill-main">
+          <span class="skill-heading"><strong class="skill-title">{{SKILL_TITLE}}</strong><span class="skill-domain">{{DOMAIN_LABEL}}</span></span>
+          <span class="skill-peek">{{SKILL_DESCRIPTION}}</span>
+        </span>
+        <span class="skill-stats">
+          <span class="skill-score">{{SCORE}}</span>
+          <span class="segment-bar" aria-hidden="true">{{SEGMENTS}}</span>
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="skill-details">
+        <p class="detail-intro">{{SKILL_DESCRIPTION}}</p>
+        <div class="detail-line">
+          <span class="detail-key">{{WORK_LABEL}}</span>
+          <div class="detail-value">{{ASSIST}}</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">{{PROD_LABEL}}</span>
+          <div class="detail-value">{{PRODUCTION}}</div>
+        </div>
+        <div class="detail-line">
+          <span class="detail-key">{{EVIDENCE_LABEL}}</span>
+          <div class="detail-value">{{EVIDENCE}}</div>
+        </div>
+        <p class="rating-context">{{RATING_LABEL}}</p>
+      </div>
+    </details>

@@ -3,154 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dennis Kappel | Skills Matrix</title>
-  <meta name="description" content="A compact skills matrix for Dennis Kappel covering scripting, infrastructure, monitoring and Raspberry Pi lab systems." />
-  <link href="../styles.css" rel="stylesheet" />
+  <title>Technical skills | Dennis Kappel</title>
+  <meta name="description" content="The current English and German skills assessments are available on the main CV." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://cv.bytegeist.dev/skills.html" />
+  <link rel="alternate" hreflang="en" href="https://cv.bytegeist.dev/skills.html" />
+  <link rel="alternate" hreflang="de" href="https://cv.bytegeist.dev/de/skills.html" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Dennis Kappel | Technical skills" />
+  <meta property="og:description" content="Current, self-assessed technical skills with transparent learning and production context." />
+  <meta property="og:url" content="https://cv.bytegeist.dev/skills.html" />
+  <meta property="og:image" content="https://cv.bytegeist.dev/assets/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta http-equiv="refresh" content="0; url=/skills.html" />
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="../index.html">Dennis Kappel</a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="../index.html">CV</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html" aria-current="page">Skills</a>
-        <span class="network-group" aria-label="Other public sites">
-          <span class="network-label">Elsewhere</span>
-          <a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a>
-          <a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a>
-          <a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a>
-        </span>
-      </nav>
-    </header>
-
-    <main>
-      <section class="tool-hero" aria-label="Skills overview">
-        <div class="hero-panel">
-          <span class="label">Capability map</span>
-          <h1>Skills Matrix</h1>
-          <p class="hero-copy">The practical stack behind the CV and lab pages: scripting, services, containers, monitoring and the Raspberry Pi systems that keep it honest.</p>
-          <div class="button-row">
-            <a class="button primary" href="../index.html#professional">Professional context</a>
-            <a class="button" href="projects.html">Project inventory</a>
-          </div>
-        </div>
-        <div class="hero-panel dark">
-          <span class="label">Stack summary</span>
-          <div class="fact-list">
-            <span class="fact"><span>Scripting</span><span>Python / PowerShell</span></span>
-            <span class="fact"><span>Web basics</span><span>HTML / CSS / Java</span></span>
-            <span class="fact"><span>Runtime</span><span>Docker / Portainer</span></span>
-            <span class="fact"><span>Observability</span><span>Grafana / InfluxDB</span></span>
-          </div>
-        </div>
-      </section>
-
-      <div class="status-strip">
-        <span>skills / tools / deployed systems / verified through hands-on lab work</span>
-      </div>
-
-      <section class="detail-stage" aria-label="Skills details">
-        <aside class="detail-rail">
-          <div>
-            <span class="label">Working set</span>
-            <h2>Tools I use because something real depends on them.</h2>
-            <p class="rail-note">The list is grouped by operating surface instead of dumped as badges. That is closer to how the work actually happens.</p>
-          </div>
-          <div class="terminal" aria-label="Skills terminal">
-            <span class="terminal-line">load context: skills-and-tools</span>
-            <span class="terminal-line">render matrix: ready</span>
-          </div>
-        </aside>
-
-        <div class="detail-body">
-          <div class="context-output">
-            <section class="context-row">
-              <div>
-                <span class="detail-meta">scripting</span>
-                <h3><span class="tech python">python</span> / <span class="tech powershell">powershell</span> / automation</h3>
-              </div>
-              <div>
-                <p>Scripting is used for practical automation, support tasks and repeatable checks around systems that need to be maintained.</p>
-                <ul class="context-list">
-                  <li><span class="tech python">Python</span> for utility scripts and service logic</li>
-                  <li><span class="tech powershell">PowerShell</span> for Windows administration and operational scripting</li>
-                  <li>Java as part of the broader programming foundation</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="context-row">
-              <div>
-                <span class="detail-meta">web surface</span>
-                <h3>html / css / public-documentation</h3>
-              </div>
-              <div>
-                <p>HTML and CSS are used for simple public pages, documentation surfaces and project presentation without adding unnecessary framework weight.</p>
-                <ul class="context-list">
-                  <li>static CV and lab documentation pages</li>
-                  <li>responsive layout work with a practical, operations-focused design language</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="context-row">
-              <div>
-                <span class="detail-meta">services</span>
-                <h3><span class="tech docker">docker</span> / portainer / paperless-ngx</h3>
-              </div>
-              <div>
-                <p>Containerized services are part of the home lab, especially where deployment, updates and recovery matter more than novelty.</p>
-                <ul class="context-list">
-                  <li><span class="tech docker">Docker</span> and Portainer for service operation</li>
-                  <li><span class="tech paperless">Paperless-ngx</span> as a real document workflow service</li>
-                  <li>Node-RED for low-friction automation flows</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="context-row">
-              <div>
-                <span class="detail-meta">monitoring</span>
-                <h3><span class="tech grafana">grafana</span> / <span class="tech influx">influxdb-1.8</span> / signal</h3>
-              </div>
-              <div>
-                <p>Monitoring turns the lab from "probably running" into something that can be checked, debugged and improved.</p>
-                <ul class="context-list">
-                  <li><span class="tech grafana">Grafana</span> dashboards for visibility</li>
-                  <li><span class="tech influx">InfluxDB 1.8</span> for time-series storage in existing setups</li>
-                  <li>service checks and logs used as the truth source during troubleshooting</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="context-row dark-row">
-              <div>
-                <span class="detail-meta">deployed systems</span>
-                <h3>raspberry-pi-fleet / physical-lab</h3>
-              </div>
-              <div>
-                <p>Three Raspberry Pi systems provide the grounding layer: a mixed-service Pi 4, a watering automation Pi 3 and a public camera Pi Zero W.</p>
-                <ul class="context-list">
-                  <li>Pi 4: camera controller, file services, Paperless-ngx, Portainer, Node-RED, Grafana and InfluxDB</li>
-                  <li>Pi 3: DHT22/hygrometer-based watering automation</li>
-                  <li>Pi Zero W: lightweight public surveillance camera exercise</li>
-                </ul>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>Dennis Kappel - skills grounded in deployed systems</span>
-      <span class="footer-agent">
-        <span class="note-label">Operational note</span>
-        <p>A skill list is more useful when it shows where the tool survives contact with real services.</p>
-      </span>
-      <span class="footer-contact"><a href="mailto:denniskappel@gmx.net">Email</a> / <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub</a></span>
-    </footer>
-  </div>
+  <main>
+    <h1>Skills assessment moved</h1>
+    <p>Read the <a href="/skills.html">current skills matrix (English)</a> or <a href="/de/skills.html">die deutsche Selbsteinschätzung</a>.</p>
+  </main>
 </body>
 </html>
