@@ -61,6 +61,29 @@ class AlternateSkillsThemeTests(unittest.TestCase):
                 with self.subTest(page=editorial, skill=skill):
                     self.assertEqual(a[skill], b[skill])
 
+    def test_professional_context_precedes_skill_list(self):
+        for path, labels in (
+            ("skills.html", ("Professional IT operations", "Private infrastructure lab")),
+            ("de/skills.html", ("Beruflicher IT-Betrieb", "Privates Infrastruktur-Lab")),
+        ):
+            with self.subTest(page=path):
+                page = (ROOT / path).read_text(encoding="utf-8")
+                self.assertIn('class="experience-panel"', page)
+                self.assertNotIn('class="index-panel"', page)
+                self.assertIn('class="context-link"', page)
+                for label in labels:
+                    self.assertIn(label, page)
+                self.assertLess(page.index('class="experience-panel"'),
+                                page.index('<section class="skill-group"'))
+                self.assertLess(page.index('<section class="skill-group"'),
+                                page.index('<details class="methodology">'))
+        for tech in ("skills-tech.html", "de/skills-tech.html"):
+            with self.subTest(page=tech):
+                page = (ROOT / tech).read_text(encoding="utf-8")
+                self.assertIn('class="index-panel"', page)
+                self.assertLess(page.index('<details class="methodology">'),
+                                page.index('<section class="skill-group"'))
+
     def test_former_previews_redirect_to_canonical_urls(self):
         for path, target in (
             ("skills-professional.html", "/skills.html"),

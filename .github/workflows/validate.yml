@@ -7,6 +7,8 @@ on:
       - 'skills.html'
       - 'skills.css'
       - 'skills-professional.css'
+      - 'field-notes.html'
+      - 'field-notes.css'
       - 'skills-professional.html'
       - 'skills-tech.html'
       - 'templates/**'
@@ -18,6 +20,8 @@ on:
       - 'assets/**'
       - 'styles.css'
       - 'script.js'
+      - 'field-notes.html'
+      - 'field-notes.css'
       - '.github/workflows/validate.yml'
   push:
     branches: [main]
@@ -34,6 +38,8 @@ on:
       - 'assets/**'
       - 'styles.css'
       - 'script.js'
+      - 'field-notes.html'
+      - 'field-notes.css'
       - '.github/workflows/validate.yml'
   workflow_dispatch:
 
@@ -61,6 +67,9 @@ jobs:
           test -s skills-tech.html
           test -s de/skills-professional.html
           test -s de/skills-tech.html
+          test -s field-notes.html
+          test -s de/field-notes.html
+          test -s field-notes.css
           test -s data/skills.json
           test -s scripts/render_skills.py
           test -s de/skills.html
@@ -74,7 +83,7 @@ jobs:
           import re
 
           root = Path('.')
-          pages = [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html', root/'skills-professional.html', root/'de/skills-professional.html', root/'skills-tech.html', root/'de/skills-tech.html']
+          pages = [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html', root/'skills-professional.html', root/'de/skills-professional.html', root/'skills-tech.html', root/'de/skills-tech.html', root/'field-notes.html', root/'de/field-notes.html']
           for page in pages:
               text = page.read_text()
               if '<html' not in text or '</html>' not in text:

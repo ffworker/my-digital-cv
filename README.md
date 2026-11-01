@@ -14,13 +14,14 @@ This is the human-readable side of my portfolio: current professional IT work, t
 - `/de/skills.html` — public German **Editorial** skills page (canonical)
 - `/skills-tech.html` — English original dark Console **Tech View** (noindex)
 - `/de/skills-tech.html` — German original Console **Tech View** (noindex)
+- `/field-notes.html` and `/de/field-notes.html` — **unlisted, noindex editorial previews** for future real-work case studies; no incidents published
 - `/skills-professional.html` and `/de/skills-professional.html` — redirects from the earlier preview to the canonical pages
 
 ## Skills philosophy
 
 The skills page separates what I can do myself, where I use documentation/search/AI, and how confident I would be making that kind of change on a real system.
 
-AI is useful in my workflow, but generated output is not treated as competence by itself. If I cannot explain and verify a change, it belongs in a lab or sandbox first.
+**AI is not used in my day-to-day live IT operations at work.** I only use it occasionally in isolated test/development environments to speed up drafts of small scripts or automations, with personal review and testing. My private homelab is separate and includes AI-assisted experiments; no generated output is treated as a production decision or proof of skill.
 
 ## Updating the bilingual skills matrix
 
@@ -35,7 +36,7 @@ python scripts/render_skills.py --check
 python -m unittest discover -s tests -v
 ```
 
-The public `skills.html` / `de/skills.html` routes now use the **Editorial** style (`skills-professional.css`), while the dark Console pages remain available at `skills-tech.html` / `de/skills-tech.html` (`skills.css`). The editor and both views use only `data/skills.json` as the source of truth; `scripts/render_skills.py` generates **all four** views and the two legacy preview redirects. The Tech View is `noindex`, with a canonical link to the Editorial page. This is only a source-code route change; cluster deployment is a separately authorized revision pin in `homelab-talos`. To compare locally, run `python -m http.server 8765 --bind 127.0.0.1` and open the Editorial and Tech View URLs. Do not edit generated HTML by hand.
+The Editorial hero now distinguishes **professional Windows/VDI/Microsoft 365 operations** from **private Linux/Proxmox/Kubernetes learning and automation**. This is presentation copy grounded in the existing CV, not a new certification or skill assessment. The methodology appears after the skills, and the original Tech View retains its old index and ordering.\n\nThe public `skills.html` / `de/skills.html` routes now use the **Editorial** style (`skills-professional.css`), while the dark Console pages remain available at `skills-tech.html` / `de/skills-tech.html` (`skills.css`). The editor and both views use only `data/skills.json` as the source of truth; `scripts/render_skills.py` generates **all four** views and the two legacy preview redirects. The Tech View is `noindex`, with a canonical link to the Editorial page. This is only a source-code route change; cluster deployment is a separately authorized revision pin in `homelab-talos`. To compare locally, run `python -m http.server 8765 --bind 127.0.0.1` and open the Editorial and Tech View URLs. Do not edit generated HTML by hand.
 
 `templates/skills*.html` defines the shared native `<details>/<summary>`
 cards. `skills.css` provides the compact dark console styling inspired by the
@@ -63,6 +64,10 @@ General infrastructure configuration remains private in `ffworker/infra-configs`
 The bilingual skills page now distinguishes a concrete **scenario/source reference** from a publicly captured runtime result. A source file or CI workflow definition is evidence of implementation, not proof that a deployment, restore, or test succeeded. Where evidence is private or absent, the skill card says so instead of linking to a repository homepage.
 
 See the [skill evidence register](Documentations/skill-evidence-register.md) for scenario scope, evidence grade, missing proof and a reusable capture checklist. Self-ratings remain subjective; no score is automatically raised when a link is added. Both locales must reference the same concrete artifacts.
+
+## Field Notes (unlisted preview)
+
+The bilingual static pages `field-notes.html` and `de/field-notes.html` form the starting point for a carefully anonymised "diary of an IT administrator". The main EN/DE CV now includes a compact, deliberately non-identifying **Field Notes teaser** linking to those standalone blog-style previews. Both previews stay **`noindex` and absent from the sitemap**. There are no real case reports yet. Publishing even anonymised workplace/security incidents requires a separate factual, confidentiality and employer-approval review; the public repository must never contain an unreviewed draft or operational details. See [Field Notes publication standard](Documentations/field-notes-publication-policy.md).
 
 ## Validation and current deployment
 

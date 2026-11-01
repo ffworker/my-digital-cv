@@ -1149,6 +1149,75 @@
         transform: none !important;
       }
     }
+    /* Field Notes is a restrained portfolio teaser, not an incident report. */
+    .field-notes-teaser {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(180px, .7fr);
+      align-items: center;
+      gap: clamp(22px, 5vw, 70px);
+      margin: clamp(25px, 5vw, 70px) clamp(18px, 6vw, 84px);
+      padding: clamp(26px, 4vw, 46px);
+      border: 1px solid var(--line);
+      background: #eff3ed;
+      border-radius: 12px;
+    }
+    .field-notes-kicker {
+      color: #127654;
+      font: 800 11px/1.4 var(--mono);
+      letter-spacing: .09em;
+      margin: 0 0 12px;
+    }
+    .field-notes-teaser h2 {
+      color: #17271f;
+      font: 700 clamp(24px, 2.8vw, 36px)/1.17 var(--ui);
+      letter-spacing: -.035em;
+      margin: 0 0 15px;
+    }
+    .field-notes-teaser p:not(.field-notes-kicker) {
+      max-width: 680px;
+      font: 15px/1.7 var(--ui);
+      color: #405149;
+      margin: 0 0 20px;
+    }
+    .field-notes-cta {
+      display: inline-block;
+      border-radius: 6px;
+      background: #155b45;
+      padding: 10px 15px;
+      color: #fff;
+      font: 700 13px/1.4 var(--ui);
+      text-decoration: none;
+    }
+    .field-notes-cta:hover {background: #0d3e2f;}
+    .field-notes-cta:focus-visible {outline: 3px solid #155b45; outline-offset: 3px;}
+    .field-notes-meta {
+      display: block;
+      font: 11px/1.5 var(--ui);
+      color: #53665b;
+      margin-top: 12px;
+    }
+    .field-notes-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-left: 27px;
+      border-left: 1px solid #bfd3c5;
+      font: 800 clamp(29px, 5vw, 58px)/.99 var(--ui);
+      color: #adc8b8;
+      letter-spacing: -.065em;
+      user-select: none;
+    }
+    .field-notes-mark small {
+      font: 600 9px/1.8 var(--mono);
+      color: #577c6a;
+      letter-spacing: .04em;
+      margin-top: 14px;
+    }
+    @media (max-width: 730px) {
+      .field-notes-teaser {grid-template-columns: 1fr;gap: 18px;margin-inline: 14px;padding: 25px 20px;}
+      .field-notes-mark {border-left: 0;border-top: 1px solid #bfd3c5;padding: 12px 0 0;font-size: 25px;flex-direction: row;align-items:center;gap: 7px;}
+      .field-notes-mark small {display: none;}
+    }
   </style>
 </head>
 <body>
@@ -1240,7 +1309,7 @@
                     <li>UAG- und Connection-Server-Setup sowie laufende Pflege</li>
                     <li>Golden Images, Snapshots und Image-Lifecycle-Arbeit</li>
                     <li><span class="tech veeam">Veeam</span>-gestützte Backup-Pfade für die umliegende Infrastruktur</li>
-                    <li>aufgebaut, bevor KI Teil meines täglichen Workflows wurde; heute leichter mit KI zu prüfen und zu dokumentieren</li>
+                    <li>im beruflichen IT-Betrieb aufgebaut und betreut – ohne KI-Einsatz im laufenden Produktivbetrieb</li>
                   </ul>
                 </div>
               </section>
@@ -1348,10 +1417,10 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">verantwortung</span>
-                  <h3>ki-unterstützt / menschlich-validiert</h3>
+                  <h3>privates Lab / KI-unterstützte Experimente</h3>
                 </div>
                 <div>
-                  <p>KI beschleunigt Entwürfe und Umsetzung. Ich liefere Kontext, prüfe Änderungen und validiere sie gegen die laufenden Lab-Systeme.</p>
+                  <p>In meinem privaten Lab nutze ich gelegentlich KI, um Skripte und kleine Automatisierungen vorzubereiten. Ich prüfe und teste die Ergebnisse selbst. Im täglichen produktiven IT-Betrieb nutze ich keine KI.</p>
                 </div>
               </section>
               <section class="context-row cluster-peek" data-cluster-peek>
@@ -1394,12 +1463,22 @@
         </article>
       </div>
     </section>
+    <aside class="field-notes-teaser" aria-labelledby="field-notes-heading">
+      <div class="field-notes-copy">
+        <p class="field-notes-kicker">BETRIEBSNOTIZEN · AUS DEM IT-ALLTAG</p>
+        <h2 id="field-notes-heading">Nicht jede Geschichte passt in ein Ticket.</h2>
+        <p>Ungewöhnliche Situationen im IT-Betrieb lehren manchmal mehr als hundert Routinetage. Einige Erfahrungen werden vielleicht einmal sorgfältig geprüfte Betriebsnotizen. Und was sich nicht öffentlich erzählen lässt? Darüber spricht man besser persönlich. <span aria-hidden="true">😉</span></p>
+        <a class="field-notes-cta" href="/de/field-notes.html">Betriebsnotizen entdecken <span aria-hidden="true">↗</span></a>
+        <span class="field-notes-meta">Keine Arbeitgebervorfälle oder vertraulichen Details veröffentlicht.</span>
+      </div>
+      <div class="field-notes-mark" aria-hidden="true"><span>FIELD</span><span>NOTES</span><small>IT / BETRIEB / ERFAHRUNG</small></div>
+    </aside>
   </main>
 
   <footer id="contact">
     <span>Dennis Kappel - Systemadministrator mit privaten Infrastrukturprojekten</span>
     <span class="footer-agent">
-      <span class="note-label">Von Dennis’ täglichem KI-Agenten</span>
+      <span class="note-label">Von meinem privaten Lab-Assistenten</span>
       <p>Ich kenne mehr Befehle. Dennis weiß, welche Maschine gemeint war. Die Logs entscheiden, wer von uns das Problem falsch verstanden hat.</p>
     </span>
     <span class="footer-contact"><a href="mailto:denniskappel@gmx.net">E-Mail</a> / <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub</a></span>

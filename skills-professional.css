@@ -118,3 +118,20 @@ h1 {font-weight:720;font-size:clamp(35px,4.7vw,56px);letter-spacing:-.055em;line
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after {scroll-behavior:auto!important;transition:none!important}
 }
+
+/* Recruiter-first presentation: foreground real work, not skill counters. */
+.hero-layout{grid-template-columns:minmax(0,1.45fr) minmax(265px,.75fr);align-items:center;gap:36px}
+h1{font-size:clamp(32px,4vw,48px);max-width:720px}
+.intro{font-size:15px;line-height:1.75}
+.experience-panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 23px}
+.context-kicker{margin:0 0 9px;color:var(--accent);font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:750}
+.context-item{padding:12px 0}
+.context-item + .context-item{border-top:1px solid var(--line)}
+.context-item strong{font-weight:700;font-size:13px;color:var(--ink)}
+.context-item p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.context-link{display:inline-block;margin-top:10px;font-weight:650;font-size:12px}
+.methodology{margin:41px 0 20px}
+@media(max-width:850px){
+  .hero-layout{grid-template-columns:1fr;gap:20px}
+  .experience-panel{padding:17px}
+}
