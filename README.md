@@ -12,6 +12,8 @@ This is the human-readable side of my portfolio: current professional IT work, t
 - `/de/` — German CV
 - `/skills.html` — detailed, self-assessed technical depth
 - `/de/skills.html` — German self-assessment
+- `/skills-professional.html` — English editorial layout preview (noindex)
+- `/de/skills-professional.html` — German editorial layout preview (noindex)
 
 ## Skills philosophy
 
@@ -31,6 +33,8 @@ python scripts/render_skills.py
 python scripts/render_skills.py --check
 python -m unittest discover -s tests -v
 ```
+
+The **optional editorial pages** are also generated from the exact same `data/skills.json` by `scripts/render_skills.py`. They use `skills-professional.css` and are deliberately `noindex` with a canonical link to the original route. The console style and canonical `skills.html` / `de/skills.html` remain unchanged as a quick fallback; no theme switch or live deployment is forced. Do not edit generated editorial HTML by hand. To compare locally, serve the repo with `python -m http.server 8765 --bind 127.0.0.1` and open the original and alternative paths side by side.
 
 `templates/skills*.html` defines the shared native `<details>/<summary>`
 cards. `skills.css` provides the compact dark console styling inspired by the
@@ -88,4 +92,4 @@ python -m unittest discover -s tests -v
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Preview `/`, `/de/index.html`, `/skills.html` and `/de/skills.html`. The optional cluster peek requests `/lab-health.json`; the static preview has no telemetry backend and must show an unavailable state rather than invented live results.
+Preview `/`, `/de/index.html`, `/skills.html`, `/de/skills.html`, `/skills-professional.html` and `/de/skills-professional.html`. The optional cluster peek requests `/lab-health.json`; the static preview has no telemetry backend and must show an unavailable state rather than invented live results.
