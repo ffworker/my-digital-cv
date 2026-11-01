@@ -14,13 +14,14 @@ This is the human-readable side of my portfolio: current professional IT work, t
 - `/de/skills.html` — public German **Editorial** skills page (canonical)
 - `/skills-tech.html` — English original dark Console **Tech View** (noindex)
 - `/de/skills-tech.html` — German original Console **Tech View** (noindex)
+- `/field-notes.html` and `/de/field-notes.html` — **unlisted, noindex editorial previews** for future real-work case studies; no incidents published
 - `/skills-professional.html` and `/de/skills-professional.html` — redirects from the earlier preview to the canonical pages
 
 ## Skills philosophy
 
 The skills page separates what I can do myself, where I use documentation/search/AI, and how confident I would be making that kind of change on a real system.
 
-AI is useful in my workflow, but generated output is not treated as competence by itself. If I cannot explain and verify a change, it belongs in a lab or sandbox first.
+**AI is not used in my day-to-day live IT operations at work.** I only use it occasionally in isolated test/development environments to speed up drafts of small scripts or automations, with personal review and testing. My private homelab is separate and includes AI-assisted experiments; no generated output is treated as a production decision or proof of skill.
 
 ## Updating the bilingual skills matrix
 
@@ -63,6 +64,10 @@ General infrastructure configuration remains private in `ffworker/infra-configs`
 The bilingual skills page now distinguishes a concrete **scenario/source reference** from a publicly captured runtime result. A source file or CI workflow definition is evidence of implementation, not proof that a deployment, restore, or test succeeded. Where evidence is private or absent, the skill card says so instead of linking to a repository homepage.
 
 See the [skill evidence register](Documentations/skill-evidence-register.md) for scenario scope, evidence grade, missing proof and a reusable capture checklist. Self-ratings remain subjective; no score is automatically raised when a link is added. Both locales must reference the same concrete artifacts.
+
+## Field Notes (unlisted preview)
+
+The bilingual static pages `field-notes.html` and `de/field-notes.html` form the starting point for a carefully anonymised "diary of an IT administrator". They are deliberately **not linked from the public CV navigation or sitemap**, and use `noindex`. There are no real case reports yet. Publishing even anonymised workplace/security incidents requires a separate factual, confidentiality and employer-approval review; the public repository must never contain an unreviewed draft or operational details. See [Field Notes publication standard](Documentations/field-notes-publication-policy.md).
 
 ## Validation and current deployment
 
