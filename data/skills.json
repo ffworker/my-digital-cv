@@ -153,7 +153,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">comfortable basics</span></div>",
               "assist": "Comfortable with normal workflows; docs/search for less common Git and Actions behavior.",
               "production": "Review-first for workflow/deployment changes.",
-              "evidence": "<strong>Scenario:</strong> CV CI checks EN/DE generated-page drift, assets and regression tests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Assertions ↗</a><br><small>Validation logic present; not proof of a particular successful run or live deploy.</small>",
+              "evidence": "<strong>Scenario:</strong> CV CI checks EN/DE generated-page drift, assets and regression tests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Assertions ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions/runs/41345106566\" target=\"_blank\" rel=\"noopener noreferrer\">CI run #41345106566: success ↗</a><br><small>This run confirms CV source validation, not Talos live promotion.</small>",
               "rating_kind": "range",
               "id": "git-github-actions",
               "domain": "automation"
@@ -347,7 +347,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">solide Grundlagen</span></div>",
               "assist": "Mit normalen Workflows sicher; Doku/Suche für seltenere Git- und Actions-Themen.",
               "production": "Bei Workflow-/Deployment-Änderungen Review zuerst.",
-              "evidence": "<strong>Szenario:</strong> CV-CI prüft EN/DE-Generierungsstand, Assets und Regressionstests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Tests ↗</a><br><small>Prüflogik vorhanden; kein Beleg für konkreten erfolgreichen Run oder Live-Deploy.</small>",
+              "evidence": "<strong>Szenario:</strong> CV-CI prüft EN/DE-Generierungsstand, Assets und Regressionstests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Tests ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions/runs/41345106566\" target=\"_blank\" rel=\"noopener noreferrer\">CI-Run #41345106566: erfolgreich ↗</a><br><small>Dieser Run bestätigt CV-Quellchecks, nicht die Talos-Live-Promotion.</small>",
               "rating_kind": "range",
               "id": "git-github-actions",
               "domain": "automation"
