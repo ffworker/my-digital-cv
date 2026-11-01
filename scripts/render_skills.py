@@ -117,15 +117,39 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
 
 
 def render_editorial_variant(content: str, locale: dict) -> str:
-    """Canonical editorial skills view; shares content and evidence with Tech View."""
+    """Recruiter-first Editorial page; the skill cards and scores stay unchanged."""
     lang = locale["lang"]
     technical_path = "/skills-tech.html" if lang == "en" else "/de/skills-tech.html"
     if lang == "en":
-        eyebrow, heading = "PROFESSIONAL OVERVIEW", "Skills & practical experience"
+        eyebrow = "PROFESSIONAL PROFILE"
+        heading = "Practical IT operations & infrastructure skills"
+        intro = (
+            "At work, I support Windows infrastructure, Omnissa Horizon/VDI and "
+            "Microsoft 365/Exchange. In my private lab, I build and troubleshoot "
+            "Linux, virtualization, networking and automation. These skills "
+            "distinguish hands-on practice from public evidence and open tests."
+        )
         view_label, technical_label = "View", "Tech View"
+        context_label = "Two contexts"
+        professional_label, private_label = "Professional IT operations", "Private infrastructure lab"
+        professional_detail = "Windows infrastructure · Omnissa Horizon / VDI · Microsoft 365 / Exchange"
+        private_detail = "Linux · Proxmox · Kubernetes / Talos · automation"
+        career_label, career_url = "Read professional experience", "/#professional"
     else:
-        eyebrow, heading = "KOMPETENZPROFIL", "Kompetenzen & praktische Erfahrung"
+        eyebrow = "BERUFLICHES PROFIL"
+        heading = "IT-Betrieb & technische Kompetenzen"
+        intro = (
+            "Beruflich betreue ich Windows-Infrastruktur, Omnissa Horizon/VDI und "
+            "Microsoft 365/Exchange. In meinem privaten Lab arbeite ich mit "
+            "Linux, Virtualisierung, Netzwerken und Automatisierung. Die "
+            "Kompetenzen unterscheiden Praxis, öffentliche Nachweise und offene Tests."
+        )
         view_label, technical_label = "Ansicht", "Tech View"
+        context_label = "Zwei Bereiche"
+        professional_label, private_label = "Beruflicher IT-Betrieb", "Privates Infrastruktur-Lab"
+        professional_detail = "Windows-Infrastruktur · Omnissa Horizon / VDI · Microsoft 365 / Exchange"
+        private_detail = "Linux · Proxmox · Kubernetes / Talos · Automatisierung"
+        career_label, career_url = "Berufliche Erfahrung ansehen", "/de/index.html#professional"
 
     content = content.replace(
         '<link rel="stylesheet" href="/skills.css" />',
@@ -137,6 +161,33 @@ def render_editorial_variant(content: str, locale: dict) -> str:
                               f'<p class="eyebrow">{eyebrow}</p>', 1)
     content = content.replace(f'<h1 id="skills-title">{locale["headline"]}</h1>',
                               f'<h1 id="skills-title">{heading}</h1>', 1)
+    content = content.replace(f'<p class="intro">{locale["intro"]}</p>',
+                              f'<p class="intro">{intro}</p>', 1)
+
+    # Replace résumé-irrelevant numeric counters with two clear work contexts.
+    context = (
+        '<aside class="experience-panel" aria-label="' + context_label + '">'
+        '<p class="context-kicker">' + context_label + '</p>'
+        '<div class="context-item"><strong>' + professional_label + '</strong>'
+        '<p>' + professional_detail + '</p></div>'
+        '<div class="context-item"><strong>' + private_label + '</strong>'
+        '<p>' + private_detail + '</p></div>'
+        f'<a class="context-link" href="{career_url}">{career_label} →</a>'
+        '</aside>\n'
+    )
+    panel_start = content.index('<div class="index-panel"')
+    panel_end = content.index('      </div>\n    </section>', panel_start)
+    content = content[:panel_start] + context + content[panel_end:]
+
+    # Show the skills immediately after the intro. Methodology remains available,
+    # but no longer takes precedence over hands-on experience and evidence.
+    method_start = content.index('    <details class="methodology">')
+    method_end = content.index('    </details>\n', method_start) + len('    </details>\n')
+    method_html = content[method_start:method_end]
+    content = content[:method_start] + content[method_end:]
+    footer_start = content.index('    <footer class="footer-note">')
+    content = content[:footer_start] + method_html + content[footer_start:]
+
     switch = (
         '<nav class="theme-switch" aria-label="Skills view">'
         f'<span class="theme-label">{view_label}</span>'
