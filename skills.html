@@ -76,7 +76,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> prepare Rocky nodes (services, sysctl, containerd). <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md" target="_blank" rel="noopener noreferrer">Manual procedure ↗</a><br><small>Documented manual reference; does not prove the full self-rating.</small></div>
         </div>
         <p class="rating-context">very strong</p>
       </div>
@@ -105,7 +105,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Lab topology ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> isolated Proxmox SDN/VNet with SNAT. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn" target="_blank" rel="noopener noreferrer">Topology and steps ↗</a><br><small>Documented reference network; wider routing/VPN expertise not established by this alone.</small></div>
         </div>
         <p class="rating-context">strong</p>
       </div>
@@ -134,7 +134,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value">Operational configs are partly private by design.</div>
+          <div class="detail-value"><strong>Scenario:</strong> non-root Signaturee Linux test container with read-only root, dropped capabilities and resource limits. <a class="evidence" href="https://github.com/ffworker/signaturee-linux/blob/main/compose.yaml" target="_blank" rel="noopener noreferrer">Compose definition ↗</a><br><small>Implementation evidence; no recorded successful container run.</small></div>
         </div>
         <p class="rating-context">very strong</p>
       </div>
@@ -163,7 +163,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/cka-lab" target="_blank" rel="noopener noreferrer">CKA practice ↗</a><br>Talos operational configuration and migration evidence remain private.</div>
+          <div class="detail-value"><strong>Scenario:</strong> broken Service selector; validator requires two ready EndpointSlice backends. <a class="evidence" href="https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json" target="_blank" rel="noopener noreferrer">Mission ↗</a> · <a class="evidence" href="https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh" target="_blank" rel="noopener noreferrer">Validator ↗</a><br><small>Executable scenario in source, not a public live-run record. Talos operations remain private.</small></div>
         </div>
         <p class="rating-context">learning in practice</p>
       </div>
@@ -192,7 +192,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Proxmox Lab ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> CKA VM teardown checks exact Terraform state, reserved IDs and live ownership tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Fail-closed guards ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary" target="_blank" rel="noopener noreferrer">Ownership contract ↗</a><br><small>Implemented and statically checked; no verified live teardown run published.</small></div>
         </div>
         <p class="rating-context">confident</p>
       </div>
@@ -221,7 +221,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">IaC source ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> exactly two disposable Proxmox VMs with fixed IDs, pool and tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf" target="_blank" rel="noopener noreferrer">Resources ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml" target="_blank" rel="noopener noreferrer">Static CI checks ↗</a><br><small>Defined resources and validation pipeline; no confirmed fresh apply/destroy result.</small></div>
         </div>
         <p class="rating-context">Limited hands-on, AI-guided</p>
       </div>
@@ -250,7 +250,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Ansible source ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> check Ready nodes, anti-affinity nginx replicas and in-cluster DNS/HTTP. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml" target="_blank" rel="noopener noreferrer">Acceptance playbook ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation" target="_blank" rel="noopener noreferrer">Manual test report ↗</a><br><small>Manual reference tests documented; automated clean rebuild not yet proven.</small></div>
         </div>
         <p class="rating-context">Limited hands-on, AI-guided</p>
       </div>
@@ -279,7 +279,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value">Private operational infrastructure.</div>
+          <div class="detail-value"><strong>Evidence gap:</strong> private operations; no sanitized migration or ACL test with measured results published.</div>
         </div>
         <p class="rating-context">very strong</p>
       </div>
@@ -308,7 +308,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value">Used actively in private infrastructure.</div>
+          <div class="detail-value"><strong>Evidence gap:</strong> private exports and mounts; no public failure/recovery transcript yet.</div>
         </div>
         <p class="rating-context">working knowledge</p>
       </div>
@@ -337,7 +337,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Docs evidence ↗</a></div>
+          <div class="detail-value"><strong>Evidence gap:</strong> no published alert-to-recovery test or measured monitoring result yet.</div>
         </div>
         <p class="rating-context">basic practical use</p>
       </div>
@@ -366,7 +366,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/bytegeist-docs" target="_blank" rel="noopener noreferrer">Deployment docs ↗</a></div>
+          <div class="detail-value"><strong>Evidence gap:</strong> private deployment is not a published connectivity/failover test.</div>
         </div>
         <p class="rating-context">very strong</p>
       </div>
@@ -403,7 +403,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/my-digital-cv/actions" target="_blank" rel="noopener noreferrer">This site's Actions ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> CV CI checks EN/DE generated-page drift, assets and regression tests. <a class="evidence" href="https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml" target="_blank" rel="noopener noreferrer">Workflow ↗</a> · <a class="evidence" href="https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py" target="_blank" rel="noopener noreferrer">Assertions ↗</a><br><small>Validation logic present; not proof of a particular successful run or live deploy.</small></div>
         </div>
         <p class="rating-context">comfortable basics</p>
       </div>
@@ -432,7 +432,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
-          <div class="detail-value"><a class="evidence" href="https://github.com/ffworker/proxmox-lab" target="_blank" rel="noopener noreferrer">Public examples ↗</a></div>
+          <div class="detail-value"><strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small></div>
         </div>
         <p class="rating-context">very strong</p>
       </div>
