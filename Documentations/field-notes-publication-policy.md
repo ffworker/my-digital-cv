@@ -1,6 +1,6 @@
 # Field Notes: publication standard (editorial workflow, not a case report)
 
-The public /field-notes.html and /de/field-notes.html pages are deliberately **unlisted, noindex previews** until a first approved case study exists. They contain **no real incident details**, customer data or production artifacts.
+The /field-notes.html and /de/field-notes.html pages are linked from a tasteful bilingual CV teaser, but deliberately remain **noindex editorial previews** until a first approved case study exists. They contain **no real incident details**, customer data or production artifacts.
 
 ## Purpose
 
@@ -34,4 +34,4 @@ Do not commit source notes containing confidential facts, even on an unmerged br
 
 ## Launch rule
 
-The visible CV navigation and sitemap should **not** advertise Field Notes while there are no approved posts. Keep the bilingual teaser route `noindex`. Once the first verified case exists, add links from both CV locales, update sitemap, and change indexing policy in a **separate** deliberate change.
+The CV may link to the concept through a small non-identifying teaser, but the blog page remains **noindex** and absent from sitemap until a first fully reviewed article exists. The teaser must not claim that a real case report is published and must not identify any security incident. Once a verified case is approved, update indexing and sitemap in a separate deliberate change.
