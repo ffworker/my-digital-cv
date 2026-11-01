@@ -11,7 +11,7 @@
       "eyebrow": "self-assessed / infrastructure / operations",
       "headline": "Technical skills. No hype.",
       "intro": "A quick view of my working strengths, current limits and where I use AI. Select any skill to inspect how I work, what I would trust in production and the evidence behind it.",
-      "note": "<strong>How I use AI:</strong> mostly as a speed multiplier, second opinion, or a way to find reasoning gaps faster. Where I depend on it heavily, I say so. If I cannot explain and verify a change, it belongs in the lab first.",
+      "note": "<strong>AI in my workflow:</strong> I do not use AI in day-to-day live IT operations. I occasionally use it in separate test/development environments to save time when drafting small scripts or automations. Before considering any operational use, I understand, review and test the result myself. My private lab is a separate learning environment with more AI experimentation.",
       "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class=\"eyebrow\">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class=\"eyebrow\">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article>",
       "sections": [
         {
@@ -38,7 +38,7 @@
             {
               "skill": "<strong>Networking</strong><span>Routing, NAT, DNS, firewalling, private access and VPN paths.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">strong</span></div>",
-              "assist": "Very comfortable with the networks I actually run; docs/AI mainly for edge cases and design checks.",
+              "assist": "In my private networks I work confidently; for unusual lab design checks I sometimes use documentation or AI, never as an operational decision-maker.",
               "production": "Independent on familiar topologies; review-first for more complex VLAN/switching designs.",
               "evidence": "<strong>Scenario:</strong> isolated Proxmox SDN/VNet with SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topology and steps ↗</a><br><small>Documented reference network; wider routing/VPN expertise not established by this alone.</small>",
               "rating_kind": "score",
@@ -58,7 +58,7 @@
             {
               "skill": "<strong>Kubernetes / Talos Linux</strong><span>Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">learning in practice</span></div>",
-              "assist": "Active lab practice with Kustomize, SOPS/age, service migration and data-restore checks. Setup and many changes remain heavily AI-assisted; I check the result on the running systems.",
+              "assist": "Hands-on practice in my private lab with Kustomize, SOPS/age, service migration and restore checks. Some experimental setup is AI-assisted; I review changes and verify them on my own lab systems.",
               "production": "Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.",
               "evidence": "<strong>Scenario:</strong> broken Service selector; validator requires two ready EndpointSlice backends. <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json\" target=\"_blank\" rel=\"noopener noreferrer\">Mission ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Validator ↗</a><br><small>Executable scenario in source, not a public live-run record. Talos operations remain private.</small>",
               "rating_kind": "score",
@@ -68,7 +68,7 @@
             {
               "skill": "<strong>Proxmox VE</strong><span>VM lifecycle, templates, networking, lab systems and virtualization concepts.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">confident</span></div>",
-              "assist": "Strong virtualization understanding; I can operate Proxmox without AI while product-specific depth is still growing.",
+              "assist": "I can run the private Proxmox lab independently; I use documentation for product-specific edge cases.",
               "production": "Independent for normal VM/lab work; review complex storage/network changes.",
               "evidence": "<strong>Scenario:</strong> CKA VM teardown checks exact Terraform state, reserved IDs and live ownership tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed guards ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership contract ↗</a><br><small>Implemented and statically checked; no verified live teardown run published.</small>",
               "rating_kind": "score",
@@ -78,7 +78,7 @@
             {
               "skill": "<strong>Terraform / OpenTofu</strong><span>Used for infrastructure definitions in my lab.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
-              "assist": "I work with it while AI currently guides most authoring. I inspect the configuration and plan, run it, and validate the result rather than treating generated code as independent skill.",
+              "assist": "In my private lab, AI currently supports much of the initial authoring. I review definitions and plans, then test the result rather than presenting generated code as independent mastery.",
               "production": "Lab only / sandbox-first.",
               "evidence": "<strong>Scenario:</strong> exactly two disposable Proxmox VMs with fixed IDs, pool and tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Resources ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Static CI checks ↗</a><br><small>Defined resources and validation pipeline; no confirmed fresh apply/destroy result.</small>",
               "rating_kind": "unrated",
@@ -88,7 +88,7 @@
             {
               "skill": "<strong>Ansible</strong><span>Inventories, roles, bootstrap and configuration concepts used in lab work.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
-              "assist": "I have worked with and use Ansible, but AI still guides most implementation. I review what it produces and validate the run instead of claiming independent authoring.",
+              "assist": "In the private lab I use Ansible and learn through checked experiments. AI may help draft test playbooks; I review each change and test its outcome.",
               "production": "Sandbox-first; no blind production runs.",
               "evidence": "<strong>Scenario:</strong> check Ready nodes, anti-affinity nginx replicas and in-cluster DNS/HTTP. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Acceptance playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manual test report ↗</a><br><small>Manual reference tests documented; automated clean rebuild not yet proven.</small>",
               "rating_kind": "unrated",
@@ -98,7 +98,7 @@
             {
               "skill": "<strong>SMB / NAS</strong><span>Shares, permissions, migrations and practical storage administration.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
-              "assist": "Mostly independent; little AI needed for normal administration.",
+              "assist": "Independent in familiar administration tasks; for unusual cases I refer to documentation.",
               "production": "Independent with normal change/backup discipline.",
               "evidence": "<strong>Evidence gap:</strong> private operations; no sanitized migration or ACL test with measured results published.",
               "rating_kind": "score",
@@ -118,7 +118,7 @@
             {
               "skill": "<strong>Prometheus / Grafana</strong><span>Basic setup, dashboards, exporters, probes and troubleshooting.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">basic practical use</span></div>",
-              "assist": "I can set up the basics manually; for deeper tuning I am still learning and experimenting with AI assistance.",
+              "assist": "I can build the fundamentals manually; for advanced lab tuning I continue learning with documentation and occasional AI-assisted experiments.",
               "production": "Review-first / sandbox-first for larger changes.",
               "evidence": "<strong>Evidence gap:</strong> no published alert-to-recovery test or measured monitoring result yet.",
               "rating_kind": "score",
@@ -128,7 +128,7 @@
             {
               "skill": "<strong>NetBird / VPN / private networking</strong><span>Peers, routes, access rules and private administration paths.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
-              "assist": "I can build routing and rules myself; AI mainly accelerates reasoning or catches logic holes.",
+              "assist": "I configure my own lab routes and rules; documentation and isolated tests help check unfamiliar cases.",
               "production": "Independent for familiar deployments.",
               "evidence": "<strong>Evidence gap:</strong> private deployment is not a published connectivity/failover test.",
               "rating_kind": "score",
@@ -205,7 +205,7 @@
       "eyebrow": "selbsteinschätzung / infrastruktur / betrieb",
       "headline": "Technische Skills. Ohne Show.",
       "intro": "Ein schneller Überblick über meine Praxis, Grenzen und meinen KI-Einsatz. Skill öffnen: Arbeitsweise, produktive Verantwortung und echte Nachweise.",
-      "note": "<strong>Wie ich KI nutze:</strong> meistens als Beschleuniger, zweite Meinung oder um Denkfehler schneller zu finden. Wo ich stark davon abhängig bin, steht es auch so da. Wenn ich eine Änderung nicht erklären und prüfen kann, gehört sie zuerst ins Lab.",
+      "note": "<strong>KI-Einsatz – klar getrennt:</strong> Im täglichen produktiven IT-Betrieb nutze ich keine KI. Gelegentlich verwende ich sie in separaten Test-/Entwicklungsumgebungen, um kleine Skripte oder Automatisierungen schneller vorzubereiten. Ergebnisse verstehe, prüfe und teste ich selbst, bevor ein Einsatz überhaupt infrage kommt. In meinem privaten Lab experimentiere ich zusätzlich mit KI als Lernwerkzeug.",
       "legend": "<article><div class=\"eyebrow\">Rating</div><h2>Sichtbare 0–10-Selbsteinschätzung</h2><p>Kein Zertifikatsscore. Ein Bereich zeigt Unsicherheit; Skills mit wenig Praxis und starker KI-Führung bleiben bewusst ohne Zahlenwert.</p></article><article><div class=\"eyebrow\">Eigenständigkeit</div><h2>Worauf ich wirklich zurückgreife</h2><p>Gedächtnis, Doku, Suche oder KI. Generierter Output zählt erst, wenn ich ihn verstehe und geprüft habe.</p></article><article><div class=\"eyebrow\">Produktiv</div><h2>Wie vorsichtig ich wäre</h2><p>Selbstständig, Review zuerst, Sandbox zuerst oder nur Lab – je nach Technologie.</p></article>",
       "sections": [
         {
@@ -232,7 +232,7 @@
             {
               "skill": "<strong>Networking</strong><span>Routing, NAT, DNS, Firewalling, privater Zugriff, VPN-Pfade.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">stark</span></div>",
-              "assist": "Für meine realen Netze sehr sicher; Doku/KI vor allem für Edge Cases und Designchecks.",
+              "assist": "In meinen privaten Netzwerken arbeite ich sicher; für ungewöhnliche Designfragen im Lab nutze ich gelegentlich Dokumentation oder KI – nicht als Entscheider im Betrieb.",
               "production": "Bei bekannten Topologien selbstständig; komplexere VLAN-/Switching-Themen lieber mit Review.",
               "evidence": "<strong>Szenario:</strong> isoliertes Proxmox-SDN/VNet mit SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topologie und Schritte ↗</a><br><small>Dokumentiertes Referenznetz; kein alleiniger Beleg für umfassendes Routing/VPN.</small>",
               "rating_kind": "score",
@@ -252,7 +252,7 @@
             {
               "skill": "<strong>Kubernetes / Talos Linux</strong><span>Privater Cluster mit drei Control-Plane-/etcd-Nodes auf Talos Linux, AMD64-/ARM64-Workloads, K3s-Migration, kubectl, Ingress, Storage und Rollout-Prüfungen.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktisch am lernen</span></div>",
-              "assist": "Praktische Arbeit mit Kustomize, SOPS/age, Dienstmigration und Restore-Prüfungen. Setup und viele Änderungen bleiben stark KI-unterstützt; das Ergebnis prüfe ich an den laufenden Systemen.",
+              "assist": "Praktische Arbeit im privaten Lab mit Kustomize, SOPS/age, Dienstmigration und Restore-Prüfungen. Bei experimentellen Setups hilft teilweise KI; Änderungen prüfe ich selbst auf meinen Lab-Systemen.",
               "production": "Erst Lab/Sandbox. Drei etcd-Voter und ein kontrollierter Node-Neustart sind geprüft; Anwendungs-HA, regelmäßige Daten-Backups und umfassende Ausfalltests sind damit nicht zugesichert.",
               "evidence": "<strong>Szenario:</strong> fehlerhafter Service-Selector; Validator fordert zwei bereite EndpointSlice-Backends. <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json\" target=\"_blank\" rel=\"noopener noreferrer\">Mission ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Validator ↗</a><br><small>Ausführbares Szenario im Code, kein öffentlicher Live-Test. Talos-Betrieb bleibt privat.</small>",
               "rating_kind": "score",
@@ -262,7 +262,7 @@
             {
               "skill": "<strong>Proxmox VE</strong><span>VM-Lifecycle, Templates, Networking, Labsysteme und Virtualisierungskonzepte.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">sicher</span></div>",
-              "assist": "Gutes Virtualisierungsverständnis; Proxmox kann ich ohne KI bedienen, produktspezifische Tiefe wächst noch.",
+              "assist": "Mein privates Proxmox-Lab betreibe ich eigenständig; für produktspezifische Sonderfälle nutze ich Dokumentation.",
               "production": "Normale VM-/Lab-Arbeit selbstständig; komplexe Storage-/Netzwerkänderungen mit Review.",
               "evidence": "<strong>Szenario:</strong> CKA-VM-Teardown prüft exakten Terraform-State, reservierte IDs und Live-Ownership-Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed-Prüfungen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership-Regeln ↗</a><br><small>Implementiert und statisch geprüft; kein verifizierter Live-Teardown veröffentlicht.</small>",
               "rating_kind": "score",
@@ -272,7 +272,7 @@
             {
               "skill": "<strong>Terraform / OpenTofu</strong><span>Für Infrastrukturdefinitionen in meinem Lab genutzt.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
-              "assist": "Ich arbeite damit, während KI aktuell den Großteil des Authorings führt. Ich prüfe Konfiguration und Plan, führe sie aus und validiere das Ergebnis, statt generierten Code als eigenständige Kompetenz auszugeben.",
+              "assist": "In meinem privaten Lab hilft KI noch bei einem großen Teil der ersten Entwürfe. Ich prüfe Definitionen und Pläne und teste das Ergebnis, statt generierten Code als eigenständige Kompetenz auszugeben.",
               "production": "Nur Lab / Sandbox zuerst.",
               "evidence": "<strong>Szenario:</strong> genau zwei kurzlebige Proxmox-VMs mit festen IDs, Pool und Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Ressourcen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Statische CI-Prüfungen ↗</a><br><small>Ressourcen und Prüf-Pipeline definiert; kein bestätigter frischer Apply-/Destroy-Lauf.</small>",
               "rating_kind": "unrated",
@@ -282,7 +282,7 @@
             {
               "skill": "<strong>Ansible</strong><span>Inventories, Rollen, Bootstrap- und Konfigurationskonzepte aus der Lab-Praxis.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
-              "assist": "Ich habe mit Ansible gearbeitet und nutze es, aber KI führt weiterhin den Großteil der Umsetzung. Ich prüfe den Output und validiere den Lauf, statt eigenständiges Authoring zu behaupten.",
+              "assist": "Im privaten Lab nutze ich Ansible und lerne anhand geprüfter Experimente. KI kann Test-Playbooks vorbereiten; jede Änderung und ihr Ergebnis prüfe ich selbst.",
               "production": "Sandbox zuerst; keine blinden Runs auf Produktivsystemen.",
               "evidence": "<strong>Szenario:</strong> Ready-Nodes, per Anti-Affinity verteilte nginx-Replikas und In-Cluster-DNS/HTTP prüfen. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Abnahme-Playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manueller Testbericht ↗</a><br><small>Manuelle Referenztests dokumentiert; automatischer Clean-Rebuild noch unbelegt.</small>",
               "rating_kind": "unrated",
@@ -292,7 +292,7 @@
             {
               "skill": "<strong>SMB / NAS</strong><span>Shares, Rechte, Migrationen, praktische Storage-Administration.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
-              "assist": "Meist selbstständig; für normale Administration kaum KI nötig.",
+              "assist": "Bei vertrauten Administrationsaufgaben selbstständig; für Sonderfälle greife ich auf Dokumentation zurück.",
               "production": "Mit normaler Change-/Backup-Disziplin selbstständig.",
               "evidence": "<strong>Nachweislücke:</strong> privater Betrieb; kein bereinigter Migrations- oder ACL-Test mit Messwerten veröffentlicht.",
               "rating_kind": "score",
@@ -312,7 +312,7 @@
             {
               "skill": "<strong>Prometheus / Grafana</strong><span>Grundsetup, Dashboards, Exporter, Probes und Troubleshooting.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktische Grundlagen</span></div>",
-              "assist": "Grundlagen kann ich selbst aufsetzen; für tieferes Tuning lerne und experimentiere ich noch mit KI-Unterstützung.",
+              "assist": "Grundlagen kann ich selbst einrichten; für weitergehendes Lab-Tuning lerne ich mit Dokumentation und gelegentlich KI-unterstützten Experimenten.",
               "production": "Größere Änderungen mit Review / Sandbox zuerst.",
               "evidence": "<strong>Nachweislücke:</strong> noch kein veröffentlichter Alarm-bis-Recovery-Test oder Monitoring-Messwert.",
               "rating_kind": "score",
@@ -322,7 +322,7 @@
             {
               "skill": "<strong>NetBird / VPN / private Netze</strong><span>Peers, Routes, Access Rules und private Admin-Pfade.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
-              "assist": "Routing und Regeln kann ich selbst aufsetzen; KI nutze ich hauptsächlich zum Beschleunigen oder für Logikchecks.",
+              "assist": "Routen und Regeln im eigenen Lab konfiguriere ich selbst; Dokumentation und isolierte Tests helfen bei ungewohnten Fällen.",
               "production": "Bei vertrauten Deployments selbstständig.",
               "evidence": "<strong>Nachweislücke:</strong> privates Deployment ist kein veröffentlichter Verbindungs-/Failover-Test.",
               "rating_kind": "score",
