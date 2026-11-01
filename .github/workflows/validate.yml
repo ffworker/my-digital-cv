@@ -6,6 +6,9 @@ on:
       - 'index.html'
       - 'skills.html'
       - 'skills.css'
+      - 'skills-professional.css'
+      - 'skills-professional.html'
+      - 'skills-tech.html'
       - 'templates/**'
       - 'scripts/**'
       - 'data/**'
@@ -53,6 +56,11 @@ jobs:
           test -s de/index.html
           test -s skills.html
           test -s skills.css
+          test -s skills-professional.css
+          test -s skills-professional.html
+          test -s skills-tech.html
+          test -s de/skills-professional.html
+          test -s de/skills-tech.html
           test -s data/skills.json
           test -s scripts/render_skills.py
           test -s de/skills.html
@@ -66,7 +74,7 @@ jobs:
           import re
 
           root = Path('.')
-          pages = [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html']
+          pages = [root/'index.html', root/'de/index.html', root/'skills.html', root/'de/skills.html', root/'skills-professional.html', root/'de/skills-professional.html', root/'skills-tech.html', root/'de/skills-tech.html']
           for page in pages:
               text = page.read_text()
               if '<html' not in text or '</html>' not in text:
