@@ -207,3 +207,9 @@ h1{margin:0;font-size:clamp(24px,3vw,37px);line-height:1.09;letter-spacing:-.032
   .skill-heading{gap:4px 6px}
   .skill-domain{font-size:8px;padding:2px 4px}
 }
+
+/* Optional Tech View navigation: canonical Editorial remains the default route. */
+.tech-view-choice{display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;padding:12px 0 0;font:600 11px/1.5 var(--mono);color:var(--muted)}
+.tech-view-choice a{color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:5px;padding:7px 10px}
+.tech-view-choice a:hover{text-decoration:underline;background:var(--panel)}
+.tech-view-choice span{letter-spacing:.08em;text-transform:uppercase}
