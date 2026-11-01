@@ -43,9 +43,14 @@ class SkillEvidenceContracts(unittest.TestCase):
                         path = parts.path.strip("/").split("/")
                         self.assertGreaterEqual(len(path), 5, "file-level or run-level evidence required")
                         self.assertEqual(path[0], "ffworker")
-                        self.assertEqual(path[2], "blob", "link directly to a source or proof file")
-                        self.assertEqual(path[3], "main")
-                        self.assertTrue("/".join(path[4:]), "empty file path is not evidence")
+                        if path[2] == "blob":
+                            self.assertEqual(path[3], "main")
+                            self.assertTrue("/".join(path[4:]), "empty file path is not evidence")
+                        elif path[2] == "actions":
+                            self.assertEqual(path[3], "runs")
+                            self.assertTrue(path[4].isdigit(), "workflow evidence must reference one run")
+                        else:
+                            self.fail("use a concrete source file or completed CI run")
 
     def test_bilingual_scenarios_reference_identical_artifacts(self):
         self.assertEqual(set(skills("en")), set(skills("de")))
