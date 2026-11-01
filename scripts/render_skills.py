@@ -116,6 +116,70 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
     })
 
 
+def render_professional_variant(content: str, locale: dict) -> str:
+    """Re-skin the same generated skill content, without copying skill data.
+
+    The original console pages remain byte-for-byte unchanged.
+    Preview pages are noindex and canonicalize to the existing console URLs.
+    """
+    lang = locale["lang"]
+    if lang == "en":
+        current_path, alternative_path = "/skills.html", "/skills-professional.html"
+        other_lang_old, other_lang_new = "/de/skills.html", "/de/skills-professional.html"
+        label, console_label = "Layout preview", "Console (original)"
+        eyebrow, heading = "PROFESSIONAL OVERVIEW", "Skills & practical experience"
+        preview_message = "Alternative layout preview. Same self-assessments and evidence as the console view."
+    else:
+        current_path, alternative_path = "/de/skills.html", "/de/skills-professional.html"
+        other_lang_old, other_lang_new = "/skills.html", "/skills-professional.html"
+        label, console_label = "Layout-Vorschau", "Console (Original)"
+        eyebrow, heading = "KOMPETENZPROFIL", "Kompetenzen & praktische Erfahrung"
+        preview_message = "Alternative Layout-Vorschau. Identische Selbsteinschätzungen und Nachweise wie in der Console-Ansicht."
+
+    content = content.replace(
+        '<meta name="robots" content="index, follow" />',
+        '<meta name="robots" content="noindex, follow" />',
+        1,
+    )
+    content = content.replace(
+        '<link rel="stylesheet" href="/skills.css" />',
+        '<link rel="stylesheet" href="/skills-professional.css" />',
+        1,
+    )
+    content = content.replace(
+        '<body class="skills-page">',
+        '<body class="skills-page skills-professional">',
+        1,
+    )
+    # Do not modify canonical or social URLs: preview pages are not the live default.
+    content = content.replace(f'href="{other_lang_old}"', f'href="{other_lang_new}"', 1)
+    content = content.replace(
+        f'<p class="eyebrow">{locale["eyebrow"]}</p>',
+        f'<p class="eyebrow">{eyebrow}</p>',
+        1,
+    )
+    content = content.replace(
+        f'<h1 id="skills-title">{locale["headline"]}</h1>',
+        f'<h1 id="skills-title">{heading}</h1>',
+        1,
+    )
+    switch = (
+        '<nav class="theme-switch" aria-label="Layout preview">'
+        f'<span class="theme-label">{label}</span>'
+        '<span class="theme-options">'
+        f'<span class="current" aria-current="page">Editorial</span>'
+        f'<a href="{current_path}">{console_label}</a>'
+        '</span></nav>'
+    )
+    content = content.replace('</header>', f'</header>\n  {switch}', 1)
+    content = content.replace(
+        '<footer class="footer-note">',
+        f'<p class="preview-note">{preview_message}</p>\n    <footer class="footer-note">',
+        1,
+    )
+    return content
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if committed HTML is stale")
@@ -140,13 +204,17 @@ def main() -> int:
         content = render(data[lang], templates["skills.html"],
                          templates["skills-section.html"], templates["skills-row.html"])
         path = ROOT / target
-        if args.check:
-            if not path.is_file() or path.read_text(encoding="utf-8") != content:
-                print(f"Out-of-date generated page: {target}", file=sys.stderr)
-                return 1
-        else:
-            path.write_text(content, encoding="utf-8")
-            print(f"Rendered {target}")
+        alternate_target = target.replace("skills.html", "skills-professional.html")
+        alternate_content = render_professional_variant(content, data[lang])
+        for output, rendered in ((target, content), (alternate_target, alternate_content)):
+            output_path = ROOT / output
+            if args.check:
+                if not output_path.is_file() or output_path.read_text(encoding="utf-8") != rendered:
+                    print(f"Out-of-date generated page: {output}", file=sys.stderr)
+                    return 1
+            else:
+                output_path.write_text(rendered, encoding="utf-8")
+                print(f"Rendered {output}")
     return 0
 
 
