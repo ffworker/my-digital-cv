@@ -1149,6 +1149,75 @@
         transform: none !important;
       }
     }
+    /* Field Notes is a restrained portfolio teaser, not an incident report. */
+    .field-notes-teaser {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(180px, .7fr);
+      align-items: center;
+      gap: clamp(22px, 5vw, 70px);
+      margin: clamp(25px, 5vw, 70px) clamp(18px, 6vw, 84px);
+      padding: clamp(26px, 4vw, 46px);
+      border: 1px solid var(--line);
+      background: #eff3ed;
+      border-radius: 12px;
+    }
+    .field-notes-kicker {
+      color: #127654;
+      font: 800 11px/1.4 var(--mono);
+      letter-spacing: .09em;
+      margin: 0 0 12px;
+    }
+    .field-notes-teaser h2 {
+      color: #17271f;
+      font: 700 clamp(24px, 2.8vw, 36px)/1.17 var(--ui);
+      letter-spacing: -.035em;
+      margin: 0 0 15px;
+    }
+    .field-notes-teaser p:not(.field-notes-kicker) {
+      max-width: 680px;
+      font: 15px/1.7 var(--ui);
+      color: #405149;
+      margin: 0 0 20px;
+    }
+    .field-notes-cta {
+      display: inline-block;
+      border-radius: 6px;
+      background: #155b45;
+      padding: 10px 15px;
+      color: #fff;
+      font: 700 13px/1.4 var(--ui);
+      text-decoration: none;
+    }
+    .field-notes-cta:hover {background: #0d3e2f;}
+    .field-notes-cta:focus-visible {outline: 3px solid #155b45; outline-offset: 3px;}
+    .field-notes-meta {
+      display: block;
+      font: 11px/1.5 var(--ui);
+      color: #53665b;
+      margin-top: 12px;
+    }
+    .field-notes-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-left: 27px;
+      border-left: 1px solid #bfd3c5;
+      font: 800 clamp(29px, 5vw, 58px)/.99 var(--ui);
+      color: #adc8b8;
+      letter-spacing: -.065em;
+      user-select: none;
+    }
+    .field-notes-mark small {
+      font: 600 9px/1.8 var(--mono);
+      color: #577c6a;
+      letter-spacing: .04em;
+      margin-top: 14px;
+    }
+    @media (max-width: 730px) {
+      .field-notes-teaser {grid-template-columns: 1fr;gap: 18px;margin-inline: 14px;padding: 25px 20px;}
+      .field-notes-mark {border-left: 0;border-top: 1px solid #bfd3c5;padding: 12px 0 0;font-size: 25px;flex-direction: row;align-items:center;gap: 7px;}
+      .field-notes-mark small {display: none;}
+    }
   </style>
 </head>
 <body>
@@ -1393,6 +1462,16 @@
         </article>
       </div>
     </section>
+    <aside class="field-notes-teaser" aria-labelledby="field-notes-heading">
+      <div class="field-notes-copy">
+        <p class="field-notes-kicker">FIELD NOTES · FROM IT OPERATIONS</p>
+        <h2 id="field-notes-heading">Not every story fits into a ticket.</h2>
+        <p>Unusual situations in IT operations can teach you more than a hundred routine days. Some lessons may become carefully reviewed field notes. The stories that cannot be shared publicly? Perhaps a topic for a conversation. <span aria-hidden="true">😉</span></p>
+        <a class="field-notes-cta" href="/field-notes.html">Explore Field Notes <span aria-hidden="true">↗</span></a>
+        <span class="field-notes-meta">No employer incidents or confidential details published.</span>
+      </div>
+      <div class="field-notes-mark" aria-hidden="true"><span>FIELD</span><span>NOTES</span><small>IT / OPERATIONS / REFLECTION</small></div>
+    </aside>
   </main>
 
   <footer id="contact">
