@@ -116,68 +116,77 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
     })
 
 
-def render_professional_variant(content: str, locale: dict) -> str:
-    """Re-skin the same generated skill content, without copying skill data.
-
-    The original console pages remain byte-for-byte unchanged.
-    Preview pages are noindex and canonicalize to the existing console URLs.
-    """
+def render_editorial_variant(content: str, locale: dict) -> str:
+    """Canonical editorial skills view; shares content and evidence with Tech View."""
     lang = locale["lang"]
+    technical_path = "/skills-tech.html" if lang == "en" else "/de/skills-tech.html"
     if lang == "en":
-        current_path, alternative_path = "/skills.html", "/skills-professional.html"
-        other_lang_old, other_lang_new = "/de/skills.html", "/de/skills-professional.html"
-        label, console_label = "Layout preview", "Console (original)"
         eyebrow, heading = "PROFESSIONAL OVERVIEW", "Skills & practical experience"
-        preview_message = "Alternative layout preview. Same self-assessments and evidence as the console view."
+        view_label, technical_label = "View", "Tech View"
     else:
-        current_path, alternative_path = "/de/skills.html", "/de/skills-professional.html"
-        other_lang_old, other_lang_new = "/skills.html", "/skills-professional.html"
-        label, console_label = "Layout-Vorschau", "Console (Original)"
         eyebrow, heading = "KOMPETENZPROFIL", "Kompetenzen & praktische Erfahrung"
-        preview_message = "Alternative Layout-Vorschau. Identische Selbsteinschätzungen und Nachweise wie in der Console-Ansicht."
+        view_label, technical_label = "Ansicht", "Tech View"
 
-    content = content.replace(
-        '<meta name="robots" content="index, follow" />',
-        '<meta name="robots" content="noindex, follow" />',
-        1,
-    )
     content = content.replace(
         '<link rel="stylesheet" href="/skills.css" />',
-        '<link rel="stylesheet" href="/skills-professional.css" />',
-        1,
+        '<link rel="stylesheet" href="/skills-professional.css" />', 1,
     )
-    content = content.replace(
-        '<body class="skills-page">',
-        '<body class="skills-page skills-professional">',
-        1,
-    )
-    # Do not modify canonical or social URLs: preview pages are not the live default.
-    content = content.replace(f'href="{other_lang_old}"', f'href="{other_lang_new}"', 1)
-    content = content.replace(
-        f'<p class="eyebrow">{locale["eyebrow"]}</p>',
-        f'<p class="eyebrow">{eyebrow}</p>',
-        1,
-    )
-    content = content.replace(
-        f'<h1 id="skills-title">{locale["headline"]}</h1>',
-        f'<h1 id="skills-title">{heading}</h1>',
-        1,
-    )
+    content = content.replace('<body class="skills-page">',
+                              '<body class="skills-page skills-professional">', 1)
+    content = content.replace(f'<p class="eyebrow">{locale["eyebrow"]}</p>',
+                              f'<p class="eyebrow">{eyebrow}</p>', 1)
+    content = content.replace(f'<h1 id="skills-title">{locale["headline"]}</h1>',
+                              f'<h1 id="skills-title">{heading}</h1>', 1)
     switch = (
-        '<nav class="theme-switch" aria-label="Layout preview">'
-        f'<span class="theme-label">{label}</span>'
+        '<nav class="theme-switch" aria-label="Skills view">'
+        f'<span class="theme-label">{view_label}</span>'
         '<span class="theme-options">'
-        f'<span class="current" aria-current="page">Editorial</span>'
-        f'<a href="{current_path}">{console_label}</a>'
+        '<span class="current" aria-current="page">Editorial</span>'
+        f'<a href="{technical_path}">{technical_label}</a>'
         '</span></nav>'
     )
-    content = content.replace('</header>', f'</header>\n  {switch}', 1)
+    return content.replace('</header>', f'</header>\n  {switch}', 1)
+
+
+def render_tech_variant(content: str, locale: dict) -> str:
+    """Original console design, kept as an alternate non-indexed view."""
+    lang = locale["lang"]
+    canonical = "/skills.html" if lang == "en" else "/de/skills.html"
+    original_other = "/de/skills.html" if lang == "en" else "/skills.html"
+    tech_other = "/de/skills-tech.html" if lang == "en" else "/skills-tech.html"
+    label = "Editorial view" if lang == "en" else "Professionelle Ansicht"
     content = content.replace(
-        '<footer class="footer-note">',
-        f'<p class="preview-note">{preview_message}</p>\n    <footer class="footer-note">',
-        1,
+        '<meta name="robots" content="index, follow" />',
+        '<meta name="robots" content="noindex, follow" />', 1,
     )
-    return content
+    content = content.replace(f'href="{original_other}"',
+                              f'href="{tech_other}"', 1)
+    content = content.replace('<body class="skills-page">',
+                              '<body class="skills-page skills-tech">', 1)
+    switch = (
+        '<nav class="tech-view-choice" aria-label="Skills view">'
+        f'<a href="{canonical}">← {label}</a>'
+        '<span aria-current="page">Tech View</span></nav>'
+    )
+    return content.replace('</header>', f'</header>\n  {switch}', 1)
+
+
+def render_preview_redirect(lang: str) -> str:
+    """Legacy preview URLs resolve to the new canonical editorial URL."""
+    target = "/skills.html" if lang == "en" else "/de/skills.html"
+    title = "Skills moved" if lang == "en" else "Kompetenzen umgezogen"
+    label = "Open skills" if lang == "en" else "Kompetenzen öffnen"
+    return (
+        f'<!DOCTYPE html>\n<html lang="{lang}">\n<head>\n'
+        '<meta charset="UTF-8" />\n'
+        f'<meta http-equiv="refresh" content="0; url={target}" />\n'
+        '<meta name="robots" content="noindex, follow" />\n'
+        f'<link rel="canonical" href="https://cv.bytegeist.dev{target}" />\n'
+        f'<title>{title}</title>\n'
+        '</head>\n<body>\n'
+        f'<p><a href="{target}">{label}</a></p>\n'
+        '</body>\n</html>\n'
+    )
 
 
 def main() -> int:
@@ -203,10 +212,12 @@ def main() -> int:
     for lang, target in (("en", "skills.html"), ("de", "de/skills.html")):
         content = render(data[lang], templates["skills.html"],
                          templates["skills-section.html"], templates["skills-row.html"])
-        path = ROOT / target
-        alternate_target = target.replace("skills.html", "skills-professional.html")
-        alternate_content = render_professional_variant(content, data[lang])
-        for output, rendered in ((target, content), (alternate_target, alternate_content)):
+        tech_target = target.replace("skills.html", "skills-tech.html")
+        preview_alias = target.replace("skills.html", "skills-professional.html")
+        editorial = render_editorial_variant(content, data[lang])
+        tech = render_tech_variant(content, data[lang])
+        alias = render_preview_redirect(lang)
+        for output, rendered in ((target, editorial), (tech_target, tech), (preview_alias, alias)):
             output_path = ROOT / output
             if args.check:
                 if not output_path.is_file() or output_path.read_text(encoding="utf-8") != rendered:
