@@ -31,8 +31,13 @@ class FieldNotesPolicyTests(unittest.TestCase):
         self.assertIn("Not every story fits into a ticket.", home)
         self.assertIn("Nicht jede Geschichte passt in ein Ticket.", german)
         # A teaser is not permission to index or disclose a real incident.
-        self.assertNotIn("UAG", home)
-        self.assertNotIn("UAG", german)
+        # Normal CV skill descriptions may mention UAG; the teaser must not
+        # reveal or hint at a particular real security incident.
+        for page in (home, german):
+            teaser = page.split('<aside class="field-notes-teaser"', 1)[1].split("</aside>", 1)[0]
+            self.assertNotIn("UAG", teaser)
+            self.assertNotIn("compromis", teaser.lower())
+            self.assertNotIn("infiz", teaser.lower())
 
     def test_professional_ai_boundary_is_explicit_in_both_languages(self):
         notes = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
