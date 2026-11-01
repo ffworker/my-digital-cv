@@ -10,10 +10,11 @@ This is the human-readable side of my portfolio: current professional IT work, t
 
 - `/` — English CV
 - `/de/` — German CV
-- `/skills.html` — detailed, self-assessed technical depth
-- `/de/skills.html` — German self-assessment
-- `/skills-professional.html` — English editorial layout preview (noindex)
-- `/de/skills-professional.html` — German editorial layout preview (noindex)
+- `/skills.html` — public English **Editorial** skills page (canonical)
+- `/de/skills.html` — public German **Editorial** skills page (canonical)
+- `/skills-tech.html` — English original dark Console **Tech View** (noindex)
+- `/de/skills-tech.html` — German original Console **Tech View** (noindex)
+- `/skills-professional.html` and `/de/skills-professional.html` — redirects from the earlier preview to the canonical pages
 
 ## Skills philosophy
 
@@ -34,7 +35,7 @@ python scripts/render_skills.py --check
 python -m unittest discover -s tests -v
 ```
 
-The **optional editorial pages** are also generated from the exact same `data/skills.json` by `scripts/render_skills.py`. They use `skills-professional.css` and are deliberately `noindex` with a canonical link to the original route. The console style and canonical `skills.html` / `de/skills.html` remain unchanged as a quick fallback; no theme switch or live deployment is forced. Do not edit generated editorial HTML by hand. To compare locally, serve the repo with `python -m http.server 8765 --bind 127.0.0.1` and open the original and alternative paths side by side.
+The public `skills.html` / `de/skills.html` routes now use the **Editorial** style (`skills-professional.css`), while the dark Console pages remain available at `skills-tech.html` / `de/skills-tech.html` (`skills.css`). The editor and both views use only `data/skills.json` as the source of truth; `scripts/render_skills.py` generates **all four** views and the two legacy preview redirects. The Tech View is `noindex`, with a canonical link to the Editorial page. This is only a source-code route change; cluster deployment is a separately authorized revision pin in `homelab-talos`. To compare locally, run `python -m http.server 8765 --bind 127.0.0.1` and open the Editorial and Tech View URLs. Do not edit generated HTML by hand.
 
 `templates/skills*.html` defines the shared native `<details>/<summary>`
 cards. `skills.css` provides the compact dark console styling inspired by the
@@ -92,4 +93,4 @@ python -m unittest discover -s tests -v
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Preview `/`, `/de/index.html`, `/skills.html`, `/de/skills.html`, `/skills-professional.html` and `/de/skills-professional.html`. The optional cluster peek requests `/lab-health.json`; the static preview has no telemetry backend and must show an unavailable state rather than invented live results.
+Preview `/`, `/de/index.html`, `/skills.html`, `/de/skills.html`, `/skills-tech.html` and `/de/skills-tech.html`. The optional cluster peek requests `/lab-health.json`; the static preview has no telemetry backend and must show an unavailable state rather than invented live results.
