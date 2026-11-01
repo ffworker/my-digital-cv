@@ -53,6 +53,12 @@ The legacy `/sites/skills.html` links to the canonical `/skills.html`.
 
 General infrastructure configuration remains private in `ffworker/infra-configs`. The current Talos deployment source is the separate private `ffworker/homelab-talos` repository.
 
+## Skill evidence policy
+
+The bilingual skills page now distinguishes a concrete **scenario/source reference** from a publicly captured runtime result. A source file or CI workflow definition is evidence of implementation, not proof that a deployment, restore, or test succeeded. Where evidence is private or absent, the skill card says so instead of linking to a repository homepage.
+
+See the [skill evidence register](Documentations/skill-evidence-register.md) for scenario scope, evidence grade, missing proof and a reusable capture checklist. Self-ratings remain subjective; no score is automatically raised when a link is added. Both locales must reference the same concrete artifacts.
+
 ## Validation and current deployment
 
 This repository owns the CV content. It does not deploy directly to Kubernetes.
