@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class FieldNotesPolicyTests(unittest.TestCase):
-    def test_preview_is_bilingual_unlisted_and_not_promoted_as_a_case_report(self):
+    def test_preview_is_bilingual_teaser_linked_but_not_indexed_as_case_report(self):
         paths = ("field-notes.html", "de/field-notes.html")
         for path in paths:
             with self.subTest(path=path):
@@ -24,8 +24,15 @@ class FieldNotesPolicyTests(unittest.TestCase):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         german = (ROOT / "de/index.html").read_text(encoding="utf-8")
         self.assertNotIn("field-notes", sitemap)
-        self.assertNotIn('href="/field-notes.html"', home)
-        self.assertNotIn('href="/de/field-notes.html"', german)
+        self.assertIn('href="/field-notes.html"', home)
+        self.assertIn('href="/de/field-notes.html"', german)
+        self.assertIn('class="field-notes-teaser"', home)
+        self.assertIn('class="field-notes-teaser"', german)
+        self.assertIn("Not every story fits into a ticket.", home)
+        self.assertIn("Nicht jede Geschichte passt in ein Ticket.", german)
+        # A teaser is not permission to index or disclose a real incident.
+        self.assertNotIn("UAG", home)
+        self.assertNotIn("UAG", german)
 
     def test_professional_ai_boundary_is_explicit_in_both_languages(self):
         notes = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
