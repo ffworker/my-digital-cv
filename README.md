@@ -67,7 +67,7 @@ See the [skill evidence register](Documentations/skill-evidence-register.md) for
 
 ## Field Notes (unlisted preview)
 
-The bilingual static pages `field-notes.html` and `de/field-notes.html` form the starting point for a carefully anonymised "diary of an IT administrator". They are deliberately **not linked from the public CV navigation or sitemap**, and use `noindex`. There are no real case reports yet. Publishing even anonymised workplace/security incidents requires a separate factual, confidentiality and employer-approval review; the public repository must never contain an unreviewed draft or operational details. See [Field Notes publication standard](Documentations/field-notes-publication-policy.md).
+The bilingual static pages `field-notes.html` and `de/field-notes.html` form the starting point for a carefully anonymised "diary of an IT administrator". The main EN/DE CV now includes a compact, deliberately non-identifying **Field Notes teaser** linking to those standalone blog-style previews. Both previews stay **`noindex` and absent from the sitemap**. There are no real case reports yet. Publishing even anonymised workplace/security incidents requires a separate factual, confidentiality and employer-approval review; the public repository must never contain an unreviewed draft or operational details. See [Field Notes publication standard](Documentations/field-notes-publication-policy.md).
 
 ## Validation and current deployment
 
