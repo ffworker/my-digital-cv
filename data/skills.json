@@ -30,7 +30,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "Independent day to day; documentation for uncommon flags or tools I have not used in a while.",
               "production": "Independent for familiar changes; verify before and after.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "evidence": "<strong>Scenario:</strong> prepare Rocky nodes (services, sysctl, containerd). <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md\" target=\"_blank\" rel=\"noopener noreferrer\">Manual procedure ↗</a><br><small>Documented manual reference; does not prove the full self-rating.</small>",
               "rating_kind": "score",
               "id": "linux-and-shell",
               "domain": "linux"
@@ -40,7 +40,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">strong</span></div>",
               "assist": "Very comfortable with the networks I actually run; docs/AI mainly for edge cases and design checks.",
               "production": "Independent on familiar topologies; review-first for more complex VLAN/switching designs.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Lab topology ↗</a>",
+              "evidence": "<strong>Scenario:</strong> isolated Proxmox SDN/VNet with SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topology and steps ↗</a><br><small>Documented reference network; wider routing/VPN expertise not established by this alone.</small>",
               "rating_kind": "score",
               "id": "networking",
               "domain": "network"
@@ -50,7 +50,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "I can write, edit and reason about Compose files myself; docs/search when useful.",
               "production": "Independent for normal service changes.",
-              "evidence": "Operational configs are partly private by design.",
+              "evidence": "<strong>Scenario:</strong> non-root Signaturee Linux test container with read-only root, dropped capabilities and resource limits. <a class=\"evidence\" href=\"https://github.com/ffworker/signaturee-linux/blob/main/compose.yaml\" target=\"_blank\" rel=\"noopener noreferrer\">Compose definition ↗</a><br><small>Implementation evidence; no recorded successful container run.</small>",
               "rating_kind": "score",
               "id": "docker-compose",
               "domain": "platform"
@@ -60,7 +60,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">learning in practice</span></div>",
               "assist": "Active lab practice with Kustomize, SOPS/age, service migration and data-restore checks. Setup and many changes remain heavily AI-assisted; I check the result on the running systems.",
               "production": "Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab\" target=\"_blank\" rel=\"noopener noreferrer\">CKA practice ↗</a><br>Talos operational configuration and migration evidence remain private.",
+              "evidence": "<strong>Scenario:</strong> broken Service selector; validator requires two ready EndpointSlice backends. <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json\" target=\"_blank\" rel=\"noopener noreferrer\">Mission ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Validator ↗</a><br><small>Executable scenario in source, not a public live-run record. Talos operations remain private.</small>",
               "rating_kind": "score",
               "id": "kubernetes-talos-linux",
               "domain": "platform"
@@ -70,7 +70,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">confident</span></div>",
               "assist": "Strong virtualization understanding; I can operate Proxmox without AI while product-specific depth is still growing.",
               "production": "Independent for normal VM/lab work; review complex storage/network changes.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "evidence": "<strong>Scenario:</strong> CKA VM teardown checks exact Terraform state, reserved IDs and live ownership tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed guards ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership contract ↗</a><br><small>Implemented and statically checked; no verified live teardown run published.</small>",
               "rating_kind": "score",
               "id": "proxmox-ve",
               "domain": "platform"
@@ -80,7 +80,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
               "assist": "I work with it while AI currently guides most authoring. I inspect the configuration and plan, run it, and validate the result rather than treating generated code as independent skill.",
               "production": "Lab only / sandbox-first.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">IaC source ↗</a>",
+              "evidence": "<strong>Scenario:</strong> exactly two disposable Proxmox VMs with fixed IDs, pool and tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Resources ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Static CI checks ↗</a><br><small>Defined resources and validation pipeline; no confirmed fresh apply/destroy result.</small>",
               "rating_kind": "unrated",
               "id": "terraform-opentofu",
               "domain": "automation"
@@ -90,7 +90,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
               "assist": "I have worked with and use Ansible, but AI still guides most implementation. I review what it produces and validate the run instead of claiming independent authoring.",
               "production": "Sandbox-first; no blind production runs.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Ansible source ↗</a>",
+              "evidence": "<strong>Scenario:</strong> check Ready nodes, anti-affinity nginx replicas and in-cluster DNS/HTTP. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Acceptance playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manual test report ↗</a><br><small>Manual reference tests documented; automated clean rebuild not yet proven.</small>",
               "rating_kind": "unrated",
               "id": "ansible",
               "domain": "automation"
@@ -100,7 +100,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "Mostly independent; little AI needed for normal administration.",
               "production": "Independent with normal change/backup discipline.",
-              "evidence": "Private operational infrastructure.",
+              "evidence": "<strong>Evidence gap:</strong> private operations; no sanitized migration or ACL test with measured results published.",
               "rating_kind": "score",
               "id": "smb-nas",
               "domain": "storage"
@@ -110,7 +110,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">6/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■</span><span class=\"off\">□□□□</span></span><span class=\"rating-label\">working knowledge</span></div>",
               "assist": "Newer area; comfortable with what I run, while unfamiliar behavior still sends me to docs/search.",
               "production": "Review-first outside known patterns.",
-              "evidence": "Used actively in private infrastructure.",
+              "evidence": "<strong>Evidence gap:</strong> private exports and mounts; no public failure/recovery transcript yet.",
               "rating_kind": "score",
               "id": "nfs",
               "domain": "storage"
@@ -120,7 +120,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">basic practical use</span></div>",
               "assist": "I can set up the basics manually; for deeper tuning I am still learning and experimenting with AI assistance.",
               "production": "Review-first / sandbox-first for larger changes.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Docs evidence ↗</a>",
+              "evidence": "<strong>Evidence gap:</strong> no published alert-to-recovery test or measured monitoring result yet.",
               "rating_kind": "score",
               "id": "prometheus-grafana",
               "domain": "monitoring"
@@ -130,7 +130,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "I can build routing and rules myself; AI mainly accelerates reasoning or catches logic holes.",
               "production": "Independent for familiar deployments.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Deployment docs ↗</a>",
+              "evidence": "<strong>Evidence gap:</strong> private deployment is not a published connectivity/failover test.",
               "rating_kind": "score",
               "id": "netbird-vpn-private-networking",
               "domain": "network"
@@ -153,7 +153,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">comfortable basics</span></div>",
               "assist": "Comfortable with normal workflows; docs/search for less common Git and Actions behavior.",
               "production": "Review-first for workflow/deployment changes.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions\" target=\"_blank\" rel=\"noopener noreferrer\">This site's Actions ↗</a>",
+              "evidence": "<strong>Scenario:</strong> CV CI checks EN/DE generated-page drift, assets and regression tests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Assertions ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions/runs/41345106566\" target=\"_blank\" rel=\"noopener noreferrer\">CI run #41345106566: success ↗</a><br><small>This run confirms CV source validation, not Talos live promotion.</small>",
               "rating_kind": "range",
               "id": "git-github-actions",
               "domain": "automation"
@@ -163,7 +163,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.",
               "production": "Independent for familiar scripts; always review anything destructive.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Public examples ↗</a>",
+              "evidence": "<strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small>",
               "rating_kind": "score",
               "id": "bash-scripting",
               "domain": "linux"
@@ -224,7 +224,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Im Alltag selbstständig; Doku für seltene Flags oder lange nicht benutzte Tools.",
               "production": "Bei vertrauten Änderungen selbstständig; Vorher-/Nachher-Checks.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "evidence": "<strong>Szenario:</strong> Rocky-Nodes vorbereiten (Dienste, sysctl, containerd). <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md\" target=\"_blank\" rel=\"noopener noreferrer\">Manuelle Anleitung ↗</a><br><small>Manuelle Referenz dokumentiert; kein vollständiger Beleg der Selbsteinschätzung.</small>",
               "rating_kind": "score",
               "id": "linux-and-shell",
               "domain": "linux"
@@ -234,7 +234,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">stark</span></div>",
               "assist": "Für meine realen Netze sehr sicher; Doku/KI vor allem für Edge Cases und Designchecks.",
               "production": "Bei bekannten Topologien selbstständig; komplexere VLAN-/Switching-Themen lieber mit Review.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Lab-Topologie ↗</a>",
+              "evidence": "<strong>Szenario:</strong> isoliertes Proxmox-SDN/VNet mit SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topologie und Schritte ↗</a><br><small>Dokumentiertes Referenznetz; kein alleiniger Beleg für umfassendes Routing/VPN.</small>",
               "rating_kind": "score",
               "id": "networking",
               "domain": "network"
@@ -244,7 +244,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Compose-Dateien kann ich selbst schreiben, ändern und nachvollziehen; Doku/Suche bei Bedarf.",
               "production": "Normale Service-Änderungen selbstständig.",
-              "evidence": "Operative Konfigurationen sind teilweise bewusst privat.",
+              "evidence": "<strong>Szenario:</strong> Signaturee-Linux-Testcontainer: Non-Root, Read-only-Root, reduzierte Capabilities und Ressourcenlimits. <a class=\"evidence\" href=\"https://github.com/ffworker/signaturee-linux/blob/main/compose.yaml\" target=\"_blank\" rel=\"noopener noreferrer\">Compose-Konfiguration ↗</a><br><small>Implementierungsbeleg; kein protokollierter erfolgreicher Container-Lauf.</small>",
               "rating_kind": "score",
               "id": "docker-compose",
               "domain": "platform"
@@ -254,7 +254,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktisch am lernen</span></div>",
               "assist": "Praktische Arbeit mit Kustomize, SOPS/age, Dienstmigration und Restore-Prüfungen. Setup und viele Änderungen bleiben stark KI-unterstützt; das Ergebnis prüfe ich an den laufenden Systemen.",
               "production": "Erst Lab/Sandbox. Drei etcd-Voter und ein kontrollierter Node-Neustart sind geprüft; Anwendungs-HA, regelmäßige Daten-Backups und umfassende Ausfalltests sind damit nicht zugesichert.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab\" target=\"_blank\" rel=\"noopener noreferrer\">CKA-Übungen ↗</a><br>Operative Talos-Konfiguration und Migrationsnachweise bleiben privat.",
+              "evidence": "<strong>Szenario:</strong> fehlerhafter Service-Selector; Validator fordert zwei bereite EndpointSlice-Backends. <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json\" target=\"_blank\" rel=\"noopener noreferrer\">Mission ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Validator ↗</a><br><small>Ausführbares Szenario im Code, kein öffentlicher Live-Test. Talos-Betrieb bleibt privat.</small>",
               "rating_kind": "score",
               "id": "kubernetes-talos-linux",
               "domain": "platform"
@@ -264,7 +264,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">sicher</span></div>",
               "assist": "Gutes Virtualisierungsverständnis; Proxmox kann ich ohne KI bedienen, produktspezifische Tiefe wächst noch.",
               "production": "Normale VM-/Lab-Arbeit selbstständig; komplexe Storage-/Netzwerkänderungen mit Review.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Proxmox Lab ↗</a>",
+              "evidence": "<strong>Szenario:</strong> CKA-VM-Teardown prüft exakten Terraform-State, reservierte IDs und Live-Ownership-Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed-Prüfungen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership-Regeln ↗</a><br><small>Implementiert und statisch geprüft; kein verifizierter Live-Teardown veröffentlicht.</small>",
               "rating_kind": "score",
               "id": "proxmox-ve",
               "domain": "platform"
@@ -274,7 +274,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
               "assist": "Ich arbeite damit, während KI aktuell den Großteil des Authorings führt. Ich prüfe Konfiguration und Plan, führe sie aus und validiere das Ergebnis, statt generierten Code als eigenständige Kompetenz auszugeben.",
               "production": "Nur Lab / Sandbox zuerst.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">IaC Source ↗</a>",
+              "evidence": "<strong>Szenario:</strong> genau zwei kurzlebige Proxmox-VMs mit festen IDs, Pool und Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Ressourcen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Statische CI-Prüfungen ↗</a><br><small>Ressourcen und Prüf-Pipeline definiert; kein bestätigter frischer Apply-/Destroy-Lauf.</small>",
               "rating_kind": "unrated",
               "id": "terraform-opentofu",
               "domain": "automation"
@@ -284,7 +284,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
               "assist": "Ich habe mit Ansible gearbeitet und nutze es, aber KI führt weiterhin den Großteil der Umsetzung. Ich prüfe den Output und validiere den Lauf, statt eigenständiges Authoring zu behaupten.",
               "production": "Sandbox zuerst; keine blinden Runs auf Produktivsystemen.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Ansible Source ↗</a>",
+              "evidence": "<strong>Szenario:</strong> Ready-Nodes, per Anti-Affinity verteilte nginx-Replikas und In-Cluster-DNS/HTTP prüfen. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Abnahme-Playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manueller Testbericht ↗</a><br><small>Manuelle Referenztests dokumentiert; automatischer Clean-Rebuild noch unbelegt.</small>",
               "rating_kind": "unrated",
               "id": "ansible",
               "domain": "automation"
@@ -294,7 +294,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Meist selbstständig; für normale Administration kaum KI nötig.",
               "production": "Mit normaler Change-/Backup-Disziplin selbstständig.",
-              "evidence": "Private operative Infrastruktur.",
+              "evidence": "<strong>Nachweislücke:</strong> privater Betrieb; kein bereinigter Migrations- oder ACL-Test mit Messwerten veröffentlicht.",
               "rating_kind": "score",
               "id": "smb-nas",
               "domain": "storage"
@@ -304,7 +304,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">6/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■</span><span class=\"off\">□□□□</span></span><span class=\"rating-label\">solide Praxis</span></div>",
               "assist": "Neuerer Bereich; mit dem, was ich betreibe, sicher, für unbekanntes Verhalten weiterhin Doku/Suche.",
               "production": "Außerhalb bekannter Muster lieber Review zuerst.",
-              "evidence": "Aktiv in privater Infrastruktur genutzt.",
+              "evidence": "<strong>Nachweislücke:</strong> private Exports und Mounts; noch kein öffentliches Fehler-/Recovery-Protokoll.",
               "rating_kind": "score",
               "id": "nfs",
               "domain": "storage"
@@ -314,7 +314,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">4/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■</span><span class=\"off\">□□□□□□</span></span><span class=\"rating-label\">praktische Grundlagen</span></div>",
               "assist": "Grundlagen kann ich selbst aufsetzen; für tieferes Tuning lerne und experimentiere ich noch mit KI-Unterstützung.",
               "production": "Größere Änderungen mit Review / Sandbox zuerst.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Docs-Nachweis ↗</a>",
+              "evidence": "<strong>Nachweislücke:</strong> noch kein veröffentlichter Alarm-bis-Recovery-Test oder Monitoring-Messwert.",
               "rating_kind": "score",
               "id": "prometheus-grafana",
               "domain": "monitoring"
@@ -324,7 +324,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Routing und Regeln kann ich selbst aufsetzen; KI nutze ich hauptsächlich zum Beschleunigen oder für Logikchecks.",
               "production": "Bei vertrauten Deployments selbstständig.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/bytegeist-docs\" target=\"_blank\" rel=\"noopener noreferrer\">Deployment-Doku ↗</a>",
+              "evidence": "<strong>Nachweislücke:</strong> privates Deployment ist kein veröffentlichter Verbindungs-/Failover-Test.",
               "rating_kind": "score",
               "id": "netbird-vpn-private-networking",
               "domain": "network"
@@ -347,7 +347,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">5–6/10</span><span class=\"rating-label\">solide Grundlagen</span></div>",
               "assist": "Mit normalen Workflows sicher; Doku/Suche für seltenere Git- und Actions-Themen.",
               "production": "Bei Workflow-/Deployment-Änderungen Review zuerst.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions\" target=\"_blank\" rel=\"noopener noreferrer\">Actions dieser Seite ↗</a>",
+              "evidence": "<strong>Szenario:</strong> CV-CI prüft EN/DE-Generierungsstand, Assets und Regressionstests. <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Workflow ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py\" target=\"_blank\" rel=\"noopener noreferrer\">Tests ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/my-digital-cv/actions/runs/41345106566\" target=\"_blank\" rel=\"noopener noreferrer\">CI-Run #41345106566: erfolgreich ↗</a><br><small>Dieser Run bestätigt CV-Quellchecks, nicht die Talos-Live-Promotion.</small>",
               "rating_kind": "range",
               "id": "git-github-actions",
               "domain": "automation"
@@ -357,7 +357,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Ähnlich wie Linux: starke Alltagspraxis; Doku für seltene Flags/Syntax, die länger nicht genutzt wurde.",
               "production": "Bei bekannten Scripts selbstständig; destruktive Dinge immer prüfen.",
-              "evidence": "<a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab\" target=\"_blank\" rel=\"noopener noreferrer\">Öffentliche Beispiele ↗</a>",
+              "evidence": "<strong>Szenario:</strong> Bash-Lifecycle verweigert Destroy bei unerwartetem State oder Ownership. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Schutzfunktionen ↗</a><br><small>Quellcode und Syntaxprüfungen, kein bestätigter Recovery-Test.</small>",
               "rating_kind": "score",
               "id": "bash-scripting",
               "domain": "linux"
