@@ -151,6 +151,36 @@ def render_editorial_variant(content: str, locale: dict) -> str:
         private_detail = "Linux · Proxmox · Kubernetes / Talos · Automatisierung"
         career_label, career_url = "Berufliche Erfahrung ansehen", "/de/index.html#professional"
 
+    # Use hiring-oriented metadata and a clear professional header on Editorial.
+    if lang == "en":
+        page_title = "Dennis Kappel | IT operations & infrastructure skills"
+        page_description = (
+            "Professional Windows, VDI and Microsoft 365 operations, complemented "
+            "by a hands-on Linux and infrastructure lab with transparent evidence."
+        )
+        og_title = "Dennis Kappel | IT operations & practical skills"
+        old_brand, new_brand = "Dennis Kappel · technical depth", "Dennis Kappel · professional profile"
+    else:
+        page_title = "Dennis Kappel | IT-Betrieb & Infrastrukturkompetenzen"
+        page_description = (
+            "Beruflicher IT-Betrieb mit Windows, VDI und Microsoft 365, ergänzt "
+            "durch praxisnahe Linux- und Infrastrukturprojekte mit transparenten Nachweisen."
+        )
+        og_title = "Dennis Kappel | IT-Betrieb & technische Kompetenzen"
+        old_brand, new_brand = "Dennis Kappel · technische Tiefe", "Dennis Kappel · Kompetenzprofil"
+    content = content.replace(f'<title>{locale["page_title"]}</title>',
+                              f'<title>{page_title}</title>', 1)
+    content = content.replace(
+        f'<meta name="description" content="{locale["description"]}" />',
+        f'<meta name="description" content="{page_description}" />', 1,
+    )
+    content = content.replace(
+        f'<meta property="og:title" content="{locale["og_title"]}" />',
+        f'<meta property="og:title" content="{og_title}" />', 1,
+    )
+    content = content.replace(f'<strong>{old_brand}</strong>',
+                              f'<strong>{new_brand}</strong>', 1)
+
     content = content.replace(
         '<link rel="stylesheet" href="/skills.css" />',
         '<link rel="stylesheet" href="/skills-professional.css" />', 1,
