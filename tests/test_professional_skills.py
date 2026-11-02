@@ -1,5 +1,6 @@
 """Editorial is a short, warm professional profile; technical evidence stays in Tech View."""
 from pathlib import Path
+import hashlib
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,7 +14,7 @@ class EditorialSkillsTests(unittest.TestCase):
         ):
             with self.subTest(path=path):
                 page = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn('href="/skills-professional.css"', page)
+                self.assertIn('href="/skills-professional.css?v=', page)
                 self.assertIn('name="robots" content="index, follow"', page)
                 self.assertIn(f'href="{tech}"', page)
                 self.assertIn(f'href="{other}"', page)
@@ -55,7 +56,7 @@ class EditorialSkillsTests(unittest.TestCase):
         ):
             with self.subTest(path=path):
                 page = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn('href="/skills.css"', page)
+                self.assertIn('href="/skills.css?v=', page)
                 self.assertNotIn('skills-professional.css', page)
                 self.assertIn('name="robots" content="noindex, follow"', page)
                 self.assertIn('rel="canonical" href="https://cv.bytegeist.dev' + editorial + '"', page)
@@ -83,6 +84,20 @@ class EditorialSkillsTests(unittest.TestCase):
                 self.assertIn('href="#skills-infrastructure"', page)
                 self.assertIn('href="#skills-delivery"', page)
                 self.assertEqual(page.count('<details class="skill-card"'), 13)
+
+    def test_deployed_stylesheets_have_content_fingerprint(self):
+        """A new stylesheet must get a new URL, not a four-hour stale browser copy."""
+        for stylesheet, pages in (
+            ("skills-professional.css", ("skills.html", "de/skills.html")),
+            ("skills.css", ("skills-tech.html", "de/skills-tech.html")),
+        ):
+            data = (ROOT / stylesheet).read_bytes()
+            version = hashlib.sha1(f"blob {len(data)}\\0".encode() + data).hexdigest()[:12]
+            reference = f'href="/{stylesheet}?v={version}"'
+            for path in pages:
+                with self.subTest(stylesheet=stylesheet, page=path):
+                    page = (ROOT / path).read_text(encoding="utf-8")
+                    self.assertIn(reference, page)
 
     def test_mobile_reading_and_accessibility_requirements(self):
         css = (ROOT / "skills-professional.css").read_text(encoding="utf-8")
