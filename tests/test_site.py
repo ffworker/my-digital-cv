@@ -205,7 +205,7 @@ class SiteContractTests(unittest.TestCase):
         self.assertEqual(ids("en"), ids("de"))
         for lang in ("en", "de"):
             ratings = [i["rating_kind"] for section in data[lang]["sections"] for i in section["items"]]
-            self.assertEqual(ratings.count("unrated"), 2)
+            self.assertEqual(ratings.count("unrated"), 3)
             self.assertEqual(ratings.count("range"), 1)
             self.assertEqual(ratings.count("score"), 10)
 
