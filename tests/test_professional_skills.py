@@ -92,7 +92,7 @@ class EditorialSkillsTests(unittest.TestCase):
             ("skills.css", ("skills-tech.html", "de/skills-tech.html")),
         ):
             data = (ROOT / stylesheet).read_bytes()
-            version = hashlib.sha1(f"blob {len(data)}\\0".encode() + data).hexdigest()[:12]
+            version = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()[:12]
             reference = f'href="/{stylesheet}?v={version}"'
             for path in pages:
                 with self.subTest(stylesheet=stylesheet, page=path):
