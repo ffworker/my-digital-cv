@@ -112,6 +112,20 @@ class EditorialSkillsTests(unittest.TestCase):
             self.assertIn('aria-labelledby="skills-title"', page)
             self.assertIn('id="lab-depth"', page)
 
+    def test_extensionless_routes_have_real_index_html_not_nginx_homepage_fallback(self):
+        # Cloudflare Pages resolves /de/skills to de/skills.html automatically.
+        # The self-hosted Nginx needs real directory index files for the same URL.
+        for canonical, alias in (
+            ("skills.html", "skills/index.html"),
+            ("de/skills.html", "de/skills/index.html"),
+        ):
+            with self.subTest(url=alias):
+                expected = (ROOT / canonical).read_text(encoding="utf-8")
+                actual = (ROOT / alias).read_text(encoding="utf-8")
+                self.assertEqual(actual, expected)
+                self.assertIn('class="professional-story"', actual)
+                self.assertIn("skills-professional.css?v=", actual)
+
     def test_former_preview_redirects_are_preserved(self):
         for path, target in (
             ("skills-professional.html", "/skills.html"),
