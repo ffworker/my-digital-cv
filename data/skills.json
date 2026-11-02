@@ -198,55 +198,114 @@
         "eyebrow": "PROFESSIONAL EXPERIENCE",
         "heading": "Where I take responsibility",
         "description": "Practical responsibilities in production IT. No lab ratings or claims of having designed every inherited system.",
-        "lab_heading": "Technical detail & private lab",
-        "lab_description": "The expandable matrix below is a separate, subjective technical self-assessment. Proxmox, Kubernetes/Talos, Ansible, Terraform/OpenTofu, Flux/GitOps and NetBird are private lab experience; Linux and Docker are also part of my daily professional work.",
+        "lab_heading": "Curious what I build after hours?",
+        "lab_description": "Proxmox, Talos/Kubernetes, GitOps, Ansible and OpenTofu are my private playground. The dark Tech View has the deeper technical notes, self-ratings and project evidence. Linux and Docker are part of both worlds.",
         "items": [
           {
-            "tag": "Primary IT administrator",
+            "tag": "Primary IT contact",
             "title": "VMware vSphere / ESXi",
-            "description": "Maintain and troubleshoot the virtualization environment, including changes and updates. Independently plan fixes and keep recovery through Veeam in view."
+            "description": "I handle most of our vSphere administration: changes, updates and the troubleshooting that follows when something doesn't go as planned.",
+            "id": "vmware"
           },
           {
-            "tag": "Everyday server operations",
+            "tag": "Everyday work",
             "title": "Debian / Ubuntu Linux",
-            "description": "The main server platform at work: bootstrap and document installations, harden SSH, handle cron jobs, system updates and administrative access."
+            "description": "Debian and Ubuntu are the normal server platform at work. I bootstrap hosts, harden SSH, maintain updates and cron jobs, and document installations.",
+            "id": "linux"
           },
           {
             "tag": "Production services",
             "title": "Docker / Compose",
-            "description": "Operate monitoring, ticketing, documentation and asset-management services. Adapt proven Compose templates and environment settings rather than claiming original image development."
+            "description": "I run services such as monitoring, ticketing, documentation and asset management. Usually that means adapting proven Compose templates to our needs.",
+            "id": "docker"
           },
           {
-            "tag": "Identity & Windows",
+            "tag": "Windows & identity",
             "title": "Active Directory / Entra / M365",
-            "description": "Administrate established identity and Windows infrastructure, troubleshoot login and policy issues, and maintain hybrid identity and Microsoft 365 services."
+            "description": "Active Directory, Entra and Microsoft 365: keeping hybrid identities, policies and logins working, including figuring out why they suddenly don't.",
+            "id": "identity"
           },
           {
-            "tag": "Built with a colleague",
+            "tag": "Built as a team",
             "title": "Omnissa Horizon / VDI",
-            "description": "Helped build and now maintain the VDI environment, including Connection Servers, UAG, pools and image lifecycle tasks."
+            "description": "I helped build our Horizon environment with a colleague and still maintain Connection Servers, UAG, pools and image lifecycles.",
+            "id": "vdi"
           },
           {
-            "tag": "Real restore practice",
+            "tag": "Actual restores",
             "title": "Veeam Backup & Recovery",
-            "description": "Manage backups and regularly restore individual files; occasionally recover complete servers. Recovery experience, not just green backup-job dashboards."
+            "description": "I look after Veeam and regularly bring back accidentally deleted files. Sometimes the job is restoring an entire server, not just checking a backup status.",
+            "id": "veeam"
           },
           {
-            "tag": "Operational configuration",
+            "tag": "Firewall operations",
             "title": "FortiGate firewalls",
-            "description": "Maintain the inherited configuration, create required firewall policies, investigate blocked traffic with policy lookup and perform updates."
+            "description": "I add rules as needs change, use Policy Lookup to trace blocked traffic and maintain an existing FortiGate setup. The original migration was done externally.",
+            "id": "fortigate"
           },
           {
-            "tag": "Capacity & integration",
+            "tag": "Storage & capacity",
             "title": "PowerStore storage",
-            "description": "Monitor thin provisioning and physical capacity, maintain the vSphere integration and carry out volume capacity changes for migrations."
+            "description": "I watch physical usage and thin provisioning, maintain the vSphere integration and adjust volumes when migrations need more room.",
+            "id": "powerstore"
           },
           {
-            "tag": "Pragmatic automation",
+            "tag": "AI-assisted, human-operated",
             "title": "AI-assisted IT tooling",
-            "description": "Define automation requirements, inspect generated logic and iterate until it works. AI supports research and dashboard creation but never autonomously changes work production systems."
+            "description": "I specify what I need, iterate on AI-drafted scripts and dashboards, and make the production decisions myself. No autonomous AI actions at work.",
+            "id": "automation"
           }
-        ]
+        ],
+        "hero_title": "I run infrastructure. I also own the messy parts.",
+        "hero_lead": "Much of my work starts with systems somebody else built: VMware hosts, Debian servers, identity, containers and backups. I keep them useful, understandable and recoverable.",
+        "hero_note_label": "A little about how I work",
+        "hero_note": "I'm an infrastructure all-rounder, not a developer with a wall of certificates. I investigate, make a plan, change carefully and document what I learn.",
+        "story_kicker": "ONE VERY ORDINARY EXAMPLE",
+        "story_title": "The server nobody remembers.",
+        "story_text": "When an old server has no clear owner or documentation, I don't just delete it. I shut it down in a controlled way, watch for consequences over the following days and keep the backup as a way back. Sometimes the most useful change is knowing what not to touch yet.",
+        "story_note_label": "My rule of thumb",
+        "story_note": "Understand it first. Keep a way back. Write down what the next person should know.",
+        "section_kicker": "WHAT I ACTUALLY DO",
+        "section_title": "Real systems. Real responsibilities.",
+        "section_description": "Not a wall of tool names. These are the areas I spend time operating, changing and recovering.",
+        "groups": [
+          {
+            "id": "operations",
+            "number": "01",
+            "title": "Keeping things running",
+            "intro": "Servers, hypervisors and the services people rely on.",
+            "ids": [
+              "vmware",
+              "linux",
+              "docker"
+            ]
+          },
+          {
+            "id": "access",
+            "number": "02",
+            "title": "Making things work together",
+            "intro": "Identity, desktop access and the policies between them.",
+            "ids": [
+              "identity",
+              "vdi",
+              "fortigate"
+            ]
+          },
+          {
+            "id": "recovery",
+            "number": "03",
+            "title": "Changing things without losing the way back",
+            "intro": "Restores, capacity and pragmatic automation.",
+            "ids": [
+              "veeam",
+              "powerstore",
+              "automation"
+            ]
+          }
+        ],
+        "lab_kicker": "A DIFFERENT SIDE OF ME",
+        "lab_action": "Explore the Tech View",
+        "footer": "Real responsibilities, no inflated coding claims. If you want the raw experiments and technical evidence, the Tech View is one click away."
       }
     },
     "de": {
@@ -446,55 +505,114 @@
         "eyebrow": "BERUFLICHE PRAXIS",
         "heading": "Wofür ich Verantwortung übernehme",
         "description": "Konkrete Aufgaben aus dem produktiven IT-Betrieb. Keine Lab-Scores und keine Behauptung, jedes übernommene System selbst entworfen zu haben.",
-        "lab_heading": "Technische Tiefe & privates Lab",
-        "lab_description": "Die ausklappbare Matrix darunter ist eine separate subjektive technische Selbsteinschätzung. Proxmox, Kubernetes/Talos, Ansible, Terraform/OpenTofu, Flux/GitOps und NetBird nutze ich ausschließlich privat; Linux und Docker dagegen auch beruflich.",
+        "lab_heading": "Neugierig, was ich nach Feierabend baue?",
+        "lab_description": "Proxmox, Talos/Kubernetes, GitOps, Ansible und OpenTofu sind mein privates Spielfeld. In der dunklen Tech View gibt es technische Details, Selbsteinschätzungen und Projektbelege. Linux und Docker gehören zu beiden Welten.",
         "items": [
           {
             "tag": "Zentrale IT-Zuständigkeit",
             "title": "VMware vSphere / ESXi",
-            "description": "Virtualisierungsumgebung administrieren, aktualisieren und Fehler beheben. Änderungen eigenständig planen; Wiederherstellbarkeit mit Veeam im Blick behalten."
+            "description": "Ich übernehme den Großteil unserer vSphere-Administration: Änderungen, Updates und die Fehlersuche, wenn etwas nicht wie geplant läuft.",
+            "id": "vmware"
           },
           {
-            "tag": "Täglicher Serverbetrieb",
+            "tag": "Tägliche Praxis",
             "title": "Debian / Ubuntu Linux",
-            "description": "Wichtigste Serverplattform im Beruf: Installationen aufsetzen und dokumentieren, SSH absichern, Cronjobs, Updates und administrative Zugänge verwalten."
+            "description": "Debian und Ubuntu sind bei uns die normalen Serverplattformen. Ich setze Hosts auf, sichere SSH ab, pflege Updates und Cronjobs und dokumentiere Installationen.",
+            "id": "linux"
           },
           {
-            "tag": "Produktive IT-Dienste",
+            "tag": "Produktive Dienste",
             "title": "Docker / Compose",
-            "description": "Monitoring, Ticketsystem, Dokumentation und Asset-Management betreiben. Bewährte Compose-Templates und .env-Konfigurationen anpassen, statt eigene Image-Entwicklung zu behaupten."
+            "description": "Monitoring, Ticketsystem, Dokumentation und Asset-Management laufen in Containern. Meist passe ich dafür bewährte Compose-Templates an unsere Anforderungen an.",
+            "id": "docker"
           },
           {
-            "tag": "Identität & Windows",
+            "tag": "Windows & Identity",
             "title": "Active Directory / Entra / M365",
-            "description": "Gewachsene Windows-/Identity-Infrastruktur administrieren, Anmelde- und Policy-Probleme beheben sowie hybride Identität und Microsoft-365-Dienste pflegen."
+            "description": "Active Directory, Entra und Microsoft 365: hybride Identitäten, Policies und Anmeldungen am Laufen halten – und herausfinden, warum es plötzlich hakt.",
+            "id": "identity"
           },
           {
             "tag": "Gemeinsam aufgebaut",
             "title": "Omnissa Horizon / VDI",
-            "description": "VDI-Umgebung mit einem Kollegen aufgebaut und laufend betreut – darunter Connection Server, UAG, Pools und Golden-Image-Lifecycle."
+            "description": "Die Horizon-Umgebung habe ich mit einem Kollegen aufgebaut. Heute betreue ich unter anderem Connection Server, UAG, Pools und Golden Images.",
+            "id": "vdi"
           },
           {
-            "tag": "Echte Restores",
+            "tag": "Echte Wiederherstellung",
             "title": "Veeam Backup & Recovery",
-            "description": "Backups vollständig betreuen und regelmäßig einzelne Dateien sowie gelegentlich ganze Server wiederherstellen. Mehr als nur grüne Backup-Jobs."
+            "description": "Ich betreue Veeam und hole regelmäßig versehentlich gelöschte Dateien zurück. Manchmal muss auch ein kompletter Server wiederhergestellt werden – nicht bloß ein Backup-Status geprüft.",
+            "id": "veeam"
           },
           {
-            "tag": "Operative Konfiguration",
+            "tag": "Firewall-Betrieb",
             "title": "FortiGate Firewalls",
-            "description": "Übernommene Konfiguration pflegen, bei Bedarf eigene Regeln erstellen, blockierten Traffic per Policy Lookup analysieren und Updates selbst ausführen."
+            "description": "Neue Regeln bei Bedarf, geblockte Verbindungen per Policy Lookup untersuchen und eine bestehende FortiGate-Konfiguration pflegen. Die ursprüngliche Migration kam vom Dienstleister.",
+            "id": "fortigate"
           },
           {
-            "tag": "Kapazität & Integration",
+            "tag": "Storage & Kapazität",
             "title": "PowerStore Storage",
-            "description": "Thin Provisioning und reale physische Belegung kontrollieren, vSphere-Integration pflegen und Volumes für Migrationen vergrößern."
+            "description": "Ich kontrolliere physische Belegung und Thin Provisioning, pflege die vSphere-Anbindung und erweitere Volumes, wenn Migrationen Platz brauchen.",
+            "id": "powerstore"
           },
           {
-            "tag": "Pragmatische Automatisierung",
+            "tag": "KI-gestützt, selbst verantwortet",
             "title": "KI-gestützte IT-Werkzeuge",
-            "description": "Anforderungen an Automatisierungen vorgeben, generierte Logik nachvollziehen und iterativ testen. KI unterstützt Recherche und Dashboards, verändert aber nie autonom Produktivsysteme."
+            "description": "Ich formuliere Anforderungen, iteriere KI-entworfene Skripte und Dashboards und entscheide Änderungen selbst. Keine autonomen KI-Eingriffe im Job.",
+            "id": "automation"
           }
-        ]
+        ],
+        "hero_title": "Ich betreibe Infrastruktur. Auch wenn's kompliziert wird.",
+        "hero_lead": "Viele Systeme, die ich betreue, wurden von anderen aufgebaut: VMware, Debian-Server, Identitäten, Container und Backups. Ich sorge dafür, dass sie laufen, verständlich bleiben und sich wiederherstellen lassen.",
+        "hero_note_label": "Wie ich arbeite",
+        "hero_note": "Ich bin Infrastruktur-Allrounder, kein Softwareentwickler mit Zertifikate-Wand. Ich untersuche, mache einen Plan, ändere mit Rückweg und dokumentiere, was ich lerne.",
+        "story_kicker": "EIN GANZ NORMALER FALL",
+        "story_title": "Der Server, den keiner mehr kennt.",
+        "story_text": "Wenn niemand mehr genau weiß, wofür ein alter Server noch läuft, lösche ich ihn nicht einfach. Ich schalte ihn kontrolliert ab, beobachte über mehrere Tage mögliche Auswirkungen und behalte das Backup als Rückweg. Manchmal ist die wichtigste Änderung, etwas erst einmal nicht zu ändern.",
+        "story_note_label": "Meine Faustregel",
+        "story_note": "Erst verstehen. Rückweg behalten. Für den Nächsten dokumentieren.",
+        "section_kicker": "WAS ICH TATSÄCHLICH MACHE",
+        "section_title": "Echte Systeme. Echte Verantwortung.",
+        "section_description": "Keine Wand aus Tool-Namen. Sondern die Bereiche, die ich betreibe, verändere und im Fehlerfall wiederherstelle.",
+        "groups": [
+          {
+            "id": "operations",
+            "number": "01",
+            "title": "Damit die Systeme weiterlaufen",
+            "intro": "Server, Hypervisor und die Dienste, auf die sich andere verlassen.",
+            "ids": [
+              "vmware",
+              "linux",
+              "docker"
+            ]
+          },
+          {
+            "id": "access",
+            "number": "02",
+            "title": "Damit alles zusammenspielt",
+            "intro": "Identitäten, Desktop-Zugriffe und die Regeln dazwischen.",
+            "ids": [
+              "identity",
+              "vdi",
+              "fortigate"
+            ]
+          },
+          {
+            "id": "recovery",
+            "number": "03",
+            "title": "Ändern, ohne den Rückweg zu verlieren",
+            "intro": "Restores, Speicherkapazitäten und pragmatische Automatisierung.",
+            "ids": [
+              "veeam",
+              "powerstore",
+              "automation"
+            ]
+          }
+        ],
+        "lab_kicker": "DIE ANDERE SEITE",
+        "lab_action": "Tech View entdecken",
+        "footer": "Echte Verantwortung, keine aufgeblasenen Entwickler-Claims. Für Experimente und technische Belege geht es eine Ebene tiefer in die Tech View."
       }
     }
   }

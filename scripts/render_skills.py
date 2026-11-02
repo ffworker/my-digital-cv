@@ -117,131 +117,59 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
 
 
 def render_editorial_variant(content: str, locale: dict) -> str:
-    """Recruiter-first Editorial page; retain the technical cards as a separate index."""
+    """A short human editorial profile. Full self-assessment lives in Tech View."""
     lang = locale["lang"]
-    technical_path = "/skills-tech.html" if lang == "en" else "/de/skills-tech.html"
-    if lang == "en":
-        eyebrow = "PROFESSIONAL PROFILE"
-        heading = "Infrastructure / Systems Engineer"
-        intro = (
-            "I run, maintain and troubleshoot inherited and evolving IT systems. "
-            "VMware, Linux, Docker, Windows/identity, VDI, firewalls and real restores "
-            "are part of my professional work. Kubernetes and other experimental "
-            "platform tooling belong to my private lab."
-        )
-        view_label, technical_label = "View", "Tech View"
-        context_label = "Two contexts"
-        professional_label, private_label = "Professional IT operations", "Private infrastructure lab"
-        professional_detail = "VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam"
-        private_detail = "Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu"
-        career_label, career_url = "Read professional experience", "/#professional"
-    else:
-        eyebrow = "BERUFLICHES PROFIL"
-        heading = "Infrastructure / Systems Engineer"
-        intro = (
-            "Ich betreibe, pflege und analysiere bestehende und wachsende IT-Systeme. "
-            "VMware, Linux, Docker, Windows/Identity, VDI, Firewalls und echte Restores "
-            "gehören zu meiner beruflichen Praxis. Kubernetes und andere experimentelle "
-            "Plattformwerkzeuge nutze ich ausschließlich privat."
-        )
-        view_label, technical_label = "Ansicht", "Tech View"
-        context_label = "Zwei Bereiche"
-        professional_label, private_label = "Beruflicher IT-Betrieb", "Privates Infrastruktur-Lab"
-        professional_detail = "VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam"
-        private_detail = "Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu"
-        career_label, career_url = "Berufliche Erfahrung ansehen", "/de/index.html#professional"
-
-    # Use hiring-oriented metadata and a clear professional header on Editorial.
-    if lang == "en":
-        page_title = "Dennis Kappel | Infrastructure / Systems Engineer skills"
-        page_description = (
-            "Hands-on professional VMware, Linux, Docker, AD, VDI, FortiGate and Veeam operations; "
-            "private Kubernetes and IaC practice clearly separated."
-        )
-        og_title = "Dennis Kappel | Infrastructure & operations experience"
-        old_brand, new_brand = "Dennis Kappel · technical depth", "Dennis Kappel · professional profile"
-    else:
-        page_title = "Dennis Kappel | Infrastructure / Systems Engineer · Kompetenzen"
-        page_description = (
-            "Berufliche Praxis mit VMware, Linux, Docker, AD, VDI, FortiGate und Veeam; "
-            "private Kubernetes- und IaC-Projekte klar getrennt."
-        )
-        og_title = "Dennis Kappel | Infrastruktur & Betriebspraxis"
-        old_brand, new_brand = "Dennis Kappel · technische Tiefe", "Dennis Kappel · Kompetenzprofil"
-    content = content.replace(f'<title>{locale["page_title"]}</title>',
-                              f'<title>{page_title}</title>', 1)
-    content = content.replace(
-        f'<meta name="description" content="{locale["description"]}" />',
-        f'<meta name="description" content="{page_description}" />', 1,
-    )
-    content = content.replace(
-        f'<meta property="og:title" content="{locale["og_title"]}" />',
-        f'<meta property="og:title" content="{og_title}" />', 1,
-    )
-    content = content.replace(f'<strong>{old_brand}</strong>',
-                              f'<strong>{new_brand}</strong>', 1)
-
-    content = content.replace(
-        '<link rel="stylesheet" href="/skills.css" />',
-        '<link rel="stylesheet" href="/skills-professional.css" />', 1,
-    )
-    content = content.replace('<body class="skills-page">',
-                              '<body class="skills-page skills-professional">', 1)
-    content = content.replace(f'<p class="eyebrow">{locale["eyebrow"]}</p>',
-                              f'<p class="eyebrow">{eyebrow}</p>', 1)
-    content = content.replace(f'<h1 id="skills-title">{locale["headline"]}</h1>',
-                              f'<h1 id="skills-title">{heading}</h1>', 1)
-    content = content.replace(f'<p class="intro">{locale["intro"]}</p>',
-                              f'<p class="intro">{intro}</p>', 1)
-
-    # Replace résumé-irrelevant numeric counters with two clear work contexts.
-    context = (
-        '<aside class="experience-panel" aria-label="' + context_label + '">'
-        '<p class="context-kicker">' + context_label + '</p>'
-        '<div class="context-item"><strong>' + professional_label + '</strong>'
-        '<p>' + professional_detail + '</p></div>'
-        '<div class="context-item"><strong>' + private_label + '</strong>'
-        '<p>' + private_detail + '</p></div>'
-        f'<a class="context-link" href="{career_url}">{career_label} →</a>'
-        '</aside>\n'
-    )
-    panel_start = content.index('<div class="index-panel"')
-    panel_end = content.index('      </div>\n    </section>', panel_start)
-    content = content[:panel_start] + context + content[panel_end:]
-
-    # Show the skills immediately after the intro. Methodology remains available,
-    # but no longer takes precedence over hands-on experience and evidence.
-    method_start = content.index('    <details class="methodology">')
-    method_end = content.index('    </details>\n', method_start) + len('    </details>\n')
-    method_html = content[method_start:method_end]
-    content = content[:method_start] + content[method_end:]
-    footer_start = content.index('    <footer class="footer-note">')
-    content = content[:footer_start] + method_html + content[footer_start:]
-
+    de = lang == "de"
     practice = locale["editorial_practice"]
-    practice_cards = "\n".join(
-        '        <article class="practice-card">'
-        f'<span class="practice-meta">{html.escape(item["tag"])}</span>'
-        f'<h3>{html.escape(item["title"])}</h3>'
-        f'<p>{html.escape(item["description"])}</p>'
-        '</article>'
-        for item in practice["items"]
-    )
-    practice_markup = (
-        '\n    <section class="practice-section" aria-labelledby="practice-title">\n'
-        '      <div class="practice-intro">'
-        f'<p class="practice-kicker">{html.escape(practice["eyebrow"])}</p>'
-        f'<h2 id="practice-title">{html.escape(practice["heading"])}</h2>'
-        f'<p>{html.escape(practice["description"])}</p></div>\n'
-        f'      <div class="practice-grid">\n{practice_cards}\n      </div>\n'
-        '    </section>\n'
-        '    <div class="lab-index-note">'
-        f'<h2>{html.escape(practice["lab_heading"])}</h2>'
-        f'<p>{html.escape(practice["lab_description"])}</p></div>\n'
-    )
-    content = content.replace('    <section class="skill-group"',
-                              practice_markup + '    <section class="skill-group"', 1)
+    escape = html.escape
 
+    technical_path = "/de/skills-tech.html" if de else "/skills-tech.html"
+    career_url = "/de/index.html#professional" if de else "/#professional"
+    role = "BERUFLICH / INFRASTRUKTUR" if de else "PROFESSIONAL / INFRASTRUCTURE"
+    context_label = "Zwei Welten" if de else "Two contexts"
+    professional_label = "Im Beruf" if de else "At work"
+    private_label = "Im eigenen Lab" if de else "In my lab"
+    professional_detail = "VMware · Linux / Docker · AD / Entra · VDI · Veeam"
+    private_detail = "Proxmox · Talos / Kubernetes · GitOps · IaC"
+    scroll_label = "Meine Arbeit ansehen" if de else "See what I do"
+    view_label = "Ansicht" if de else "View"
+    technical_label = "Tech View"
+    career_label = "Zur beruflichen Erfahrung" if de else "Back to my experience"
+    page_title = (
+        "Dennis Kappel | Infrastructure / Systems Engineer · Praxis"
+        if de else "Dennis Kappel | Infrastructure / Systems Engineer · Practical skills"
+    )
+    page_description = (
+        "Ein persönlicher Einblick in berufliche VMware-, Linux-, Docker-, AD-, "
+        "VDI- und Backup-Praxis. Private Kubernetes-/GitOps-Projekte separat."
+        if de else
+        "A human look at real VMware, Linux, Docker, identity, VDI and backup "
+        "work, with private Kubernetes and GitOps experiments kept separate."
+    )
+    brand = "Dennis Kappel · Kompetenzprofil" if de else "Dennis Kappel · professional profile"
+
+    # Keep the generated, accessible header/canonical language links. Replace
+    # only editorial metadata; Tech View stays the canonical technical source.
+    prefix = content[:content.index('    <section class="masthead"')]
+    prefix = prefix.replace(f'<title>{locale["page_title"]}</title>',
+                            f'<title>{escape(page_title)}</title>', 1)
+    prefix = prefix.replace(
+        f'<meta name="description" content="{locale["description"]}" />',
+        f'<meta name="description" content="{escape(page_description)}" />', 1)
+    prefix = prefix.replace(
+        f'<meta property="og:title" content="{locale["og_title"]}" />',
+        f'<meta property="og:title" content="{escape(page_title)}" />', 1)
+    prefix = prefix.replace(
+        f'<meta property="og:description" content="{locale["og_description"]}" />',
+        f'<meta property="og:description" content="{escape(page_description)}" />', 1)
+    old_brand = "Dennis Kappel · technische Tiefe" if de else "Dennis Kappel · technical depth"
+    prefix = prefix.replace(f'<strong>{old_brand}</strong>',
+                            f'<strong>{brand}</strong>', 1)
+    prefix = prefix.replace(
+        '<link rel="stylesheet" href="/skills.css" />',
+        '<link rel="stylesheet" href="/skills-professional.css" />', 1)
+    prefix = prefix.replace('<body class="skills-page">',
+                            '<body class="skills-page skills-professional">', 1)
     switch = (
         '<nav class="theme-switch" aria-label="Skills view">'
         f'<span class="theme-label">{view_label}</span>'
@@ -250,7 +178,101 @@ def render_editorial_variant(content: str, locale: dict) -> str:
         f'<a href="{technical_path}">{technical_label}</a>'
         '</span></nav>'
     )
-    return content.replace('</header>', f'</header>\n  {switch}', 1)
+    prefix = prefix.replace('</header>', f'</header>\n  {switch}', 1)
+
+    hero = (
+        '    <section class="masthead" aria-labelledby="skills-title">\n'
+        '      <div class="hero-layout">\n'
+        '        <div class="hero-copy">'
+        f'<p class="eyebrow">{role}</p>'
+        f'<h1 id="skills-title">{escape(practice["hero_title"])}</h1>'
+        f'<p class="intro">{escape(practice["hero_lead"])}</p>'
+        f'<a class="scroll-link" href="#practice-title">{scroll_label}<span aria-hidden="true"> ↓</span></a>'
+        '</div>\n'
+        f'        <aside class="experience-panel" aria-label="{context_label}">'
+        f'<p class="context-kicker">{escape(practice["hero_note_label"])}</p>'
+        f'<p class="hero-note-text">{escape(practice["hero_note"])}</p>'
+        '<div class="contexts">'
+        f'<div class="context-item"><strong>{professional_label}</strong>'
+        f'<p>{professional_detail}</p></div>'
+        f'<div class="context-item"><strong>{private_label}</strong>'
+        f'<p>{private_detail}</p></div></div>'
+        '</aside>\n'
+        '      </div>\n'
+        '    </section>\n'
+    )
+    story = (
+        '    <section class="professional-story" aria-labelledby="story-title">\n'
+        '      <div class="story-heading">'
+        f'<p class="story-kicker">{escape(practice["story_kicker"])}</p>'
+        f'<h2 id="story-title">{escape(practice["story_title"])}</h2>'
+        '</div>'
+        '<div class="story-body">'
+        f'<p>{escape(practice["story_text"])}</p>'
+        '<div class="story-note">'
+        f'<span>{escape(practice["story_note_label"])}</span>'
+        f'<p>{escape(practice["story_note"])}</p></div>'
+        '</div>\n'
+        '    </section>\n'
+    )
+    section_head = (
+        '    <section class="practice-section" aria-labelledby="practice-title">\n'
+        '      <div class="practice-intro">'
+        f'<p class="practice-kicker">{escape(practice["section_kicker"])}</p>'
+        f'<h2 id="practice-title">{escape(practice["section_title"])}</h2>'
+        f'<p>{escape(practice["section_description"])}</p>'
+        '</div>\n'
+    )
+    items = {item["id"]: item for item in practice["items"]}
+    seen = []
+    chapters = []
+    for group in practice["groups"]:
+        rows = []
+        for key in group["ids"]:
+            item = items[key]
+            seen.append(key)
+            rows.append(
+                '          <article class="capability">'
+                '<div class="capability-heading">'
+                f'<h3>{escape(item["title"])}</h3>'
+                f'<span class="capability-tag">{escape(item["tag"])}</span>'
+                '</div>'
+                f'<p>{escape(item["description"])}</p>'
+                '</article>'
+            )
+        chapters.append(
+            f'      <section class="practice-chapter" aria-labelledby="chapter-{group["id"]}">'
+            '<div class="chapter-rail">'
+            f'<span class="chapter-number">{escape(group["number"])} / 03</span>'
+            f'<h3 id="chapter-{group["id"]}">{escape(group["title"])}</h3>'
+            f'<p>{escape(group["intro"])}</p>'
+            '</div>'
+            '<div class="chapter-list">\n'
+            + '\n'.join(rows) + '\n'
+            '</div></section>\n'
+        )
+    if len(seen) != len(items) or set(seen) != set(items) or len(set(seen)) != len(seen):
+        raise ValueError("Editorial group items must cover each skill exactly once")
+    chapter_content = section_head + ''.join(chapters) + '    </section>\n'
+
+    lab = (
+        '    <aside class="lab-gateway" id="lab-depth">'
+        '<div class="lab-gateway-copy">'
+        f'<p class="lab-kicker">{escape(practice["lab_kicker"])}</p>'
+        f'<h2>{escape(practice["lab_heading"])}</h2>'
+        f'<p>{escape(practice["lab_description"])}</p>'
+        '</div>'
+        '<div class="lab-gateway-actions">'
+        f'<a href="{technical_path}">{escape(practice["lab_action"])}<span aria-hidden="true"> ↗</span></a>'
+        f'<a class="quiet-link" href="{career_url}">{career_label}</a>'
+        '</div></aside>\n'
+    )
+    footer = (
+        '    <footer class="footer-note">'
+        f'{escape(practice["footer"])}</footer>\n'
+        '  </main>\n</div>\n</body>\n</html>\n'
+    )
+    return prefix + hero + story + chapter_content + lab + footer
 
 
 def render_tech_variant(content: str, locale: dict) -> str:

@@ -1,117 +1,92 @@
-"""Both styles show identical bilingual skill content, with editorial canonical."""
+"""Editorial is a short, warm professional profile; technical evidence stays in Tech View."""
 from pathlib import Path
-import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def skill_cards(text):
-    result = {}
-    parts = re.split(r'(?=<details class="skill-card")', text)
-    for part in parts:
-        match = re.match(r'<details class="skill-card" id="skill-([^"]+)"', part)
-        if match:
-            result[match.group(1)] = part.split("</details>", 1)[0]
-    return result
-
-
-class AlternateSkillsThemeTests(unittest.TestCase):
-    def test_editorial_is_canonical_default_for_both_languages(self):
+class EditorialSkillsTests(unittest.TestCase):
+    def test_bilingual_editorial_is_canonical_and_linked(self):
         for path, tech, other in (
             ("skills.html", "/skills-tech.html", "/de/skills.html"),
             ("de/skills.html", "/de/skills-tech.html", "/skills.html"),
         ):
-            with self.subTest(page=path):
+            with self.subTest(path=path):
                 page = (ROOT / path).read_text(encoding="utf-8")
                 self.assertIn('href="/skills-professional.css"', page)
-                self.assertNotIn('href="/skills.css"', page)
                 self.assertIn('name="robots" content="index, follow"', page)
-                self.assertIn('class="theme-switch"', page)
                 self.assertIn(f'href="{tech}"', page)
                 self.assertIn(f'href="{other}"', page)
                 self.assertIn('class="skills-page skills-professional"', page)
+                self.assertIn('class="professional-story"', page)
+                self.assertIn('class="hero-note-text"', page)
+                self.assertEqual(page.count('class="practice-chapter"'), 3)
+                self.assertEqual(page.count('class="capability"'), 9)
+                self.assertIn('class="lab-gateway"', page)
+                self.assertIn('class="context-item"', page)
+                self.assertNotIn('<details class="skill-card"', page)
+                self.assertNotIn('<details class="methodology"', page)
+                self.assertNotIn('class="practice-grid"', page)
+                self.assertNotIn('<script', page)
+                self.assertLess(page.index('class="professional-story"'),
+                                page.index('class="practice-section"'))
+                self.assertLess(page.index('class="practice-section"'),
+                                page.index('class="lab-gateway"'))
 
-    def test_tech_view_preserves_the_old_console_style(self):
-        for path, original, other in (
+    def test_editorial_contains_real_lived_experience_and_not_generic_score_wall(self):
+        english = (ROOT / "skills.html").read_text(encoding="utf-8")
+        german = (ROOT / "de/skills.html").read_text(encoding="utf-8")
+        for page in (english, german):
+            self.assertIn("VMware vSphere / ESXi", page)
+            self.assertIn("Debian / Ubuntu Linux", page)
+            self.assertIn("Docker / Compose", page)
+            self.assertIn("Veeam Backup", page)
+            self.assertIn("PowerStore", page)
+            self.assertNotIn('class="skill-score"', page)
+        self.assertIn("The server nobody remembers.", english)
+        self.assertIn("Der Server, den keiner mehr kennt.", german)
+        self.assertIn("No autonomous AI actions at work.", english)
+        self.assertIn("Keine autonomen KI-Eingriffe im Job.", german)
+
+    def test_tech_view_keeps_console_design_and_original_13_skills(self):
+        for path, editorial, other in (
             ("skills-tech.html", "/skills.html", "/de/skills-tech.html"),
             ("de/skills-tech.html", "/de/skills.html", "/skills-tech.html"),
         ):
-            with self.subTest(page=path):
+            with self.subTest(path=path):
                 page = (ROOT / path).read_text(encoding="utf-8")
                 self.assertIn('href="/skills.css"', page)
                 self.assertNotIn('skills-professional.css', page)
                 self.assertIn('name="robots" content="noindex, follow"', page)
-                self.assertIn('rel="canonical" href="https://cv.bytegeist.dev' + original + '"', page)
-                self.assertIn('class="tech-view-choice"', page)
-                self.assertIn(f'href="{original}"', page)
+                self.assertIn('rel="canonical" href="https://cv.bytegeist.dev' + editorial + '"', page)
+                self.assertIn(f'href="{editorial}"', page)
                 self.assertIn(f'href="{other}"', page)
                 self.assertIn('class="skills-page skills-tech"', page)
-
-    def test_same_skill_ids_scores_evidence_and_source_order(self):
-        for editorial, technical in (
-            ("skills.html", "skills-tech.html"),
-            ("de/skills.html", "de/skills-tech.html"),
-        ):
-            a = skill_cards((ROOT / editorial).read_text(encoding="utf-8"))
-            b = skill_cards((ROOT / technical).read_text(encoding="utf-8"))
-            self.assertEqual(len(a), 13)
-            self.assertEqual(list(a), list(b))
-            for skill in a:
-                with self.subTest(page=editorial, skill=skill):
-                    self.assertEqual(a[skill], b[skill])
-
-    def test_professional_context_precedes_skill_list(self):
-        for path, labels in (
-            ("skills.html", ("Professional IT operations", "Private infrastructure lab")),
-            ("de/skills.html", ("Beruflicher IT-Betrieb", "Privates Infrastruktur-Lab")),
-        ):
-            with self.subTest(page=path):
-                page = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn('class="experience-panel"', page)
-                self.assertIn('class="practice-section"', page)
-                self.assertEqual(page.count('class="practice-card"'), 9)
-                self.assertIn('class="lab-index-note"', page)
-                self.assertNotIn('class="index-panel"', page)
-                self.assertIn('class="context-link"', page)
-                for label in labels:
-                    self.assertIn(label, page)
-                self.assertLess(page.index('class="experience-panel"'),
-                                page.index('class="practice-section"'))
-                self.assertLess(page.index('class="practice-section"'),
-                                page.index('<section class="skill-group"'))
-                self.assertLess(page.index('<section class="skill-group"'),
-                                page.index('<details class="methodology">'))
-        for tech in ("skills-tech.html", "de/skills-tech.html"):
-            with self.subTest(page=tech):
-                page = (ROOT / tech).read_text(encoding="utf-8")
+                self.assertEqual(page.count('<details class="skill-card"'), 13)
+                self.assertEqual(page.count('<summary class="skill-summary">'), 13)
                 self.assertIn('class="index-panel"', page)
-                self.assertNotIn('class="practice-section"', page)
-                self.assertLess(page.index('<details class="methodology">'),
-                                page.index('<section class="skill-group"'))
 
-    def test_former_previews_redirect_to_canonical_urls(self):
+    def test_mobile_reading_and_accessibility_requirements(self):
+        css = (ROOT / "skills-professional.css").read_text(encoding="utf-8")
+        for marker in ("a:focus-visible", "prefers-reduced-motion", ".practice-chapter",
+                       ".capability", ".professional-story", "@media(max-width:640px)"):
+            self.assertIn(marker, css)
+        self.assertNotIn("@import", css)
+        for path in ("skills.html", "de/skills.html"):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn('<a class="skip-link" href="#skills-overview">', page)
+            self.assertIn('id="practice-title"', page)
+            self.assertIn('aria-labelledby="skills-title"', page)
+            self.assertIn('id="lab-depth"', page)
+
+    def test_former_preview_redirects_are_preserved(self):
         for path, target in (
             ("skills-professional.html", "/skills.html"),
             ("de/skills-professional.html", "/de/skills.html"),
         ):
-            with self.subTest(page=path):
-                html = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn('content="0; url=' + target + '"', html)
-                self.assertIn('name="robots" content="noindex, follow"', html)
-                self.assertIn('rel="canonical" href="https://cv.bytegeist.dev' + target + '"', html)
-
-    def test_accessible_disclosures_and_no_external_fonts_or_scripts(self):
-        css = (ROOT / "skills-professional.css").read_text(encoding="utf-8")
-        self.assertIn(".skill-card[open]", css)
-        self.assertIn("a:focus-visible", css)
-        self.assertIn("prefers-reduced-motion", css)
-        self.assertNotIn("@import", css)
-        for path in ("skills.html", "de/skills.html", "skills-tech.html", "de/skills-tech.html"):
             page = (ROOT / path).read_text(encoding="utf-8")
-            self.assertEqual(page.count('<details class="skill-card"'), 13)
-            self.assertEqual(page.count('<summary class="skill-summary">'), 13)
-            self.assertNotIn("<script", page)
+            self.assertIn('content="0; url=' + target + '"', page)
+            self.assertIn('name="robots" content="noindex, follow"', page)
 
 
 if __name__ == "__main__":
