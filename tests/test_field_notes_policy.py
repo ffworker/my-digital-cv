@@ -50,9 +50,9 @@ class FieldNotesPolicyTests(unittest.TestCase):
             self.assertIn("AI" if page == "index.html" else "KI", text)
             self.assertIn("production" if page == "index.html" else "Produktivsysteme", text)
         for path, phrase in (
-            ("skills.html", "AI agents do not autonomously access or change production systems"),
+            ("skills.html", "No autonomous AI actions at work."),
             ("skills-tech.html", "AI agents do not autonomously access or change production systems"),
-            ("de/skills.html", "KI-Agenten greifen nicht autonom auf Produktivsysteme zu"),
+            ("de/skills.html", "Keine autonomen KI-Eingriffe im Job."),
             ("de/skills-tech.html", "KI-Agenten greifen nicht autonom auf Produktivsysteme zu"),
         ):
             with self.subTest(path=path):
