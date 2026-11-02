@@ -1,4 +1,4 @@
-name: One-off public CV delivery diagnostics
+name: One-off compare exact preview and live skills URLs
 on:
   push:
     branches: [diagnostics/cv-public-css-nov02]
@@ -7,28 +7,48 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 6
     steps:
-      - name: Compare public website with approved Cloudflare preview
+      - name: Read-only route and CSS comparison
         shell: bash
         run: |
           set -u
-          for site in "https://cv.bytegeist.dev" "https://9d984d33.mywebsite-ebw.pages.dev" "https://8c38b0b5.mywebsite-ebw.pages.dev"; do
-            echo "::group::$site"
-            for path in "/de/skills.html" "/skills.html" "/skills-professional.css" "/skills-tech.html" "/skills.css"; do
-              url="$site$path"
-              printf '\nURL: %s\n' "$url"
-              status=$(curl --connect-timeout 6 --max-time 16 --compressed --location --silent --show-error --output /tmp/cv-public-body --dump-header /tmp/cv-public-headers --write-out '%{http_code}' "$url") || status="ERR"
-              printf 'status=%s size=%s sha256=%s\n' "$status" "$(wc -c </tmp/cv-public-body 2>/dev/null || echo 0)" "$(sha256sum /tmp/cv-public-body 2>/dev/null | cut -c1-18 || true)"
-              grep -iE '^content-type:|^cache-control:|^location:|^cf-cache-status:' /tmp/cv-public-headers 2>/dev/null | tail -6 || true
-              if [[ "$path" == *skills.html ]]; then
-                printf 'story-marker='; grep -oc 'professional-story' /tmp/cv-public-body || true
-                printf 'tech-marker='; grep -oc 'tech-reading-guide' /tmp/cv-public-body || true
-                printf 'stylesheet='; grep -oE 'href="/skills[^"]+css"' /tmp/cv-public-body | head -1 || true
-              elif [[ "$path" == *.css ]]; then
-                printf 'css-marker='; grep -oc -- '--forest-deep\|.skills-tech .skill-grid' /tmp/cv-public-body || true
-                printf 'first-bytes='; head -c 95 /tmp/cv-public-body | tr '\n' ' '; echo
-              fi
+          for origin in https://cv.bytegeist.dev https://9d984d33.mywebsite-ebw.pages.dev; do
+            for path in '/de/skills' '/de/skills?utm_source=chatgpt.com' '/de/skills.html' '/de/index.html' '/skills-professional.css' '/skills-professional.css?v=241e70aa91c3'; do
+              url="$origin$path"
+              code=$(curl --connect-timeout 5 --max-time 12 --compressed --silent --show-error --location -o /tmp/check-body -D /tmp/check-headers -w '%{http_code}' "$url") || code="ERR"
+              hash=$(sha256sum /tmp/check-body | cut -c1-20)
+              bytes=$(wc -c </tmp/check-body)
+              title=$(grep -om1 '<title>[^<]*</title>' /tmp/check-body | head -c 110 || true)
+              stylesheet=$(grep -om1 'href="/skills-professional.css[^"]*"' /tmp/check-body || true)
+              echo "RESULT url=$url status=$code bytes=$bytes sha=$hash title=$title cssLink=$stylesheet"
+              grep -iE '^content-type:|^cache-control:|^location:' /tmp/check-headers | tr '\n' ';' || true
+              echo
             done
-            echo "::endgroup::"
           done
+      - name: Compare browser-rendered screenshots if Chrome available
+        shell: bash
+        run: |
+          set -u
+          command -v google-chrome || true
+          command -v chromium || true
+          CHROME=$(command -v google-chrome || command -v chromium || echo "")
+          if [ -z "$CHROME" ]; then echo "Chrome not installed; skip screenshot"; exit 0; fi
+          for host in live preview; do
+            if [ "$host" = live ]; then url=https://cv.bytegeist.dev/de/skills; else url=https://9d984d33.mywebsite-ebw.pages.dev/de/skills; fi
+            timeout 35 "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1280,900 --virtual-time-budget=4500 --screenshot="/tmp/$host.png" "$url" 2>/dev/null || true
+            file "/tmp/$host.png" || true
+            sha256sum "/tmp/$host.png" || true
+          done
+          python - <<'PY'
+          try:
+              from PIL import Image, ImageChops
+              a=Image.open('/tmp/live.png').convert('RGB')
+              b=Image.open('/tmp/preview.png').convert('RGB')
+              diff=ImageChops.difference(a,b)
+              box=diff.getbbox()
+              print('RENDER_DIFF', 'images_identical' if box is None else f'bbox={box}', 'sizes',a.size,b.size)
+              print('PIXELS', 'live-bg',a.getpixel((10,350)), 'preview-bg',b.getpixel((10,350)))
+          except Exception as exc:
+              print('Screenshot comparison unavailable',str(exc))
+          PY
