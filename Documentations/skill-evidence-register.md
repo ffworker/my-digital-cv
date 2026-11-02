@@ -12,25 +12,25 @@ This is a **public, evidence-first inventory**, not a certificate and not a live
 | **Captured execution** | Dated run, exact source revision, sanitized command/result, observable success/failure | Broad competence outside the tested scope |
 | **Private / gap** | Evidence is withheld or not yet collected | A publicly verified skill |
 
-**Current state:** the public references below mostly show inspectable source/validators and one documented manual Rocky cluster test. This audit **does not assert a new successful deployment, CI run, restore, or failover test**. Do not upgrade a self-rating merely because a source link was added.
+**Current state:** public CKA source and other selected implementation references exist; several infrastructure skills intentionally have no current public proof. This audit **does not assert a new successful deployment, CI run, restore, or failover test**. Do not upgrade a self-rating merely because a source link was added.
 
 ## Concrete scenarios and gaps
 
 | Skill | Bounded scenario & source of evidence | Level now | Missing to demonstrate runtime behavior |
 | --- | --- | --- | --- |
-| Linux & shell | [Rocky manual node preparation](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md) — chrony, guest agent, sysctl, swap and containerd | Documented manual reference | Dated, sanitized terminal transcript of node preparation + post-reboot checks |
-| Networking | [Proxmox SDN Simple zone, VNet and SNAT](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn) | Documented manual reference | Test matrix of DNS, internal Service reachability, external egress, blocked cross-zone paths |
+| Linux & shell | No public example selected; experience described, not independently documented | Private / gap | Sanitized real operations trace showing diagnosis and post-change checks |
+| Networking | No public networking scenario selected; work examples remain private | Private / gap | Sanitized routing, DNS or firewall test with before/after verification |
 | Docker / Compose | [Signaturee Linux test container](https://github.com/ffworker/signaturee-linux/blob/main/compose.yaml) has non-root, read-only root FS and runtime limits | Source | `docker compose config`, isolated run, functional test and sanitized logs |
 | Kubernetes / Talos | [Service Endpoints mission](https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json) and [EndpointSlice validator](https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh); **not** proof of Talos operational expertise | Source + executable validation script | Captured inject → diagnose → fix → validator output; Talos live proof stays private until safely sanitized |
-| Proxmox VE | [CKA factory safety checks](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh) compare exact state and VM ownership before destroy | Source + static CI definition | Controlled failure cases with rejected destroy; clean lab-up/lab-down output without sensitive identifiers |
-| Terraform / OpenTofu | [Two bounded VM resources](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf), [CI validation definition](https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml) | Source + static CI definition | Exact passing run URL and isolated `plan`/`apply`/`destroy` results with ownership validation |
-| Ansible | [Kubernetes acceptance playbook](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml); [manual reference test report](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation) | Source + documented manual reference | Clean-slate fully automated build and a dated `ansible-playbook ... validate.yml` output |
+| Proxmox VE | Active private Proxmox operation; no publicly reproducible live evidence | Private / gap | Controlled VM/lifecycle test with anonymized results and explicit rollback |
+| Terraform / OpenTofu | Lab experiments with AI-assisted IaC; no public scenario promoted | Private / gap | Isolated plan/apply/destroy evidence with bounded ownership checks |
+| Ansible | Private Ansible use; no public reproducible scenario promoted | Private / gap | Sanitized playbook execution with independent outcome validation |
 | SMB / NAS | Private operational setup; **no public test artifact** | Gap | Sanitized share/ACL test showing expected read/write/deny behavior and preservation after restart |
 | NFS | Private NAS exports and mounts; **no public test artifact** | Gap | Allowed-client and denied-client checks, reboot/remount, read/write verification, measured restoration |
 | Prometheus / Grafana | **No public alert-to-recovery artifact** | Gap | Test service stopped → alert triggered/delivered → service recovered → alert resolved; timestamps and rule link |
 | NetBird / VPN | Private deployment; **no public connectivity/failover artifact** | Gap | Sanitized peer/ACL/routing connectivity test plus independent recovery-path demonstration |
 | Git / GitHub Actions | [CV validation pipeline](https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml), [regression suite](https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py) and [successful run #41345106566](https://github.com/ffworker/my-digital-cv/actions/runs/41345106566) (generated EN/DE check + unit tests) | Source + **captured successful CI run** | Link the exact run to its source revision; production Talos promotion remains separate and unproven |
-| Bash / scripting | [Fail-closed CKA factory shell implementation](https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh) | Source | Automated negative-path test with exit status and proof no unrelated VM was changed |
+| Bash / scripting | Shell automation in practice; no publicly verified end-to-end example | Private / gap | Small auditable script plus actual result, error handling and test evidence |
 
 ## Capture one actual skill proof
 
