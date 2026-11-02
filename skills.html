@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <title>Dennis Kappel | Infrastructure / Systems Engineer skills</title>
-  <meta name="description" content="Hands-on professional VMware, Linux, Docker, AD, VDI, FortiGate and Veeam operations; private Kubernetes and IaC practice clearly separated." />
+  <title>Dennis Kappel | Infrastructure / Systems Engineer · Practical skills</title>
+  <meta name="description" content="A human look at real VMware, Linux, Docker, identity, VDI and backup work, with private Kubernetes and GitOps experiments kept separate." />
   <link rel="canonical" href="https://cv.bytegeist.dev/skills.html" />
   <link rel="alternate" hreflang="en" href="https://cv.bytegeist.dev/skills.html" />
   <link rel="alternate" hreflang="de" href="https://cv.bytegeist.dev/de/skills.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Dennis Kappel | Infrastructure & operations experience" />
-  <meta property="og:description" content="An intentionally honest technical self-assessment covering independence, AI and documentation use, production posture and public evidence." />
+  <meta property="og:title" content="Dennis Kappel | Infrastructure / Systems Engineer · Practical skills" />
+  <meta property="og:description" content="A human look at real VMware, Linux, Docker, identity, VDI and backup work, with private Kubernetes and GitOps experiments kept separate." />
   <meta property="og:url" content="https://cv.bytegeist.dev/skills.html" />
   <meta property="og:image" content="https://cv.bytegeist.dev/assets/social-preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -25,430 +25,34 @@
   <nav class="theme-switch" aria-label="Skills view"><span class="theme-label">View</span><span class="theme-options"><span class="current" aria-current="page">Editorial</span><a href="/skills-tech.html">Tech View</a></span></nav>
   <main id="skills-overview">
     <section class="masthead" aria-labelledby="skills-title">
-      <div class="terminal-path" aria-hidden="true"><span class="prompt-user">visitor@bytegeist</span><span class="prompt-colon">:</span><span class="prompt-path">~/cv</span><span class="prompt-dollar">$</span> cat skills.yaml</div>
       <div class="hero-layout">
-        <div class="hero-copy">
-          <p class="eyebrow">PROFESSIONAL PROFILE</p>
-          <h1 id="skills-title">Infrastructure / Systems Engineer</h1>
-          <p class="intro">I run, maintain and troubleshoot inherited and evolving IT systems. VMware, Linux, Docker, Windows/identity, VDI, firewalls and real restores are part of my professional work. Kubernetes and other experimental platform tooling belong to my private lab.</p>
-        </div>
-        <aside class="experience-panel" aria-label="Two contexts"><p class="context-kicker">Two contexts</p><div class="context-item"><strong>Professional IT operations</strong><p>VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam</p></div><div class="context-item"><strong>Private infrastructure lab</strong><p>Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu</p></div><a class="context-link" href="/#professional">Read professional experience →</a></aside>
+        <div class="hero-copy"><p class="eyebrow">PROFESSIONAL / INFRASTRUCTURE</p><h1 id="skills-title">I run infrastructure. I also own the messy parts.</h1><p class="intro">Much of my work starts with systems somebody else built: VMware hosts, Debian servers, identity, containers and backups. I keep them useful, understandable and recoverable.</p><a class="scroll-link" href="#practice-title">See what I do<span aria-hidden="true"> ↓</span></a></div>
+        <aside class="experience-panel" aria-label="Two contexts"><p class="context-kicker">A little about how I work</p><p class="hero-note-text">I&#x27;m an infrastructure all-rounder, not a developer with a wall of certificates. I investigate, make a plan, change carefully and document what I learn.</p><div class="contexts"><div class="context-item"><strong>At work</strong><p>VMware · Linux / Docker · AD / Entra · VDI · Veeam</p></div><div class="context-item"><strong>In my lab</strong><p>Proxmox · Talos / Kubernetes · GitOps · IaC</p></div></div></aside>
       </div>
     </section>
-
+    <section class="professional-story" aria-labelledby="story-title">
+      <div class="story-heading"><p class="story-kicker">ONE VERY ORDINARY EXAMPLE</p><h2 id="story-title">The server nobody remembers.</h2></div><div class="story-body"><p>When an old server has no clear owner or documentation, I don&#x27;t just delete it. I shut it down in a controlled way, watch for consequences over the following days and keep the backup as a way back. Sometimes the most useful change is knowing what not to touch yet.</p><div class="story-note"><span>My rule of thumb</span><p>Understand it first. Keep a way back. Write down what the next person should know.</p></div></div>
+    </section>
     <section class="practice-section" aria-labelledby="practice-title">
-      <div class="practice-intro"><p class="practice-kicker">PROFESSIONAL EXPERIENCE</p><h2 id="practice-title">Where I take responsibility</h2><p>Practical responsibilities in production IT. No lab ratings or claims of having designed every inherited system.</p></div>
-      <div class="practice-grid">
-        <article class="practice-card"><span class="practice-meta">Primary IT administrator</span><h3>VMware vSphere / ESXi</h3><p>Maintain and troubleshoot the virtualization environment, including changes and updates. Independently plan fixes and keep recovery through Veeam in view.</p></article>
-        <article class="practice-card"><span class="practice-meta">Everyday server operations</span><h3>Debian / Ubuntu Linux</h3><p>The main server platform at work: bootstrap and document installations, harden SSH, handle cron jobs, system updates and administrative access.</p></article>
-        <article class="practice-card"><span class="practice-meta">Production services</span><h3>Docker / Compose</h3><p>Operate monitoring, ticketing, documentation and asset-management services. Adapt proven Compose templates and environment settings rather than claiming original image development.</p></article>
-        <article class="practice-card"><span class="practice-meta">Identity &amp; Windows</span><h3>Active Directory / Entra / M365</h3><p>Administrate established identity and Windows infrastructure, troubleshoot login and policy issues, and maintain hybrid identity and Microsoft 365 services.</p></article>
-        <article class="practice-card"><span class="practice-meta">Built with a colleague</span><h3>Omnissa Horizon / VDI</h3><p>Helped build and now maintain the VDI environment, including Connection Servers, UAG, pools and image lifecycle tasks.</p></article>
-        <article class="practice-card"><span class="practice-meta">Real restore practice</span><h3>Veeam Backup &amp; Recovery</h3><p>Manage backups and regularly restore individual files; occasionally recover complete servers. Recovery experience, not just green backup-job dashboards.</p></article>
-        <article class="practice-card"><span class="practice-meta">Operational configuration</span><h3>FortiGate firewalls</h3><p>Maintain the inherited configuration, create required firewall policies, investigate blocked traffic with policy lookup and perform updates.</p></article>
-        <article class="practice-card"><span class="practice-meta">Capacity &amp; integration</span><h3>PowerStore storage</h3><p>Monitor thin provisioning and physical capacity, maintain the vSphere integration and carry out volume capacity changes for migrations.</p></article>
-        <article class="practice-card"><span class="practice-meta">Pragmatic automation</span><h3>AI-assisted IT tooling</h3><p>Define automation requirements, inspect generated logic and iterate until it works. AI supports research and dashboard creation but never autonomously changes work production systems.</p></article>
-      </div>
+      <div class="practice-intro"><p class="practice-kicker">WHAT I ACTUALLY DO</p><h2 id="practice-title">Real systems. Real responsibilities.</h2><p>Not a wall of tool names. These are the areas I spend time operating, changing and recovering.</p></div>
+      <section class="practice-chapter" aria-labelledby="chapter-operations"><div class="chapter-rail"><span class="chapter-number">01 / 03</span><h3 id="chapter-operations">Keeping things running</h3><p>Servers, hypervisors and the services people rely on.</p></div><div class="chapter-list">
+          <article class="capability"><div class="capability-heading"><h3>VMware vSphere / ESXi</h3><span class="capability-tag">Primary IT contact</span></div><p>I handle most of our vSphere administration: changes, updates and the troubleshooting that follows when something doesn&#x27;t go as planned.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>Debian / Ubuntu Linux</h3><span class="capability-tag">Everyday work</span></div><p>Debian and Ubuntu are the normal server platform at work. I bootstrap hosts, harden SSH, maintain updates and cron jobs, and document installations.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>Docker / Compose</h3><span class="capability-tag">Production services</span></div><p>I run services such as monitoring, ticketing, documentation and asset management. Usually that means adapting proven Compose templates to our needs.</p></article>
+</div></section>
+      <section class="practice-chapter" aria-labelledby="chapter-access"><div class="chapter-rail"><span class="chapter-number">02 / 03</span><h3 id="chapter-access">Making things work together</h3><p>Identity, desktop access and the policies between them.</p></div><div class="chapter-list">
+          <article class="capability"><div class="capability-heading"><h3>Active Directory / Entra / M365</h3><span class="capability-tag">Windows &amp; identity</span></div><p>Active Directory, Entra and Microsoft 365: keeping hybrid identities, policies and logins working, including figuring out why they suddenly don&#x27;t.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>Omnissa Horizon / VDI</h3><span class="capability-tag">Built as a team</span></div><p>I helped build our Horizon environment with a colleague and still maintain Connection Servers, UAG, pools and image lifecycles.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>FortiGate firewalls</h3><span class="capability-tag">Firewall operations</span></div><p>I add rules as needs change, use Policy Lookup to trace blocked traffic and maintain an existing FortiGate setup. The original migration was done externally.</p></article>
+</div></section>
+      <section class="practice-chapter" aria-labelledby="chapter-recovery"><div class="chapter-rail"><span class="chapter-number">03 / 03</span><h3 id="chapter-recovery">Changing things without losing the way back</h3><p>Restores, capacity and pragmatic automation.</p></div><div class="chapter-list">
+          <article class="capability"><div class="capability-heading"><h3>Veeam Backup &amp; Recovery</h3><span class="capability-tag">Actual restores</span></div><p>I look after Veeam and regularly bring back accidentally deleted files. Sometimes the job is restoring an entire server, not just checking a backup status.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>PowerStore storage</h3><span class="capability-tag">Storage &amp; capacity</span></div><p>I watch physical usage and thin provisioning, maintain the vSphere integration and adjust volumes when migrations need more room.</p></article>
+          <article class="capability"><div class="capability-heading"><h3>AI-assisted IT tooling</h3><span class="capability-tag">AI-assisted, human-operated</span></div><p>I specify what I need, iterate on AI-drafted scripts and dashboards, and make the production decisions myself. No autonomous AI actions at work.</p></article>
+</div></section>
     </section>
-    <div class="lab-index-note"><h2>Technical detail &amp; private lab</h2><p>The expandable matrix below is a separate, subjective technical self-assessment. Proxmox, Kubernetes/Talos, Ansible, Terraform/OpenTofu, Flux/GitOps and NetBird are private lab experience; Linux and Docker are also part of my daily professional work.</p></div>
-    <section class="skill-group" aria-labelledby="skills-infrastructure">
-  <div class="section-heading">
-    <h2 id="skills-infrastructure"><span class="folder-icon" aria-hidden="true">/</span> Infrastructure & operations</h2>
-    <span class="section-count">11 entries</span>
-  </div>
-  <div class="skill-grid">
-    <details class="skill-card" id="skill-linux-and-shell" data-rating-kind="score" data-domain="linux">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Linux &amp; shell</strong><span class="skill-domain">Linux</span></span>
-          <span class="skill-peek">Services, users, permissions, logs, packages, systemd, troubleshooting.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Services, users, permissions, logs, packages, systemd, troubleshooting.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">Independent day to day; documentation for uncommon flags or tools I have not used in a while.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for familiar changes; verify before and after.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> prepare Rocky nodes (services, sysctl, containerd). <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md" target="_blank" rel="noopener noreferrer">Manual procedure ↗</a><br><small>Documented manual reference; does not prove the full self-rating.</small></div>
-        </div>
-        <p class="rating-context">very strong</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-networking" data-rating-kind="score" data-domain="network">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Networking</strong><span class="skill-domain">Network</span></span>
-          <span class="skill-peek">Routing, NAT, DNS, firewalling, private access and VPN paths.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">8/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Routing, NAT, DNS, firewalling, private access and VPN paths.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">In my private networks I work confidently; for unusual lab design checks I sometimes use documentation or AI, never as an operational decision-maker.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent on familiar topologies; review-first for more complex VLAN/switching designs.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> isolated Proxmox SDN/VNet with SNAT. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn" target="_blank" rel="noopener noreferrer">Topology and steps ↗</a><br><small>Documented reference network; wider routing/VPN expertise not established by this alone.</small></div>
-        </div>
-        <p class="rating-context">strong</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-docker-compose" data-rating-kind="score" data-domain="platform">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Docker / Compose</strong><span class="skill-domain">Platform</span></span>
-          <span class="skill-peek">Compose files, logs, mounts, networking, health checks and recovery.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Compose files, logs, mounts, networking, health checks and recovery.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">In professional operations I mainly adapt existing Compose templates and .env files, deploy services and troubleshoot them. I do not claim to develop every stack or image from scratch.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for normal service changes.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> non-root Signaturee Linux test container with read-only root, dropped capabilities and resource limits. <a class="evidence" href="https://github.com/ffworker/signaturee-linux/blob/main/compose.yaml" target="_blank" rel="noopener noreferrer">Compose definition ↗</a><br><small>Implementation evidence; no recorded successful container run.</small></div>
-        </div>
-        <p class="rating-context">very strong</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-kubernetes-talos-linux" data-rating-kind="score" data-domain="platform">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Kubernetes / Talos Linux</strong><span class="skill-domain">Platform</span></span>
-          <span class="skill-peek">Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">4/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Private cluster with three control-plane/etcd nodes on Talos Linux, AMD64/ARM64 workloads, K3s migration, kubectl, ingress, storage and rollout checks.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">Hands-on practice in my private lab with Kustomize, SOPS/age, service migration and restore checks. Some experimental setup is AI-assisted; I review changes and verify them on my own lab systems.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Lab/sandbox first. Three etcd voters and a controlled node restart are verified; application HA, recurring data backups and broader failure testing are not implied.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> broken Service selector; validator requires two ready EndpointSlice backends. <a class="evidence" href="https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/scenario.json" target="_blank" rel="noopener noreferrer">Mission ↗</a> · <a class="evidence" href="https://github.com/ffworker/cka-lab/blob/main/scenarios/service-endpoints/validate.sh" target="_blank" rel="noopener noreferrer">Validator ↗</a><br><small>Executable scenario in source, not a public live-run record. Talos operations remain private.</small></div>
-        </div>
-        <p class="rating-context">learning in practice</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-proxmox-ve" data-rating-kind="score" data-domain="platform">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Proxmox VE</strong><span class="skill-domain">Platform</span></span>
-          <span class="skill-peek">VM lifecycle, templates, networking, lab systems and virtualization concepts.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">7/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">VM lifecycle, templates, networking, lab systems and virtualization concepts.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">I can run the private Proxmox lab independently; I use documentation for product-specific edge cases.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for normal VM/lab work; review complex storage/network changes.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> CKA VM teardown checks exact Terraform state, reserved IDs and live ownership tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Fail-closed guards ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary" target="_blank" rel="noopener noreferrer">Ownership contract ↗</a><br><small>Implemented and statically checked; no verified live teardown run published.</small></div>
-        </div>
-        <p class="rating-context">confident</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-terraform-opentofu" data-rating-kind="unrated" data-domain="automation">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Terraform / OpenTofu</strong><span class="skill-domain">Automation</span></span>
-          <span class="skill-peek">Used for infrastructure definitions in my lab.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">Not rated</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Used for infrastructure definitions in my lab.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">In my private lab, AI currently supports much of the initial authoring. I review definitions and plans, then test the result rather than presenting generated code as independent mastery.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Lab only / sandbox-first.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> exactly two disposable Proxmox VMs with fixed IDs, pool and tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf" target="_blank" rel="noopener noreferrer">Resources ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml" target="_blank" rel="noopener noreferrer">Static CI checks ↗</a><br><small>Defined resources and validation pipeline; no confirmed fresh apply/destroy result.</small></div>
-        </div>
-        <p class="rating-context">Limited hands-on, AI-guided</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-ansible" data-rating-kind="unrated" data-domain="automation">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Ansible</strong><span class="skill-domain">Automation</span></span>
-          <span class="skill-peek">Inventories, roles, bootstrap and configuration concepts used in lab work.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">Not rated</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Inventories, roles, bootstrap and configuration concepts used in lab work.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">In the private lab I use Ansible and learn through checked experiments. AI may help draft test playbooks; I review each change and test its outcome.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Sandbox-first; no blind production runs.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> check Ready nodes, anti-affinity nginx replicas and in-cluster DNS/HTTP. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml" target="_blank" rel="noopener noreferrer">Acceptance playbook ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation" target="_blank" rel="noopener noreferrer">Manual test report ↗</a><br><small>Manual reference tests documented; automated clean rebuild not yet proven.</small></div>
-        </div>
-        <p class="rating-context">Limited hands-on, AI-guided</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-smb-nas" data-rating-kind="score" data-domain="storage">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">SMB / NAS</strong><span class="skill-domain">Storage</span></span>
-          <span class="skill-peek">Shares, permissions, migrations and practical storage administration.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Shares, permissions, migrations and practical storage administration.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">Independent in familiar administration tasks; for unusual cases I refer to documentation.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent with normal change/backup discipline.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Evidence gap:</strong> private operations; no sanitized migration or ACL test with measured results published.</div>
-        </div>
-        <p class="rating-context">very strong</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-nfs" data-rating-kind="score" data-domain="storage">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">NFS</strong><span class="skill-domain">Storage</span></span>
-          <span class="skill-peek">Mounts, Kubernetes storage paths, backups and service integration.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">6/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Mounts, Kubernetes storage paths, backups and service integration.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">Newer area; comfortable with what I run, while unfamiliar behavior still sends me to docs/search.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Review-first outside known patterns.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Evidence gap:</strong> private exports and mounts; no public failure/recovery transcript yet.</div>
-        </div>
-        <p class="rating-context">working knowledge</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-prometheus-grafana" data-rating-kind="score" data-domain="monitoring">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Prometheus / Grafana</strong><span class="skill-domain">Monitoring</span></span>
-          <span class="skill-peek">Basic setup, dashboards, exporters, probes and troubleshooting.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">4/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Basic setup, dashboards, exporters, probes and troubleshooting.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">At work I install, maintain and troubleshoot monitoring services. Dashboards are often built by apprentices or drafted with AI; I do not claim to hand-code complex dashboards.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Review-first / sandbox-first for larger changes.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Evidence gap:</strong> no published alert-to-recovery test or measured monitoring result yet.</div>
-        </div>
-        <p class="rating-context">basic practical use</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-netbird-vpn-private-networking" data-rating-kind="score" data-domain="network">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">NetBird / VPN / private networking</strong><span class="skill-domain">Network</span></span>
-          <span class="skill-peek">Peers, routes, access rules and private administration paths.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Peers, routes, access rules and private administration paths.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">I configure my own lab routes and rules; documentation and isolated tests help check unfamiliar cases.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for familiar deployments.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Evidence gap:</strong> private deployment is not a published connectivity/failover test.</div>
-        </div>
-        <p class="rating-context">very strong</p>
-      </div>
-    </details>
-  </div>
-</section>
-<section class="skill-group" aria-labelledby="skills-delivery">
-  <div class="section-heading">
-    <h2 id="skills-delivery"><span class="folder-icon" aria-hidden="true">/</span> Delivery & tooling</h2>
-    <span class="section-count">2 entries</span>
-  </div>
-  <div class="skill-grid">
-    <details class="skill-card" id="skill-git-github-actions" data-rating-kind="range" data-domain="automation">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Git / GitHub Actions</strong><span class="skill-domain">Automation</span></span>
-          <span class="skill-peek">Repos, diffs, CI checks, branch/PR flow and deployment workflows.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">5–6/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment possible"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">Repos, diffs, CI checks, branch/PR flow and deployment workflows.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">Comfortable with normal workflows; docs/search for less common Git and Actions behavior.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">Review-first for workflow/deployment changes.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> CV CI checks EN/DE generated-page drift, assets and regression tests. <a class="evidence" href="https://github.com/ffworker/my-digital-cv/blob/main/.github/workflows/validate.yml" target="_blank" rel="noopener noreferrer">Workflow ↗</a> · <a class="evidence" href="https://github.com/ffworker/my-digital-cv/blob/main/tests/test_site.py" target="_blank" rel="noopener noreferrer">Assertions ↗</a> · <a class="evidence" href="https://github.com/ffworker/my-digital-cv/actions/runs/41345106566" target="_blank" rel="noopener noreferrer">CI run #41345106566: success ↗</a><br><small>This run confirms CV source validation, not Talos live promotion.</small></div>
-        </div>
-        <p class="rating-context">comfortable basics</p>
-      </div>
-    </details>
-    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="unrated" data-domain="linux">
-      <summary class="skill-summary">
-        <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Shell use / AI-assisted automation</strong><span class="skill-domain">Linux</span></span>
-          <span class="skill-peek">SSH, cron, operational commands, reading and iterating on scripts.</span>
-        </span>
-        <span class="skill-stats">
-          <span class="skill-score">Not rated</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </summary>
-      <div class="skill-details">
-        <p class="detail-intro">SSH, cron, operational commands, reading and iterating on scripts.</p>
-        <div class="detail-line">
-          <span class="detail-key">How I work</span>
-          <div class="detail-value">I use shell commands in Linux administration, but I do not independently write scripts from scratch. For automations I define the requirements, review AI-generated logic, test and iterate; I occasionally make small edits myself.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Production</span>
-          <div class="detail-value">No autonomous AI actions on production systems; I decide on and carry out changes myself.</div>
-        </div>
-        <div class="detail-line">
-          <span class="detail-key">Evidence</span>
-          <div class="detail-value"><strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small></div>
-        </div>
-        <p class="rating-context">AI-assisted authoring; operational use</p>
-      </div>
-    </details>
-  </div>
-</section>
-    <details class="methodology">
-      <summary><span class="method-icon" aria-hidden="true">i</span><span>How I rate skills & use AI</span><span class="method-toggle" aria-hidden="true">+</span></summary>
-      <div class="method-body"><div class="note"><strong>How I use AI:</strong> At work, I use AI as a tool for technical research, troubleshooting, dashboard drafts and iteratively developing automation from my requirements. I review the logic and make operational decisions myself; AI agents do not autonomously access or change production systems. I do not claim to write scripts independently from scratch. Fully autonomous AI-agent experiments belong exclusively to isolated machines in my private lab.</div><p class="category-note">Category accents identify technical domains, not skill levels. Bar lengths are the self-ratings.</p><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
-    </details>
-    <footer class="footer-note"><span class="footer-prompt" aria-hidden="true">~/cv $</span> These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list.</footer>
+    <aside class="lab-gateway" id="lab-depth"><div class="lab-gateway-copy"><p class="lab-kicker">A DIFFERENT SIDE OF ME</p><h2>Curious what I build after hours?</h2><p>Proxmox, Talos/Kubernetes, GitOps, Ansible and OpenTofu are my private playground. The dark Tech View has the deeper technical notes, self-ratings and project evidence. Linux and Docker are part of both worlds.</p></div><div class="lab-gateway-actions"><a href="/skills-tech.html">Explore the Tech View<span aria-hidden="true"> ↗</span></a><a class="quiet-link" href="/#professional">Back to my experience</a></div></aside>
+    <footer class="footer-note">Real responsibilities, no inflated coding claims. If you want the raw experiments and technical evidence, the Tech View is one click away.</footer>
   </main>
 </div>
 </body>
