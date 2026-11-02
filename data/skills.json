@@ -30,7 +30,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">very strong</span></div>",
               "assist": "Independent day to day; documentation for uncommon flags or tools I have not used in a while.",
               "production": "Independent for familiar changes; verify before and after.",
-              "evidence": "<strong>Scenario:</strong> prepare Rocky nodes (services, sysctl, containerd). <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md\" target=\"_blank\" rel=\"noopener noreferrer\">Manual procedure ↗</a><br><small>Documented manual reference; does not prove the full self-rating.</small>",
+              "evidence": "<strong>Evidence gap:</strong> Linux operations are part of my regular work; public command-and-result evidence has not yet been published.",
               "rating_kind": "score",
               "id": "linux-and-shell",
               "domain": "linux"
@@ -40,7 +40,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">strong</span></div>",
               "assist": "In my private networks I work confidently; for unusual lab design checks I sometimes use documentation or AI, never as an operational decision-maker.",
               "production": "Independent on familiar topologies; review-first for more complex VLAN/switching designs.",
-              "evidence": "<strong>Scenario:</strong> isolated Proxmox SDN/VNet with SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topology and steps ↗</a><br><small>Documented reference network; wider routing/VPN expertise not established by this alone.</small>",
+              "evidence": "<strong>Evidence gap:</strong> Real networking experience is not backed by a sanitized, publicly reproducible incident or routing test yet.",
               "rating_kind": "score",
               "id": "networking",
               "domain": "network"
@@ -68,9 +68,9 @@
             {
               "skill": "<strong>Proxmox VE</strong><span>VM lifecycle, templates, networking, lab systems and virtualization concepts.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">confident</span></div>",
-              "assist": "I can run the private Proxmox lab independently; I use documentation for product-specific edge cases.",
+              "assist": "I operate my own Proxmox host for private VMs and lab work; for unfamiliar storage or networking changes I use documentation and verify carefully.",
               "production": "Independent for normal VM/lab work; review complex storage/network changes.",
-              "evidence": "<strong>Scenario:</strong> CKA VM teardown checks exact Terraform state, reserved IDs and live ownership tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed guards ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership contract ↗</a><br><small>Implemented and statically checked; no verified live teardown run published.</small>",
+              "evidence": "<strong>Evidence gap:</strong> My active private Proxmox operations are not documented with an independently inspectable public live-run artifact.",
               "rating_kind": "score",
               "id": "proxmox-ve",
               "domain": "platform"
@@ -80,7 +80,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
               "assist": "In my private lab, AI currently supports much of the initial authoring. I review definitions and plans, then test the result rather than presenting generated code as independent mastery.",
               "production": "Lab only / sandbox-first.",
-              "evidence": "<strong>Scenario:</strong> exactly two disposable Proxmox VMs with fixed IDs, pool and tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Resources ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Static CI checks ↗</a><br><small>Defined resources and validation pipeline; no confirmed fresh apply/destroy result.</small>",
+              "evidence": "<strong>Evidence gap:</strong> AI-assisted IaC experimentation is ongoing; no reviewed public apply/destroy evidence for a clean isolated run yet.",
               "rating_kind": "unrated",
               "id": "terraform-opentofu",
               "domain": "automation"
@@ -90,7 +90,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">Limited hands-on, AI-guided</span></div>",
               "assist": "In the private lab I use Ansible and learn through checked experiments. AI may help draft test playbooks; I review each change and test its outcome.",
               "production": "Sandbox-first; no blind production runs.",
-              "evidence": "<strong>Scenario:</strong> check Ready nodes, anti-affinity nginx replicas and in-cluster DNS/HTTP. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Acceptance playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manual test report ↗</a><br><small>Manual reference tests documented; automated clean rebuild not yet proven.</small>",
+              "evidence": "<strong>Evidence gap:</strong> Ansible use remains private; a reproducible public playbook run and validated outcome are still missing.",
               "rating_kind": "unrated",
               "id": "ansible",
               "domain": "automation"
@@ -163,7 +163,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Not rated</span><span class=\"rating-label\">AI-assisted authoring; operational use</span></div>",
               "assist": "I use shell commands in Linux administration, but I do not independently write scripts from scratch. For automations I define the requirements, review AI-generated logic, test and iterate; I occasionally make small edits myself.",
               "production": "No autonomous AI actions on production systems; I decide on and carry out changes myself.",
-              "evidence": "<strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small>",
+              "evidence": "<strong>Evidence gap:</strong> Shell automation is AI-assisted and reviewed; a sanitized end-to-end implementation-and-test example is still missing.",
               "rating_kind": "unrated",
               "id": "bash-scripting",
               "domain": "linux"
@@ -337,7 +337,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">9/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■■</span><span class=\"off\">□</span></span><span class=\"rating-label\">sehr stark</span></div>",
               "assist": "Im Alltag selbstständig; Doku für seltene Flags oder lange nicht benutzte Tools.",
               "production": "Bei vertrauten Änderungen selbstständig; Vorher-/Nachher-Checks.",
-              "evidence": "<strong>Szenario:</strong> Rocky-Nodes vorbereiten (Dienste, sysctl, containerd). <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md\" target=\"_blank\" rel=\"noopener noreferrer\">Manuelle Anleitung ↗</a><br><small>Manuelle Referenz dokumentiert; kein vollständiger Beleg der Selbsteinschätzung.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> Linux-Administration gehört zu meinem Arbeitsalltag; öffentlich nachvollziehbare Befehls- und Ergebnisnachweise fehlen noch.",
               "rating_kind": "score",
               "id": "linux-and-shell",
               "domain": "linux"
@@ -347,7 +347,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">8/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■■</span><span class=\"off\">□□</span></span><span class=\"rating-label\">stark</span></div>",
               "assist": "In meinen privaten Netzwerken arbeite ich sicher; für ungewöhnliche Designfragen im Lab nutze ich gelegentlich Dokumentation oder KI – nicht als Entscheider im Betrieb.",
               "production": "Bei bekannten Topologien selbstständig; komplexere VLAN-/Switching-Themen lieber mit Review.",
-              "evidence": "<strong>Szenario:</strong> isoliertes Proxmox-SDN/VNet mit SNAT. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn\" target=\"_blank\" rel=\"noopener noreferrer\">Topologie und Schritte ↗</a><br><small>Dokumentiertes Referenznetz; kein alleiniger Beleg für umfassendes Routing/VPN.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> Reale Netzwerkerfahrung ist noch nicht durch einen bereinigten, öffentlich nachvollziehbaren Incident oder Routing-Test belegt.",
               "rating_kind": "score",
               "id": "networking",
               "domain": "network"
@@ -375,9 +375,9 @@
             {
               "skill": "<strong>Proxmox VE</strong><span>VM-Lifecycle, Templates, Networking, Labsysteme und Virtualisierungskonzepte.</span>",
               "rating": "<div class=\"rating-card\"><span class=\"score-number\">7/10</span><span class=\"meter\" aria-hidden=\"true\"><span class=\"on\">■■■■■■■</span><span class=\"off\">□□□</span></span><span class=\"rating-label\">sicher</span></div>",
-              "assist": "Mein privates Proxmox-Lab betreibe ich eigenständig; für produktspezifische Sonderfälle nutze ich Dokumentation.",
+              "assist": "Ich betreibe meinen eigenen Proxmox-Host mit privaten VMs und Lab-Workloads; für unbekannte Storage-/Netzwerkänderungen nutze ich Dokumentation und prüfe sorgfältig.",
               "production": "Normale VM-/Lab-Arbeit selbstständig; komplexe Storage-/Netzwerkänderungen mit Review.",
-              "evidence": "<strong>Szenario:</strong> CKA-VM-Teardown prüft exakten Terraform-State, reservierte IDs und Live-Ownership-Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-closed-Prüfungen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary\" target=\"_blank\" rel=\"noopener noreferrer\">Ownership-Regeln ↗</a><br><small>Implementiert und statisch geprüft; kein verifizierter Live-Teardown veröffentlicht.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> Mein privater Proxmox-Betrieb ist noch nicht mit einem öffentlich überprüfbaren Live-Test dokumentiert.",
               "rating_kind": "score",
               "id": "proxmox-ve",
               "domain": "platform"
@@ -387,7 +387,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
               "assist": "In meinem privaten Lab hilft KI noch bei einem großen Teil der ersten Entwürfe. Ich prüfe Definitionen und Pläne und teste das Ergebnis, statt generierten Code als eigenständige Kompetenz auszugeben.",
               "production": "Nur Lab / Sandbox zuerst.",
-              "evidence": "<strong>Szenario:</strong> genau zwei kurzlebige Proxmox-VMs mit festen IDs, Pool und Tags. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf\" target=\"_blank\" rel=\"noopener noreferrer\">Ressourcen ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Statische CI-Prüfungen ↗</a><br><small>Ressourcen und Prüf-Pipeline definiert; kein bestätigter frischer Apply-/Destroy-Lauf.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> KI-gestützte IaC-Experimente laufen; ein überprüfter öffentlicher Apply-/Destroy-Nachweis in einer isolierten Umgebung fehlt noch.",
               "rating_kind": "unrated",
               "id": "terraform-opentofu",
               "domain": "automation"
@@ -397,7 +397,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">Begrenzte Praxis, KI-geführt</span></div>",
               "assist": "Im privaten Lab nutze ich Ansible und lerne anhand geprüfter Experimente. KI kann Test-Playbooks vorbereiten; jede Änderung und ihr Ergebnis prüfe ich selbst.",
               "production": "Sandbox zuerst; keine blinden Runs auf Produktivsystemen.",
-              "evidence": "<strong>Szenario:</strong> Ready-Nodes, per Anti-Affinity verteilte nginx-Replikas und In-Cluster-DNS/HTTP prüfen. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Abnahme-Playbook ↗</a> · <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation\" target=\"_blank\" rel=\"noopener noreferrer\">Manueller Testbericht ↗</a><br><small>Manuelle Referenztests dokumentiert; automatischer Clean-Rebuild noch unbelegt.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> Ansible-Nutzung bleibt privat; ein öffentlich reproduzierbarer Playbook-Lauf mit validiertem Ergebnis fehlt noch.",
               "rating_kind": "unrated",
               "id": "ansible",
               "domain": "automation"
@@ -470,7 +470,7 @@
               "rating": "<div class=\"rating-card\"><span class=\"score-number score-unrated\">Nicht bewertet</span><span class=\"rating-label\">KI-gestützte Entwicklung; betriebliche Nutzung</span></div>",
               "assist": "Shell-Kommandos nutze ich in der Linux-Administration. Skripte schreibe ich nicht selbstständig von Grund auf. Bei Automatisierungen definiere ich Anforderungen, prüfe KI-generierte Logik, teste und verbessere iterativ; kleine Änderungen mache ich teilweise selbst.",
               "production": "Keine autonomen KI-Eingriffe in Produktivsysteme; Änderungen entscheide und führe ich selbst aus.",
-              "evidence": "<strong>Szenario:</strong> Bash-Lifecycle verweigert Destroy bei unerwartetem State oder Ownership. <a class=\"evidence\" href=\"https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh\" target=\"_blank\" rel=\"noopener noreferrer\">Schutzfunktionen ↗</a><br><small>Quellcode und Syntaxprüfungen, kein bestätigter Recovery-Test.</small>",
+              "evidence": "<strong>Nachweislücke:</strong> Shell-Automatisierung ist KI-gestützt und von mir geprüft; ein bereinigtes End-to-End-Beispiel mit Testnachweis fehlt noch.",
               "rating_kind": "unrated",
               "id": "bash-scripting",
               "domain": "linux"

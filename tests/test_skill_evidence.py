@@ -59,6 +59,16 @@ class SkillEvidenceContracts(unittest.TestCase):
                 self.assertEqual(evidence_urls(skills("en")[key]),
                                  evidence_urls(skills("de")[key]))
 
+    def test_retired_proxmox_lab_is_not_used_as_public_evidence(self):
+        # Retiring a project from the public portfolio must not leave references
+        # in the source-of-truth or generated EN/DE Tech View output.
+        for lang in DATA:
+            for item in skills(lang).values():
+                self.assertNotIn("ffworker/proxmox-lab", item["evidence"])
+        for relative in ("skills-tech.html", "de/skills-tech.html"):
+            html = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertNotIn("ffworker/proxmox-lab", html)
+
     def test_proof_levels_are_not_silently_upgraded(self):
         for lang in DATA:
             for key, item in skills(lang).items():
