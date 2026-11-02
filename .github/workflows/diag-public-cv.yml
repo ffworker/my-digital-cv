@@ -1,0 +1,34 @@
+name: One-off public CV delivery diagnostics
+on:
+  push:
+    branches: [diagnostics/cv-public-css-nov02]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Compare public website with approved Cloudflare preview
+        shell: bash
+        run: |
+          set -u
+          for site in "https://cv.bytegeist.dev" "https://9d984d33.mywebsite-ebw.pages.dev" "https://8c38b0b5.mywebsite-ebw.pages.dev"; do
+            echo "::group::$site"
+            for path in "/de/skills.html" "/skills.html" "/skills-professional.css" "/skills-tech.html" "/skills.css"; do
+              url="$site$path"
+              printf '\nURL: %s\n' "$url"
+              status=$(curl --connect-timeout 6 --max-time 16 --compressed --location --silent --show-error --output /tmp/cv-public-body --dump-header /tmp/cv-public-headers --write-out '%{http_code}' "$url") || status="ERR"
+              printf 'status=%s size=%s sha256=%s\n' "$status" "$(wc -c </tmp/cv-public-body 2>/dev/null || echo 0)" "$(sha256sum /tmp/cv-public-body 2>/dev/null | cut -c1-18 || true)"
+              grep -iE '^content-type:|^cache-control:|^location:|^cf-cache-status:' /tmp/cv-public-headers 2>/dev/null | tail -6 || true
+              if [[ "$path" == *skills.html ]]; then
+                printf 'story-marker='; grep -oc 'professional-story' /tmp/cv-public-body || true
+                printf 'tech-marker='; grep -oc 'tech-reading-guide' /tmp/cv-public-body || true
+                printf 'stylesheet='; grep -oE 'href="/skills[^"]+css"' /tmp/cv-public-body | head -1 || true
+              elif [[ "$path" == *.css ]]; then
+                printf 'css-marker='; grep -oc -- '--forest-deep\|.skills-tech .skill-grid' /tmp/cv-public-body || true
+                printf 'first-bytes='; head -c 95 /tmp/cv-public-body | tr '\n' ' '; echo
+              fi
+            done
+            echo "::endgroup::"
+          done
