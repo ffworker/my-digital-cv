@@ -36,8 +36,8 @@
           <span class="panel-heading"><span class="panel-led" aria-hidden="true"></span> Skills index</span>
           <div class="index-stats">
             <div><strong>13</strong><span>areas</span></div>
-            <div><strong>11</strong><span>rated</span></div>
-            <div><strong>2</strong><span>not rated</span></div>
+            <div><strong>10</strong><span>rated</span></div>
+            <div><strong>3</strong><span>not rated</span></div>
           </div>
           <p class="index-hint">Self-assessment, not certification • Open a card for detail</p>
         </div>
@@ -45,7 +45,7 @@
     </section>
     <details class="methodology">
       <summary><span class="method-icon" aria-hidden="true">i</span><span>How I rate skills & use AI</span><span class="method-toggle" aria-hidden="true">+</span></summary>
-      <div class="method-body"><div class="note"><strong>AI in my workflow:</strong> I do not use AI in day-to-day live IT operations. I occasionally use it in separate test/development environments to save time when drafting small scripts or automations. Before considering any operational use, I understand, review and test the result myself. My private lab is a separate learning environment with more AI experimentation.</div><p class="category-note">Category accents identify technical domains, not skill levels. Bar lengths are the self-ratings.</p><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
+      <div class="method-body"><div class="note"><strong>How I use AI:</strong> At work, I use AI as a tool for technical research, troubleshooting, dashboard drafts and iteratively developing automation from my requirements. I review the logic and make operational decisions myself; AI agents do not autonomously access or change production systems. I do not claim to write scripts independently from scratch. Fully autonomous AI-agent experiments belong exclusively to isolated machines in my private lab.</div><p class="category-note">Category accents identify technical domains, not skill levels. Bar lengths are the self-ratings.</p><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
     </details>
     <section class="skill-group" aria-labelledby="skills-infrastructure">
   <div class="section-heading">
@@ -127,7 +127,7 @@
         <p class="detail-intro">Compose files, logs, mounts, networking, health checks and recovery.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">I can write, edit and reason about Compose files myself; docs/search when useful.</div>
+          <div class="detail-value">In professional operations I mainly adapt existing Compose templates and .env files, deploy services and troubleshoot them. I do not claim to develop every stack or image from scratch.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
@@ -330,7 +330,7 @@
         <p class="detail-intro">Basic setup, dashboards, exporters, probes and troubleshooting.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">I can build the fundamentals manually; for advanced lab tuning I continue learning with documentation and occasional AI-assisted experiments.</div>
+          <div class="detail-value">At work I install, maintain and troubleshoot monitoring services. Dashboards are often built by apprentices or drafted with AI; I do not claim to hand-code complex dashboards.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
@@ -409,33 +409,33 @@
         <p class="rating-context">comfortable basics</p>
       </div>
     </details>
-    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="score" data-domain="linux">
+    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="unrated" data-domain="linux">
       <summary class="skill-summary">
         <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Bash / scripting</strong><span class="skill-domain">Linux</span></span>
-          <span class="skill-peek">Operational helpers, pipelines, diagnostics and glue scripts.</span>
+          <span class="skill-heading"><strong class="skill-title">Shell use / AI-assisted automation</strong><span class="skill-domain">Linux</span></span>
+          <span class="skill-peek">SSH, cron, operational commands, reading and iterating on scripts.</span>
         </span>
         <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+          <span class="skill-score">Not rated</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
         </span>
         <span class="expand-icon" aria-hidden="true">+</span>
       </summary>
       <div class="skill-details">
-        <p class="detail-intro">Operational helpers, pipelines, diagnostics and glue scripts.</p>
+        <p class="detail-intro">SSH, cron, operational commands, reading and iterating on scripts.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.</div>
+          <div class="detail-value">I use shell commands in Linux administration, but I do not independently write scripts from scratch. For automations I define the requirements, review AI-generated logic, test and iterate; I occasionally make small edits myself.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for familiar scripts; always review anything destructive.</div>
+          <div class="detail-value">No autonomous AI actions on production systems; I decide on and carry out changes myself.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
           <div class="detail-value"><strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small></div>
         </div>
-        <p class="rating-context">very strong</p>
+        <p class="rating-context">AI-assisted authoring; operational use</p>
       </div>
     </details>
   </div>
