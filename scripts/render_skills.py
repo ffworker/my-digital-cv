@@ -303,7 +303,7 @@ def render_tech_variant(content: str, locale: dict) -> str:
             '<nav aria-label="Kapitelübersicht">'
             '<a href="#skills-infrastructure">Infrastruktur</a>'
             '<a href="#skills-delivery">Tooling</a>'
-            '</nav></div>\\n'
+            '</nav></div>\n'
         )
     else:
         guide = (
@@ -313,7 +313,7 @@ def render_tech_variant(content: str, locale: dict) -> str:
             '<nav aria-label="Section navigation">'
             '<a href="#skills-infrastructure">Infrastructure</a>'
             '<a href="#skills-delivery">Tooling</a>'
-            '</nav></div>\\n'
+            '</nav></div>\n'
         )
     content = content.replace('    <details class="methodology">',
                               '    ' + guide + '    <details class="methodology">', 1)
