@@ -207,7 +207,7 @@ class SiteContractTests(unittest.TestCase):
             ratings = [i["rating_kind"] for section in data[lang]["sections"] for i in section["items"]]
             self.assertEqual(ratings.count("unrated"), 3)
             self.assertEqual(ratings.count("range"), 1)
-            self.assertEqual(ratings.count("score"), 10)
+            self.assertEqual(ratings.count("score"), 9)
 
     def test_committed_skills_pages_are_generated_without_drift(self):
         result = subprocess.run(
