@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import hashlib
 import json
 import re
 import sys
@@ -116,6 +117,14 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
     })
 
 
+def stylesheet_version(filename: str) -> str:
+    """Fingerprint stylesheet content to avoid stale browser CSS after releases."""
+    data = (ROOT / filename).read_bytes()
+    # Git object hash matches the blob SHA for this stylesheet in GitHub.
+    git_header = f"blob {len(data)}\\0".encode()
+    return hashlib.sha1(git_header + data).hexdigest()[:12]
+
+
 def render_editorial_variant(content: str, locale: dict) -> str:
     """A short human editorial profile. Full self-assessment lives in Tech View."""
     lang = locale["lang"]
@@ -167,7 +176,7 @@ def render_editorial_variant(content: str, locale: dict) -> str:
                             f'<strong>{brand}</strong>', 1)
     prefix = prefix.replace(
         '<link rel="stylesheet" href="/skills.css" />',
-        '<link rel="stylesheet" href="/skills-professional.css" />', 1)
+        f'<link rel="stylesheet" href="/skills-professional.css?v={stylesheet_version("skills-professional.css")}" />', 1)
     prefix = prefix.replace('<body class="skills-page">',
                             '<body class="skills-page skills-professional">', 1)
     switch = (
@@ -290,6 +299,10 @@ def render_tech_variant(content: str, locale: dict) -> str:
                               f'href="{tech_other}"', 1)
     content = content.replace('<body class="skills-page">',
                               '<body class="skills-page skills-tech">', 1)
+    content = content.replace(
+        '<link rel="stylesheet" href="/skills.css" />',
+        f'<link rel="stylesheet" href="/skills.css?v={stylesheet_version("skills.css")}" />', 1,
+    )
     switch = (
         '<nav class="tech-view-choice" aria-label="Skills view">'
         f'<a href="{canonical}">← {label}</a>'
