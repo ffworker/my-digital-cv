@@ -295,6 +295,28 @@ def render_tech_variant(content: str, locale: dict) -> str:
         f'<a href="{canonical}">← {label}</a>'
         '<span aria-current="page">Tech View</span></nav>'
     )
+    if lang == "de":
+        guide = (
+            '<div class="tech-reading-guide">'
+            '<p>Berufspraxis und privates Homelab sind klar getrennt. '
+            'Die Zahlen sind subjektive Selbsteinschätzungen, keine Zertifikate.</p>'
+            '<nav aria-label="Kapitelübersicht">'
+            '<a href="#skills-infrastructure">Infrastruktur</a>'
+            '<a href="#skills-delivery">Tooling</a>'
+            '</nav></div>\n'
+        )
+    else:
+        guide = (
+            '<div class="tech-reading-guide">'
+            '<p>Professional work and private lab practice are distinct. '
+            'Numbers are subjective self-ratings, not certifications.</p>'
+            '<nav aria-label="Section navigation">'
+            '<a href="#skills-infrastructure">Infrastructure</a>'
+            '<a href="#skills-delivery">Tooling</a>'
+            '</nav></div>\n'
+        )
+    content = content.replace('    <details class="methodology">',
+                              '    ' + guide + '    <details class="methodology">', 1)
     return content.replace('</header>', f'</header>\n  {switch}', 1)
 
 

@@ -66,6 +66,24 @@ class EditorialSkillsTests(unittest.TestCase):
                 self.assertEqual(page.count('<summary class="skill-summary">'), 13)
                 self.assertIn('class="index-panel"', page)
 
+    def test_tech_view_is_readable_without_losing_evidence(self):
+        css = (ROOT / "skills.css").read_text(encoding="utf-8")
+        self.assertIn(".skills-tech .skill-grid", css)
+        self.assertIn(".skills-tech .tech-reading-guide", css)
+        self.assertIn(".skills-tech .skill-peek", css)
+        self.assertIn(".skills-tech .detail-line", css)
+        for path, intro in (
+            ("skills-tech.html", "Technical depth, with context."),
+            ("de/skills-tech.html", "Technische Praxis. Mit Kontext."),
+        ):
+            with self.subTest(path=path):
+                page = (ROOT / path).read_text(encoding="utf-8")
+                self.assertIn(intro, page)
+                self.assertIn('class="tech-reading-guide"', page)
+                self.assertIn('href="#skills-infrastructure"', page)
+                self.assertIn('href="#skills-delivery"', page)
+                self.assertEqual(page.count('<details class="skill-card"'), 13)
+
     def test_mobile_reading_and_accessibility_requirements(self):
         css = (ROOT / "skills-professional.css").read_text(encoding="utf-8")
         for marker in ("a:focus-visible", "prefers-reduced-motion", ".practice-chapter",
