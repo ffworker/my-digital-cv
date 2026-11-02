@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <title>Dennis Kappel | IT operations & infrastructure skills</title>
-  <meta name="description" content="Professional Windows, VDI and Microsoft 365 operations, complemented by a hands-on Linux and infrastructure lab with transparent evidence." />
+  <title>Dennis Kappel | Infrastructure / Systems Engineer skills</title>
+  <meta name="description" content="Hands-on professional VMware, Linux, Docker, AD, VDI, FortiGate and Veeam operations; private Kubernetes and IaC practice clearly separated." />
   <link rel="canonical" href="https://cv.bytegeist.dev/skills.html" />
   <link rel="alternate" hreflang="en" href="https://cv.bytegeist.dev/skills.html" />
   <link rel="alternate" hreflang="de" href="https://cv.bytegeist.dev/de/skills.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Dennis Kappel | IT operations & practical skills" />
+  <meta property="og:title" content="Dennis Kappel | Infrastructure & operations experience" />
   <meta property="og:description" content="An intentionally honest technical self-assessment covering independence, AI and documentation use, production posture and public evidence." />
   <meta property="og:url" content="https://cv.bytegeist.dev/skills.html" />
   <meta property="og:image" content="https://cv.bytegeist.dev/assets/social-preview.png" />
@@ -29,12 +29,28 @@
       <div class="hero-layout">
         <div class="hero-copy">
           <p class="eyebrow">PROFESSIONAL PROFILE</p>
-          <h1 id="skills-title">Practical IT operations & infrastructure skills</h1>
-          <p class="intro">At work, I support Windows infrastructure, Omnissa Horizon/VDI and Microsoft 365/Exchange. In my private lab, I build and troubleshoot Linux, virtualization, networking and automation. These skills distinguish hands-on practice from public evidence and open tests.</p>
+          <h1 id="skills-title">Infrastructure / Systems Engineer</h1>
+          <p class="intro">I run, maintain and troubleshoot inherited and evolving IT systems. VMware, Linux, Docker, Windows/identity, VDI, firewalls and real restores are part of my professional work. Kubernetes and other experimental platform tooling belong to my private lab.</p>
         </div>
-        <aside class="experience-panel" aria-label="Two contexts"><p class="context-kicker">Two contexts</p><div class="context-item"><strong>Professional IT operations</strong><p>Windows infrastructure · Omnissa Horizon / VDI · Microsoft 365 / Exchange</p></div><div class="context-item"><strong>Private infrastructure lab</strong><p>Linux · Proxmox · Kubernetes / Talos · automation</p></div><a class="context-link" href="/#professional">Read professional experience →</a></aside>
+        <aside class="experience-panel" aria-label="Two contexts"><p class="context-kicker">Two contexts</p><div class="context-item"><strong>Professional IT operations</strong><p>VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam</p></div><div class="context-item"><strong>Private infrastructure lab</strong><p>Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu</p></div><a class="context-link" href="/#professional">Read professional experience →</a></aside>
       </div>
     </section>
+
+    <section class="practice-section" aria-labelledby="practice-title">
+      <div class="practice-intro"><p class="practice-kicker">PROFESSIONAL EXPERIENCE</p><h2 id="practice-title">Where I take responsibility</h2><p>Practical responsibilities in production IT. No lab ratings or claims of having designed every inherited system.</p></div>
+      <div class="practice-grid">
+        <article class="practice-card"><span class="practice-meta">Primary IT administrator</span><h3>VMware vSphere / ESXi</h3><p>Maintain and troubleshoot the virtualization environment, including changes and updates. Independently plan fixes and keep recovery through Veeam in view.</p></article>
+        <article class="practice-card"><span class="practice-meta">Everyday server operations</span><h3>Debian / Ubuntu Linux</h3><p>The main server platform at work: bootstrap and document installations, harden SSH, handle cron jobs, system updates and administrative access.</p></article>
+        <article class="practice-card"><span class="practice-meta">Production services</span><h3>Docker / Compose</h3><p>Operate monitoring, ticketing, documentation and asset-management services. Adapt proven Compose templates and environment settings rather than claiming original image development.</p></article>
+        <article class="practice-card"><span class="practice-meta">Identity &amp; Windows</span><h3>Active Directory / Entra / M365</h3><p>Administrate established identity and Windows infrastructure, troubleshoot login and policy issues, and maintain hybrid identity and Microsoft 365 services.</p></article>
+        <article class="practice-card"><span class="practice-meta">Built with a colleague</span><h3>Omnissa Horizon / VDI</h3><p>Helped build and now maintain the VDI environment, including Connection Servers, UAG, pools and image lifecycle tasks.</p></article>
+        <article class="practice-card"><span class="practice-meta">Real restore practice</span><h3>Veeam Backup &amp; Recovery</h3><p>Manage backups and regularly restore individual files; occasionally recover complete servers. Recovery experience, not just green backup-job dashboards.</p></article>
+        <article class="practice-card"><span class="practice-meta">Operational configuration</span><h3>FortiGate firewalls</h3><p>Maintain the inherited configuration, create required firewall policies, investigate blocked traffic with policy lookup and perform updates.</p></article>
+        <article class="practice-card"><span class="practice-meta">Capacity &amp; integration</span><h3>PowerStore storage</h3><p>Monitor thin provisioning and physical capacity, maintain the vSphere integration and carry out volume capacity changes for migrations.</p></article>
+        <article class="practice-card"><span class="practice-meta">Pragmatic automation</span><h3>AI-assisted IT tooling</h3><p>Define automation requirements, inspect generated logic and iterate until it works. AI supports research and dashboard creation but never autonomously changes work production systems.</p></article>
+      </div>
+    </section>
+    <div class="lab-index-note"><h2>Technical detail &amp; private lab</h2><p>The expandable matrix below is a separate, subjective technical self-assessment. Proxmox, Kubernetes/Talos, Ansible, Terraform/OpenTofu, Flux/GitOps and NetBird are private lab experience; Linux and Docker are also part of my daily professional work.</p></div>
     <section class="skill-group" aria-labelledby="skills-infrastructure">
   <div class="section-heading">
     <h2 id="skills-infrastructure"><span class="folder-icon" aria-hidden="true">/</span> Infrastructure & operations</h2>
@@ -115,7 +131,7 @@
         <p class="detail-intro">Compose files, logs, mounts, networking, health checks and recovery.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">I can write, edit and reason about Compose files myself; docs/search when useful.</div>
+          <div class="detail-value">In professional operations I mainly adapt existing Compose templates and .env files, deploy services and troubleshoot them. I do not claim to develop every stack or image from scratch.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
@@ -318,7 +334,7 @@
         <p class="detail-intro">Basic setup, dashboards, exporters, probes and troubleshooting.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">I can build the fundamentals manually; for advanced lab tuning I continue learning with documentation and occasional AI-assisted experiments.</div>
+          <div class="detail-value">At work I install, maintain and troubleshoot monitoring services. Dashboards are often built by apprentices or drafted with AI; I do not claim to hand-code complex dashboards.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
@@ -397,40 +413,40 @@
         <p class="rating-context">comfortable basics</p>
       </div>
     </details>
-    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="score" data-domain="linux">
+    <details class="skill-card" id="skill-bash-scripting" data-rating-kind="unrated" data-domain="linux">
       <summary class="skill-summary">
         <span class="skill-main">
-          <span class="skill-heading"><strong class="skill-title">Bash / scripting</strong><span class="skill-domain">Linux</span></span>
-          <span class="skill-peek">Operational helpers, pipelines, diagnostics and glue scripts.</span>
+          <span class="skill-heading"><strong class="skill-title">Shell use / AI-assisted automation</strong><span class="skill-domain">Linux</span></span>
+          <span class="skill-peek">SSH, cron, operational commands, reading and iterating on scripts.</span>
         </span>
         <span class="skill-stats">
-          <span class="skill-score">9/10</span>
-          <span class="segment-bar" aria-hidden="true"><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment filled"></i><i class="segment empty"></i></span>
+          <span class="skill-score">Not rated</span>
+          <span class="segment-bar" aria-hidden="true"><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i><i class="segment empty"></i></span>
         </span>
         <span class="expand-icon" aria-hidden="true">+</span>
       </summary>
       <div class="skill-details">
-        <p class="detail-intro">Operational helpers, pipelines, diagnostics and glue scripts.</p>
+        <p class="detail-intro">SSH, cron, operational commands, reading and iterating on scripts.</p>
         <div class="detail-line">
           <span class="detail-key">How I work</span>
-          <div class="detail-value">Similar to Linux: strong daily use; docs for uncommon flags or syntax I have not touched in a while.</div>
+          <div class="detail-value">I use shell commands in Linux administration, but I do not independently write scripts from scratch. For automations I define the requirements, review AI-generated logic, test and iterate; I occasionally make small edits myself.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Production</span>
-          <div class="detail-value">Independent for familiar scripts; always review anything destructive.</div>
+          <div class="detail-value">No autonomous AI actions on production systems; I decide on and carry out changes myself.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Evidence</span>
           <div class="detail-value"><strong>Scenario:</strong> Bash lifecycle refuses destroy with unexpected state or ownership. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Guard functions ↗</a><br><small>Source and syntax checks, not a verified recovery exercise.</small></div>
         </div>
-        <p class="rating-context">very strong</p>
+        <p class="rating-context">AI-assisted authoring; operational use</p>
       </div>
     </details>
   </div>
 </section>
     <details class="methodology">
       <summary><span class="method-icon" aria-hidden="true">i</span><span>How I rate skills & use AI</span><span class="method-toggle" aria-hidden="true">+</span></summary>
-      <div class="method-body"><div class="note"><strong>AI in my workflow:</strong> I do not use AI in day-to-day live IT operations. I occasionally use it in separate test/development environments to save time when drafting small scripts or automations. Before considering any operational use, I understand, review and test the result myself. My private lab is a separate learning environment with more AI experimentation.</div><p class="category-note">Category accents identify technical domains, not skill levels. Bar lengths are the self-ratings.</p><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
+      <div class="method-body"><div class="note"><strong>How I use AI:</strong> At work, I use AI as a tool for technical research, troubleshooting, dashboard drafts and iteratively developing automation from my requirements. I review the logic and make operational decisions myself; AI agents do not autonomously access or change production systems. I do not claim to write scripts independently from scratch. Fully autonomous AI-agent experiments belong exclusively to isolated machines in my private lab.</div><p class="category-note">Category accents identify technical domains, not skill levels. Bar lengths are the self-ratings.</p><div class="legend"><article><div class="eyebrow">Rating</div><h2>Visible 0–10 self-rating</h2><p>Not a certification score. A range indicates uncertainty; early-stage, AI-guided skills are deliberately not rated.</p></article><article><div class="eyebrow">Independence</div><h2>What I actually rely on</h2><p>Memory, documentation, search or AI. Generated output only counts after I understand and verify it.</p></article><article><div class="eyebrow">Production</div><h2>How cautious I would be</h2><p>Independent, review-first, sandbox-first or lab-only depending on the technology.</p></article></div></div>
     </details>
     <footer class="footer-note"><span class="footer-prompt" aria-hidden="true">~/cv $</span> These ratings are my own assessments, not generated scores. They are meant to make strengths and limits visible instead of hiding both behind a long technology list.</footer>
   </main>

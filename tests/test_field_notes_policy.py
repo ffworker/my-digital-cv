@@ -41,19 +41,19 @@ class FieldNotesPolicyTests(unittest.TestCase):
 
     def test_professional_ai_boundary_is_explicit_in_both_languages(self):
         notes = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
-        self.assertIn("do not use AI in day-to-day live IT operations",
+        self.assertIn("AI agents do not autonomously access or change production systems",
                       notes["en"]["note"])
-        self.assertIn("Im täglichen produktiven IT-Betrieb nutze ich keine KI",
+        self.assertIn("KI-Agenten greifen nicht autonom auf Produktivsysteme zu",
                       notes["de"]["note"])
         for page in ("index.html", "de/index.html"):
             text = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn("live IT operations" if page == "index.html"
-                          else "produktiven IT-Betrieb", text)
+            self.assertIn("AI" if page == "index.html" else "KI", text)
+            self.assertIn("production" if page == "index.html" else "Produktivsysteme", text)
         for path, phrase in (
-            ("skills.html", "do not use AI in day-to-day live IT operations"),
-            ("skills-tech.html", "do not use AI in day-to-day live IT operations"),
-            ("de/skills.html", "Im täglichen produktiven IT-Betrieb nutze ich keine KI"),
-            ("de/skills-tech.html", "Im täglichen produktiven IT-Betrieb nutze ich keine KI"),
+            ("skills.html", "AI agents do not autonomously access or change production systems"),
+            ("skills-tech.html", "AI agents do not autonomously access or change production systems"),
+            ("de/skills.html", "KI-Agenten greifen nicht autonom auf Produktivsysteme zu"),
+            ("de/skills-tech.html", "KI-Agenten greifen nicht autonom auf Produktivsysteme zu"),
         ):
             with self.subTest(path=path):
                 self.assertIn(phrase, (ROOT / path).read_text(encoding="utf-8"))

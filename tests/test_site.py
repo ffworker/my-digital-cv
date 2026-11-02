@@ -143,7 +143,7 @@ class SiteContractTests(unittest.TestCase):
                 self.assertEqual(page.count('class="segment-bar" aria-hidden="true"'), 13)
                 self.assertEqual(page.count('<i class="segment '), 130)
                 self.assertEqual(page.count('data-rating-kind='), 13)
-                self.assertEqual(page.count('data-rating-kind="unrated"'), 2)
+                self.assertEqual(page.count('data-rating-kind="unrated"'), 3)
                 self.assertEqual(page.count('data-rating-kind="range"'), 1)
                 self.assertEqual(page.count('<section class="skill-group"'), 2)
                 self.assertIn('<details class="methodology">', page)
@@ -205,9 +205,9 @@ class SiteContractTests(unittest.TestCase):
         self.assertEqual(ids("en"), ids("de"))
         for lang in ("en", "de"):
             ratings = [i["rating_kind"] for section in data[lang]["sections"] for i in section["items"]]
-            self.assertEqual(ratings.count("unrated"), 2)
+            self.assertEqual(ratings.count("unrated"), 3)
             self.assertEqual(ratings.count("range"), 1)
-            self.assertEqual(ratings.count("score"), 10)
+            self.assertEqual(ratings.count("score"), 9)
 
     def test_committed_skills_pages_are_generated_without_drift(self):
         result = subprocess.run(

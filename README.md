@@ -21,7 +21,7 @@ This is the human-readable side of my portfolio: current professional IT work, t
 
 The skills page separates what I can do myself, where I use documentation/search/AI, and how confident I would be making that kind of change on a real system.
 
-**AI is not used in my day-to-day live IT operations at work.** I only use it occasionally in isolated test/development environments to speed up drafts of small scripts or automations, with personal review and testing. My private homelab is separate and includes AI-assisted experiments; no generated output is treated as a production decision or proof of skill.
+**AI helps with professional research, troubleshooting, dashboard drafts, and iterative automation development.** It is not an autonomous operator of production systems: I make and carry out infrastructure decisions myself. I do not independently author scripts from scratch, and I don't present AI-generated code as proof of programming mastery. Autonomous AI-agent access is confined to disposable VMs/Pis in my private lab. The Editorial skills section foregrounds real professional administration; the Tech View retains separately labeled private lab self-assessments.
 
 ## Updating the bilingual skills matrix
 
