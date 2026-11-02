@@ -121,7 +121,7 @@ def stylesheet_version(filename: str) -> str:
     """Fingerprint stylesheet content to avoid stale browser CSS after releases."""
     data = (ROOT / filename).read_bytes()
     # Git object hash matches the blob SHA for this stylesheet in GitHub.
-    git_header = f"blob {len(data)}\\0".encode()
+    git_header = f"blob {len(data)}\0".encode()
     return hashlib.sha1(git_header + data).hexdigest()[:12]
 
 
