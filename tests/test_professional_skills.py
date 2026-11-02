@@ -69,11 +69,16 @@ class AlternateSkillsThemeTests(unittest.TestCase):
             with self.subTest(page=path):
                 page = (ROOT / path).read_text(encoding="utf-8")
                 self.assertIn('class="experience-panel"', page)
+                self.assertIn('class="practice-section"', page)
+                self.assertEqual(page.count('class="practice-card"'), 9)
+                self.assertIn('class="lab-index-note"', page)
                 self.assertNotIn('class="index-panel"', page)
                 self.assertIn('class="context-link"', page)
                 for label in labels:
                     self.assertIn(label, page)
                 self.assertLess(page.index('class="experience-panel"'),
+                                page.index('class="practice-section"'))
+                self.assertLess(page.index('class="practice-section"'),
                                 page.index('<section class="skill-group"'))
                 self.assertLess(page.index('<section class="skill-group"'),
                                 page.index('<details class="methodology">'))
@@ -81,6 +86,7 @@ class AlternateSkillsThemeTests(unittest.TestCase):
             with self.subTest(page=tech):
                 page = (ROOT / tech).read_text(encoding="utf-8")
                 self.assertIn('class="index-panel"', page)
+                self.assertNotIn('class="practice-section"', page)
                 self.assertLess(page.index('<details class="methodology">'),
                                 page.index('<section class="skill-group"'))
 
