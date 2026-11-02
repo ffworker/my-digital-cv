@@ -376,16 +376,22 @@ def main() -> int:
                          templates["skills-section.html"], templates["skills-row.html"])
         tech_target = target.replace("skills.html", "skills-tech.html")
         preview_alias = target.replace("skills.html", "skills-professional.html")
+        # Nginx on the self-hosted CV does not implement Cloudflare Pages'
+        # automatic .html-free routes; without an actual directory it falls
+        # back to the CV homepage. Publish identical HTML at /skills/index.html.
+        pretty_alias = target.replace("skills.html", "skills/index.html")
         editorial = render_editorial_variant(content, data[lang])
         tech = render_tech_variant(content, data[lang])
         alias = render_preview_redirect(lang)
-        for output, rendered in ((target, editorial), (tech_target, tech), (preview_alias, alias)):
+        for output, rendered in ((target, editorial), (pretty_alias, editorial),
+                                 (tech_target, tech), (preview_alias, alias)):
             output_path = ROOT / output
             if args.check:
                 if not output_path.is_file() or output_path.read_text(encoding="utf-8") != rendered:
                     print(f"Out-of-date generated page: {output}", file=sys.stderr)
                     return 1
             else:
+                output_path.parent.mkdir(parents=True, exist_ok=True)
                 output_path.write_text(rendered, encoding="utf-8")
                 print(f"Rendered {output}")
     return 0
