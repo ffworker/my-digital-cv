@@ -78,7 +78,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> Rocky-Nodes vorbereiten (Dienste, sysctl, containerd). <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md" target="_blank" rel="noopener noreferrer">Manuelle Anleitung ↗</a><br><small>Manuelle Referenz dokumentiert; kein vollständiger Beleg der Selbsteinschätzung.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> Linux-Administration gehört zu meinem Arbeitsalltag; öffentlich nachvollziehbare Befehls- und Ergebnisnachweise fehlen noch.</div>
         </div>
         <p class="rating-context">sehr stark</p>
       </div>
@@ -107,7 +107,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> isoliertes Proxmox-SDN/VNet mit SNAT. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/docs/MANUAL-REFERENCE.md#1-proxmox-sdn" target="_blank" rel="noopener noreferrer">Topologie und Schritte ↗</a><br><small>Dokumentiertes Referenznetz; kein alleiniger Beleg für umfassendes Routing/VPN.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> Reale Netzwerkerfahrung ist noch nicht durch einen bereinigten, öffentlich nachvollziehbaren Incident oder Routing-Test belegt.</div>
         </div>
         <p class="rating-context">stark</p>
       </div>
@@ -186,7 +186,7 @@
         <p class="detail-intro">VM-Lifecycle, Templates, Networking, Labsysteme und Virtualisierungskonzepte.</p>
         <div class="detail-line">
           <span class="detail-key">Arbeitsweise</span>
-          <div class="detail-value">Mein privates Proxmox-Lab betreibe ich eigenständig; für produktspezifische Sonderfälle nutze ich Dokumentation.</div>
+          <div class="detail-value">Ich betreibe meinen eigenen Proxmox-Host mit privaten VMs und Lab-Workloads; für unbekannte Storage-/Netzwerkänderungen nutze ich Dokumentation und prüfe sorgfältig.</div>
         </div>
         <div class="detail-line">
           <span class="detail-key">Produktiv</span>
@@ -194,7 +194,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> CKA-VM-Teardown prüft exakten Terraform-State, reservierte IDs und Live-Ownership-Tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Fail-closed-Prüfungen ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/README.md#ownership-boundary" target="_blank" rel="noopener noreferrer">Ownership-Regeln ↗</a><br><small>Implementiert und statisch geprüft; kein verifizierter Live-Teardown veröffentlicht.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> Mein privater Proxmox-Betrieb ist noch nicht mit einem öffentlich überprüfbaren Live-Test dokumentiert.</div>
         </div>
         <p class="rating-context">sicher</p>
       </div>
@@ -223,7 +223,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> genau zwei kurzlebige Proxmox-VMs mit festen IDs, Pool und Tags. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/terraform/main.tf" target="_blank" rel="noopener noreferrer">Ressourcen ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/.github/workflows/rocky-kubernetes-proxmox-validate.yml" target="_blank" rel="noopener noreferrer">Statische CI-Prüfungen ↗</a><br><small>Ressourcen und Prüf-Pipeline definiert; kein bestätigter frischer Apply-/Destroy-Lauf.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> KI-gestützte IaC-Experimente laufen; ein überprüfter öffentlicher Apply-/Destroy-Nachweis in einer isolierten Umgebung fehlt noch.</div>
         </div>
         <p class="rating-context">Begrenzte Praxis, KI-geführt</p>
       </div>
@@ -252,7 +252,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> Ready-Nodes, per Anti-Affinity verteilte nginx-Replikas und In-Cluster-DNS/HTTP prüfen. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/playbooks/validate.yml" target="_blank" rel="noopener noreferrer">Abnahme-Playbook ↗</a> · <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/rocky-kubernetes-proxmox/README.md#proven-validation" target="_blank" rel="noopener noreferrer">Manueller Testbericht ↗</a><br><small>Manuelle Referenztests dokumentiert; automatischer Clean-Rebuild noch unbelegt.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> Ansible-Nutzung bleibt privat; ein öffentlich reproduzierbarer Playbook-Lauf mit validiertem Ergebnis fehlt noch.</div>
         </div>
         <p class="rating-context">Begrenzte Praxis, KI-geführt</p>
       </div>
@@ -434,7 +434,7 @@
         </div>
         <div class="detail-line">
           <span class="detail-key">Nachweis</span>
-          <div class="detail-value"><strong>Szenario:</strong> Bash-Lifecycle verweigert Destroy bei unerwartetem State oder Ownership. <a class="evidence" href="https://github.com/ffworker/proxmox-lab/blob/main/scenarios/cka-kubernetes-proxmox/scripts/lab-factory.sh" target="_blank" rel="noopener noreferrer">Schutzfunktionen ↗</a><br><small>Quellcode und Syntaxprüfungen, kein bestätigter Recovery-Test.</small></div>
+          <div class="detail-value"><strong>Nachweislücke:</strong> Shell-Automatisierung ist KI-gestützt und von mir geprüft; ein bereinigtes End-to-End-Beispiel mit Testnachweis fehlt noch.</div>
         </div>
         <p class="rating-context">KI-gestützte Entwicklung; betriebliche Nutzung</p>
       </div>
