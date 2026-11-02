@@ -53,7 +53,6 @@ The legacy `/sites/skills.html` links to the canonical `/skills.html`.
 ## Public technical evidence
 
 - [CKA Lab](https://github.com/ffworker/cka-lab)
-- [Proxmox Lab](https://github.com/ffworker/proxmox-lab)
 - [Bytegeist Docs](https://github.com/ffworker/bytegeist-docs)
 - [GitHub profile](https://github.com/ffworker)
 
