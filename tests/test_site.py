@@ -143,7 +143,7 @@ class SiteContractTests(unittest.TestCase):
                 self.assertEqual(page.count('class="segment-bar" aria-hidden="true"'), 13)
                 self.assertEqual(page.count('<i class="segment '), 130)
                 self.assertEqual(page.count('data-rating-kind='), 13)
-                self.assertEqual(page.count('data-rating-kind="unrated"'), 2)
+                self.assertEqual(page.count('data-rating-kind="unrated"'), 3)
                 self.assertEqual(page.count('data-rating-kind="range"'), 1)
                 self.assertEqual(page.count('<section class="skill-group"'), 2)
                 self.assertIn('<details class="methodology">', page)
