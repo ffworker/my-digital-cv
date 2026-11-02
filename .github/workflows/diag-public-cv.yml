@@ -1,4 +1,4 @@
-name: One-off compare exact preview and live skills URLs
+name: One-off verify exact live CV route after GitOps release
 on:
   push:
     branches: [diagnostics/cv-public-css-nov02]
@@ -7,48 +7,29 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-24.04
-    timeout-minutes: 6
+    timeout-minutes: 4
     steps:
-      - name: Read-only route and CSS comparison
+      - name: Verify extensionless skills route on the public site
         shell: bash
         run: |
           set -u
-          for origin in https://cv.bytegeist.dev https://9d984d33.mywebsite-ebw.pages.dev; do
-            for path in '/de/skills' '/de/skills?utm_source=chatgpt.com' '/de/skills.html' '/de/index.html' '/skills-professional.css' '/skills-professional.css?v=241e70aa91c3'; do
-              url="$origin$path"
-              code=$(curl --connect-timeout 5 --max-time 12 --compressed --silent --show-error --location -o /tmp/check-body -D /tmp/check-headers -w '%{http_code}' "$url") || code="ERR"
-              hash=$(sha256sum /tmp/check-body | cut -c1-20)
-              bytes=$(wc -c </tmp/check-body)
-              title=$(grep -om1 '<title>[^<]*</title>' /tmp/check-body | head -c 110 || true)
-              stylesheet=$(grep -om1 'href="/skills-professional.css[^"]*"' /tmp/check-body || true)
-              echo "RESULT url=$url status=$code bytes=$bytes sha=$hash title=$title cssLink=$stylesheet"
-              grep -iE '^content-type:|^cache-control:|^location:' /tmp/check-headers | tr '\n' ';' || true
-              echo
+          for i in $(seq 1 8); do
+            for suffix in /de/skills /de/skills/ /de/skills.html /skills /skills/; do
+              url="https://cv.bytegeist.dev$suffix"
+              status=$(curl -LsS --connect-timeout 5 --max-time 12 -o /tmp/cv-route -w '%{http_code}' "$url") || status=ERR
+              marker=$(grep -oc 'class="professional-story"' /tmp/cv-route || true)
+              title=$(grep -om1 '<title>[^<]*</title>' /tmp/cv-route | head -c 100 || true)
+              printf "ATTEMPT=%s PATH=%s HTTP=%s STORY=%s TITLE=%s\n" "$i" "$suffix" "$status" "$marker" "$title"
             done
+            if grep -q 'class="professional-story"' /tmp/cv-route; then
+              # Always explicitly verify the exact URL, not the last loop result.
+              curl -LsS --max-time 12 -o /tmp/cv-exact https://cv.bytegeist.dev/de/skills || true
+              if grep -q 'class="professional-story"' /tmp/cv-exact; then
+                echo "LIVE_EXACT_ROUTE_PASS"
+                exit 0
+              fi
+            fi
+            sleep 11
           done
-      - name: Compare browser-rendered screenshots if Chrome available
-        shell: bash
-        run: |
-          set -u
-          command -v google-chrome || true
-          command -v chromium || true
-          CHROME=$(command -v google-chrome || command -v chromium || echo "")
-          if [ -z "$CHROME" ]; then echo "Chrome not installed; skip screenshot"; exit 0; fi
-          for host in live preview; do
-            if [ "$host" = live ]; then url=https://cv.bytegeist.dev/de/skills; else url=https://9d984d33.mywebsite-ebw.pages.dev/de/skills; fi
-            timeout 35 "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1280,900 --virtual-time-budget=4500 --screenshot="/tmp/$host.png" "$url" 2>/dev/null || true
-            file "/tmp/$host.png" || true
-            sha256sum "/tmp/$host.png" || true
-          done
-          python - <<'PY'
-          try:
-              from PIL import Image, ImageChops
-              a=Image.open('/tmp/live.png').convert('RGB')
-              b=Image.open('/tmp/preview.png').convert('RGB')
-              diff=ImageChops.difference(a,b)
-              box=diff.getbbox()
-              print('RENDER_DIFF', 'images_identical' if box is None else f'bbox={box}', 'sizes',a.size,b.size)
-              print('PIXELS', 'live-bg',a.getpixel((10,350)), 'preview-bg',b.getpixel((10,350)))
-          except Exception as exc:
-              print('Screenshot comparison unavailable',str(exc))
-          PY
+          echo "LIVE_EXACT_ROUTE_NOT_YET_FIXED"
+          exit 1
