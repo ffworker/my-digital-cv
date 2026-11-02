@@ -21,8 +21,8 @@ class SiteContractTests(unittest.TestCase):
 
     def test_skills_describe_current_talos_practice_without_pending_cp03(self):
         for relative, node_phrase in (
-            ("skills.html", "three control-plane/etcd nodes"),
-            ("de/skills.html", "drei Control-Plane-/etcd-Nodes"),
+            ("skills-tech.html", "three control-plane/etcd nodes"),
+            ("de/skills-tech.html", "drei Control-Plane-/etcd-Nodes"),
         ):
             with self.subTest(page=relative):
                 page = (ROOT / relative).read_text(encoding="utf-8")
@@ -49,8 +49,8 @@ class SiteContractTests(unittest.TestCase):
             self.assertNotIn("outline: 0", focus_rule)
 
     def test_early_automation_skills_use_context_instead_of_numeric_scores(self):
-        english = (ROOT / "skills.html").read_text(encoding="utf-8")
-        german = (ROOT / "de" / "skills.html").read_text(encoding="utf-8")
+        english = (ROOT / "skills-tech.html").read_text(encoding="utf-8")
+        german = (ROOT / "de" / "skills-tech.html").read_text(encoding="utf-8")
         self.assertNotIn(">0/10<", english)
         self.assertNotIn(">1/10<", english)
         self.assertNotIn(">0/10<", german)
@@ -118,8 +118,8 @@ class SiteContractTests(unittest.TestCase):
         self.assertIn('aria-label="Privates Lab – Kontext anzeigen"', page)
 
     def test_automation_experience_is_explicitly_limited_and_ai_guided(self):
-        english = (ROOT / "skills.html").read_text(encoding="utf-8")
-        german = (ROOT / "de/skills.html").read_text(encoding="utf-8")
+        english = (ROOT / "skills-tech.html").read_text(encoding="utf-8")
+        german = (ROOT / "de/skills-tech.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(english.count("Limited hands-on, AI-guided"), 2)
         self.assertGreaterEqual(german.count("Begrenzte Praxis, KI-geführt"), 2)
     def test_animated_content_keeps_accessible_contrast(self):
@@ -135,7 +135,7 @@ class SiteContractTests(unittest.TestCase):
 
 
     def test_bilingual_skills_use_compact_semantic_disclosures(self):
-        for relative in ("skills.html", "de/skills.html"):
+        for relative in ("skills-tech.html", "de/skills-tech.html"):
             with self.subTest(page=relative):
                 page = (ROOT / relative).read_text(encoding="utf-8")
                 self.assertEqual(page.count('<details class="skill-card"'), 13)
@@ -148,7 +148,7 @@ class SiteContractTests(unittest.TestCase):
                 self.assertEqual(page.count('<section class="skill-group"'), 2)
                 self.assertIn('<details class="methodology">', page)
                 self.assertIn('<a class="skip-link" href="#skills-overview">', page)
-                self.assertIn('<link rel="stylesheet" href="/skills-professional.css"', page)
+                self.assertIn('<link rel="stylesheet" href="/skills.css"', page)
                 self.assertNotIn('<style>', page)
                 self.assertNotIn('<script', page)
                 self.assertNotIn('<table class="matrix"', page)
@@ -160,7 +160,7 @@ class SiteContractTests(unittest.TestCase):
 
     def test_skill_bar_levels_match_source_in_both_languages(self):
         data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
-        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+        for lang, path in (("en", "skills-tech.html"), ("de", "de/skills-tech.html")):
             page = (ROOT / path).read_text(encoding="utf-8")
             self.assertIn("5–6/10", page)
             self.assertIn("9/10", page)
@@ -176,7 +176,7 @@ class SiteContractTests(unittest.TestCase):
         data = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))["locales"]
         expected = {"linux", "network", "platform", "automation", "storage", "monitoring"}
         domains_by_lang = {}
-        for lang, path in (("en", "skills.html"), ("de", "de/skills.html")):
+        for lang, path in (("en", "skills-tech.html"), ("de", "de/skills-tech.html")):
             page = (ROOT / path).read_text(encoding="utf-8")
             domains = [(item["id"], item["domain"])
                        for group in data[lang]["sections"] for item in group["items"]]
