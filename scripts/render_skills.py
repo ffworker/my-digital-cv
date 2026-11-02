@@ -117,56 +117,56 @@ def render(locale: dict, page: str, section: str, row: str) -> str:
 
 
 def render_editorial_variant(content: str, locale: dict) -> str:
-    """Recruiter-first Editorial page; the skill cards and scores stay unchanged."""
+    """Recruiter-first Editorial page; retain the technical cards as a separate index."""
     lang = locale["lang"]
     technical_path = "/skills-tech.html" if lang == "en" else "/de/skills-tech.html"
     if lang == "en":
         eyebrow = "PROFESSIONAL PROFILE"
-        heading = "Practical IT operations & infrastructure skills"
+        heading = "Infrastructure / Systems Engineer"
         intro = (
-            "At work, I support Windows infrastructure, Omnissa Horizon/VDI and "
-            "Microsoft 365/Exchange. In my private lab, I build and troubleshoot "
-            "Linux, virtualization, networking and automation. These skills "
-            "distinguish hands-on practice from public evidence and open tests."
+            "I run, maintain and troubleshoot inherited and evolving IT systems. "
+            "VMware, Linux, Docker, Windows/identity, VDI, firewalls and real restores "
+            "are part of my professional work. Kubernetes and other experimental "
+            "platform tooling belong to my private lab."
         )
         view_label, technical_label = "View", "Tech View"
         context_label = "Two contexts"
         professional_label, private_label = "Professional IT operations", "Private infrastructure lab"
-        professional_detail = "Windows infrastructure · Omnissa Horizon / VDI · Microsoft 365 / Exchange"
-        private_detail = "Linux · Proxmox · Kubernetes / Talos · automation"
+        professional_detail = "VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam"
+        private_detail = "Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu"
         career_label, career_url = "Read professional experience", "/#professional"
     else:
         eyebrow = "BERUFLICHES PROFIL"
-        heading = "IT-Betrieb & technische Kompetenzen"
+        heading = "Infrastructure / Systems Engineer"
         intro = (
-            "Beruflich betreue ich Windows-Infrastruktur, Omnissa Horizon/VDI und "
-            "Microsoft 365/Exchange. In meinem privaten Lab arbeite ich mit "
-            "Linux, Virtualisierung, Netzwerken und Automatisierung. Die "
-            "Kompetenzen unterscheiden Praxis, öffentliche Nachweise und offene Tests."
+            "Ich betreibe, pflege und analysiere bestehende und wachsende IT-Systeme. "
+            "VMware, Linux, Docker, Windows/Identity, VDI, Firewalls und echte Restores "
+            "gehören zu meiner beruflichen Praxis. Kubernetes und andere experimentelle "
+            "Plattformwerkzeuge nutze ich ausschließlich privat."
         )
         view_label, technical_label = "Ansicht", "Tech View"
         context_label = "Zwei Bereiche"
         professional_label, private_label = "Beruflicher IT-Betrieb", "Privates Infrastruktur-Lab"
-        professional_detail = "Windows-Infrastruktur · Omnissa Horizon / VDI · Microsoft 365 / Exchange"
-        private_detail = "Linux · Proxmox · Kubernetes / Talos · Automatisierung"
+        professional_detail = "VMware · Linux / Docker · Windows / AD / Entra · Horizon / VDI · Veeam"
+        private_detail = "Proxmox · Kubernetes / Talos · GitOps · Ansible / OpenTofu"
         career_label, career_url = "Berufliche Erfahrung ansehen", "/de/index.html#professional"
 
     # Use hiring-oriented metadata and a clear professional header on Editorial.
     if lang == "en":
-        page_title = "Dennis Kappel | IT operations & infrastructure skills"
+        page_title = "Dennis Kappel | Infrastructure / Systems Engineer skills"
         page_description = (
-            "Professional Windows, VDI and Microsoft 365 operations, complemented "
-            "by a hands-on Linux and infrastructure lab with transparent evidence."
+            "Hands-on professional VMware, Linux, Docker, AD, VDI, FortiGate and Veeam operations; "
+            "private Kubernetes and IaC practice clearly separated."
         )
-        og_title = "Dennis Kappel | IT operations & practical skills"
+        og_title = "Dennis Kappel | Infrastructure & operations experience"
         old_brand, new_brand = "Dennis Kappel · technical depth", "Dennis Kappel · professional profile"
     else:
-        page_title = "Dennis Kappel | IT-Betrieb & Infrastrukturkompetenzen"
+        page_title = "Dennis Kappel | Infrastructure / Systems Engineer · Kompetenzen"
         page_description = (
-            "Beruflicher IT-Betrieb mit Windows, VDI und Microsoft 365, ergänzt "
-            "durch praxisnahe Linux- und Infrastrukturprojekte mit transparenten Nachweisen."
+            "Berufliche Praxis mit VMware, Linux, Docker, AD, VDI, FortiGate und Veeam; "
+            "private Kubernetes- und IaC-Projekte klar getrennt."
         )
-        og_title = "Dennis Kappel | IT-Betrieb & technische Kompetenzen"
+        og_title = "Dennis Kappel | Infrastruktur & Betriebspraxis"
         old_brand, new_brand = "Dennis Kappel · technische Tiefe", "Dennis Kappel · Kompetenzprofil"
     content = content.replace(f'<title>{locale["page_title"]}</title>',
                               f'<title>{page_title}</title>', 1)
@@ -217,6 +217,30 @@ def render_editorial_variant(content: str, locale: dict) -> str:
     content = content[:method_start] + content[method_end:]
     footer_start = content.index('    <footer class="footer-note">')
     content = content[:footer_start] + method_html + content[footer_start:]
+
+    practice = locale["editorial_practice"]
+    practice_cards = "\n".join(
+        '        <article class="practice-card">'
+        f'<span class="practice-meta">{html.escape(item["tag"])}</span>'
+        f'<h3>{html.escape(item["title"])}</h3>'
+        f'<p>{html.escape(item["description"])}</p>'
+        '</article>'
+        for item in practice["items"]
+    )
+    practice_markup = (
+        '\n    <section class="practice-section" aria-labelledby="practice-title">\n'
+        '      <div class="practice-intro">'
+        f'<p class="practice-kicker">{html.escape(practice["eyebrow"])}</p>'
+        f'<h2 id="practice-title">{html.escape(practice["heading"])}</h2>'
+        f'<p>{html.escape(practice["description"])}</p></div>\n'
+        f'      <div class="practice-grid">\n{practice_cards}\n      </div>\n'
+        '    </section>\n'
+        '    <div class="lab-index-note">'
+        f'<h2>{html.escape(practice["lab_heading"])}</h2>'
+        f'<p>{html.escape(practice["lab_description"])}</p></div>\n'
+    )
+    content = content.replace('    <section class="skill-group"',
+                              practice_markup + '    <section class="skill-group"', 1)
 
     switch = (
         '<nav class="theme-switch" aria-label="Skills view">'
