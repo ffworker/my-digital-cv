@@ -148,7 +148,7 @@ class SiteContractTests(unittest.TestCase):
                 self.assertEqual(page.count('<section class="skill-group"'), 2)
                 self.assertIn('<details class="methodology">', page)
                 self.assertIn('<a class="skip-link" href="#skills-overview">', page)
-                self.assertIn('<link rel="stylesheet" href="/skills.css"', page)
+                self.assertIn('<link rel="stylesheet" href="/skills.css?v=', page)
                 self.assertNotIn('<style>', page)
                 self.assertNotIn('<script', page)
                 self.assertNotIn('<table class="matrix"', page)
