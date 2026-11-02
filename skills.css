@@ -213,3 +213,116 @@ h1{margin:0;font-size:clamp(24px,3vw,37px);line-height:1.09;letter-spacing:-.032
 .tech-view-choice a{color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:5px;padding:7px 10px}
 .tech-view-choice a:hover{text-decoration:underline;background:var(--panel)}
 .tech-view-choice span{letter-spacing:.08em;text-transform:uppercase}
+
+
+/* Tech View v2: restrained terminal personality, calmer reading rhythm.
+   Existing scoring semantics, detail disclosures and evidence links stay intact. */
+.skills-tech{
+  background:radial-gradient(ellipse at 14% 0%,rgba(45,91,71,.15),transparent 46%),#0d1512;
+  color:#eef2ed;
+  line-height:1.65;
+}
+.skills-tech .interface{width:min(1060px,calc(100% - 48px))}
+.skills-tech .topbar{font-family:var(--ui);min-height:72px;border-color:#304239}
+.skills-tech .topbar>strong{font-size:14px;letter-spacing:-.01em}
+.skills-tech .topbar nav{gap:8px 15px;font-family:var(--ui);font-size:12px}
+.skills-tech .network-group{display:none}
+.skills-tech main{padding:27px 0 78px}
+.skills-tech .tech-view-choice{padding:0 0 19px;font:650 12px/1.5 var(--ui)}
+.skills-tech .tech-view-choice a{border-color:#40564a;padding:10px 14px;border-radius:8px}
+.skills-tech .tech-view-choice span{color:#a4b9ab;letter-spacing:.08em}
+.skills-tech .masthead{background:#14221b;border-color:#314a3b;border-radius:15px}
+.skills-tech .terminal-path{background:#111d17;border-color:#304739;padding:11px 21px;color:#93ad9d}
+.skills-tech .hero-layout{grid-template-columns:minmax(0,1.7fr) minmax(200px,.67fr);gap:32px;padding:34px 33px}
+.skills-tech .eyebrow{font-size:11px;letter-spacing:.1em;color:#79d5a5;margin-bottom:13px}
+.skills-tech h1{font:740 clamp(28px,3.7vw,43px)/1.13 var(--ui);letter-spacing:-.04em;max-width:580px}
+.skills-tech .intro{font-size:14px;line-height:1.8;margin-top:15px;max-width:650px;color:#baccc0}
+.skills-tech .index-panel{background:transparent;border:0;border-left:1px solid #496453;border-radius:0;padding:4px 0 4px 20px}
+.skills-tech .panel-led{display:none}
+.skills-tech .panel-heading{font:700 11px/1.5 var(--ui);color:#b7c9bb;text-transform:none;letter-spacing:0}
+.skills-tech .index-stats{gap:7px;margin:13px 0 10px}
+.skills-tech .index-stats div+div{padding-left:10px;border-color:#34483c}
+.skills-tech .index-stats strong{font:700 21px/1.2 var(--ui);letter-spacing:-.02em}
+.skills-tech .index-stats span{font:11px/1.4 var(--ui);color:#abbcad}
+.skills-tech .index-hint{color:#9faf9e;font:11px/1.55 var(--ui);border:0;padding:0}
+.skills-tech .tech-reading-guide{
+  margin:22px 0 20px;padding:17px 21px;border:1px solid #354b3d;
+  background:#111d17;border-radius:11px;display:flex;align-items:center;
+  gap:14px 24px;justify-content:space-between;flex-wrap:wrap
+}
+.skills-tech .tech-reading-guide p{margin:0;color:#bbcebf;font-size:12px;max-width:490px}
+.skills-tech .tech-reading-guide nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.skills-tech .tech-reading-guide nav a{
+  color:#d5e6d8;text-decoration:none;border:1px solid #4a6150;
+  padding:7px 11px;font-size:11px;font-weight:700;border-radius:7px
+}
+.skills-tech .tech-reading-guide nav a:hover{background:#203728;border-color:#7caa8c}
+.skills-tech .methodology{background:transparent;margin:0 0 31px;border-color:#35493c;border-radius:9px}
+.skills-tech .methodology>summary{padding:14px 17px;font:600 12px/1.5 var(--ui);color:#bbccbf}
+.skills-tech .method-body{font-size:13px;line-height:1.7}
+.skills-tech .method-body .note{background:#1b2a20;padding:15px;border-radius:4px}
+.skills-tech .skill-group+.skill-group{margin-top:43px}
+.skills-tech .section-heading{margin-bottom:13px;padding:0 0 13px;border-color:#415044}
+.skills-tech .section-heading h2{font:720 20px/1.4 var(--ui);letter-spacing:-.03em}
+.skills-tech .section-count{font:11px/1.5 var(--ui);color:#a5b5a8}
+.skills-tech .skill-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:11px}
+.skills-tech .skill-card{
+  border:1px solid #32473a;border-left:1px solid #32473a;
+  border-radius:11px;background:#142019;box-shadow:none;transition:border-color .16s,background .16s
+}
+.skills-tech .skill-card:hover{background:#19291f;border-color:#557363}
+.skills-tech .skill-card[open]{background:#17251d;border-color:#6d9981}
+.skills-tech .skill-summary{min-height:88px;gap:18px;padding:18px 22px;grid-template-columns:minmax(0,1fr) auto 19px}
+.skills-tech .skill-heading{gap:6px 11px}
+.skills-tech .skill-title{font:720 16px/1.35 var(--ui);letter-spacing:-.02em;color:#f0f3ee}
+.skills-tech .skill-domain{
+  font:680 10px/1.4 var(--ui);padding:3px 7px;
+  color:#adc8b4;background:#1c3025;border-color:#385346;border-radius:5px
+}
+.skills-tech .skill-domain::before{background:#7ebd99;border-radius:50%}
+.skills-tech .skill-peek{
+  font:13px/1.5 var(--ui);white-space:normal;overflow:visible;
+  text-overflow:clip;margin-top:8px;color:#b1c0b3
+}
+.skills-tech .skill-stats{gap:11px}
+.skills-tech .skill-score{
+  font:700 12px/1.2 var(--ui);color:#cce6d4;
+  background:#203328;border:1px solid #355442;border-radius:6px;
+  min-width:58px;padding:8px 9px;text-align:center
+}
+.skills-tech .segment-bar{gap:3px;grid-template-columns:repeat(10,5px)}
+.skills-tech .segment{height:7px;box-shadow:none}
+.skills-tech .segment.filled{box-shadow:none;background:#6caf8b}
+.skills-tech .segment.possible{background:#4f8668;outline-color:#80bd92}
+.skills-tech .expand-icon{color:#a3c9b0;font-size:18px}
+.skills-tech .skill-details{padding:5px 25px 24px;border-color:#3a5140;font-size:13px}
+.skills-tech .detail-intro{font-size:13px;line-height:1.7;color:#d0ded1}
+.skills-tech .detail-line{
+  grid-template-columns:minmax(120px,.26fr) minmax(0,1fr);
+  gap:20px;padding:13px 0;border-color:#2e4133
+}
+.skills-tech .detail-key{font:700 11px/1.6 var(--ui);color:#96c9a6;letter-spacing:0;text-transform:none}
+.skills-tech .detail-value{font-size:13px;line-height:1.7;color:#e1eae0}
+.skills-tech .rating-context{font:11px/1.5 var(--ui)}
+.skills-tech .footer-note{margin-top:46px;padding-top:22px;font:12px/1.7 var(--ui)}
+@media(max-width:900px){
+  .skills-tech .hero-layout{grid-template-columns:1fr;gap:18px}
+  .skills-tech .index-panel{border-left:0;border-top:1px solid #405647;padding:17px 0 0}
+  .skills-tech .index-stats{max-width:310px}
+}
+@media(max-width:650px){
+  .skills-tech .interface{width:calc(100% - 28px)}
+  .skills-tech .topbar{align-items:flex-start}
+  .skills-tech .hero-layout{padding:24px 19px}
+  .skills-tech h1{font-size:30px}
+  .skills-tech .intro{font-size:13px}
+  .skills-tech .tech-reading-guide{padding:14px 16px}
+  .skills-tech .skill-summary{grid-template-columns:minmax(0,1fr) auto 15px;padding:16px;gap:11px}
+  .skills-tech .skill-title{font-size:15px}
+  .skills-tech .skill-peek{font-size:12px}
+  .skills-tech .skill-stats{flex-direction:column;gap:5px;align-items:flex-end}
+  .skills-tech .segment-bar{grid-template-columns:repeat(10,4px);gap:2px}
+  .skills-tech .skill-score{font-size:11px;min-width:48px;padding:5px}
+  .skills-tech .skill-details{padding:4px 16px 17px}
+  .skills-tech .detail-line{grid-template-columns:1fr;gap:5px}
+}
