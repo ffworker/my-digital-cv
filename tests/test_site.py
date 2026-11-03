@@ -119,17 +119,54 @@ class SiteContractTests(unittest.TestCase):
         stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
         self.assertIn("--green:#127654", stylesheet)
 
-    def test_professional_highlights_use_semantic_structure_not_vendor_brand_colors(self):
+    def test_professional_highlights_use_product_colors_and_neutral_action_labels(self):
+        # Color means a named product. Generic job activities are neutral bold.
+        palette = {
+            "omnissa": "#b20c4b",
+            "vmware": "#347a35",
+            "veeam": "#007c31",
+            "fortigate": "#156a82",
+            "powerstore": "#12619c",
+            "broadcom": "#b3232f",
+        }
         for relative in ("index.html", "de/index.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn('.detail-panel[data-panel="professional"] .context-list .tech {', page)
-            self.assertIn("color: #18221b;", page)
+            prefix = '.detail-panel[data-panel="professional"] .context-list '
+            self.assertIn(prefix + 'strong:not(.tech) {', page)
+            self.assertIn("font-weight: 750;", page)
+            self.assertIn(prefix + '.tech.microsoft,', page)
+            self.assertIn(prefix + '.tech.exchange,', page)
+            self.assertIn(prefix + '.tech.windows { color: #0067b8; }', page)
+            for name, color in palette.items():
+                self.assertIn(prefix + f'.tech.{name} {{ color: {color}; }}', page)
             self.assertIn("counter-reset: professional-area;", page)
             self.assertIn('content: counter(professional-area, decimal-leading-zero) " / 05 · ";', page)
             self.assertIn('content: "—";', page)
-            self.assertNotIn("footer {\n      --green: var(--green-on-dark);", page)
+            self.assertNotIn("footer {\\n      --green: var(--green-on-dark);", page)
             professional = page.split('id="panel-professional"', 1)[1].split('id="panel-lab"', 1)[0]
             self.assertEqual(professional.count('class="context-row"'), 5)
+            self.assertEqual(professional.count('class="tech '), 11)
+            self.assertEqual(professional.count('<strong>'), 5)
+            for product in ("omnissa", "vmware", "veeam", "microsoft",
+                            "exchange", "windows", "fortigate", "powerstore"):
+                self.assertIn(f'class="tech {product}"', professional)
+            self.assertNotIn('class="tech broadcom"', professional)  # no fabricated Broadcom claim
+
+    def test_professional_palette_has_readable_normal_text_contrast(self):
+        def luminance(hex_color):
+            rgb = [int(hex_color[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            channels = [c / 12.92 if c <= 0.04045
+                        else ((c + 0.055) / 1.055) ** 2.4 for c in rgb]
+            return sum(w * c for w, c in zip((0.2126, 0.7152, 0.0722), channels))
+
+        palette = ("#b20c4b", "#347a35", "#007c31",
+                   "#0067b8", "#156a82", "#12619c", "#b3232f")
+        for foreground in palette:
+            for background in ("#fcfdfb", "#f6f8f5"):
+                self.assertGreaterEqual(
+                    (luminance(background) + 0.05) / (luminance(foreground) + 0.05),
+                    4.5, f"{foreground} fails normal-text contrast on {background}"
+                )
 
     def test_skills_labels_pass_normal_text_contrast(self):
         stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
