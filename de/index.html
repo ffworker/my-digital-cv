@@ -890,6 +890,15 @@
       color: var(--muted);
       font-size: 13px;
     }
+    footer > nav[aria-label="Elsewhere"] {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
     .footer-agent {
       text-align: center;
     }
@@ -1251,12 +1260,7 @@
       <a href="#lab">Privates Lab</a>
       <a href="#contact">Kontakt</a>
       <a class="mobile-essential" href="/de/skills.html">Skillprofil</a>
-      <span class="network-group" aria-label="Andere öffentliche Seiten">
-        <span class="network-label">Weitere Seiten</span>
-        <a href="https://bytegeist.dev" target="_blank" rel="noopener noreferrer">Bytegeist</a>
-        <a href="https://tools.bytegeist.dev" target="_blank" rel="noopener noreferrer">Tools</a>
-        <a href="https://demos.bytegeist.dev" target="_blank" rel="noopener noreferrer">Demos</a>
-      </span>
+      <span class="network-group" aria-label="Elsewhere"><span class="network-label">Elsewhere</span><a href="https://bytegeist.dev">Hub</a><a href="https://cv.bytegeist.dev/">CV</a><a href="https://blog.bytegeist.dev/">Blog</a><a href="https://tools.bytegeist.dev">Tools</a><a href="https://github.com/ffworker">GitHub</a></span>
       <span class="language-switch" aria-label="Sprachauswahl"><a href="/" lang="en">EN</a><span>/</span><a href="/de/index.html" aria-current="true">DE</a></span>
     </nav>
   </header>
@@ -1272,6 +1276,9 @@
           <span class="fact"><span>Debian / Ubuntu · Docker</span><span>täglicher Server- und Dienstebetrieb</span></span>
           <span class="fact"><span>AD / Entra · Horizon / VDI</span><span>Identität und Desktop-Infrastruktur</span></span>
           <span class="fact"><span>Veeam</span><span>regelmäßige Datei- und Server-Restores</span></span>
+          <span class="fact" data-pending="true"><span>Berufserfahrung (Jahre)</span><span>—</span></span>
+          <span class="fact" data-pending="true"><span>Standort</span><span>—</span></span>
+          <span class="fact" data-pending="true"><span>Verfügbarkeit</span><span>—</span></span>
         </span>
         <span class="actions">
           <a class="button" href="mailto:denniskappel@gmx.net">Kontakt</a>
@@ -1287,6 +1294,7 @@
         <span class="fact-list">
           <span class="fact"><span>Linux / Docker</span><span>Services, die ich betreibe und analysiere</span></span>
           <span class="fact"><span>Kubernetes / Talos Linux</span><span>drei Control-Plane-/etcd-Nodes</span></span>
+          <span class="fact"><span>CKA</span><span>In Vorbereitung · Praxis im Talos-Lab</span></span>
           <span class="fact"><span>Netzwerk / NetBird</span><span>privater Servicezugriff und Routing</span></span>
           <span class="fact"><span>Konfiguration / Recovery</span><span>Kustomize, SOPS/age und Restore-Prüfungen</span></span>
         </span>
@@ -1322,7 +1330,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">kompetenzbereich</span>
-                  <h3><span class="tech omnissa">omnissa-horizon</span> / <span class="tech vmware">former-vmware-horizon</span> / vdi-environment</h3>
+                  <h3>VDI mit Omnissa Horizon (ehem. VMware Horizon)</h3>
                 </div>
                 <div>
                   <p>Gemeinsam mit einem Kollegen habe ich die VDI-Umgebung selbst mit aufgebaut und betreut — nicht nur die Nutzer darauf unterstützt.</p>
@@ -1338,7 +1346,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">kompetenzbereich</span>
-                  <h3><span class="tech microsoft">microsoft-365</span> / <span class="tech exchange">exchange</span> / <span class="tech windows">windows</span></h3>
+                  <h3>Microsoft 365, Exchange und Windows</h3>
                 </div>
                 <div>
                   <p>Beruflicher Betrieb rund um Microsoft 365, Exchange und Windows-Infrastruktur — mit Fokus auf Administration, Support und Servicekontinuität.</p>
@@ -1352,7 +1360,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">täglicher betrieb</span>
-                  <h3><span class="tech vmware">vmware</span> / <span class="tech linux">linux</span> / <span class="tech docker">docker</span></h3>
+                  <h3>VMware, Linux und Docker im Betrieb</h3>
                 </div>
                 <div>
                   <p>Viele Server laufen mit Debian/Ubuntu auf vSphere. Ich installiere und dokumentiere Hosts, sichere SSH ab, betreue Updates und betreibe IT-Dienste in Docker/Compose auf Basis angepasster Templates.</p>
@@ -1367,7 +1375,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">arbeitsweise</span>
-                  <h3>incidents / übergabe / wiederholbare-fixes</h3>
+                  <h3>Störungen, Übergaben und nachhaltige Lösungen</h3>
                 </div>
                 <div>
                   <p>Incidents starten oft mit unvollständigen Informationen. Die Arbeit besteht darin, die betroffene Ebene zu finden, Annahmen zu prüfen und den nächsten Schritt rückgängig machbar zu halten.</p>
@@ -1381,7 +1389,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">aktueller schwerpunkt</span>
-                  <h3>professional-ops / verantwortung</h3>
+                  <h3>Verantwortung im IT-Betrieb</h3>
                 </div>
                 <div>
                   <p>Bei Infrastrukturänderungen bin ich häufig der zentrale technische Ansprechpartner: Optionen abwägen, Vorgehen planen, gewachsene Systeme administrieren, undokumentierte Zusammenhänge festhalten und alte Dienste mit Beobachtungsphase und Backup absichern. KI hilft bei Recherche und iterativer Automatisierung, betreibt aber keine Produktivsysteme autonom.</p>
@@ -1401,7 +1409,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">lab-umfang</span>
-                  <h3><span class="tech linux">linux</span> / <span class="tech docker">docker</span> / pi-und-vps-services</h3>
+                  <h3>Linux- und Docker-Dienste auf Pis und VPS</h3>
                 </div>
                 <div>
                   <p>Ich betreibe private Dienste auf Proxmox, Raspberry Pis und VPS-Systemen. Dabei arbeite ich an konkreten Problemen mit Storage, Netzwerken und Wiederherstellung.</p>
@@ -1414,7 +1422,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">praxisbereich</span>
-                  <h3><span class="tech kubernetes">kubernetes</span> / Talos Linux / workload-migration</h3>
+                  <h3>Kubernetes auf Talos Linux · Workload-Migration</h3>
                 </div>
                 <div>
                   <p>Ich betreibe einen Kubernetes-Cluster auf Talos Linux mit drei Control-Plane-/etcd-Nodes: einer AMD64-Proxmox-VM und zwei ARM64-Raspberry-Pis. Ausgewählte Dienste habe ich von K3s migriert. Änderungen prüfe ich über Node-Zustand, Events, Rollouts und Anwendungstests.</p>
@@ -1427,7 +1435,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">kontrollschleife</span>
-                  <h3><span class="tech netbird">netbird</span> / kustomize / sops</h3>
+                  <h3>NetBird, Kustomize und SOPS</h3>
                 </div>
                 <div>
                   <p>Anwendungsmanifeste liegen in Git, Deployment-Varianten verwalte ich mit Kustomize. Sensible Konfiguration verschlüssele ich mit SOPS und age. Zum Abschluss vergleiche ich Soll- und Live-Zustand und prüfe den Dienst über seinen tatsächlichen Zugriffsweg.</p>
@@ -1440,7 +1448,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">recovery-praxis</span>
-                  <h3>datenmigration / restore-prüfungen / verfügbarkeit</h3>
+                  <h3>Datenmigration und Restore-Prüfungen</h3>
                 </div>
                 <div>
                   <p>Anwendungsdaten habe ich aus dem alten K3s-Storage wiederhergestellt und anschließend Dateihashes verglichen. Den kontrollierten Neustart des dritten Control-Plane-Nodes habe ich zusammen mit der Erreichbarkeit der Dienste geprüft.</p>
@@ -1454,7 +1462,7 @@
               <section class="context-row">
                 <div>
                   <span class="detail-meta">verantwortung</span>
-                  <h3>privates Lab / KI-unterstützte Experimente</h3>
+                  <h3>Privates Lab und KI-gestützte Experimente</h3>
                 </div>
                 <div>
                   <p>KI unterstützt mich beruflich bei Recherche, Fehlersuche und Automatisierungsentwürfen, greift aber nie autonom in Produktivsysteme ein. In meinem privaten Lab experimentiere ich mit Full-Access-Agenten auf entbehrlichen VMs und Raspberry Pis, getrennt von der Arbeitsumgebung.</p>
@@ -1518,6 +1526,7 @@
         <h2 id="field-notes-heading">Nicht jede Geschichte passt in ein Ticket.</h2>
         <p>Mein persönliches technisches Erfahrungsbuch: was ich im Lab aufgebaut, kaputtgemacht, untersucht und gelernt habe. Echte Entscheidungen, falsche Fährten und überprüfte Ergebnisse. Berufliche Erfahrungen nur, wenn sie sicher teilbar sind. <span aria-hidden="true">😉</span></p>
         <a class="field-notes-cta" href="/de/field-notes.html">Betriebsnotizen entdecken <span aria-hidden="true">↗</span></a>
+        <a class="field-notes-cta" href="https://blog.bytegeist.dev/">Geschichten im Blog lesen <span aria-hidden="true">↗</span></a>
         <span class="field-notes-meta">Keine Arbeitgebervorfälle oder vertraulichen Details veröffentlicht.</span>
       </div>
       <div class="field-notes-mark" aria-hidden="true"><span>FIELD</span><span>NOTES</span><small>IT / BETRIEB / ERFAHRUNG</small></div>
@@ -1531,6 +1540,7 @@
       <p>Ich kenne mehr Befehle. Dennis weiß, welche Maschine gemeint war. Die Logs entscheiden, wer von uns das Problem falsch verstanden hat.</p>
     </span>
     <span class="footer-contact"><a href="mailto:denniskappel@gmx.net">E-Mail</a> / <a href="https://github.com/ffworker" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+      <nav aria-label="Elsewhere"><a href="https://bytegeist.dev">Hub</a><a href="https://cv.bytegeist.dev/">CV</a><a href="https://blog.bytegeist.dev/">Blog</a><a href="https://tools.bytegeist.dev">Tools</a><a href="https://github.com/ffworker">GitHub</a></nav>
   </footer>
   <script>
     (() => {

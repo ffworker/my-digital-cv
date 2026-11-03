@@ -1,6 +1,6 @@
 # Field Notes: publication standard (editorial workflow, not a case report)
 
-The /field-notes.html and /de/field-notes.html pages are linked from a tasteful bilingual CV teaser, but deliberately remain **noindex editorial previews** until a first approved case study exists. They contain **no real incident details**, customer data or production artifacts.
+The /field-notes.html and /de/field-notes.html pages remain **noindex editorial notices** pointing to the separate Bytegeist Blog. They contain **no real incident details**, customer data or production artifacts. Blog stories are never duplicated in the CV.
 
 ## Purpose
 
@@ -34,4 +34,4 @@ Do not commit source notes containing confidential facts, even on an unmerged br
 
 ## Launch rule
 
-The CV may link to the concept through a small non-identifying teaser, but the blog page remains **noindex** and absent from sitemap until a first fully reviewed article exists. The teaser must not claim that a real case report is published and must not identify any security incident. Once a verified case is approved, update indexing and sitemap in a separate deliberate change.
+The CV links to the independent Bytegeist Blog through a non-identifying teaser. CV Field Notes notices remain **noindex** and absent from the CV sitemap. Blog indexing is managed independently and is not changed here. Real employer or customer case reports require confidentiality review and author approval.
