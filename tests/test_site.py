@@ -99,7 +99,11 @@ class SiteContractTests(unittest.TestCase):
             self.assertIn("https://signaturee.bytegeist.dev/", page)
             self.assertIn("https://blog.bytegeist.dev/artikel/signaturee/", page)
             self.assertIn("experiment", page.lower())
-            self.assertLess(page.index('class="selected-work"'), page.index('class="field-notes-teaser"'))
+            self.assertLess(page.index('class="selected-work"'), page.index('<footer id="contact">'))
+            self.assertIn('class="selected-work-primary"', page)
+            self.assertIn('class="selected-work-secondary"', page)
+            self.assertIn('background: linear-gradient(125deg, #102019, #1b3c2b);', page)
+            self.assertNotIn("field-notes", page)
             self.assertIn("rel=\"noopener noreferrer\"", page)
 
     def test_first_visit_build_finishes_within_1500ms(self):
@@ -115,12 +119,17 @@ class SiteContractTests(unittest.TestCase):
         stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
         self.assertIn("--green:#127654", stylesheet)
 
-    def test_professional_brand_colors_pass_normal_text_contrast(self):
+    def test_professional_highlights_use_semantic_structure_not_vendor_brand_colors(self):
         for relative in ("index.html", "de/index.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn(".tech.vmware { color: #3f7d35; }", page)
-            self.assertIn(".tech.veeam { color: #007f28; }", page)
+            self.assertIn('.detail-panel[data-panel="professional"] .context-list .tech {', page)
+            self.assertIn("color: #18221b;", page)
+            self.assertIn("counter-reset: professional-area;", page)
+            self.assertIn('content: counter(professional-area, decimal-leading-zero) " / 05 · ";', page)
+            self.assertIn('content: "—";', page)
             self.assertNotIn("footer {\n      --green: var(--green-on-dark);", page)
+            professional = page.split('id="panel-professional"', 1)[1].split('id="panel-lab"', 1)[0]
+            self.assertEqual(professional.count('class="context-row"'), 5)
 
     def test_skills_labels_pass_normal_text_contrast(self):
         stylesheet = (ROOT / "skills.css").read_text(encoding="utf-8")
