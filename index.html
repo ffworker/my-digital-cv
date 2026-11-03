@@ -1149,6 +1149,28 @@
         transform: none !important;
       }
     }
+    /* One evidence-backed real-work project, not a second developer CV. */
+    .selected-work {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(230px, .55fr);
+      gap: clamp(18px, 4vw, 58px);
+      align-items: center;
+      margin: clamp(26px, 4vw, 54px) clamp(18px, 6vw, 84px) 0;
+      padding: clamp(23px, 3vw, 38px);
+      border: 1px solid #b7d7c4;
+      border-left: 4px solid #127654;
+      border-radius: 10px;
+      background: #f5faf6;
+    }
+    .selected-work-kicker { font: 800 10px/1.5 var(--mono); letter-spacing: .09em; color: #127654; margin: 0 0 11px; }
+    .selected-work h2 { color: #17271f; font: 700 clamp(22px, 2.6vw, 31px)/1.25 var(--ui); letter-spacing: -.027em; margin: 0 0 11px; }
+    .selected-work p:not(.selected-work-kicker) { font: 14px/1.75 var(--ui); color: #405149; max-width: 780px; margin: 0; }
+    .selected-work-links { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .selected-work-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; border-radius: 6px; background: #155b45; color: #fff; padding: 9px 13px; text-decoration: none; font: 700 12px/1.5 var(--ui); min-width: 185px; }
+    .selected-work-links a:hover { background: #0d3e2f; }
+    .selected-work-links a:focus-visible { outline: 3px solid #155b45; outline-offset: 3px; }
+    .selected-work-links small { max-width: 245px; font: 11px/1.55 var(--ui); color: #53665b; }
+    @media (max-width: 760px) { .selected-work { grid-template-columns: 1fr; } .selected-work-links { flex-flow: row wrap; } .selected-work-links small { max-width: 100%; } }
     /* Field Notes is a restrained portfolio teaser, not an incident report. */
     .field-notes-teaser {
       display: grid;
@@ -1475,6 +1497,18 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+    <section class="selected-work" aria-labelledby="selected-work-title">
+      <div>
+        <p class="selected-work-kicker">SELECTED WORK · FROM A REAL OPERATIONS NEED</p>
+        <h2 id="selected-work-title">From repetitive admin work to a usable self-service tool.</h2>
+        <p><strong>Signaturee</strong> grew from automating Outlook signatures with existing Active Directory data and templates. The Windows edition is now in workplace production use, as reported by its maintainer. The public project is separate from the employer installation; I do not publish company data or configuration. Linux remains experimental.</p>
+      </div>
+      <div class="selected-work-links">
+        <a href="https://signaturee.bytegeist.dev/" target="_blank" rel="noopener noreferrer">Explore Signaturee <span aria-hidden="true">↗</span></a>
+        <a href="https://blog.bytegeist.dev/artikel/signaturee/" target="_blank" rel="noopener noreferrer">Read the story <span aria-hidden="true">↗</span></a>
+        <small>AI-assisted implementation · human-reviewed operational decisions · Classic Outlook scope</small>
       </div>
     </section>
     <aside class="field-notes-teaser" aria-labelledby="field-notes-heading">
