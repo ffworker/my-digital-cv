@@ -87,6 +87,21 @@ class SiteContractTests(unittest.TestCase):
         for url in ("https://cv.bytegeist.dev/", "https://cv.bytegeist.dev/skills.html", "https://cv.bytegeist.dev/de/index.html", "https://cv.bytegeist.dev/de/skills.html"):
             self.assertIn(url, sitemap)
 
+    def test_selected_work_links_are_bilingual_and_scope_safe(self):
+        for relative, heading, claim in (
+            ("index.html", "SELECTED WORK", "as reported by its maintainer"),
+            ("de/index.html", "PRAXISBEISPIEL", "laut Betreiber"),
+        ):
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn(heading, page)
+            self.assertIn(claim, page)
+            self.assertIn('id="selected-work-title"', page)
+            self.assertIn("https://signaturee.bytegeist.dev/", page)
+            self.assertIn("https://blog.bytegeist.dev/artikel/signaturee/", page)
+            self.assertIn("experiment", page.lower())
+            self.assertLess(page.index('class="selected-work"'), page.index('class="field-notes-teaser"'))
+            self.assertIn("rel=\"noopener noreferrer\"", page)
+
     def test_first_visit_build_finishes_within_1500ms(self):
         for relative in ("index.html", "de/index.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
