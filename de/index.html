@@ -1159,95 +1159,118 @@
       }
     }
     /* One evidence-backed real-work project, not a second developer CV. */
+    /* Professional view: section accent is semantic, vendor names stay neutral. */
+    .detail-panel[data-panel="professional"] .context-output {
+      counter-reset: professional-area;
+      background: #d4dad6;
+      border-color: #d4dad6;
+    }
+    .detail-panel[data-panel="professional"] .context-row {
+      counter-increment: professional-area;
+      background: #fcfdfb;
+      gap: clamp(20px, 3vw, 42px);
+      padding: clamp(20px, 2.6vw, 30px);
+    }
+    .detail-panel[data-panel="professional"] .context-row:nth-child(even) { background: #f6f8f5; }
+    .detail-panel[data-panel="professional"] .context-row .detail-meta::before {
+      content: counter(professional-area, decimal-leading-zero) " / 05 · ";
+      color: #66716b;
+    }
+    .detail-panel[data-panel="professional"] .context-row h3 {
+      font: 750 clamp(17px, 1.5vw, 20px)/1.28 var(--ui);
+      letter-spacing: -.018em;
+      max-width: 370px;
+    }
+    .detail-panel[data-panel="professional"] .context-row p {
+      color: #45514a;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .detail-panel[data-panel="professional"] .context-list {
+      gap: 8px;
+      color: #354139;
+      font: 13px/1.52 var(--ui);
+    }
+    .detail-panel[data-panel="professional"] .context-list li { padding-left: 18px; }
+    .detail-panel[data-panel="professional"] .context-list li::before {
+      content: "—";
+      color: #718078;
+      font: 700 12px/1.5 var(--mono);
+    }
+    .detail-panel[data-panel="professional"] .context-list .tech {
+      color: #18221b;
+      font-weight: 700;
+    }
+    /* Signaturee is a deliberate feature: primary action vs secondary story link. */
     .selected-work {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(230px, .55fr);
-      gap: clamp(18px, 4vw, 58px);
+      grid-template-columns: minmax(0, 1.45fr) minmax(235px, .6fr);
+      gap: clamp(22px, 4vw, 58px);
       align-items: center;
-      margin: clamp(26px, 4vw, 54px) clamp(18px, 6vw, 84px) 0;
-      padding: clamp(23px, 3vw, 38px);
-      border: 1px solid #b7d7c4;
-      border-left: 4px solid #127654;
-      border-radius: 10px;
-      background: #f5faf6;
-    }
-    .selected-work-kicker { font: 800 10px/1.5 var(--mono); letter-spacing: .09em; color: #127654; margin: 0 0 11px; }
-    .selected-work h2 { color: #17271f; font: 700 clamp(22px, 2.6vw, 31px)/1.25 var(--ui); letter-spacing: -.027em; margin: 0 0 11px; }
-    .selected-work p:not(.selected-work-kicker) { font: 14px/1.75 var(--ui); color: #405149; max-width: 780px; margin: 0; }
-    .selected-work-links { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .selected-work-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; border-radius: 6px; background: #155b45; color: #fff; padding: 9px 13px; text-decoration: none; font: 700 12px/1.5 var(--ui); min-width: 185px; }
-    .selected-work-links a:hover { background: #0d3e2f; }
-    .selected-work-links a:focus-visible { outline: 3px solid #155b45; outline-offset: 3px; }
-    .selected-work-links small { max-width: 245px; font: 11px/1.55 var(--ui); color: #53665b; }
-    @media (max-width: 760px) { .selected-work { grid-template-columns: 1fr; } .selected-work-links { flex-flow: row wrap; } .selected-work-links small { max-width: 100%; } }
-    /* Field Notes is a restrained portfolio teaser, not an incident report. */
-    .field-notes-teaser {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(180px, .7fr);
-      align-items: center;
-      gap: clamp(22px, 5vw, 70px);
-      margin: clamp(25px, 5vw, 70px) clamp(18px, 6vw, 84px);
-      padding: clamp(26px, 4vw, 46px);
-      border: 1px solid var(--line);
-      background: #eff3ed;
+      margin: clamp(28px, 4vw, 54px) clamp(18px, 6vw, 84px) clamp(36px, 5vw, 76px);
+      padding: clamp(28px, 4vw, 48px);
+      border: 1px solid #325746;
+      border-left: 5px solid #6bd6a0;
       border-radius: 12px;
+      color: #f5faf6;
+      background: linear-gradient(125deg, #102019, #1b3c2b);
+      box-shadow: 0 16px 36px rgba(15, 36, 25, .12);
     }
-    .field-notes-kicker {
-      color: #127654;
-      font: 800 11px/1.4 var(--mono);
-      letter-spacing: .09em;
-      margin: 0 0 12px;
+    .selected-work-kicker {
+      font: 800 11px/1.5 var(--mono);
+      letter-spacing: .08em;
+      color: #8fe9b7;
+      margin: 0 0 13px;
     }
-    .field-notes-teaser h2 {
-      color: #17271f;
-      font: 700 clamp(24px, 2.8vw, 36px)/1.17 var(--ui);
-      letter-spacing: -.035em;
+    .selected-work h2 {
+      color: #f5faf6;
+      font: 750 clamp(25px, 2.8vw, 38px)/1.19 var(--ui);
+      letter-spacing: -.032em;
       margin: 0 0 15px;
+      max-width: 780px;
     }
-    .field-notes-teaser p:not(.field-notes-kicker) {
-      max-width: 680px;
-      font: 15px/1.7 var(--ui);
-      color: #405149;
-      margin: 0 0 20px;
+    .selected-work p:not(.selected-work-kicker) {
+      font: 14px/1.75 var(--ui);
+      color: #d0dfd5;
+      max-width: 790px;
+      margin: 0;
     }
-    .field-notes-cta {
-      display: inline-block;
-      border-radius: 6px;
-      background: #155b45;
-      padding: 10px 15px;
-      color: #fff;
-      font: 700 13px/1.4 var(--ui);
-      text-decoration: none;
-    }
-    .field-notes-cta:hover {background: #0d3e2f;}
-    .field-notes-cta:focus-visible {outline: 3px solid #155b45; outline-offset: 3px;}
-    .field-notes-meta {
-      display: block;
-      font: 11px/1.5 var(--ui);
-      color: #53665b;
-      margin-top: 12px;
-    }
-    .field-notes-mark {
+    .selected-work p strong { color: #fff; }
+    .selected-work-links {
       display: flex;
       flex-direction: column;
-      gap: 0;
-      padding-left: 27px;
-      border-left: 1px solid #bfd3c5;
-      font: 800 clamp(29px, 5vw, 58px)/.99 var(--ui);
-      color: #adc8b8;
-      letter-spacing: -.065em;
-      user-select: none;
+      align-items: stretch;
+      gap: 12px;
+      max-width: 340px;
     }
-    .field-notes-mark small {
-      font: 600 9px/1.8 var(--mono);
-      color: #577c6a;
-      letter-spacing: .04em;
-      margin-top: 14px;
+    .selected-work-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      padding: 13px 16px;
+      text-decoration: none;
+      font: 750 13px/1.45 var(--ui);
+      transition: background 160ms ease, border-color 160ms ease;
     }
-    @media (max-width: 730px) {
-      .field-notes-teaser {grid-template-columns: 1fr;gap: 18px;margin-inline: 14px;padding: 25px 20px;}
-      .field-notes-mark {border-left: 0;border-top: 1px solid #bfd3c5;padding: 12px 0 0;font-size: 25px;flex-direction: row;align-items:center;gap: 7px;}
-      .field-notes-mark small {display: none;}
+    .selected-work-links .selected-work-primary {
+      color: #10251a;
+      background: #a9f0c6;
+    }
+    .selected-work-links .selected-work-primary:hover { background: #c5f8d9; }
+    .selected-work-links .selected-work-secondary {
+      color: #f5faf6;
+      background: transparent;
+      border-color: #85ae97;
+    }
+    .selected-work-links .selected-work-secondary:hover { background: rgba(255,255,255,.09); }
+    .selected-work-links a:focus-visible { outline: 3px solid #b9f4d2; outline-offset: 3px; }
+    .selected-work-links small { font: 11px/1.55 var(--ui); color: #bdcfc3; }
+    @media (max-width: 760px) {
+      .selected-work { grid-template-columns: 1fr; }
+      .selected-work-links { max-width: none; }
     }
   </style>
 </head>
@@ -1509,28 +1532,17 @@
       </div>
     </section>
     <section class="selected-work" aria-labelledby="selected-work-title">
-      <div>
-        <p class="selected-work-kicker">PRAXISBEISPIEL · AUS EINEM ECHTEN IT-BEDARF</p>
-        <h2 id="selected-work-title">Von wiederkehrender Admin-Arbeit zum Self-Service-Werkzeug.</h2>
+      <div class="selected-work-copy">
+        <p class="selected-work-kicker">PRAXISBEISPIEL / SIGNATUREE · SELF-HOSTED PROJECT</p>
+        <h2 id="selected-work-title">Signaturee. Aus wiederkehrender Admin-Arbeit wird Self-Service.</h2>
         <p><strong>Signaturee</strong> entstand aus der Automatisierung von Outlook-Signaturen mit vorhandenen Active-Directory-Daten und Vorlagen. Die Windows-Version ist laut Betreiber inzwischen im produktiven Arbeitsalltag im Einsatz. Das öffentliche Projekt bleibt von der Firmeninstallation getrennt; Unternehmensdaten und -konfigurationen veröffentliche ich nicht. Linux ist experimentell.</p>
       </div>
       <div class="selected-work-links">
-        <a href="https://signaturee.bytegeist.dev/" target="_blank" rel="noopener noreferrer">Signaturee ansehen <span aria-hidden="true">↗</span></a>
-        <a href="https://blog.bytegeist.dev/artikel/signaturee/" target="_blank" rel="noopener noreferrer">Die Entstehung lesen <span aria-hidden="true">↗</span></a>
+        <a class="selected-work-primary" href="https://signaturee.bytegeist.dev/" target="_blank" rel="noopener noreferrer">Signaturee ansehen <span aria-hidden="true">↗</span></a>
+        <a class="selected-work-secondary" href="https://blog.bytegeist.dev/artikel/signaturee/" target="_blank" rel="noopener noreferrer">Wie es entstanden ist <span aria-hidden="true">↗</span></a>
         <small>KI-unterstützte Umsetzung · Verantwortung und Prüfung beim Menschen · Classic-Outlook-Scope</small>
       </div>
     </section>
-    <aside class="field-notes-teaser" aria-labelledby="field-notes-heading">
-      <div class="field-notes-copy">
-        <p class="field-notes-kicker">BETRIEBSNOTIZEN · AUS MEINEM LAB</p>
-        <h2 id="field-notes-heading">Nicht jede Geschichte passt in ein Ticket.</h2>
-        <p>Mein persönliches technisches Erfahrungsbuch: was ich im Lab aufgebaut, kaputtgemacht, untersucht und gelernt habe. Echte Entscheidungen, falsche Fährten und überprüfte Ergebnisse. Berufliche Erfahrungen nur, wenn sie sicher teilbar sind. <span aria-hidden="true">😉</span></p>
-        <a class="field-notes-cta" href="/de/field-notes.html">Betriebsnotizen entdecken <span aria-hidden="true">↗</span></a>
-        <a class="field-notes-cta" href="https://blog.bytegeist.dev/">Geschichten im Blog lesen <span aria-hidden="true">↗</span></a>
-        <span class="field-notes-meta">Keine Arbeitgebervorfälle oder vertraulichen Details veröffentlicht.</span>
-      </div>
-      <div class="field-notes-mark" aria-hidden="true"><span>FIELD</span><span>NOTES</span><small>IT / BETRIEB / ERFAHRUNG</small></div>
-    </aside>
   </main>
 
   <footer id="contact">
