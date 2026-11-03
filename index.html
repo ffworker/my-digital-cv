@@ -1159,95 +1159,134 @@
       }
     }
     /* One evidence-backed real-work project, not a second developer CV. */
+    /* Professional view: section accent is semantic, vendor names stay neutral. */
+    .detail-panel[data-panel="professional"] .context-output {
+      counter-reset: professional-area;
+      background: #d4dad6;
+      border-color: #d4dad6;
+    }
+    .detail-panel[data-panel="professional"] .context-row {
+      counter-increment: professional-area;
+      background: #fcfdfb;
+      gap: clamp(20px, 3vw, 42px);
+      padding: clamp(20px, 2.6vw, 30px);
+    }
+    .detail-panel[data-panel="professional"] .context-row:nth-child(even) { background: #f6f8f5; }
+    .detail-panel[data-panel="professional"] .context-row .detail-meta::before {
+      content: counter(professional-area, decimal-leading-zero) " / 05 · ";
+      color: #66716b;
+    }
+    .detail-panel[data-panel="professional"] .context-row h3 {
+      font: 750 clamp(17px, 1.5vw, 20px)/1.28 var(--ui);
+      letter-spacing: -.018em;
+      max-width: 370px;
+    }
+    .detail-panel[data-panel="professional"] .context-row p {
+      color: #45514a;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .detail-panel[data-panel="professional"] .context-list {
+      gap: 8px;
+      color: #354139;
+      font: 13px/1.52 var(--ui);
+    }
+    .detail-panel[data-panel="professional"] .context-list li { padding-left: 18px; }
+    .detail-panel[data-panel="professional"] .context-list li::before {
+      content: "—";
+      color: #718078;
+      font: 700 12px/1.5 var(--mono);
+    }
+    /* Brand colors are reserved for named products in professional evidence.
+       Non-product skill phrases use neutral bold; no implied proficiency score. */
+    .detail-panel[data-panel="professional"] .context-list .tech {
+      color: #18221b;
+      font-weight: 750;
+    }
+    .detail-panel[data-panel="professional"] .context-list strong:not(.tech) {
+      color: #18221b;
+      font-weight: 750;
+    }
+    .detail-panel[data-panel="professional"] .context-list .tech.omnissa { color: #b20c4b; }
+    .detail-panel[data-panel="professional"] .context-list .tech.vmware { color: #347a35; }
+    .detail-panel[data-panel="professional"] .context-list .tech.veeam { color: #007c31; }
+    .detail-panel[data-panel="professional"] .context-list .tech.microsoft,
+    .detail-panel[data-panel="professional"] .context-list .tech.exchange,
+    .detail-panel[data-panel="professional"] .context-list .tech.windows { color: #0067b8; }
+    .detail-panel[data-panel="professional"] .context-list .tech.fortigate { color: #156a82; }
+    .detail-panel[data-panel="professional"] .context-list .tech.powerstore { color: #12619c; }
+    /* Broadcom red is available if cited explicitly; do not invent it in copy. */
+    .detail-panel[data-panel="professional"] .context-list .tech.broadcom { color: #b3232f; }
+    /* Signaturee is a deliberate feature: primary action vs secondary story link. */
     .selected-work {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(230px, .55fr);
-      gap: clamp(18px, 4vw, 58px);
+      grid-template-columns: minmax(0, 1.45fr) minmax(235px, .6fr);
+      gap: clamp(22px, 4vw, 58px);
       align-items: center;
-      margin: clamp(26px, 4vw, 54px) clamp(18px, 6vw, 84px) 0;
-      padding: clamp(23px, 3vw, 38px);
-      border: 1px solid #b7d7c4;
-      border-left: 4px solid #127654;
-      border-radius: 10px;
-      background: #f5faf6;
-    }
-    .selected-work-kicker { font: 800 10px/1.5 var(--mono); letter-spacing: .09em; color: #127654; margin: 0 0 11px; }
-    .selected-work h2 { color: #17271f; font: 700 clamp(22px, 2.6vw, 31px)/1.25 var(--ui); letter-spacing: -.027em; margin: 0 0 11px; }
-    .selected-work p:not(.selected-work-kicker) { font: 14px/1.75 var(--ui); color: #405149; max-width: 780px; margin: 0; }
-    .selected-work-links { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .selected-work-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; border-radius: 6px; background: #155b45; color: #fff; padding: 9px 13px; text-decoration: none; font: 700 12px/1.5 var(--ui); min-width: 185px; }
-    .selected-work-links a:hover { background: #0d3e2f; }
-    .selected-work-links a:focus-visible { outline: 3px solid #155b45; outline-offset: 3px; }
-    .selected-work-links small { max-width: 245px; font: 11px/1.55 var(--ui); color: #53665b; }
-    @media (max-width: 760px) { .selected-work { grid-template-columns: 1fr; } .selected-work-links { flex-flow: row wrap; } .selected-work-links small { max-width: 100%; } }
-    /* Field Notes is a restrained portfolio teaser, not an incident report. */
-    .field-notes-teaser {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(180px, .7fr);
-      align-items: center;
-      gap: clamp(22px, 5vw, 70px);
-      margin: clamp(25px, 5vw, 70px) clamp(18px, 6vw, 84px);
-      padding: clamp(26px, 4vw, 46px);
-      border: 1px solid var(--line);
-      background: #eff3ed;
+      margin: clamp(28px, 4vw, 54px) clamp(18px, 6vw, 84px) clamp(36px, 5vw, 76px);
+      padding: clamp(28px, 4vw, 48px);
+      border: 1px solid #325746;
+      border-left: 5px solid #6bd6a0;
       border-radius: 12px;
+      color: #f5faf6;
+      background: linear-gradient(125deg, #102019, #1b3c2b);
+      box-shadow: 0 16px 36px rgba(15, 36, 25, .12);
     }
-    .field-notes-kicker {
-      color: #127654;
-      font: 800 11px/1.4 var(--mono);
-      letter-spacing: .09em;
-      margin: 0 0 12px;
+    .selected-work-kicker {
+      font: 800 11px/1.5 var(--mono);
+      letter-spacing: .08em;
+      color: #8fe9b7;
+      margin: 0 0 13px;
     }
-    .field-notes-teaser h2 {
-      color: #17271f;
-      font: 700 clamp(24px, 2.8vw, 36px)/1.17 var(--ui);
-      letter-spacing: -.035em;
+    .selected-work h2 {
+      color: #f5faf6;
+      font: 750 clamp(25px, 2.8vw, 38px)/1.19 var(--ui);
+      letter-spacing: -.032em;
       margin: 0 0 15px;
+      max-width: 780px;
     }
-    .field-notes-teaser p:not(.field-notes-kicker) {
-      max-width: 680px;
-      font: 15px/1.7 var(--ui);
-      color: #405149;
-      margin: 0 0 20px;
+    .selected-work p:not(.selected-work-kicker) {
+      font: 14px/1.75 var(--ui);
+      color: #d0dfd5;
+      max-width: 790px;
+      margin: 0;
     }
-    .field-notes-cta {
-      display: inline-block;
-      border-radius: 6px;
-      background: #155b45;
-      padding: 10px 15px;
-      color: #fff;
-      font: 700 13px/1.4 var(--ui);
-      text-decoration: none;
-    }
-    .field-notes-cta:hover {background: #0d3e2f;}
-    .field-notes-cta:focus-visible {outline: 3px solid #155b45; outline-offset: 3px;}
-    .field-notes-meta {
-      display: block;
-      font: 11px/1.5 var(--ui);
-      color: #53665b;
-      margin-top: 12px;
-    }
-    .field-notes-mark {
+    .selected-work p strong { color: #fff; }
+    .selected-work-links {
       display: flex;
       flex-direction: column;
-      gap: 0;
-      padding-left: 27px;
-      border-left: 1px solid #bfd3c5;
-      font: 800 clamp(29px, 5vw, 58px)/.99 var(--ui);
-      color: #adc8b8;
-      letter-spacing: -.065em;
-      user-select: none;
+      align-items: stretch;
+      gap: 12px;
+      max-width: 340px;
     }
-    .field-notes-mark small {
-      font: 600 9px/1.8 var(--mono);
-      color: #577c6a;
-      letter-spacing: .04em;
-      margin-top: 14px;
+    .selected-work-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      padding: 13px 16px;
+      text-decoration: none;
+      font: 750 13px/1.45 var(--ui);
+      transition: background 160ms ease, border-color 160ms ease;
     }
-    @media (max-width: 730px) {
-      .field-notes-teaser {grid-template-columns: 1fr;gap: 18px;margin-inline: 14px;padding: 25px 20px;}
-      .field-notes-mark {border-left: 0;border-top: 1px solid #bfd3c5;padding: 12px 0 0;font-size: 25px;flex-direction: row;align-items:center;gap: 7px;}
-      .field-notes-mark small {display: none;}
+    .selected-work-links .selected-work-primary {
+      color: #10251a;
+      background: #a9f0c6;
+    }
+    .selected-work-links .selected-work-primary:hover { background: #c5f8d9; }
+    .selected-work-links .selected-work-secondary {
+      color: #f5faf6;
+      background: transparent;
+      border-color: #85ae97;
+    }
+    .selected-work-links .selected-work-secondary:hover { background: rgba(255,255,255,.09); }
+    .selected-work-links a:focus-visible { outline: 3px solid #b9f4d2; outline-offset: 3px; }
+    .selected-work-links small { font: 11px/1.55 var(--ui); color: #bdcfc3; }
+    @media (max-width: 760px) {
+      .selected-work { grid-template-columns: 1fr; }
+      .selected-work-links { max-width: none; }
     }
   </style>
 </head>
@@ -1335,10 +1374,10 @@
                   <p>Together with a colleague, I helped build and maintain the VDI environment itself, not only support users on top of it.</p>
                   <ul class="context-list">
                     <li><span class="tech omnissa">Omnissa Horizon / VDI</span> environment, formerly <span class="tech vmware">VMware Horizon</span></li>
-                    <li>UAG and Connection Server setup and ongoing maintenance</li>
-                    <li>golden images, snapshots and image lifecycle work</li>
+                    <li><span class="tech omnissa">UAG and Connection Server</span> setup and ongoing maintenance</li>
+                    <li><strong>golden images, snapshots</strong> and image lifecycle work</li>
                     <li><span class="tech veeam">Veeam</span>-backed backup paths for the surrounding infrastructure</li>
-                    <li>built and maintained in professional operations; infrastructure changes remain human-controlled</li>
+                    <li><strong>built and maintained</strong> in professional operations; infrastructure changes remain human-controlled</li>
                   </ul>
                 </div>
               </section>
@@ -1364,10 +1403,10 @@
                 <div>
                   <p>Much of the server environment runs Debian/Ubuntu on vSphere. I bootstrap and document hosts, maintain SSH access and updates, and run IT services in Docker/Compose based on adapted templates.</p>
                   <ul class="context-list">
-                    <li>VMware operations, changes and troubleshooting as the primary IT administrator</li>
-                    <li>Veeam backup operations, frequent file restores and occasional full-server recovery</li>
-                    <li>FortiGate policy changes, blocked-traffic analysis and maintenance</li>
-                    <li>PowerStore capacity and thin-provisioning oversight; occasional MDM support</li>
+                    <li><span class="tech vmware">VMware</span> operations, changes and troubleshooting as the primary IT administrator</li>
+                    <li><span class="tech veeam">Veeam</span> backup operations, frequent file restores and occasional full-server recovery</li>
+                    <li><span class="tech fortigate">FortiGate</span> policy changes, blocked-traffic analysis and maintenance</li>
+                    <li><span class="tech powerstore">PowerStore</span> capacity and thin-provisioning oversight; occasional MDM support</li>
                   </ul>
                 </div>
               </section>
@@ -1379,9 +1418,9 @@
                 <div>
                   <p>Incidents usually start with incomplete information, so the work is to identify the affected layer, verify assumptions and keep the next step recoverable.</p>
                   <ul class="context-list">
-                    <li>operational support with real users waiting</li>
-                    <li>clear notes for handover and future investigation</li>
-                    <li>fixes that are understandable, not just lucky</li>
+                    <li><strong>operational support</strong> with real users waiting</li>
+                    <li><strong>clear notes</strong> for handover and future investigation</li>
+                    <li><strong>fixes that are understandable</strong>, not just lucky</li>
                   </ul>
                 </div>
               </section>
@@ -1508,28 +1547,17 @@
       </div>
     </section>
     <section class="selected-work" aria-labelledby="selected-work-title">
-      <div>
-        <p class="selected-work-kicker">SELECTED WORK · FROM A REAL OPERATIONS NEED</p>
-        <h2 id="selected-work-title">From repetitive admin work to a usable self-service tool.</h2>
+      <div class="selected-work-copy">
+        <p class="selected-work-kicker">SELECTED WORK / SIGNATUREE · SELF-HOSTED PROJECT</p>
+        <h2 id="selected-work-title">Signaturee. From repetitive admin work to usable self-service.</h2>
         <p><strong>Signaturee</strong> grew from automating Outlook signatures with existing Active Directory data and templates. The Windows edition is now in workplace production use, as reported by its maintainer. The public project is separate from the employer installation; I do not publish company data or configuration. Linux remains experimental.</p>
       </div>
       <div class="selected-work-links">
-        <a href="https://signaturee.bytegeist.dev/" target="_blank" rel="noopener noreferrer">Explore Signaturee <span aria-hidden="true">↗</span></a>
-        <a href="https://blog.bytegeist.dev/artikel/signaturee/" target="_blank" rel="noopener noreferrer">Read the story <span aria-hidden="true">↗</span></a>
+        <a class="selected-work-primary" href="https://signaturee.bytegeist.dev/" target="_blank" rel="noopener noreferrer">Explore Signaturee <span aria-hidden="true">↗</span></a>
+        <a class="selected-work-secondary" href="https://blog.bytegeist.dev/artikel/signaturee/" target="_blank" rel="noopener noreferrer">How it came to be <span aria-hidden="true">↗</span></a>
         <small>AI-assisted implementation · human-reviewed operational decisions · Classic Outlook scope</small>
       </div>
     </section>
-    <aside class="field-notes-teaser" aria-labelledby="field-notes-heading">
-      <div class="field-notes-copy">
-        <p class="field-notes-kicker">FIELD NOTES · FROM MY LAB</p>
-        <h2 id="field-notes-heading">Not every story fits into a ticket.</h2>
-        <p>A personal technical journal: what I built, broke, investigated and learned in my own lab. Real decisions, false leads and tested results — one experience at a time. Professional lessons are included only when safe to share. <span aria-hidden="true">😉</span></p>
-        <a class="field-notes-cta" href="/field-notes.html">Explore Field Notes <span aria-hidden="true">↗</span></a>
-        <a class="field-notes-cta" href="https://blog.bytegeist.dev/">Read the stories on the blog <span aria-hidden="true">↗</span></a>
-        <span class="field-notes-meta">No employer incidents or confidential details published.</span>
-      </div>
-      <div class="field-notes-mark" aria-hidden="true"><span>FIELD</span><span>NOTES</span><small>IT / OPERATIONS / REFLECTION</small></div>
-    </aside>
   </main>
 
   <footer id="contact">
