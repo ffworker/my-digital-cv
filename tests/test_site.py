@@ -87,6 +87,31 @@ class SiteContractTests(unittest.TestCase):
         for url in ("https://cv.bytegeist.dev/", "https://cv.bytegeist.dev/skills.html", "https://cv.bytegeist.dev/de/index.html", "https://cv.bytegeist.dev/de/skills.html"):
             self.assertIn(url, sitemap)
 
+    def test_professional_facts_are_explicit_bilingual_and_do_not_publish_notice_period(self):
+        variants = {
+            "index.html": (
+                "Systems administration", "10+ years",
+                "Location", "Reichelsheim (Odenwald), Germany",
+                "Availability", "Open to relevant inquiries · Start by arrangement",
+            ),
+            "de/index.html": (
+                "Systemadministration", "10+ Jahre",
+                "Standort", "Reichelsheim (Odenwald), Hessen",
+                "Verfügbarkeit", "Offen für passende Anfragen · Einstieg nach Absprache",
+            ),
+        }
+        for relative, values in variants.items():
+            with self.subTest(page=relative):
+                page = (ROOT / relative).read_text(encoding="utf-8")
+                professional = page.split('<article class="side professional"', 1)[1].split('<article class="side lab"', 1)[0]
+                for text in values:
+                    self.assertIn(text, professional)
+                self.assertNotIn('data-pending="true"', professional)
+                self.assertNotIn('64385', page)
+                self.assertNotIn('one month', page.lower())
+                self.assertNotIn('1 monat', page.lower())
+                self.assertNotIn('kündigungsfrist', page.lower())
+
     def test_selected_work_links_are_bilingual_and_scope_safe(self):
         for relative, heading, claim in (
             ("index.html", "SELECTED WORK", "as reported by its maintainer"),
