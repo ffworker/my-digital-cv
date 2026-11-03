@@ -1197,10 +1197,26 @@
       color: #718078;
       font: 700 12px/1.5 var(--mono);
     }
+    /* Brand colors are reserved for named products in professional evidence.
+       Non-product skill phrases use neutral bold; no implied proficiency score. */
     .detail-panel[data-panel="professional"] .context-list .tech {
       color: #18221b;
-      font-weight: 700;
+      font-weight: 750;
     }
+    .detail-panel[data-panel="professional"] .context-list strong:not(.tech) {
+      color: #18221b;
+      font-weight: 750;
+    }
+    .detail-panel[data-panel="professional"] .context-list .tech.omnissa { color: #b20c4b; }
+    .detail-panel[data-panel="professional"] .context-list .tech.vmware { color: #347a35; }
+    .detail-panel[data-panel="professional"] .context-list .tech.veeam { color: #007c31; }
+    .detail-panel[data-panel="professional"] .context-list .tech.microsoft,
+    .detail-panel[data-panel="professional"] .context-list .tech.exchange,
+    .detail-panel[data-panel="professional"] .context-list .tech.windows { color: #0067b8; }
+    .detail-panel[data-panel="professional"] .context-list .tech.fortigate { color: #156a82; }
+    .detail-panel[data-panel="professional"] .context-list .tech.powerstore { color: #12619c; }
+    /* Broadcom red is available if cited explicitly; do not invent it in copy. */
+    .detail-panel[data-panel="professional"] .context-list .tech.broadcom { color: #b3232f; }
     /* Signaturee is a deliberate feature: primary action vs secondary story link. */
     .selected-work {
       display: grid;
@@ -1358,10 +1374,10 @@
                   <p>Together with a colleague, I helped build and maintain the VDI environment itself, not only support users on top of it.</p>
                   <ul class="context-list">
                     <li><span class="tech omnissa">Omnissa Horizon / VDI</span> environment, formerly <span class="tech vmware">VMware Horizon</span></li>
-                    <li>UAG and Connection Server setup and ongoing maintenance</li>
-                    <li>golden images, snapshots and image lifecycle work</li>
+                    <li><span class="tech omnissa">UAG and Connection Server</span> setup and ongoing maintenance</li>
+                    <li><strong>golden images, snapshots</strong> and image lifecycle work</li>
                     <li><span class="tech veeam">Veeam</span>-backed backup paths for the surrounding infrastructure</li>
-                    <li>built and maintained in professional operations; infrastructure changes remain human-controlled</li>
+                    <li><strong>built and maintained</strong> in professional operations; infrastructure changes remain human-controlled</li>
                   </ul>
                 </div>
               </section>
@@ -1387,10 +1403,10 @@
                 <div>
                   <p>Much of the server environment runs Debian/Ubuntu on vSphere. I bootstrap and document hosts, maintain SSH access and updates, and run IT services in Docker/Compose based on adapted templates.</p>
                   <ul class="context-list">
-                    <li>VMware operations, changes and troubleshooting as the primary IT administrator</li>
-                    <li>Veeam backup operations, frequent file restores and occasional full-server recovery</li>
-                    <li>FortiGate policy changes, blocked-traffic analysis and maintenance</li>
-                    <li>PowerStore capacity and thin-provisioning oversight; occasional MDM support</li>
+                    <li><span class="tech vmware">VMware</span> operations, changes and troubleshooting as the primary IT administrator</li>
+                    <li><span class="tech veeam">Veeam</span> backup operations, frequent file restores and occasional full-server recovery</li>
+                    <li><span class="tech fortigate">FortiGate</span> policy changes, blocked-traffic analysis and maintenance</li>
+                    <li><span class="tech powerstore">PowerStore</span> capacity and thin-provisioning oversight; occasional MDM support</li>
                   </ul>
                 </div>
               </section>
@@ -1402,9 +1418,9 @@
                 <div>
                   <p>Incidents usually start with incomplete information, so the work is to identify the affected layer, verify assumptions and keep the next step recoverable.</p>
                   <ul class="context-list">
-                    <li>operational support with real users waiting</li>
-                    <li>clear notes for handover and future investigation</li>
-                    <li>fixes that are understandable, not just lucky</li>
+                    <li><strong>operational support</strong> with real users waiting</li>
+                    <li><strong>clear notes</strong> for handover and future investigation</li>
+                    <li><strong>fixes that are understandable</strong>, not just lucky</li>
                   </ul>
                 </div>
               </section>
