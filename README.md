@@ -14,7 +14,6 @@ This is the human-readable side of my portfolio: current professional IT work, t
 - `/de/skills.html` — public German **Editorial** skills page (canonical)
 - `/skills-tech.html` — English original dark Console **Tech View** (noindex)
 - `/de/skills-tech.html` — German original Console **Tech View** (noindex)
-- `/field-notes.html` and `/de/field-notes.html` — **unlisted, noindex editorial previews** for future real-work case studies; no incidents published
 - `/skills-professional.html` and `/de/skills-professional.html` — redirects from the earlier preview to the canonical pages
 
 ## Skills philosophy
@@ -64,9 +63,11 @@ The bilingual skills page now distinguishes a concrete **scenario/source referen
 
 See the [skill evidence register](Documentations/skill-evidence-register.md) for scenario scope, evidence grade, missing proof and a reusable capture checklist. Self-ratings remain subjective; no score is automatically raised when a link is added. Both locales must reference the same concrete artifacts.
 
-## Field Notes (unlisted preview)
+## Blog and publication boundaries
 
-The bilingual static pages `field-notes.html` and `de/field-notes.html` form the starting point for a carefully anonymised "diary of an IT administrator". The main EN/DE CV now includes a compact, deliberately non-identifying **Field Notes teaser** linking to those standalone blog-style previews. Both previews stay **`noindex` and absent from the sitemap**. There are no real case reports yet. Publishing even anonymised workplace/security incidents requires a separate factual, confidentiality and employer-approval review; the public repository must never contain an unreviewed draft or operational details. See [Field Notes publication standard](Documentations/field-notes-publication-policy.md).
+The independent [Bytegeist Blog](https://blog.bytegeist.dev/) is the canonical home for operational stories and project articles. The CV focuses on skills, professional experience and evidence; it no longer hosts a parallel Field Notes journal or teaser.
+
+Professional and customer information stays confidential. Real workplace or security cases require factual, confidentiality and employer-approval review before publication. The public project description must not contain employer configurations or incidents.
 
 ## Validation and current deployment
 
