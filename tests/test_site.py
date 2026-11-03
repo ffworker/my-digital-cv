@@ -103,7 +103,7 @@ class SiteContractTests(unittest.TestCase):
         for relative, values in variants.items():
             with self.subTest(page=relative):
                 page = (ROOT / relative).read_text(encoding="utf-8")
-                professional = page.split('<article class="side professional"', 1)[1].split('<article class="side lab"', 1)[0]
+                professional = page.split('<article class="side professional', 1)[1].split('<article class="side lab"', 1)[0]
                 for text in values:
                     self.assertIn(text, professional)
                 self.assertNotIn('data-pending="true"', professional)
