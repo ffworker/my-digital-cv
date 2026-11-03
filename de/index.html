@@ -1197,10 +1197,26 @@
       color: #718078;
       font: 700 12px/1.5 var(--mono);
     }
+    /* Brand colors are reserved for named products in professional evidence.
+       Non-product skill phrases use neutral bold; no implied proficiency score. */
     .detail-panel[data-panel="professional"] .context-list .tech {
       color: #18221b;
-      font-weight: 700;
+      font-weight: 750;
     }
+    .detail-panel[data-panel="professional"] .context-list strong:not(.tech) {
+      color: #18221b;
+      font-weight: 750;
+    }
+    .detail-panel[data-panel="professional"] .context-list .tech.omnissa { color: #b20c4b; }
+    .detail-panel[data-panel="professional"] .context-list .tech.vmware { color: #347a35; }
+    .detail-panel[data-panel="professional"] .context-list .tech.veeam { color: #007c31; }
+    .detail-panel[data-panel="professional"] .context-list .tech.microsoft,
+    .detail-panel[data-panel="professional"] .context-list .tech.exchange,
+    .detail-panel[data-panel="professional"] .context-list .tech.windows { color: #0067b8; }
+    .detail-panel[data-panel="professional"] .context-list .tech.fortigate { color: #156a82; }
+    .detail-panel[data-panel="professional"] .context-list .tech.powerstore { color: #12619c; }
+    /* Broadcom red is available if cited explicitly; do not invent it in copy. */
+    .detail-panel[data-panel="professional"] .context-list .tech.broadcom { color: #b3232f; }
     /* Signaturee is a deliberate feature: primary action vs secondary story link. */
     .selected-work {
       display: grid;
@@ -1359,10 +1375,10 @@
                   <p>Gemeinsam mit einem Kollegen habe ich die VDI-Umgebung selbst mit aufgebaut und betreut — nicht nur die Nutzer darauf unterstützt.</p>
                   <ul class="context-list">
                     <li><span class="tech omnissa">Omnissa Horizon / VDI</span> Umgebung, ehemals <span class="tech vmware">VMware Horizon</span></li>
-                    <li>UAG- und Connection-Server-Setup sowie laufende Pflege</li>
-                    <li>Golden Images, Snapshots und Image-Lifecycle-Arbeit</li>
+                    <li><span class="tech omnissa">UAG- und Connection-Server</span>-Setup sowie laufende Pflege</li>
+                    <li><strong>Golden Images, Snapshots</strong> und Image-Lifecycle-Arbeit</li>
                     <li><span class="tech veeam">Veeam</span>-gestützte Backup-Pfade für die umliegende Infrastruktur</li>
-                    <li>im beruflichen IT-Betrieb aufgebaut und betreut; Infrastrukturänderungen erfolgen eigenverantwortlich</li>
+                    <li><strong>im beruflichen IT-Betrieb aufgebaut und betreut</strong>; Infrastrukturänderungen erfolgen eigenverantwortlich</li>
                   </ul>
                 </div>
               </section>
@@ -1388,10 +1404,10 @@
                 <div>
                   <p>Viele Server laufen mit Debian/Ubuntu auf vSphere. Ich installiere und dokumentiere Hosts, sichere SSH ab, betreue Updates und betreibe IT-Dienste in Docker/Compose auf Basis angepasster Templates.</p>
                   <ul class="context-list">
-                    <li>VMware-Betrieb, Updates und Fehlersuche als zentraler Administrator im IT-Team</li>
-                    <li>Veeam-Backup-Betrieb, regelmäßige Datei-Restores und gelegentliche komplette Server-Recoverys</li>
-                    <li>FortiGate-Regeln, Analyse blockierter Verbindungen und Wartung</li>
-                    <li>PowerStore-Kapazitätskontrolle und Thin Provisioning; gelegentlicher MDM-Support</li>
+                    <li><span class="tech vmware">VMware</span>-Betrieb, Updates und Fehlersuche als zentraler Administrator im IT-Team</li>
+                    <li><span class="tech veeam">Veeam</span>-Backup-Betrieb, regelmäßige Datei-Restores und gelegentliche komplette Server-Recoverys</li>
+                    <li><span class="tech fortigate">FortiGate</span>-Regeln, Analyse blockierter Verbindungen und Wartung</li>
+                    <li><span class="tech powerstore">PowerStore</span>-Kapazitätskontrolle und Thin Provisioning; gelegentlicher MDM-Support</li>
                   </ul>
                 </div>
               </section>
@@ -1403,9 +1419,9 @@
                 <div>
                   <p>Incidents starten oft mit unvollständigen Informationen. Die Arbeit besteht darin, die betroffene Ebene zu finden, Annahmen zu prüfen und den nächsten Schritt rückgängig machbar zu halten.</p>
                   <ul class="context-list">
-                    <li>operativer Support, während echte Nutzer warten</li>
-                    <li>klare Notizen für Übergabe und spätere Analyse</li>
-                    <li>Fixes, die nachvollziehbar sind — nicht nur Glückstreffer</li>
+                    <li><strong>operativer Support</strong>, während echte Nutzer warten</li>
+                    <li><strong>klare Notizen</strong> für Übergabe und spätere Analyse</li>
+                    <li><strong>Fixes, die nachvollziehbar sind</strong> — nicht nur Glückstreffer</li>
                   </ul>
                 </div>
               </section>
